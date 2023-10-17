@@ -20,7 +20,7 @@
             </div>
     
             <!-- Password -->
-            <div class="form-control mt-4" style="margin-top: 2rem;width: 100%;position: relative;margin-bottom: 24px;">
+            <div class=" mt-4" style="margin-top: 2rem;width: 100%;position: relative;margin-bottom: 10px;">
                 {{-- <x-input-label for="password" :value="__('Password')" /> --}}
                 <x-text-input id="password" placeholder="Password" class="i-1 block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
                 <i class="fas fa-lock"></i>

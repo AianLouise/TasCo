@@ -66,7 +66,7 @@
 
         @if (Route::has('login'))
             <div class="text-left mt-2"> <!-- Change text-center to text-left, and reduce mt value -->
-                <a class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+                <a class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                     {{ __("Already have an account?") }} <span>Log In</span>
                 </a>
             </div>
