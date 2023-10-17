@@ -30,6 +30,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Check if the user is verified
+        if (!Auth::user()->hasVerifiedEmail()) {
+            // Send the email verification notification
+            Auth::user()->sendEmailVerificationNotification();
+
+            // You can customize the message to inform the user about the resend.
+            return redirect()->route('verification.notice')->with('resent', true);
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
