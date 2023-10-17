@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600">
-        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+        {{ __("Welcome to our Local Service Marketplace! Thank you for signing up. Before you can get started, please verify your email address by clicking on the link we've just sent to you. If you haven't received the email, we'll be happy to send it to you again.") }}
     </div>
 
     @if (session('status') == 'verification-link-sent')
@@ -14,7 +14,7 @@
             @csrf
 
             <div>
-                <x-primary-button>
+                <x-primary-button class="submit" style=" font-size: 10px">
                     {{ __('Resend Verification Email') }}
                 </x-primary-button>
             </div>

@@ -44,7 +44,11 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'user_type' => 'admin', // Set the user_type to 'client'
         ]);
+
+        // Send the email verification notification
+        $user->sendEmailVerificationNotification();
 
         event(new Registered($user));
 
