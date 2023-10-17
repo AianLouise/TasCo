@@ -13,7 +13,7 @@
             <div class="mt-8" style="margin-top: 1.5rem; width: 100%; position: relative; margin-bottom: 24px;">
                 <div class="form-control relative">
                     <x-text-input id="email" placeholder="Email" class="i-1 block pl-10 mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                    <i class="fas fa-envelope absolute inset-y-0 left-0 custom-padding flex items-center pointer-events-none"> <!-- Add a custom class for padding -->
+                    <i class="fas fa-envelope"> <!-- Add a custom class for padding -->
                     </i>
                 </div>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
