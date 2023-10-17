@@ -26,6 +26,59 @@
                 text-decoration: none;
             }
 
+            /*-----Animation----*/
+            @keyframes Bounce{
+                0%{
+                    transform: translateY(800px);    
+                    opacity: 20%;
+                }
+
+                30%{
+                    transform:  translateY(-20px);
+                    opacity: 40%;
+                }
+
+                50%{
+                    transform: translateY(10px);
+                    opacity: 60%;
+                }
+
+                80%{
+                    transform: translateY(5px)
+                    opacity: 80%;
+                }
+
+                100% {
+                    transform: translateX(0);
+                    opacity: 100%
+                }
+            }
+
+            .LoginLogo{
+                animation: Bounce 1s;
+            }
+
+            .RegisterLogo{
+                animation: Bounce 1s; 
+            }
+
+            @keyframes Slide{
+                0%{
+                    transform: translateX(100px);    
+                    opacity: 50%;
+                }
+
+                100% {
+                    transform: translateX(0);
+                    opacity: 100%;
+                }
+            }
+
+            .loginform{
+                animation: Slide 1s ease-in;
+            }
+            /* ---------------------------- */
+
             span {
                 color: #15a0e1;
                 font-weight: 500;
@@ -231,15 +284,15 @@
 
         <section class="side">
             @if (request()->is('register'))
-            <img src="{{ URL('images/register.jpg') }}" alt="Register Logo">
+            <img class="RegisterLogo" src="{{ URL('images/register.jpg') }}" alt="Register Logo">
             @else
-                <img src="{{ URL('images/login.jpg') }}" alt="Login Logo">
+                <img class="LoginLogo" src="{{ URL('images/login.jpg') }}" alt="Login Logo">
             @endif
         </section>
 
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             {{-- {{print_r(URL(""))}} --}}
-            <div class=" slot w-full sm:max-w-lg  px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="loginform slot w-full sm:max-w-lg  px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>  
         </div>
