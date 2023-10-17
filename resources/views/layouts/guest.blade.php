@@ -12,6 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -76,7 +77,7 @@
                 min-height: 100vh;
                 width: 100%;
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                /* grid-template-columns: 1fr 1fr; */
             }
 
             section {
@@ -86,13 +87,16 @@
             }
 
             section.side {
+                position: absolute;
                 background: url(./img/mesh.png) no-repeat;
                 background-size: 100% 102%;
+                margin-left: 17em;
+                margin-top: 13rem
             }
 
             .side img {
-                width: 40%;
-                max-width: 40%;
+                width: 25rem;
+                max-width: 150rem;
             }
 
             .form-container {
@@ -132,6 +136,17 @@
                 font-size: 1.1em;
             }
 
+            .i-1{
+                width: 100%;
+                color: #8b8b8b;
+                letter-spacing: 0.5px;
+                padding: 14px 64px;
+            }
+
+            .custom-padding {
+                padding-left: 20px; /* Adjust the padding value as needed */
+            }
+
             input {
                 width: 100%;
                 color: #8b8b8b;
@@ -142,7 +157,7 @@
 
             input ~ i {
                 position: absolute;
-                left: 25px;
+                left: 20px;
                 top: 50%;
                 transform: translateY(-50%);
                 color: #8b8b8b;
@@ -150,22 +165,48 @@
             }
 
             input:focus ~ i {
-                color: #15a0e1;
+                color: #6698f9;
             }
 
             button.submit {
                 color: #fff;
                 padding: 14px 64px;
-                margin: 32px auto;
+                margin: auto;
+                margin-top: 1rem;
                 letter-spacing: 2px;
                 font-weight: 500;
-                background-image: linear-gradient(to top, #A0DDFF, #15a0e1);
+                background-image: linear-gradient(to top, #506ca0, #4a6efa);
                 cursor: pointer;
                 transition: opacity 0.4s;
+                transition: all 0.3s ease; /* Add a smooth transition effect */
             }
 
             button.submit:hover {
-                opacity: 0.9;
+                transform: scale(1.01); /* Increase the size by 10% */
+                box-shadow: 0 0 20px rgba(63, 63, 192, 0.5); /* Add a glowing effect */
+                opacity: 0.8;
+            }
+
+            .slot{
+                margin-left: 40rem
+            }
+
+            .login{
+                width: 100%;
+                color: #8b8b8b;
+                letter-spacing: 0.5px;
+                padding: 14px 64px;
+                border: 3px solid #15a0e1;
+
+                border: none;
+                outline: none;
+                border-radius: 10px;
+                font-size: 1.1em;
+                text-align: center
+            }
+
+            .add-pad{
+                padding-left: 3rem;
             }
 
             /* ----  Responsiveness   ----  */
@@ -180,21 +221,27 @@
                 .side {
                     display: none;
                 }
-
+                .slot{
+                    margin-left: 0rem
+                }
             }
         </style>
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <img src="./images/login.jpg" alt="">
-                </a>
-            </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg" style="margin-left: 50rem">
+        <section class="side">
+            @if (request()->is('register'))
+            <img src="{{ URL('images/register.jpg') }}" alt="Register Logo">
+            @else
+                <img src="{{ URL('images/login.jpg') }}" alt="Login Logo">
+            @endif
+        </section>
+
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+            {{-- {{print_r(URL(""))}} --}}
+            <div class=" slot w-full sm:max-w-lg mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
-            </div>
+            </div>  
         </div>
     </body>
 </html>
