@@ -9,7 +9,7 @@
         <div class="relative">
             <div class="form-control">
                 <x-text-input id="fname" placeholder="First Name" class="add-pad i-1 block mt-1 w-full" type="text" name="fname" :value="old('fname')" required autofocus autocomplete="fname" />
-                <i class="fas fa-user absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none custom-padding"></i>
+                <i class="fas fa-user"></i>
             </div>
             <x-input-error :messages="$errors->get('fname')" class="mt-2" />
         </div>
@@ -18,7 +18,7 @@
         <div class="relative">
             <div class="form-control">
                 <x-text-input id="lname" placeholder="Last Name" class="add-pad i-1 block mt-1 w-full" type="text" name="lname" :value="old('lname')" required autofocus autocomplete="lname" />
-                <i class="fas fa-user absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none custom-padding"></i>
+                <i class="fas fa-user "></i>
             </div>
             <x-input-error :messages="$errors->get('lname')" class="mt-2" />
         </div>
