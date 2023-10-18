@@ -63,21 +63,22 @@
             }
 
             @keyframes Slide{
-                0%{
-                    transform: translateX(100px);    
+                from{
+                    transform: translateX(200px);    
                     opacity: 50%;
                 }
 
-                100% {
+                to{
                     transform: translateX(0);
                     opacity: 100%;
                 }
             }
 
             .loginform{
-                animation: Slide 1s ease-in;
+                animation: Slide .4s ease-in;
             }
             /* ---------------------------- */
+
 
             span {
                 color: #15a0e1;
