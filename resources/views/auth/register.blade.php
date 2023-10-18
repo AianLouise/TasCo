@@ -2,6 +2,8 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+<link rel="stylesheet" href="guest.blade.php">
+
         <p class="title" style="text-transform: uppercase;font-size: 3em;font-weight: bold;text-align: center;letter-spacing: 1px;margin-bottom: 10px;">Register</p>
         <div class="separator"></div>
 
@@ -56,7 +58,7 @@
         <!-- Confirm Password -->
         <div class="relative">
             <div class="">
-                <x-text-input id="password_confirmation" placeholder="Confirm Password" class="add-pad i-1 block mt-1 w-full"
+                <x-text-input id="password_confirmation" placeholder="Confirm Password" class="sliders add-pad i-1 block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required autocomplete="new-password" />
                 <i class="fas fa-lock"></i>

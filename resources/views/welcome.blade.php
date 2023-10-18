@@ -15,6 +15,11 @@
 
 
         <style>
+            ::-webkit-scrollbar{
+              display: none;
+            }
+
+            
             .bg-hero {
                 background-image: url('{{ asset('images/hero-bg.png') }}');
                 height: 100vh;
@@ -28,7 +33,7 @@
             padding: 15px;
             pointer-events: none;
             color: #8b8b8b;
-            transition: 0.7s;
+            transition: 0.5s;
             }
 
             .searchbox input:valid~span ,
@@ -62,7 +67,7 @@
 
             @keyframes Popdown{
               from{ 
-                transform: translateY(-200px)
+                transform: translateY(-50px)
               }
               
               to{
@@ -97,7 +102,7 @@
             .ImageComp img{
               display: block; 
               width: 100%;
-              transition: 1s ease-in-out;
+              transition: 0.5s ease-in-out;
             }
 
             .ImageComp img:hover{
@@ -126,7 +131,7 @@
           .Srchbtn{
             background: #6698f9;
             color: white;
-            transition: 0.5s ease-in-out;
+            transition: 0.3s ease-in-out;
           }
 
           .Srchbtn:hover{

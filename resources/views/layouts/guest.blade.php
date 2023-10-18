@@ -15,8 +15,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
+            
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
+            ::-webkit-scroll{
+                display: none;
+            }
             * {
                 margin: 0;
                 padding: 0;
@@ -30,27 +33,27 @@
             @keyframes Bounce{
                 0%{
                     transform: translateY(800px);    
-                    opacity: 20%;
+                  
                 }
 
                 30%{
                     transform:  translateY(-20px);
-                    opacity: 40%;
+                
                 }
 
                 50%{
                     transform: translateY(10px);
-                    opacity: 60%;
+                  
                 }
 
                 80%{
                     transform: translateY(5px)
-                    opacity: 80%;
+                   
                 }
 
                 100% {
                     transform: translateX(0);
-                    opacity: 100%
+                   
                 }
             }
 
@@ -77,6 +80,19 @@
             .loginform{
                 animation: Slide .4s ease-in;
             }
+
+        ::placeholder{
+            opacity: 100%;
+            transition: 0.5s ease-in-out;
+        }
+
+        :focus::placeholder
+        {
+            letter-spacing: 0.2em;
+            opacity: 0%;
+        }
+
+
             /* ---------------------------- */
 
 
@@ -279,9 +295,28 @@
                     margin-left: 0rem
                 }
             }
+
+            .welcomebtn{
+                position: sticky;
+                justify-content: center;
+                margin-top: 1em;
+                margin-left: 36em; 
+                font-style: bold;
+                transition: 0.5s ease-in-out;
+
+            }
+
+            .welcomebtn:hover{
+            color: #6698f9;
+            background: white;
+            border: 1px solid #6698f9;
+            letter-spacing: 0.1em;
+            z-index: 2;
+            }
+
         </style>
     </head>
-    <body class="font-sans text-gray-900 antialiased">
+    <body class="font-sans text-gray-900 antialiased bg-gray-100">
 
         <section class="side">
             @if (request()->is('register'))
@@ -291,10 +326,16 @@
             @endif
         </section>
 
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
             {{-- {{print_r(URL(""))}} --}}
             <div class="loginform slot w-full sm:max-w-lg  px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
+            </div>
+
+            <div>
+                <button class="welcomebtn loginform px-5 py-4 bg-blue text-white text-lg shadow-md sm:rounded-lg">
+                    Welcome                    
+                </button>
             </div>  
         </div>
     </body>

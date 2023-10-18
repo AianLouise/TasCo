@@ -2,6 +2,8 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <link rel="stylesheet" href="guest.blade.php">
+
     <div sty>
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -12,7 +14,7 @@
             <!-- Email Address -->
             <div class="mt-8" style="margin-top: 1.5rem; width: 100%; position: relative; margin-bottom: 24px;">
                 <div class="form-control relative">
-                    <x-text-input id="email" placeholder="Email" class="i-1 block pl-10 mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                    <x-text-input id="email" placeholder="Email" class=" i-1 pl-10 mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <i class="fas fa-envelope"> <!-- Add a custom class for padding -->
                     </i>
                 </div>
@@ -22,7 +24,7 @@
             <!-- Password -->
             <div class=" mt-4" style="margin-top: 2rem;width: 100%;position: relative;margin-bottom: 10px;">
                 {{-- <x-input-label for="password" :value="__('Password')" /> --}}
-                <x-text-input id="password" placeholder="Password" class="i-1 block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                <x-text-input id="password" placeholder="Password" class=" i-1 block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
                 <i class="fas fa-lock"></i>
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
