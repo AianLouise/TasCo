@@ -334,8 +334,8 @@
 
             <div>
                 <button class="welcomebtn loginform px-5 py-4 bg-blue text-white text-lg shadow-md sm:rounded-lg">
-                    Welcome                    
-                </button>
+                    <a href="{{ route('welcome') }}" style="text-decoration: none; color: inherit;">Back</a>
+                </button>                
             </div>  
         </div>
     </body>

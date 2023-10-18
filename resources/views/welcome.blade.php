@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Welcome to TasCo</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -56,7 +56,7 @@
             /* Application Name Animation */
 
             .AppName::before{
-              content: "[App Name]";
+              content: "TasCo";
               position: relative;
               color: #6698f9;
               transition: 0.5s ease-in-out;
