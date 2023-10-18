@@ -26,6 +26,10 @@
             }
               /* Animation for Search Bar */
 
+            ::-webkit-scrollbar{
+              display: none;
+            }
+
             .searchbox span
             {
             position: absolute;
