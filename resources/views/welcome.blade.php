@@ -33,9 +33,9 @@
                   </div>
                     
                 <div class='flex gap-2 text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24'>
-                  <a href="{{ route('login') }}">Log In</a>
+                  <a href="{{ route('login') }}" class="text-gray-900 hover:text-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Log In</a>
                   <span>|</span>
-                  <a href="{{ route('register') }}">Register</a>
+                  <a href="{{ route('register') }}" class="text-gray-900 hover:text-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Register</a>
                 </div>
                 </nav>
             </header>
@@ -53,10 +53,10 @@
                   
                   <form>
                   <div class="relative flex">
-                    <input type="text" name="search" placeholder="Search for job" class="flex flex-1 bg-white rounded-md justify-center items-center gap-2 px-5 py-4 border-none  font-poppins  text-lg"/>
+                    <input type="text" name="search" placeholder="Search for services" class="flex flex-1 bg-white rounded-md justify-center items-center gap-2 px-5 py-4 w-96 border-none font-poppins text-lg"/>
                     <button class="flex justify-center items-center gap-2 px-7 ml-1 py-4 border font-poppins font-semibold text-lg leading-none bg-blue rounded-md text-white border-blue">
                       Search
-                  </button>
+                    </button>
                   </div>
                   </form>
                 </div>
