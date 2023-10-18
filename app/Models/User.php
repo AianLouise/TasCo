@@ -2,16 +2,25 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\NewResetPasswordNotification;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Notifications\NewEmailVerificationNotification;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function sendPasswordResetNotification($token){
+        $this->notify(new NewResetPasswordNotification($token));
+    }
+    
+    public function sendEmailVerificationNotification(){
+        $this->notify(new NewEmailVerificationNotification);
+    }
 
     /**
      * The attributes that are mass assignable.
