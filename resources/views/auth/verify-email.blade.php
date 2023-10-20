@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600">
-        {{ __("Welcome to our Local Service Marketplace! Thank you for signing up. Before you can get started, please verify your email address by clicking on the link we've just sent to you. If you haven't received the email, we'll be happy to send it to you again.") }}
+        {{ __("Welcome to TasCo, your Local Service Marketplace! Thank you for signing up. Before you can get started, please verify your email address by clicking on the link we've just sent to you. If you haven't received the email, we'll be happy to send it to you again.") }}
     </div>
 
     @if (session('status') == 'verification-link-sent')
