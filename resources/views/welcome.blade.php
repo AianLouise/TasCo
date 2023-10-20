@@ -177,7 +177,7 @@
                     with <span class="AppName inline-block mt-3 z-10 pr-10"></span>
                   </h1>
                   
-                  <p class="font-poppins text-slate-gray text-lg leading-8 mt-6 mb-14 sm-w-sm">[App Name] is your all-in-one destination for the services you require within your community.</p>
+                  <p class="font-poppins text-slate-gray text-lg leading-8 mt-6 mb-14 sm-w-sm">TasCo is your all-in-one destination for the services you require within your community.</p>
                   
                   <form>
                   <div class="ContentLeft2 searchbox relative flex">
