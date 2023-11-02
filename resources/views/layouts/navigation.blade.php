@@ -5,17 +5,47 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
+                    
+                    @isAdmin
+                    <a href="{{ route('admin.dashboard') }}">
+                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    </a>
+                    @endisAdmin
+
+                    @isWorker
+                    <a href="{{ route('worker.dashboard') }}">
+                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    </a>
+                    @endisWorker
+
+                    @isClient
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
+                    @endisClient
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @isAdmin
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                        {{ __('Admin Dashboard') }}
+                    </x-nav-link>
+                    @endisAdmin
+
+                    @isWorker
+                    <x-nav-link :href="route('worker.dashboard')" :active="request()->routeIs('worker.dashboard')">
+                        {{ __('Worker Dashboard') }}
+                    </x-nav-link>
+                    @endisWorker
+
+                    @isClient
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @endisClient
                 </div>
+
             </div>
 
             <!-- Settings Dropdown -->
