@@ -39,13 +39,13 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'fname' => $request->fname,
-            'lname' => $request->lname,
+            'name' => $request->fname . ' ' . $request->lname, // Concatenate fname and lname into a single 'name' field
             'address' => $request->address,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'user_type' => 'admin', // Set the user_type to 'client'
         ]);
+        
 
         // Send the email verification notification
         // $user->sendEmailVerificationNotification();

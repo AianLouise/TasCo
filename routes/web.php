@@ -6,6 +6,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChatifyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/worker/dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
 }); //End Group Worker Middleware
+
+// //Route for Chatify
+// Route::get('/chatify', 'ChatifyController@chatify')->name('chatify');
