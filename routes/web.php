@@ -48,4 +48,8 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 }); //End Group Worker Middleware
 
 // //Route for Chatify
-// Route::get('/chatify', 'ChatifyController@chatify')->name('chatify');
+Route::group(['middleware' => 'chatify'], function () {
+    Route::get('Chatify', 'ChatifyController@chatify')->name('Chatify');
+    // Add other Chatify routes here as needed
+});
+
