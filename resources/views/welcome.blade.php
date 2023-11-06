@@ -171,22 +171,23 @@
                 <section id="home" class="w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-container">
                   <div class="ContentLeft1 relative xl:w-7/5 flex flex-col justify-center items-start w-full max-xl:padding-x px-9 pt-18">
                   
-                  <h1 class="mt-10 font-poppins text-5xl max-sm:text-[72px] max-sm:leading-[82px] font-bold">
-                    <span class="FindLocal xl:whitespace-nowrap relative z-10 pr-10">Find Local Services </span>
-                    <br />
-                    with <span class="AppName inline-block mt-3 z-10 pr-10"></span>
-                  </h1>
+                    <h1 class="mt-24 sm:mt-10 text-3xl sm:text-5xl max-sm:text-[72px] max-sm:leading-[82px] font-poppins font-bold">
+                        <span class="FindLocal xl:whitespace-nowrap relative z-10 pr-10">Find Local Services </span>
+                        <br />
+                        with <span class="AppName inline-block mt-6 sm:mt-3 z-10 pr-10"></span>
+                    </h1>
+                  
                   
                   <p class="font-poppins text-slate-gray text-lg leading-8 mt-6 mb-14 sm-w-sm">TasCo is your all-in-one destination for the services you require within your community.</p>
                   
                   <form>
-                  <div class="ContentLeft2 searchbox relative flex">
-                    <input type="text" name="search" class="flex flex-1 bg-white rounded-md justify-center items-center gap-2 px-5 py-4 w-96 border-none font-poppins text-lg" required="required">
-                    <span>Search for Services</span>
-                    <button class="Srchbtn flex justify-center items-center gap-2 px-7 ml-1 py-4 border font-poppins font-semibold text-lg leading-none bg-blue rounded-md text-white border-blue">
-                      Search
-                    </button>
-                  </div>
+                    <div class="ContentLeft2 searchbox relative flex">
+                        <input type="text" name="search" class="flex flex-1 bg-white rounded-md justify-center items-center gap-2 px-5 py-4 sm:w-96 sm:py-3 w-full border-none font-poppins text-lg" required="required">
+                        <span>Search for Services</span>
+                        <button class="Srchbtn flex justify-center items-center gap-2 px-7 ml-1 py-4 border font-poppins font-semibold text-lg leading-none bg-blue rounded-md text-white border-blue">
+                            Search
+                        </button>
+                    </div>
                   </form>
                 </div>
                   <div class="ImageComp relative flex justify-center items-center xl:min-h-screen mal-xl:py-40">
