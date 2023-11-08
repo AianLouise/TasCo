@@ -1,0 +1,22 @@
+In the Spatie Activity Log package, the log_name is a field that can help you categorize and distinguish different types of activities in your application. It allows you to provide a meaningful name for the activity being logged. The specific log names you use can vary depending on your application and its use cases, but here are some common examples of log names:
+
+created: Used when a new record or entity is created.
+updated: Used when an existing record or entity is updated.
+deleted: Used when a record or entity is deleted.
+viewed: Used when a user views or accesses a specific resource.
+logged_in: Used when a user logs into the system.
+logged_out: Used when a user logs out of the system.
+password_reset: Used when a user resets their password.
+permission_granted: Used when a user is granted specific permissions or privileges.
+permission_revoked: Used when a user has permissions or privileges revoked.
+email_sent: Used when an email is sent to a user.
+file_uploaded: Used when a file is uploaded.
+These are just examples, and you can define custom log names that make sense for your application's specific activities. The log name helps you categorize and filter activities when querying the activity log.
+
+When using the Spatie Activity Log package, you can specify the log name using the log method, like this:
+
+php
+Copy code
+activity()
+    ->log('created'); // Specify the log name 'created' for a new record creation
+You can choose log names that are relevant to your application's domain and use them consistently to track and categorize various activities.

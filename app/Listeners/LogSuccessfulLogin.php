@@ -16,7 +16,7 @@ class LogSuccessfulLogin
     {
         $user = $event->user;
 
-        activity()
+        activity('logged_in')
             ->performedOn($user)
             ->log('User logged in');
     }
