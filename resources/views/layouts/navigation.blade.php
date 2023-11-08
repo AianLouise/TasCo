@@ -31,6 +31,18 @@
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                         {{ __('Admin Dashboard') }}
                     </x-nav-link>
+
+                    {{-- <div class="w-1"></div> --}}
+
+                    <!-- Chatify -->
+                    <x-nav-link :href="route('chatify')" :active="request()->routeIs('chatify')">
+                        {{ __('Chatify') }}
+                    </x-nav-link>    
+
+                    <!-- Log History -->
+                    <x-nav-link :href="route('admin.logHistory')" :active="request()->routeIs('admin.logHistory')">
+                        {{ __('Log History') }}
+                    </x-nav-link>    
                     @endisAdmin
 
                     @isWorker
@@ -44,15 +56,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     @endisUser
-                </div>
-
-                <!-- Add an empty div for space -->
-               <div class="w-2"></div>
-
-                <!-- Add the Chatify link here -->
-                <x-nav-link :href="route('chatify')" :active="request()->routeIs('chatify')">
-                    {{ __('Chatify') }}
-                </x-nav-link>                
+                </div>              
             </div>
 
             <!-- Settings Dropdown -->

@@ -41,6 +41,7 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/log-history', [AdminController::class, 'AdminLog'])->name('admin.logHistory');
 }); //End Group Admin Middleware
 
 Route::middleware(['auth', 'role:worker'])->group(function () {
