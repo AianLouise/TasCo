@@ -18,11 +18,11 @@
                     </a>
                     @endisWorker
 
-                    @isClient
+                    @isUser
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
-                    @endisClient
+                    @endisUser
                 </div>
 
                 <!-- Navigation Links -->
@@ -39,11 +39,11 @@
                     </x-nav-link>
                     @endisWorker
 
-                    @isClient
+                    @isUser
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    @endisClient
+                    @endisUser
                 </div>
 
                 <!-- Add an empty div for space -->

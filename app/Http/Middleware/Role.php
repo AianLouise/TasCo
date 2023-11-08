@@ -22,7 +22,7 @@ class Role
             } elseif ($request->user()->role === 'worker') {
                 return redirect('worker/dashboard');
             } else {
-                // Handle the client role here
+                // Handle the user role here
                 return redirect('dashboard');
             }
         }
