@@ -20,3 +20,5 @@ Copy code
 activity()
     ->log('created'); // Specify the log name 'created' for a new record creation
 You can choose log names that are relevant to your application's domain and use them consistently to track and categorize various activities.
+
+When "npm run dev" is not running modify the vite.config.js
