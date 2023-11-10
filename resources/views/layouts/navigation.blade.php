@@ -49,12 +49,20 @@
                     <x-nav-link :href="route('worker.dashboard')" :active="request()->routeIs('worker.dashboard')">
                         {{ __('Worker Dashboard') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('chatify')" :active="request()->routeIs('chatify')">
+                        {{ __('Chatify') }}
+                    </x-nav-link>    
                     @endisWorker
 
                     @isUser
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('chatify')" :active="request()->routeIs('chatify')">
+                        {{ __('Chatify') }}
+                    </x-nav-link>    
                     @endisUser
                 </div>              
             </div>
