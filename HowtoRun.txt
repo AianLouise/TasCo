@@ -20,6 +20,9 @@ composer install
 npm install
 php artisan migrate
 
+To seed user table
+php artisan migrate --seed
+
 We need 2 PowerShell for the wep app to run with the same path of-
 cd C:/xampp/htdocs/tasco
 
