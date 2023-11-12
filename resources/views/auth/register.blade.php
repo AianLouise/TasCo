@@ -43,7 +43,7 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <!-- Password -->
+       <!-- Password -->
         <div class="relative">
             <div class="form-control">
                 <x-text-input id="password" placeholder="Password" class="add-pad i-1 block mt-1 w-full"
@@ -51,6 +51,9 @@
                                 name="password"
                                 required autocomplete="new-password" />
                 <i class="fas fa-lock"></i>
+                <span id="togglePassword" class="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer">
+                    <i class="fas fa-eye" id="toggleIconPassword" style="color: #777;"></i>
+                </span>
             </div>
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -62,9 +65,36 @@
                                 type="password"
                                 name="password_confirmation" required autocomplete="new-password" />
                 <i class="fas fa-lock"></i>
+                <span id="toggleConfirmPassword" class="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer">
+                    <i class="fas fa-eye" id="toggleIconConfirmPassword" style="color: #777;"></i>
+                </span>
             </div>
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-1" />
         </div>
+
+        <script>
+            const passwordInput = document.getElementById('password');
+            const confirmInput = document.getElementById('password_confirmation');
+            const togglePassword = document.getElementById('togglePassword');
+            const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+            const toggleIconPassword = document.getElementById('toggleIconPassword');
+            const toggleIconConfirmPassword = document.getElementById('toggleIconConfirmPassword');
+
+            togglePassword.addEventListener('click', () => {
+                toggleVisibility(passwordInput, toggleIconPassword);
+            });
+
+            toggleConfirmPassword.addEventListener('click', () => {
+                toggleVisibility(confirmInput, toggleIconConfirmPassword);
+            });
+
+            function toggleVisibility(inputElement, iconElement) {
+                const type = inputElement.type === 'password' ? 'text' : 'password';
+                inputElement.type = type;
+                iconElement.className = type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
+            }
+        </script>
+
 
         @if (Route::has('login'))
             <div class="text-left mt-2"> <!-- Change text-center to text-left, and reduce mt value -->

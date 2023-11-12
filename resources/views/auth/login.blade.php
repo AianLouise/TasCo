@@ -22,12 +22,31 @@
             </div>
     
             <!-- Password -->
-            <div class=" mt-4" style="margin-top: 2rem;width: 100%;position: relative;margin-bottom: 10px;">
+            <div class="mt-4" style="margin-top: 2rem; width: 100%; position: relative; margin-bottom: 10px;">
                 {{-- <x-input-label for="password" :value="__('Password')" /> --}}
-                <x-text-input id="password" placeholder="Password" class=" i-1 block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-                <i class="fas fa-lock"></i>
+                <div class="relative">
+                    <x-text-input id="password" placeholder="Password" class="i-1 block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                    <i class="fas fa-lock"></i>
+                    <span id="togglePassword" class="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer">
+                        <i class="fas fa-eye" id="toggleIcon" style="color: #777;"></i>
+                    </span>
+                </div>
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
+
+            <script>
+                const passwordInput = document.getElementById('password');
+                const togglePassword = document.getElementById('togglePassword');
+                const toggleIcon = document.getElementById('toggleIcon');
+
+                togglePassword.addEventListener('click', () => {
+                    const type = passwordInput.type === 'password' ? 'text' : 'password';
+                    passwordInput.type = type;
+                    toggleIcon.className = type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
+                });
+            </script>
+
+
     
             @if (Route::has('password.request'))
                     <a class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
