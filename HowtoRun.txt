@@ -1,0 +1,35 @@
+[INSTALLATIONS & INSTRUCTIONS]
+
+Install Dependemcies
+Php https://www.php.net/manual/en/install.php
+Composer https://getcomposer.org/download/
+Nodejs https://nodejs.org/dist/v18.18.2/node-v18.18.2-x64.msi
+
+Laravel Framework 
+Open PowerShell and type:
+composer global require "laravel/installer"
+Wait for it to run completely
+
+Create Database to phpmyadmin named tasco
+
+To run the web app open PowerShell and type:
+cd C:/xampp/htdocs/tasco
+
+Then type the following
+composer install
+npm install
+php artisan migrate
+
+We need 2 PowerShell for the wep app to run with the same path of-
+cd C:/xampp/htdocs/tasco
+
+1st Shell
+npm run dev
+
+2nd Shell
+php artisan serve
+
+The url should be http://127.0.0.1:8000/
+
+
+
