@@ -81,7 +81,7 @@
                     </div>
                     <div class="flex items-center">
                         <!-- Display avatars or other content based on your needs -->
-                        @for ($i = 0; $i < min(5, $jobSeekersCount); $i++)
+                        @for ($i = 0; $i < min(5, $employersCount); $i++)
                             <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
                         @endfor
                     </div>

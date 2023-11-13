@@ -24,9 +24,29 @@ class UserSeeder extends Seeder
 
         // Create a worker user
         User::factory()->create([
-            'name' => 'Worker User',
+            'name' => 'Elijah Farrell',
             'email' => 'worker@example.com',
             'role' => 'worker',
+            'job_title'=> 'Electrician',
+            'is_verified'=> '1',
+            'address' => 'Ph',
+            'password' => bcrypt('12345678'), // You can set a password here
+        ]);
+        User::factory()->create([
+            'name' => 'Wayne Harding',
+            'email' => 'worker2@example.com',
+            'role' => 'worker',
+            'job_title'=> 'Plumber',
+            'is_verified'=> '1',
+            'address' => 'Ph',
+            'password' => bcrypt('12345678'), // You can set a password here
+        ]);
+        User::factory()->create([
+            'name' => 'Astra Burch',
+            'email' => 'worke3@example.com',
+            'role' => 'worker',
+            'job_title'=> 'Teacher',
+            'is_verified'=> '1',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
