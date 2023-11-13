@@ -133,6 +133,6 @@
 
     <!-- End: Main Content -->
    
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    @vite(['resources/js/script.js'])
+    {{-- <script src="https://unpkg.com/@popperjs/core@2"></script>
+    @vite(['resources/js/script.js']) --}}
 </x-app-layout>

@@ -16,9 +16,6 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @vite(['resources/css/style2.css'])
 
-        <script src="https://unpkg.com/@popperjs/core@2"></script>
-        @vite(['resources/js/script.js'])
-
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -47,5 +44,8 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        @vite(['resources/js/script.js'])
     </body>
 </html>
