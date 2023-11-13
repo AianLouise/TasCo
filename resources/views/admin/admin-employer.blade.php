@@ -83,25 +83,22 @@
                 </thead>
                 
                 <tbody class="bg-white divide-y divide-gray-200 ">
+                    @foreach($employers as $employer)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap ">
-
-                        <div class="flex items-center">
-
-                            <div class="flex-shrink-0 h-10 w-10">
-                                <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                            </div>
-
-                            <div class="ml-4">
-                                <div class="text-sm font-medium2 text-gray-900">
-                                    Sample Employer
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 h-10 w-10">
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($employer->name) }}&color=7F9CF5&background=EBF4FF" alt="Avatar" class="w-8 h-8 rounded-full object-cover block">
                                 </div>
-                                <div class="text-sm text-gray-800">
-                                    samplemployer@gmail.com
+                                <div class="ml-4">
+                                    <div class="text-sm font-medium2 text-gray-900">
+                                        {{ $employer->name }}
+                                    </div>
+                                    <div class="text-sm text-gray-800">
+                                        {{ $employer->email }}
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
                         </td>
                         
                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
@@ -118,7 +115,7 @@
                             <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
                         </td>
                     </tr>
-                        
+                    @endforeach    
                 </tbody>
         </table>
     </div>

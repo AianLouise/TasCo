@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
         ]);
         User::factory()->create([
             'name' => 'Astra Burch',
-            'email' => 'worke3@example.com',
+            'email' => 'worker3@example.com',
             'role' => 'worker',
             'job_title'=> 'Teacher',
             'is_verified'=> '1',
@@ -53,9 +53,26 @@ class UserSeeder extends Seeder
 
         // Create a regular user
         User::factory()->create([
-            'name' => 'Regular User',
+            'name' => 'Audra Mcneil',
             'email' => 'user@example.com',
             'role' => 'user',
+            'is_verified'=> '1',
+            'address' => 'Ph',
+            'password' => bcrypt('12345678'), // You can set a password here
+        ]);
+        User::factory()->create([
+            'name' => 'Iliana Mooney',
+            'email' => 'user2@example.com',
+            'role' => 'user',
+            'is_verified'=> '1',
+            'address' => 'Ph',
+            'password' => bcrypt('12345678'), // You can set a password here
+        ]);
+        User::factory()->create([
+            'name' => 'Arsenio Horne',
+            'email' => 'user3@example.com',
+            'role' => 'user',
+            'is_verified'=> '1',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);

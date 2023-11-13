@@ -15,7 +15,15 @@ class AdminController extends Controller
         $employersCount = User::where('role', 'user')->where('is_verified', 1)->count();
         $allUsersCount = User::count();
         
-        return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount'));
+        $workers = User::where('role', 'worker')
+                    ->where('is_verified', 1)
+                    ->get();
+
+        $employers = User::where('role', 'user')
+                    ->where('is_verified', 1)
+                    ->get();
+
+        return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers'));
     }
 
     public function AdminJobSeeker(){
@@ -27,7 +35,11 @@ class AdminController extends Controller
     }
 
     public function AdminEmployer(){
-        return view("admin.admin-employer");
+        $employers = User::where('role', 'user')
+                    ->where('is_verified', 1)
+                    ->get();
+
+        return view("admin.admin-employer", compact("employers"));
     }
 
     public function AdminDocument(){

@@ -55,10 +55,13 @@
                 
                     <div class="flex items-center">
                         <!-- Display avatars or other content based on your needs -->
-                        @for ($i = 0; $i < min(5, $jobSeekersCount); $i++)
-                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
-                        @endfor
+                        @php $maxAvatars = 5; @endphp
+                        @foreach($workers->take($maxAvatars) as $worker)
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($worker->name) }}&color=7F9CF5&background=EBF4FF" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
+                        @endforeach
                     </div>
+                    
+                    
                 </div>
                 
                 
@@ -81,10 +84,12 @@
                     </div>
                     <div class="flex items-center">
                         <!-- Display avatars or other content based on your needs -->
-                        @for ($i = 0; $i < min(5, $employersCount); $i++)
-                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
-                        @endfor
+                        @php $maxAvatars = 5; @endphp
+                        @foreach($employers->take($maxAvatars) as $employer)
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($employer->name) }}&color=7F9CF5&background=EBF4FF" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
+                        @endforeach
                     </div>
+                    
                 </div>
 
                 <!-- End: Dashboard Analytics: Employer -->
