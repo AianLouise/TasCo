@@ -6,7 +6,7 @@
     <div class="text-gray-800 hover:text-gray-600 font-medium2">{{ $user->name }}</div>
     <li class="dropdown ml-3">
         <button type="button" class="dropdown-toggle flex items-center">
-            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded block object-cover align-middle">
+            <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&color=7F9CF5&background=EBF4FF" alt="" class="w-8 h-8 rounded block object-cover align-middle">
         </button>
 
         <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
