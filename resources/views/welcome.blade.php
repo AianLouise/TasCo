@@ -153,19 +153,42 @@
 
         <main class = "relative ">
             <header class="DashTop padding-x absolute z-10 w-full">
-                <nav class="sticky border-b border-slate-gray flex justify-between items-center max-container">
-                  <div class="w-20 py-5 font-bold text-3xl">
+              <nav class="sticky border-b border-slate-gray flex justify-between items-center max-container">
+                @auth
+                    @if(Auth::user()->role === 'admin')
+                        <script>
+                            window.location.href = "{{ route('admin.dashboard') }}";
+                        </script>
+                    @elseif(Auth::user()->role === 'worker')
+                        <script>
+                            window.location.href = "{{ route('worker.dashboard') }}";
+                        </script>
+                    @elseif(Auth::user()->role === 'user')
+                        <script>
+                            window.location.href = "{{ route('user.dashboard') }}";
+                        </script>
+                    @endif
+                @endauth
+            
+                <div class="w-20 py-5 font-bold text-3xl">
                     <a href="/">
-                      LOGO
+                        LOGO
                     </a>
-                  </div>
-                    
-                <div class='flex gap-2 text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24'>
-                  <a href="{{ route('login') }}" class="text-gray-900 hover:text-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Log In</a>
-                  <span>|</span>
-                  <a href="{{ route('register') }}" class="text-gray-900 hover:text-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Register</a>
                 </div>
-                </nav>
+            
+                <div class='flex gap-2 text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24'>
+                    @auth
+                        <!-- No need to display anything here since redirection is done above -->
+                    @else
+                        <a href="{{ route('login') }}" class="text-gray-900 hover:text-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Log In
+                        </a>
+                        <span>|</span>
+                    @endauth
+                    <a href="{{ route('register') }}" class="text-gray-900 hover:text-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Register</a>
+                </div>
+            </nav>
+            
             </header>
             <section class="xl:padding-1 bg-hero bg-cover wide:padding-r padding-b">
                 <section id="home" class="w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-container">

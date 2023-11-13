@@ -24,10 +24,10 @@ export default {
             '8xl': ['96px', '106px']
           },
         extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                poppins: ['Poppins', 'sans-serif'],
-            },
+            // fontFamily: {
+            //     sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            //     poppins: ['Poppins', 'sans-serif'],
+            // },
             colors: {
                 'primary': "#A0DDFF",
                 "blue": "#7189FF",
