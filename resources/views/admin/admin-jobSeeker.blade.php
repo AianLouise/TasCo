@@ -85,40 +85,40 @@
                         <!-- End: Table Column Name -->
 
                         <tbody class="bg-white divide-y divide-gray-200">
-
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap ">
-                                    <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                                    </div>
-                                    <div class="ml-4">
-                                        <div class="text-sm font-medium2 text-gray-900">
-                                        Sample User 
+                            @foreach($workers as $worker)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img src="{{ $worker->avatar ?? 'https://placehold.co/32x32' }}" alt="Avatar" class="w-8 h-8 rounded-full object-cover block">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium2 text-gray-900">
+                                                    {{ $worker->name }}
+                                                </div>
+                                                <div class="text-sm text-gray-800">
+                                                    {{ $worker->email }}
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="text-sm text-gray-800">
-                                        sampleuser@gmail.com
-                                        </div>
-                                    </div>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    Sample Job
-                                </td>
-
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    Available
-                                </td>
-                            
-                                <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium2">
-                                    <a href="editUser.html" class="text-blue-400 hover:text-blue-600">Edit</a>
-                                    <span class="text-gray-600">/</span>
-                                    <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
-                                </td>
-                            </tr>
+                                    </td>
                         
-                        </tbody>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        {{ $worker->job_title }}
+                                    </td>
+                        
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        Available
+                                    </td>
+                        
+                                    <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium2">
+                                        <a href="editUser.html" class="text-blue-400 hover:text-blue-600">Edit</a>
+                                        <span class="text-gray-600">/</span>
+                                        <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>                        
                     </table>
                 </div>
             </div>

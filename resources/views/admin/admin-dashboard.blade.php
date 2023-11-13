@@ -40,11 +40,10 @@
                 <!-- Start: Dashboard Analytics: Job Seeker -->
 
                 <div class="bg-white rounded-md border border-gray-200 p-6 shadow-md shadow-black/5">
-                    
                     <div class="flex justify-between mb-4">
                         <div>
                             <div class="flex items-center mb-1">
-                                <div class="text-2xl font-semibold">1</div>
+                                <div class="text-2xl font-semibold">{{ $jobSeekersCount }}</div>
                                 <div class="p-1 rounded bg-rose-500/10 text-rose-500 text-[12px] font-semibold leading-none ml-2">-1%</div>
                             </div>
                             <div class="text-sm font-medium text-gray-800">Job Seekers</div>
@@ -53,15 +52,15 @@
                             <button type="button" class="dropdown-toggle text-gray-800 hover:text-gray-600"><i class="ri-more-fill"></i></button>
                         </div>
                     </div>
-
+                
                     <div class="flex items-center">
-                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block">
-                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
-                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
-                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
-                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
+                        <!-- Display avatars or other content based on your needs -->
+                        @for ($i = 0; $i < min(5, $jobSeekersCount); $i++)
+                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
+                        @endfor
                     </div>
                 </div>
+                
                 
                 <!-- End: Dashboard Analytics: Job Seeker -->
 
@@ -71,7 +70,7 @@
                     <div class="flex justify-between mb-4">
                         <div>
                             <div class="flex items-center mb-1">
-                                <div class="text-2xl font-semibold">1</div>
+                                <div class="text-2xl font-semibold">{{ $employersCount }}</div>
                                 <div class="p-1 rounded bg-blue-500/10 text-blue-500 text-[12px] font-semibold leading-none ml-2">+1%</div>
                             </div>
                             <div class="text-sm font-medium text-gray-800">Employers</div>
@@ -81,11 +80,10 @@
                         </div>
                     </div>
                     <div class="flex items-center">
-                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block">
-                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
-                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
-                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
-                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
+                        <!-- Display avatars or other content based on your needs -->
+                        @for ($i = 0; $i < min(5, $jobSeekersCount); $i++)
+                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded-full object-cover block -ml-3">
+                        @endfor
                     </div>
                 </div>
 
@@ -96,7 +94,7 @@
                 <div class="bg-white rounded-md border border-gray-200 p-6 shadow-md shadow-black/5">
                     <div class="flex justify-between mb-6">
                         <div>
-                            <div class="text-2xl font-semibold mb-1">1</div>
+                            <div class="text-2xl font-semibold mb-1">{{ $allUsersCount }}</div>
                             <div class="text-sm font-medium text-gray-800">Users</div>
                         </div>
                         <div>

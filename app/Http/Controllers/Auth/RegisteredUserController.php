@@ -45,6 +45,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'user_type' => 'admin', // Set the user_type to 'admin'
         ]);
+
+        $user->sendEmailVerificationNotification();
     
         // Log the user registration as an activity
         activity('created')

@@ -26,7 +26,7 @@
             @if(Auth::user()->role === 'admin')
                 @include('layouts.admin-sidebar')
             @elseif(Auth::user()->role === 'worker')
-                {{-- @include('layouts.worker-navigation') --}}
+                @include('layouts.navigation')
             @else
                 @include('layouts.navigation')
             @endif

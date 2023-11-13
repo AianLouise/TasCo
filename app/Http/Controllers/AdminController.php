@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,11 +11,19 @@ class AdminController extends Controller
 {
     public function AdminDashboard(){
         $activityLogs = ActivityLog::all();
-        return view('admin.admin-dashboard', compact('activityLogs'));
+        $jobSeekersCount = User::where('role', 'worker')->where('is_verified', 1)->count();
+        $employersCount = User::where('role', 'user')->where('is_verified', 1)->count();
+        $allUsersCount = User::count();
+        
+        return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount'));
     }
 
     public function AdminJobSeeker(){
-        return view("admin.admin-jobSeeker");
+        $workers = User::where('role', 'worker')
+                    ->where('is_verified', 1)
+                    ->get();
+
+        return view('admin.admin-jobSeeker', compact('workers'));
     }
 
     public function AdminEmployer(){
