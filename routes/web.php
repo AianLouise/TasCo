@@ -5,8 +5,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\WorkerController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatifyController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ActivityLogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,4 +59,5 @@ Route::group(['middleware' => 'chatify'], function () {
     Route::get('Chatify', 'ChatifyController@chatify')->name('Chatify');
     // Add other Chatify routes here as needed
 });
+
 

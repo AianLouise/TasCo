@@ -257,52 +257,59 @@
                 
                 <div class="overflow-x-auto">
                     <table class="w-full min-w-[540px]">
-                        <thead class="border-b border-b-gray-300">
-                            <tr>
-                                <th class="text-[12px] uppercase tracking-wide font-medium text-gray-800 text-left rounded-tl-md rounded-bl-md">Timestamp</th>
-                                <th class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left">User Name</th>
-                                <th class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left">User ID</th>
-                                <th class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left">Action</th>
-                                <th class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left rounded-tr-md rounded-br-md">Outcome</th>
-                                <th class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left rounded-tr-md rounded-br-md">IP Address</th>
-                                <th class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left">Remarks</th>
+                        <thead>
+                            <tr class="border-b">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    User
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    User Id
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Action
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Description
+                                </th>
+                                <th scope="col" class="relative px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Timestamp
+                                </th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="border-b border-b-gray-300">                               
-                                    <a href="#"><span class="text-[13px] font-medium text-gray-800">2023-11-8 12:20 PM</span></a>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-300">
-                                    <span class="text-[13px] font-medium text-gray-800">Administrator</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-300">
-                                    <span class="text-[13px] font-medium text-gray-800">3xf0edfi</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-300">
-                                    <span class="text-[13px] font-medium text-gray-800">POST</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-300">
-                                    <span class="inline-block p-1 rounded bg-blue-500/10 text-blue-500 font-medium text-[12px] leading-none">Success</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-300">
-                                    <span class="text-[13px] font-medium text-gray-800">192.158.1.38</span>
-                                </td>
-
-                                <td class="py-2 px-4 border-b border-b-gray-300">
-                                    <span class="text-[13px] font-medium text-gray-800">Message sent to recipient</span>
-                                </td>
-                                <td class="py-2 px-4 border-b border-b-gray-300">
-                                    <div>
-                                        <button type="button" class="dropdown-toggle text-gray-800 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center"><i class="ri-more-2-fill"></i></button>
-                                        <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-200 w-full max-w-[140px]">
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            
+                        
+                        <tbody  class="bg-white divide-y divide-gray-200">
+                            @foreach($activityLogs->reverse() as $log)
+                                <tr>
+                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
+                                            <a href="#" class="text-gray-600 text-sm font-medium2 hover:text-blue-500 ml-2 truncate">
+                                                @php
+                                                    $user = \App\Models\User::find($log->causer_id);
+                                                @endphp
+                                                {{ $user ? $user->name : 'Unknown User' }}
+                                            </a>
+                                            
+                                        </div>
+                                    </td>
+                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium2 text-gray-400 ml-6">{{ $log->causer_id }}</span>
+                                    </td>
+                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium2 text-gray-400">{{ $log->log_name }}</span>
+                                    </td>
+                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium2 text-[12px] leading-none">
+                                            {{ $log->description }}
+                                        </span>
+                                    </td>
+                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium2 text-gray-400">{{ $log->created_at->tz('Asia/Manila')->format('M d, Y, h:i A') }}</span>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
-                    </table>    
+                    </table>  
                 </div>
             </div>
         </div>       

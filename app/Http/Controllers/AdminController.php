@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\ActivityLog;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
     public function AdminDashboard(){
-        return view("admin.admin-dashboard");
+        $activityLogs = ActivityLog::all();
+        return view('admin.admin-dashboard', compact('activityLogs'));
     }
 
     public function AdminJobSeeker(){
@@ -28,7 +30,8 @@ class AdminController extends Controller
     }
 
     public function AdminAuditTrail(){
-        return view("admin.admin-auditTrail");
+        $activityLogs = ActivityLog::all();
+        return view('admin.admin-auditTrail', compact('activityLogs'));
     }
 
     public function AdminSettings(){
