@@ -104,7 +104,8 @@
                                     </td>
                         
                                     <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $worker->job_title }}
+                                        {{ $worker->category->name }}
+
                                     </td>
                         
                                     <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
