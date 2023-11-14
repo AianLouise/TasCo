@@ -44,6 +44,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/jobSeeker', [AdminController::class, 'AdminJobSeeker'])->name('admin.jobSeeker');
     Route::get('/admin/employer', [AdminController::class, 'AdminEmployer'])->name('admin.employer');
+    Route::get('/admin/edit-profile/{id}', [AdminController::class, 'AdminEditProfile'])->name('admin.editProfile');
+    Route::put('/update-profile/{id}', [AdminController::class, 'updateProfile'])->name('update.profile');
     Route::get('/admin/document', [AdminController::class, 'AdminDocument'])->name('admin.document');
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
     Route::get('/admin/auditTrail', [AdminController::class, 'AdminAuditTrail'])->name('admin.auditTrail');
@@ -61,3 +63,4 @@ Route::group(['middleware' => 'chatify'], function () {
 });
 
 
+// Route::get('/edit-profile/{id}', [WorkerController::class, 'editProfile'])->name('admin.edit-profile');
