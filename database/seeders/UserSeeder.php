@@ -40,12 +40,13 @@ class UserSeeder extends Seeder
             'description' => 'Comprehensive home cleaning services, including regular cleaning and deep cleaning.',
         ]);
 
-        // Create a worker user1
+        // Create a worker1
         $worker = User::factory()->create([
             'name' => 'Elijah Farrell',
             'email' => 'worker@example.com',
             'role' => 'worker',
             'is_verified' => '1',
+            'category_id' => '2',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
@@ -59,12 +60,13 @@ class UserSeeder extends Seeder
             // Add other fields as needed
         ]);
 
-        // Create a worker user2
+        // Create a worker2
         $worker = User::factory()->create([
             'name' => 'Wayne Harding',
             'email' => 'worker2@example.com',
             'role' => 'worker',
             'is_verified' => '1',
+            'category_id' => '1',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
@@ -77,12 +79,13 @@ class UserSeeder extends Seeder
             // Add other fields as needed
         ]);
 
-        // Create a worker user3
+        // Create a worker3
         $worker = User::factory()->create([
             'name' => 'Astra Burch',
             'email' => 'worker3@example.com',
             'role' => 'worker',
             'is_verified' => '1',
+            'category_id' => '3',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);

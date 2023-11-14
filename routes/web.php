@@ -46,6 +46,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/employer', [AdminController::class, 'AdminEmployer'])->name('admin.employer');
     Route::get('/admin/edit-profile/{id}', [AdminController::class, 'AdminEditProfile'])->name('admin.editProfile');
     Route::put('/update-profile/{id}', [AdminController::class, 'updateProfile'])->name('update.profile');
+    Route::get('/admin/services', [AdminController::class, 'AdminServices'])->name('admin.services');
     Route::get('/admin/document', [AdminController::class, 'AdminDocument'])->name('admin.document');
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
     Route::get('/admin/auditTrail', [AdminController::class, 'AdminAuditTrail'])->name('admin.auditTrail');

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Service;
 use App\Models\ActivityLog;
+use App\Models\ServicesLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -75,6 +77,12 @@ class AdminController extends Controller
 
         // Redirect back or wherever you want after the update
         return redirect()->back()->with('success', 'Profile updated successfully');
+    }
+
+    public function AdminServices(){
+        $services = Service::with('category')->get();
+
+        return view('admin.admin-services', compact('services'));
     }
 
     public function AdminDocument(){

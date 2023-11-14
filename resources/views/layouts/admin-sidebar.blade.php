@@ -47,6 +47,17 @@
                 </a>
             </li>
 
+            <li class="mb-1 group {{ request()->routeIs('admin.services') ? 'active' : '' }}">
+                <a href="{{ route('admin.services') }}" class="flex items-center py-2 px-4 text-gray-800 
+                hover:bg-blue-400 hover:text-gray-100 rounded-md 
+                group-[.active]:bg-blue-500 group-[.active]:text-white 
+                group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
+                    <i class="ri-shake-hands-line mr-3 text-lg"></i>
+                    <span class="text-sm">Services</span>
+                    <i class="ri-arrow-right-s-line ml-auto"></i>
+                </a>
+            </li>
+
             <li class="mb-1 group {{ request()->routeIs('admin.document') ? 'active' : '' }}">
                 <a href="{{ route('admin.document') }}" class="flex items-center py-2 px-4 text-gray-800 
                 hover:bg-blue-400 hover:text-gray-100 rounded-md 
