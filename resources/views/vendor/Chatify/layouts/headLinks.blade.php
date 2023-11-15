@@ -19,12 +19,18 @@
 {{-- styles --}}
 <link rel='stylesheet' href='https://unpkg.com/nprogress@0.2.0/nprogress.css'/>
 <link href="{{ asset('css/chatify/style.css') }}" rel="stylesheet" />
-<link href="{{ asset('css/chatify/'.$dark_mode.'.mode.css') }}" rel="stylesheet" />
+@auth
+    @php
+        $dark_mode = Auth::user()->dark_mode;
+        $mode = $dark_mode ? 'dark' : 'light';
+    @endphp
+    <link href="{{ asset('css/chatify/'.$mode.'.mode.css') }}" rel="stylesheet" />
+@endauth
 <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 
 {{-- Setting messenger primary color to css --}}
 <style>
     :root {
-        --primary-color: {{ Auth::user()->messenger_color }};
+      --primary-color: {{ Auth::user()->messenger_color }};
     }
 </style>
