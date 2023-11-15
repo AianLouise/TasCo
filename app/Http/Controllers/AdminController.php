@@ -28,6 +28,10 @@ class AdminController extends Controller
         return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers'));
     }
 
+    public function AdminChatify(){
+        return view('admin.admin-chatify');
+    }
+
     public function AdminJobSeeker(){
         $workers = User::where('role', 'worker')
                     ->where('is_verified', 1)
