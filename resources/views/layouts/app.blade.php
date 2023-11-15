@@ -15,6 +15,9 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @vite(['resources/css/style2.css'])
+        <!-- In your Blade view or layout -->
+        <link href="{{ asset('css/chatify/style.css') }}" rel="stylesheet" />
+
 
     </head>
     <body class="font-sans antialiased">
