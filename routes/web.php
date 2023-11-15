@@ -42,12 +42,13 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard/view-all-users', [AdminController::class, 'AdminViewAllUsers'])->name('admin.viewAllUsers');
     Route::get('/admin/jobSeeker', [AdminController::class, 'AdminJobSeeker'])->name('admin.jobSeeker');
     Route::get('/admin/employer', [AdminController::class, 'AdminEmployer'])->name('admin.employer');
     Route::get('/admin/edit-profile/{id}', [AdminController::class, 'AdminEditProfile'])->name('admin.editProfile');
     Route::put('/update-profile/{id}', [AdminController::class, 'updateProfile'])->name('update.profile');
     Route::get('/admin/services', [AdminController::class, 'AdminServices'])->name('admin.services');
-    Route::get('/admin/document', [AdminController::class, 'AdminDocument'])->name('admin.document');
+    Route::get('/admin/application', [AdminController::class, 'AdminApplication'])->name('admin.application');
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
     Route::get('/admin/auditTrail', [AdminController::class, 'AdminAuditTrail'])->name('admin.auditTrail');
     Route::get('/admin/settings', [AdminController::class, 'AdminSettings'])->name('admin.settings');

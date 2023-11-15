@@ -28,6 +28,11 @@ class AdminController extends Controller
         return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers'));
     }
 
+    public function AdminViewAllUsers(){
+        $users = User::all();
+        return view('admin.admin-viewAllUser', compact('users'));
+    }
+
     public function AdminJobSeeker(){
         $workers = User::where('role', 'worker')
                     ->where('is_verified', 1)
@@ -85,8 +90,8 @@ class AdminController extends Controller
         return view('admin.admin-services', compact('services'));
     }
 
-    public function AdminDocument(){
-        return view("admin.admin-document");
+    public function AdminApplication(){
+        return view("admin.admin-application");
     }
 
     public function AdminInbox(){
