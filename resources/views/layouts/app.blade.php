@@ -19,7 +19,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @if(Auth::check())
+        @if(Auth::check())
             @if(Auth::user()->role === 'admin')
                 @include('layouts.admin-sidebar')
             @elseif(Auth::user()->role === 'worker')
