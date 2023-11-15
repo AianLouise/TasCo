@@ -67,19 +67,19 @@
                                 <div class="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
                                     <div class="w-full">
                                         <label for="name"
-                                            class="block mb-2 text-sm font-medium text-indigo-900 ">Name</label>
-                                        <input type="text" id="name" name="name"
+                                            class="block mb-2 text-sm font-medium text-indigo-900 ">First Name</label>
+                                        <input type="text" id="name" name="fname"
                                             class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
-                                            placeholder="First name" value="{{$user->name}}" required>
+                                            placeholder="First name" value="{{$user->first_name}}" required>
                                     </div>
 
-                                    {{-- <div class="w-full">
-                                        <label for="last_name"
+                                    <div class="w-full">
+                                        <label for="name"
                                             class="block mb-2 text-sm font-medium text-indigo-900 ">Last Name</label>
-                                        <input type="text" id="last_name"
-                                            class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
-                                            placeholder="Last name" required>
-                                    </div> --}}
+                                        <input type="text" id="name" name="lname"
+                                            class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
+                                            placeholder="First name" value="{{$user->last_name}}" required>
+                                    </div>
 
                                 </div>
 
