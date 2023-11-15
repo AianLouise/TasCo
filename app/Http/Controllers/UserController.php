@@ -14,4 +14,9 @@ class UserController extends Controller
     public function UserChatify(){
         return view("user.chatify");
     }
+
+    public function UserHomePage(){
+        return view("user.user-homepage");
+    }
+    
 }
