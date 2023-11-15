@@ -12,7 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
             
@@ -245,7 +245,6 @@
                 margin-top: 1rem;
                 letter-spacing: 2px;
                 font-weight: 500;
-                background-image: linear-gradient(to top, #506ca0, #4a6efa);
                 cursor: pointer;
                 transition: opacity 0.4s;
                 transition: all 0.3s ease; /* Add a smooth transition effect */
@@ -314,9 +313,35 @@
             z-index: 2;
             }
 
+            .bg-blue-500{
+            --tw-bg-opacity: 1;
+            background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+            }
+
+            .bg-transparent{
+                background-color: transparent;
+            }
+
+            .py-4{
+                padding-top: 1rem; /* 16px */
+                padding-bottom: 1rem; /* 16px */
+            }
+
+            .text-blue-500{
+                color: rgb(59 130 246);
+            }
+
+            .px-16{
+                padding-left: 4rem; /* 64px */
+                padding-right: 4rem; /* 64px */
+            }
+            .mt-5{
+                margin-top: 1.25rem; /* 20px */
+            }
+
         </style>
     </head>
-    <body class="font-sans text-gray-900 antialiased bg-gray-100">
+    <body class="font-sans text-gray-900 antialiased bg-blue-100">
 
         <section class="side">
             @if (request()->is('register'))
@@ -330,12 +355,6 @@
             {{-- {{print_r(URL(""))}} --}}
             <div class="loginform slot w-full sm:max-w-lg  px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
-            </div>
-
-            <div>
-                <button class="welcomebtn loginform px-5 py-4 bg-blue text-white text-lg shadow-md sm:rounded-lg">
-                    <a href="{{ route('welcome') }}" style="text-decoration: none; color: inherit;">Back</a>
-                </button>                
             </div>  
         </div>
     </body>
