@@ -115,7 +115,11 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium2">
                                         <a href="{{ route('admin.editProfile', ['id' => $worker->id]) }}" class="text-blue-400 hover:text-blue-600">Edit</a>
                                         <span class="text-gray-600">/</span>
-                                        <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
+                                        <form action="{{ route('admin.deleteProfile', ['id' => $worker->id]) }}" method="POST" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-gray-600 hover:text-gray-600">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

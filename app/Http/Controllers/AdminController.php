@@ -59,6 +59,17 @@ class AdminController extends Controller
         return view('admin.admin-editProfile', ['user' => $user]);
     }
 
+    public function deleteProfile($id){
+        $user = User::findOrFail($id);
+
+        // Perform any additional checks if needed before deleting
+    
+        $user->delete();
+    
+        return redirect()->route('admin.profiles')->with('success', 'Profile deleted successfully');
+    }
+    
+
     public function updateProfile(Request $request, $id)
     {
         // Validate the request data
