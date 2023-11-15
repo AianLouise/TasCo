@@ -26,11 +26,12 @@
     @endphp
     <link href="{{ asset('css/chatify/'.$mode.'.mode.css') }}" rel="stylesheet" />
 @endauth
+
 <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 
 {{-- Setting messenger primary color to css --}}
 <style>
     :root {
-      --primary-color: {{ Auth::user()->messenger_color }};
+        --primary-color: {{ Auth::user()->messenger_color }};
     }
 </style>
