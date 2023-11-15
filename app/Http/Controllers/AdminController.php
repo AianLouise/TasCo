@@ -33,6 +33,10 @@ class AdminController extends Controller
         return view('admin.admin-viewAllUser', compact('users'));
     }
 
+    public function AdminChatify(){
+        return view('admin.admin-chatify');
+    }
+
     public function AdminJobSeeker(){
         $workers = User::where('role', 'worker')
                     ->where('is_verified', 1)

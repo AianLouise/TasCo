@@ -3,6 +3,11 @@
 @props(['user'])
 
 <ul class="ml-auto flex items-center">
+    <div class="mr-6">
+        <a href="{{ route('admin.chatify') }}">
+            <i class="ri-message-3-line text-2xl"></i>
+        </a>
+    </div>
     <div class="text-gray-800 hover:text-gray-600 font-medium2">{{ $user->name }}</div>
     <li class="dropdown ml-3">
         <button type="button" class="dropdown-toggle flex items-center">

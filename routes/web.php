@@ -45,6 +45,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/dashboard/view-all-users', [AdminController::class, 'AdminViewAllUsers'])->name('admin.viewAllUsers');
     Route::get('/admin/jobSeeker', [AdminController::class, 'AdminJobSeeker'])->name('admin.jobSeeker');
+    Route::get('/admin/chatify', [AdminController::class, 'AdminChatify'])->name('admin.chatify');
     Route::get('/admin/employer', [AdminController::class, 'AdminEmployer'])->name('admin.employer');
     Route::get('/admin/edit-profile/{id}', [AdminController::class, 'AdminEditProfile'])->name('admin.editProfile');
     Route::put('/update-profile/{id}', [AdminController::class, 'updateProfile'])->name('update.profile');
@@ -64,10 +65,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 }); //End Group User Middleware
 
 // //Route for Chatify
-Route::group(['middleware' => 'chatify'], function () {
-    Route::get('Chatify', 'ChatifyController@chatify')->name('Chatify');
-    // Add other Chatify routes here as needed
-});
+// Route::group(['middleware' => 'chatify'], function () {
+//     Route::get('Chatify', 'ChatifyController@chatify')->name('Chatify');
+//     // Add other Chatify routes here as needed
+// });
 
 
 // Route::get('/edit-profile/{id}', [WorkerController::class, 'editProfile'])->name('admin.edit-profile');
