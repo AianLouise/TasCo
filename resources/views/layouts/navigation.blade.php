@@ -56,8 +56,8 @@
                     @endisWorker
 
                     @isUser
-                    <x-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('user.homePage')" :active="request()->routeIs('user.homePage')">
+                        {{ __('Home Page') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('user.chatify')" :active="request()->routeIs('user.chatify')">

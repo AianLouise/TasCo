@@ -63,6 +63,7 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+    Route::get('/home-page', [UserController::class, 'UserHomePage'])->name('user.homePage');
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
 })->middleware(['auth', 'verified'])->name('dashboard'); //End Group User Middleware
 
