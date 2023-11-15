@@ -100,13 +100,13 @@
                     <div class="flex justify-between mb-6">
                         <div>
                             <div class="text-2xl font-semibold mb-1">{{ $allUsersCount }}</div>
-                            <div class="text-sm font-medium text-gray-800">Users</div>
+                            <div class="text-sm font-medium text-gray-800">Total Users</div>
                         </div>
                         <div>
                             <button type="button" class="dropdown-toggle text-gray-800 hover:text-gray-600"><i class="ri-more-fill"></i></button>
                         </div>
                     </div>
-                    <a href="#" class="text-blue-500 font-medium text-sm hover:text-blue-600">View all</a>
+                    <a href="{{ route('admin.viewAllUsers') }}" class="text-blue-500 font-medium text-sm hover:text-blue-600">View all</a>
                 </div>
 
                 <!-- End: Dashboard Analytics: All Users -->
@@ -123,7 +123,7 @@
                 <div class="bg-white border border-gray-200 shadow-md shadow-black/5 p-6 rounded-md">
                     <div class="flex justify-between mb-4 items-start">
                         
-                        <div class="font-medium">Documents</div>
+                        <div class="font-medium">Application</div>
                         
                         <div>
                             <button type="button" class="dropdown-toggle text-gray-800 hover:text-gray-600"><i class="ri-more-fill"></i></button>

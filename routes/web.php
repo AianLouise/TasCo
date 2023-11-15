@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ClientController;
@@ -28,9 +29,9 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -42,13 +43,14 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard/view-all-users', [AdminController::class, 'AdminViewAllUsers'])->name('admin.viewAllUsers');
     Route::get('/admin/chatify', [AdminController::class, 'AdminChatify'])->name('admin.chatify');
     Route::get('/admin/jobSeeker', [AdminController::class, 'AdminJobSeeker'])->name('admin.jobSeeker');
     Route::get('/admin/employer', [AdminController::class, 'AdminEmployer'])->name('admin.employer');
     Route::get('/admin/edit-profile/{id}', [AdminController::class, 'AdminEditProfile'])->name('admin.editProfile');
     Route::put('/update-profile/{id}', [AdminController::class, 'updateProfile'])->name('update.profile');
     Route::get('/admin/services', [AdminController::class, 'AdminServices'])->name('admin.services');
-    Route::get('/admin/document', [AdminController::class, 'AdminDocument'])->name('admin.document');
+    Route::get('/admin/application', [AdminController::class, 'AdminApplication'])->name('admin.application');
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
     Route::get('/admin/auditTrail', [AdminController::class, 'AdminAuditTrail'])->name('admin.auditTrail');
     Route::get('/admin/settings', [AdminController::class, 'AdminSettings'])->name('admin.settings');
@@ -58,11 +60,16 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/worker/dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
 }); //End Group Worker Middleware
 
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+    Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
+})->middleware(['auth', 'verified'])->name('dashboard'); //End Group User Middleware
+
 // //Route for Chatify
-Route::group(['middleware' => 'chatify'], function () {
-    Route::get('Chatify', 'ChatifyController@chatify')->name('Chatify');
-    // Add other Chatify routes here as needed
-});
+// Route::group(['middleware' => 'chatify'], function () {
+//     Route::get('Chatify', 'ChatifyController@chatify')->name('Chatify');
+//     // Add other Chatify routes here as needed
+// });
 
 
 // Route::get('/edit-profile/{id}', [WorkerController::class, 'editProfile'])->name('admin.edit-profile');

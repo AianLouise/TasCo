@@ -18,7 +18,7 @@
                     <a href="#" class="text-gray-800 hover:text-gray-600 font-medium2">TasCo</a>
                 </li>
                 <li class="text-gray-600 mr-2 font-medium2">/</li>
-                <li class="text-gray-600 mr-2 font-medium2">Documents</li>
+                <li class="text-gray-600 mr-2 font-medium2">Application</li>
             </ul>
             
             <!-- End: Logo / Active Menu -->

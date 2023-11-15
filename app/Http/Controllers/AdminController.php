@@ -32,6 +32,11 @@ class AdminController extends Controller
         return view('admin.admin-chatify');
     }
 
+    public function AdminViewAllUsers(){
+        $users = User::all();
+        return view('admin.admin-viewAllUsers', compact('users'));
+    }
+
     public function AdminJobSeeker(){
         $workers = User::where('role', 'worker')
                     ->where('is_verified', 1)
@@ -89,8 +94,8 @@ class AdminController extends Controller
         return view('admin.admin-services', compact('services'));
     }
 
-    public function AdminDocument(){
-        return view("admin.admin-document");
+    public function AdminApplication(){
+        return view("admin.admin-application");
     }
 
     public function AdminInbox(){
