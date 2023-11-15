@@ -12,22 +12,14 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+        @vite(['resources/css/style2.css', 'resources/js/app.js'])
         <style>
             
             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
             ::-webkit-scroll{
                 display: none;
-            }
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Poppins', sans-serif;
-                color: #303433;
-                text-decoration: none;
-            }
+            }          
 
             /*-----Animation----*/
             @keyframes Bounce{
@@ -158,7 +150,6 @@
 
             section.side {
                 position: absolute;
-                background: url(./img/mesh.png) no-repeat;
                 background-size: 100% 102%;
                 margin-left: 17em;
                 margin-top: 13rem
@@ -177,106 +168,31 @@
                 align-items: center;
             }
 
-            .title {
-                text-transform: uppercase;
-                font-size: 3em;
-                font-weight: bold;
-                text-align: center;
-                letter-spacing: 1px;
-                margin-bottom: 10px;
-            }
-
             .login-form {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
             }
 
-            .form-control {
-                width: 100%;
-                position: relative;
-                margin-bottom: 24px;
-            }
 
-            input,
-            button {
-                border: none;
-                outline: none;
-                border-radius: 10px;
-                font-size: 1.1em;
-            }
-
-            .i-1{
-                width: 100%;
-                color: #8b8b8b;
-                letter-spacing: 0.5px;
-                padding: 14px 64px;
-            }
-
-            .custom-padding {
-                padding-left: 20px; /* Adjust the padding value as needed */
-            }
-
-            input {
-                width: 100%;
-                color: #8b8b8b;
-                letter-spacing: 0.5px;
-                padding: 14px 64px;
-                border: 3px solid #15a0e1;
-            }
-
+            /* icon color */
             input ~ i {
                 position: absolute;
                 left: 20px;
                 top: 50%;
                 transform: translateY(-50%);
                 color: #8b8b8b;
-                transition: color   0.4s;
+                transition: color red  0.4s;
             }
 
+            /* icon color when clicked */
             input:focus ~ i {
-                color: #6698f9;
+                color: #4299e1
             }
 
-            button.submit {
-                color: #fff;
-                padding: 14px 64px;
-                margin: auto;
-                margin-top: 1rem;
-                letter-spacing: 2px;
-                font-weight: 500;
-                background-image: linear-gradient(to top, #506ca0, #4a6efa);
-                cursor: pointer;
-                transition: opacity 0.4s;
-                transition: all 0.3s ease; /* Add a smooth transition effect */
-            }
-
-            button.submit:hover {
-                transform: scale(1.01); /* Increase the size by 10% */
-                box-shadow: 0 0 20px rgba(63, 63, 192, 0.5); /* Add a glowing effect */
-                opacity: 0.8;
-            }
 
             .slot{
                 margin-left: 40rem
-            }
-
-            .login{
-                width: 100%;
-                color: #8b8b8b;
-                letter-spacing: 0.5px;
-                padding: 14px 64px;
-                border: 3px solid #15a0e1;
-
-                border: none;
-                outline: none;
-                border-radius: 10px;
-                font-size: 1.1em;
-                text-align: center
-            }
-
-            .add-pad{
-                padding-left: 3rem;
             }
 
             /* ----  Responsiveness   ----  */
@@ -296,27 +212,41 @@
                 }
             }
 
-            .welcomebtn{
-                position: sticky;
-                justify-content: center;
-                margin-top: 1em;
-                margin-left: 36em; 
-                font-style: bold;
-                transition: 0.5s ease-in-out;
+            /* Put inside style file */
 
+            .bg-transparent{
+                background-color: transparent;
             }
 
-            .welcomebtn:hover{
-            color: #6698f9;
-            background: white;
-            border: 1px solid #6698f9;
-            letter-spacing: 0.1em;
-            z-index: 2;
+            .px-16{
+                padding-left: 4rem; /* 64px */
+                padding-right: 4rem; /* 64px */
+            }
+            
+            .mt-5{
+                margin-top: 1.25rem; /* 20px */
+            }
+
+            .pl-12{
+                padding-left: 3rem;
+            }
+            
+            .mb-5{
+                margin-bottom: 1.25rem; /* 20px */
+            }
+
+            .text-5xl{
+                font-size: 3rem; /* 48px */
+                line-height: 1;
+            } 
+
+            .title {
+                letter-spacing: 1px;             
             }
 
         </style>
     </head>
-    <body class="font-sans text-gray-900 antialiased bg-gray-100">
+    <body class="font-sans text-gray-900 antialiased">
 
         <section class="side">
             @if (request()->is('register'))
@@ -328,14 +258,8 @@
 
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
             {{-- {{print_r(URL(""))}} --}}
-            <div class="loginform slot w-full sm:max-w-lg  px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="loginform slot w-full sm:max-w-lg px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
-            </div>
-
-            <div>
-                <button class="welcomebtn loginform px-5 py-4 bg-blue text-white text-lg shadow-md sm:rounded-lg">
-                    <a href="{{ route('welcome') }}" style="text-decoration: none; color: inherit;">Back</a>
-                </button>                
             </div>  
         </div>
     </body>
