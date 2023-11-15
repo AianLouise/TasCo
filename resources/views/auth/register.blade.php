@@ -4,13 +4,13 @@
 
 <link rel="stylesheet" href="guest.blade.php">
 
-        <p class="title" style="text-transform: uppercase;font-size: 3em;font-weight: bold;text-align: center;letter-spacing: 1px;margin-bottom: 10px;">Register</p>
-        <div class="separator"></div>
+        <p class="uppercase text-5xl font-bold text-center mb-5">Register</p>
+        
 
        <!-- First Name -->
         <div class="relative">
-            <div class="form-control">
-                <x-text-input id="fname" placeholder="First Name" class="add-pad i-1 block mt-1 w-full" type="text" name="fname" :value="old('fname')" required autofocus autocomplete="fname" />
+            <div class="w-full relative mb-5">
+                <x-text-input id="fname" placeholder="First Name" class="pl-12 py-4 i-1 block mt-1 w-full" type="text" name="fname" :value="old('fname')" required autofocus autocomplete="fname" />
                 <i class="ri-user-line"></i>
             </div>
             <x-input-error :messages="$errors->get('fname')" class="mt-2" />
@@ -18,8 +18,8 @@
 
         <!-- Last Name -->
         <div class="relative">
-            <div class="form-control">
-                <x-text-input id="lname" placeholder="Last Name" class="add-pad i-1 block mt-1 w-full" type="text" name="lname" :value="old('lname')" required autofocus autocomplete="lname" />
+            <div class="w-full relative mb-5">
+                <x-text-input id="lname" placeholder="Last Name" class="pl-12 py-4 i-1 block mt-1 w-full" type="text" name="lname" :value="old('lname')" required autofocus autocomplete="lname" />
                 <i class="ri-user-line"></i>
             </div>
             <x-input-error :messages="$errors->get('lname')" class="mt-2" />
@@ -27,8 +27,8 @@
 
         <!-- Address -->
         <div class="relative">
-            <div class="form-control">
-                <x-text-input id="address" placeholder="Address" class="add-pad i-1 block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus autocomplete="address" />
+            <div class="w-full relative mb-5">
+                <x-text-input id="address" placeholder="Address" class="pl-12 py-4 i-1 block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus autocomplete="address" />
                 <i class="ri-map-pin-line"></i>
             </div>
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
@@ -36,8 +36,8 @@
 
         <!-- Email Address -->
         <div class="relative">
-            <div class="form-control">
-                <x-text-input id="email" placeholder="Email" class="add-pad i-1 block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="email" />
+            <div class="w-full relative mb-5">
+                <x-text-input id="email" placeholder="Email" class="pl-12 py-4 i-1 block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="email" />
                 <i class="ri-mail-line"></i>
             </div>
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -45,8 +45,8 @@
 
        <!-- Password -->
         <div class="relative">
-            <div class="form-control">
-                <x-text-input id="password" placeholder="Password" class="add-pad i-1 block mt-1 w-full"
+            <div class="w-full relative mb-5">
+                <x-text-input id="password" placeholder="Password" class="pl-12 py-4 i-1 block mt-1 w-full"
                                 type="password"
                                 name="password"
                                 required autocomplete="new-password" />
@@ -60,8 +60,8 @@
 
         <!-- Confirm Password -->
         <div class="relative">
-            <div class="">
-                <x-text-input id="password_confirmation" placeholder="Confirm Password" class="sliders add-pad i-1 block mt-1 w-full"
+            <div class="w-full relative mb-2">
+                <x-text-input id="password_confirmation" placeholder="Confirm Password" class="sliders pl-12 py-4 block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required autocomplete="new-password" />
                 <i class="ri-lock-line"></i>
@@ -97,8 +97,8 @@
 
 
         @if (Route::has('login'))
-            <div class="text-left mt-2"> <!-- Change text-center to text-left, and reduce mt value -->
-                <a class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+            <div class="text-left"> <!-- Change text-center to text-left, and reduce mt value -->
+                <a class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none" href="{{ route('login') }}">
                     {{ __("Already have an account?") }} <span>Log In</span>
                 </a>
             </div>
@@ -106,11 +106,11 @@
         
 
         <div class="flex items-center justify-center "> <!-- Center the button horizontally and vertically -->
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-16 border border-blue-700 rounded mt-5">Register</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 w-full border border-blue-700 rounded mt-5">Register</button>
         </div>
 
         <div class="flex items-center justify-center "> 
-            <a class="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-blue-500 py-4 px-16" href="{{ route('welcome') }}">Back</a>
+            <a class="bg-transparent text-blue-500 font-semibold hover:text-blue-500 py-4 px-16" href="{{ route('welcome') }}">Back</a>
         </div>
         
     </form>
