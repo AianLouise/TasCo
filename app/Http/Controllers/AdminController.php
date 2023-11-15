@@ -63,10 +63,11 @@ class AdminController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'name' => 'required|string|max:255',
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
             'address' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'password' => 'nullable|string|min:8', // Adjust validation rules for password as needed
+            // 'password' => 'nullable|string|min:8', // Adjust validation rules for password as needed
             // 'birthday' => 'required|date',
             // Add more fields as needed
         ]);
@@ -76,10 +77,12 @@ class AdminController extends Controller
 
         // Update user data
         $user->update([
-            'name' => $request->input('name'),
+            'first_name' => $request->fname,
+            'last_name' => $request->lname,
+            'name' => $request->fname . ' ' . $request->lname,
             'address' => $request->input('address'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')), // Hash the password if provided
+            // 'password' => bcrypt($request->input('password')), // Hash the password if provided
             // 'birthday' => $request->input('birthday'),
             // Update more fields as needed
         ]);
