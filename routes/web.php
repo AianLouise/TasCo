@@ -29,9 +29,9 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,6 +44,7 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/dashboard/view-all-users', [AdminController::class, 'AdminViewAllUsers'])->name('admin.viewAllUsers');
+    Route::get('/admin/chatify', [AdminController::class, 'AdminChatify'])->name('admin.chatify');
     Route::get('/admin/jobSeeker', [AdminController::class, 'AdminJobSeeker'])->name('admin.jobSeeker');
     Route::get('/admin/chatify', [AdminController::class, 'AdminChatify'])->name('admin.chatify');
     Route::get('/admin/employer', [AdminController::class, 'AdminEmployer'])->name('admin.employer');
@@ -61,8 +62,9 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 }); //End Group Worker Middleware
 
 Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/user/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
-}); //End Group User Middleware
+    Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+    Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
+})->middleware(['auth', 'verified'])->name('dashboard'); //End Group User Middleware
 
 // //Route for Chatify
 // Route::group(['middleware' => 'chatify'], function () {

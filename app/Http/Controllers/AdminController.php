@@ -28,13 +28,13 @@ class AdminController extends Controller
         return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers'));
     }
 
-    public function AdminViewAllUsers(){
-        $users = User::all();
-        return view('admin.admin-viewAllUser', compact('users'));
-    }
-
     public function AdminChatify(){
         return view('admin.admin-chatify');
+    }
+
+    public function AdminViewAllUsers(){
+        $users = User::all();
+        return view('admin.admin-viewAllUsers', compact('users'));
     }
 
     public function AdminJobSeeker(){
