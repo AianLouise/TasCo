@@ -16,17 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->foreignId('category_id')->constrained('categories');
-            $table->foreignId('provider_id')->constrained('users');
+            $table->foreignId('provider_id')->nullable()->constrained('users')->onDelete('set null');
             $table->decimal('price', 10, 2);
             $table->timestamps();
-
-            // Drop existing foreign key constraints, if any
-            $table->dropForeign(['category_id']);
-            $table->dropForeign(['provider_id']);
-
-            // Add new foreign key constraint
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('provider_id')->references('id')->on('users');
         });
     }
 
