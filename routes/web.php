@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ClientController;
@@ -57,6 +58,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/worker/dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
 }); //End Group Worker Middleware
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/user/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+}); //End Group User Middleware
 
 // //Route for Chatify
 Route::group(['middleware' => 'chatify'], function () {
