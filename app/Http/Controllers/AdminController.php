@@ -72,35 +72,43 @@ class AdminController extends Controller
 
     public function updateProfile(Request $request, $id)
     {
-        // Validate the request data
-        $request->validate([
-            'fname' => ['required', 'string', 'max:255'],
-            'lname' => ['required', 'string', 'max:255'],
-            'address' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            // 'password' => 'nullable|string|min:8', // Adjust validation rules for password as needed
-            // 'birthday' => 'required|date',
-            // Add more fields as needed
-        ]);
-
-        // Find the user by ID
         $user = User::find($id);
 
-        // Update user data
-        $user->update([
-            'first_name' => $request->fname,
-            'last_name' => $request->lname,
-            'name' => $request->fname . ' ' . $request->lname,
-            'address' => $request->input('address'),
-            'email' => $request->input('email'),
-            // 'password' => bcrypt($request->input('password')), // Hash the password if provided
-            // 'birthday' => $request->input('birthday'),
-            // Update more fields as needed
+        // Validate other form fields as needed
+        $request->validate([
+            'fname' => 'required|string',
+            'lname' => 'required|string',
+            'address' => 'required|string',
+            'email' => 'required|email',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules for the avatar as needed
+        ], [
+            'avatar.max' => 'The avatar file size must not exceed 2 MB.',
         ]);
 
-        // Redirect back or wherever you want after the update
-        return redirect()->back()->with('success', 'Profile updated successfully');
+        // Handle file upload
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+
+            // Check file size before storing
+            if ($avatar->getSize() > 2048 * 1024) { // 2 MB in kilobytes
+                return redirect()->back()->with('messages', 'The avatar file size must not exceed 2 MB.');
+            }
+
+            $avatarPath = $avatar->store('users-avatar', 'public');
+            $user->avatar = $avatarPath; // Update to the correct column name
+        }
+
+        // Update other user details
+        $user->first_name = $request->input('fname');
+        $user->last_name = $request->input('lname');
+        $user->address = $request->input('address');
+        $user->email = $request->input('email');
+
+        $user->save();
+
+        return back()->with('success', 'Profile updated successfully');
     }
+
 
     public function AdminServices(){
         $services = Service::with('category')->get();

@@ -49,7 +49,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/chatify', [AdminController::class, 'AdminChatify'])->name('admin.chatify');
     Route::get('/admin/employer', [AdminController::class, 'AdminEmployer'])->name('admin.employer');
     Route::get('/admin/edit-profile/{id}', [AdminController::class, 'AdminEditProfile'])->name('admin.editProfile');
+
     Route::put('/update-profile/{id}', [AdminController::class, 'updateProfile'])->name('update.profile');
+    
     Route::delete('/admin/deleteProfile/{id}', [AdminController::class, 'deleteProfile'])->name('admin.deleteProfile');
     Route::get('/admin/services', [AdminController::class, 'AdminServices'])->name('admin.services');
     Route::get('/admin/application', [AdminController::class, 'AdminApplication'])->name('admin.application');
