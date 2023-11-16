@@ -53,7 +53,7 @@
                                              alt="Bordered avatar">
                                     @else
                                         <img id="profile-picture" class="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-blue-300 500"
-                                             src="{{ asset('storage/' . $user->avatar) }}" alt="Custom Avatar">
+                                        src="{{ asset('storage/users-avatar/' . basename($user->avatar)) }}" alt="Custom Avatar">
                                     @endif
                                 </div>
 

@@ -94,8 +94,10 @@ class AdminController extends Controller
                 return redirect()->back()->with('messages', 'The avatar file size must not exceed 2 MB.');
             }
 
-            $avatarPath = $avatar->store('users-avatar', 'public');
-            $user->avatar = $avatarPath; // Update to the correct column name
+            $avatarName = $avatar->hashName(); // Generate a unique file name
+            $avatar->storeAs('public/users-avatar', $avatarName); // Store the file with the desired path and name
+            $user->avatar =  $avatarName; // Save the file name in the database
+
         }
 
         // Update other user details

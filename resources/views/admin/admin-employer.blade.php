@@ -88,7 +88,13 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 h-10 w-10">
-                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($employer->name) }}&color=7F9CF5&background=EBF4FF" alt="Avatar" class="w-8 h-8 rounded-full object-cover block">
+                                    @if($employer->avatar == 'avatar.png')
+                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($employer->name) }}&color=7F9CF5&background=EBF4FF" 
+                                        alt="" class="w-8 h-8 rounded block object-cover align-middle">
+                                    @else
+                                        <img src="{{ asset('storage/users-avatar/' . basename($employer->avatar)) }}" 
+                                        alt="" class="w-8 h-8 rounded block object-cover align-middle">
+                                    @endif
                                 </div>
                                 <div class="ml-4">
                                     <div class="text-sm font-medium2 text-gray-900">

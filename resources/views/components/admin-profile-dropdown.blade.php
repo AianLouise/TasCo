@@ -15,7 +15,7 @@
                 <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&color=7F9CF5&background=EBF4FF" 
                 alt="" class="w-8 h-8 rounded block object-cover align-middle">
             @else
-                <img src="{{ asset('storage/' . $user->avatar) }}" 
+                <img src="{{ asset('storage/users-avatar/' . basename($user->avatar)) }}" 
                 alt="" class="w-8 h-8 rounded block object-cover align-middle">
             @endif
             
