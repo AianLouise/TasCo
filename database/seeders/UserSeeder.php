@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@example.com',
             'role' => 'admin',
             'address' => 'Ph',
+            'messenger_color' => '#2180f3',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
 
@@ -51,6 +52,7 @@ class UserSeeder extends Seeder
             'role' => 'worker',
             'is_verified' => '1',
             'category_id' => '2',
+            'messenger_color' => '#2180f3',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
@@ -73,6 +75,7 @@ class UserSeeder extends Seeder
             'role' => 'worker',
             'is_verified' => '1',
             'category_id' => '1',
+            'messenger_color' => '#2180f3',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
@@ -94,6 +97,7 @@ class UserSeeder extends Seeder
             'role' => 'worker',
             'is_verified' => '1',
             'category_id' => '3',
+            'messenger_color' => '#2180f3',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
@@ -114,6 +118,7 @@ class UserSeeder extends Seeder
             'email' => 'user@example.com',
             'role' => 'user',
             'is_verified'=> '1',
+            'messenger_color' => '#2180f3',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
@@ -124,6 +129,7 @@ class UserSeeder extends Seeder
             'email' => 'user2@example.com',
             'role' => 'user',
             'is_verified'=> '1',
+            'messenger_color' => '#2180f3',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
@@ -134,6 +140,7 @@ class UserSeeder extends Seeder
             'email' => 'user3@example.com',
             'role' => 'user',
             'is_verified'=> '1',
+            'messenger_color' => '#2180f3',
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);

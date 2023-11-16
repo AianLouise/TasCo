@@ -66,7 +66,7 @@ class AdminController extends Controller
     
         $user->delete();
     
-        return redirect()->route('admin.profiles')->with('success', 'Profile deleted successfully');
+        return redirect()->route('admin.jobSeeker')->with('success', 'Profile deleted successfully');
     }
     
 

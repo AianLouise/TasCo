@@ -44,6 +44,7 @@ class RegisteredUserController extends Controller
             'name' => $request->fname . ' ' . $request->lname,
             'address' => $request->address,
             'email' => $request->email,
+            'messenger_color' => '#2180f3',
             'password' => Hash::make($request->password),
             'user_type' => 'admin', // Set the user_type to 'admin'
         ]);
@@ -60,7 +61,7 @@ class RegisteredUserController extends Controller
     
         Auth::login($user);
     
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('verification.notice')->with('resent', true);
     }
     
 }
