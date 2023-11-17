@@ -47,10 +47,12 @@
                 <div class="col-span-2 flex flex-auto items-center justify-between p-3 text-sm">
 
                     <div class="font-bold text-gray-600">Profiles</div>
-                    <button type="button"
-                        class="font-medium2 text-gray-600 hover:text-gray-600"><i class="ri-add-box-line mr-1"></i>
-                        Add Profile
+                    <button type="button" class="font-medium2 text-gray-600 hover:text-gray-600">
+                        <a href="{{ route('admin.addProfile') }}">
+                            <i class="ri-add-box-line mr-1"></i> Add Profile
+                        </a>
                     </button>
+                    
 
                 </div>
 

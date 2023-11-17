@@ -18,7 +18,7 @@
                     <a href="#" class="text-gray-800 hover:text-gray-600 font-medium2">TasCo</a>
                 </li>
                 <li class="text-gray-600 mr-2 font-medium2">/</li>
-                <li class="text-gray-600 mr-2 font-medium2">Job Seeker</li>
+                <li class="text-gray-600 mr-2 font-medium2">Total Users</li>
             </ul>
 
             <!-- End: Logo / Active Menu -->
@@ -47,9 +47,10 @@
                 <div class="col-span-2 flex flex-auto items-center justify-between p-3 text-sm">
 
                     <div class="font-bold text-gray-600">Profiles</div>
-                    <button type="button"
-                        class="font-medium2 text-gray-600 hover:text-gray-600"><i class="ri-add-box-line mr-1"></i>
-                        Add Profile
+                    <button type="button" class="font-medium2 text-gray-600 hover:text-gray-600">
+                        <a href="{{ route('admin.addProfile') }}">
+                            <i class="ri-add-box-line mr-1"></i> Add Profile
+                        </a>
                     </button>
 
                 </div>
@@ -97,7 +98,7 @@
                                             @if ($user->avatar == 'avatar.png')
                                                 <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&color=7F9CF5&background=EBF4FF" alt="Avatar" class="w-8 h-8 rounded-full object-cover block">
                                             @else
-                                                <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="w-8 h-8 rounded-full object-cover block">
+                                                <img src="{{ asset('storage/users-avatar/' . basename($user->avatar)) }}" alt="Avatar" class="w-8 h-8 rounded-full object-cover block">
                                             @endif
                                             
                                             <div class="ml-4">

@@ -48,6 +48,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/jobSeeker', [AdminController::class, 'AdminJobSeeker'])->name('admin.jobSeeker');
     Route::get('/admin/chatify', [AdminController::class, 'AdminChatify'])->name('admin.chatify');
     Route::get('/admin/employer', [AdminController::class, 'AdminEmployer'])->name('admin.employer');
+    Route::get('/admin/add-profile', [AdminController::class, 'AdminAddProfile'])->name('admin.addProfile');
+    Route::post('/create-user', [AdminController::class, 'createUser'])->name('admin.createUser');
     Route::get('/admin/edit-profile/{id}', [AdminController::class, 'AdminEditProfile'])->name('admin.editProfile');
 
     Route::put('/update-profile/{id}', [AdminController::class, 'updateProfile'])->name('update.profile');

@@ -38,6 +38,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'messenger_color',
         'role',
         'avatar',
+        'fname',
+        'lname',
+        'category',
+        'verified',
     ];
 
     /**
