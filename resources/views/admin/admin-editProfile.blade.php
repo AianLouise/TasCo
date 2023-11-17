@@ -112,13 +112,13 @@
                                 </div>
 
                                 <div class="mb-2 sm:mb-6">
-                                    <label for="email"
-                                        class="block mb-2 text-sm font-medium text-indigo-900 ">Email
-                                    </label>
-                                    <input type="email" id="email" name="email"
-                                        class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
-                                        placeholder="Email Address" value="{{$user->email}}" required>
+                                    <label for="email" class="block mb-2 text-sm font-medium text-indigo-900 ">Email</label>
+                                    <input type="email" id="email" name="email" class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 @error('email') border-red-500 @enderror" placeholder="Email Address" value="{{$user->email}}" required>
+                                    @error('email')
+                                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
+                                
 
                                 <div class="flex justify-end">
                                     <button type="submit"
