@@ -76,6 +76,9 @@ class AdminController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8',
             'role' => 'required|string|in:admin,worker,user',
+        ], [
+            'avatar.max' => 'The avatar file size must not exceed 2 MB.',
+            'email.unique' => 'The email has already been taken.',
         ]);
         
         
@@ -113,9 +116,10 @@ class AdminController extends Controller
 
     public function AdminEditProfile($id)
     {
+        $categories = Category::all();
         $user = User::find($id);
 
-        return view('admin.admin-editProfile', ['user' => $user]);
+        return view('admin.admin-editProfile', ['user' => $user ,'categories'=> $categories]);
     }
 
     public function deleteProfile($id)
@@ -139,11 +143,14 @@ class AdminController extends Controller
             'fname' => 'required|string',
             'lname' => 'required|string',
             'address' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'role' => 'required|string|in:admin,worker,user',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules for the avatar as needed
         ], [
             'avatar.max' => 'The avatar file size must not exceed 2 MB.',
+            'email.unique' => 'The email has already been taken.',
         ]);
+        
 
         // Handle file upload
         if ($request->hasFile('avatar')) {
@@ -162,12 +169,17 @@ class AdminController extends Controller
         // Update other user details
         $user->first_name = $request->input('fname');
         $user->last_name = $request->input('lname');
+        $user->name = $request->fname . ' ' . $request->lname;
         $user->address = $request->input('address');
         $user->email = $request->input('email');
+        $user->role = $request->role;
+        $user->category_id = $request->category;
+        $user->is_verified = $request->verified;
 
         $user->save();
 
-        return back()->with('success', 'Profile updated successfully');
+        $users = User::all();
+        return view('admin.admin-viewAllUsers', compact('users'));
     }
 
 
