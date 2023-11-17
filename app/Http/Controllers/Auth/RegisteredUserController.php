@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'messenger_color' => '#2180f3',
             'password' => Hash::make($request->password),
-            'user_type' => 'admin', // Set the user_type to 'admin'
+            'role' => 'user',
         ]);
         
 
