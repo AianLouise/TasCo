@@ -62,11 +62,6 @@
                                         Upload New Picture
                                         <input id="upload-input" class="chatify-d-none" accept="image/*" name="avatar" type="file" onchange="previewImage(this)">
                                     </label>
-                                    
-                                    <button type="button"
-                                        class="py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200">
-                                        Delete Picture
-                                    </button>
                                 </div>
                             </div>
                             
@@ -113,7 +108,7 @@
 
                                 <div class="mb-2 sm:mb-6">
                                     <label for="email" class="block mb-2 text-sm font-medium text-indigo-900 ">Email</label>
-                                    <input type="email" id="email" name="email" class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 @error('email') border-red-500 @enderror" placeholder="Email Address" value="{{$user->email}}" required>
+                                    <input type="email" id="email" name="email" class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 @error('email') error-red @enderror" placeholder="Email Address" value="{{$user->email}}" required>
                                     @error('email')
                                         <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                                     @enderror
