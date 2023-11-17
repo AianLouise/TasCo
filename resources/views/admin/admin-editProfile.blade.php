@@ -119,11 +119,60 @@
                                     @enderror
                                 </div>
                                 
+                                {{-- <div class="mb-2 sm:mb-6">
+                                    <label for="email"
+                                        class="block mb-2 text-sm font-medium text-indigo-900 ">Password
+                                    </label>
+                                    <input type="password" id="password" name="password"
+                                        class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+                                        placeholder="Password" value="" required>
+                                </div> --}}
 
+                                <div class="mb-2 sm:mb-6">
+                                    <label for="role" class="block mb-2 text-sm font-medium text-indigo-900">
+                                        Role
+                                    </label>
+                                    <select id="role" name="role"
+                                        class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
+                                        required onchange="handleRoleChange();">
+                                        <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                                        <option value="worker" {{ $user->role == 'worker' ? 'selected' : '' }}>Worker</option>
+                                        <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
+                                    </select>
+                                </div>
+                                
+                                <div id="categoryDropdown" class="mb-2 sm:mb-6" style="{{ $user->role == 'worker' ? 'display: block;' : 'display: none;' }}">
+                                    <label for="category" class="block mb-2 text-sm font-medium text-indigo-900">
+                                        Category
+                                    </label>
+                                    <select id="category" name="category"
+                                        class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5">
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" {{ $user->category_id == $category->id ? 'selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                
+                                <div id="verifiedDropdown" class="mb-2 sm:mb-6" style="{{ $user->role == 'user' ? 'display: block;' : 'display: none;' }}">
+                                    <label for="verified" class="block mb-2 text-sm font-medium text-indigo-900">
+                                        Verified
+                                    </label>
+                                    <select id="verified" name="verified"
+                                        class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5">
+                                        <option value="1" {{ $user->is_verified == 1 ? 'selected' : '' }}>Yes</option>
+                                        <option value="0" {{ $user->is_verified == 0 ? 'selected' : '' }}>No</option>
+                                    </select>
+                                </div>
+                                
                                 <div class="flex justify-end">
                                     <button type="submit"
-                                    class="text-white mt-2 bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save Changes</button>
+                                        class="text-white mt-2 bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+                                        Save Changes
+                                    </button>
                                 </div>
+                                
                             </div>
                         </form>
                     </div>
@@ -136,4 +185,45 @@
         </div>
         
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            handleRoleChange();
+        });
+    
+        function handleRoleChange() {
+            toggleCategoryDropdown();
+            toggleVerifiedDropdown();
+        }
+    
+        function toggleCategoryDropdown() {
+            var roleDropdown = document.getElementById('role');
+            var categoryDropdown = document.getElementById('categoryDropdown');
+    
+            if (roleDropdown.value === 'worker') {
+                categoryDropdown.style.display = 'block';
+            } else {
+                categoryDropdown.style.display = 'none';
+            }
+        }
+    
+        function toggleVerifiedDropdown() {
+            var roleDropdown = document.getElementById('role');
+            var verifiedDropdown = document.getElementById('verifiedDropdown');
+    
+            if (roleDropdown.value === 'user') {
+                verifiedDropdown.style.display = 'block';
+            } else {
+                verifiedDropdown.style.display = 'none';
+            }
+        }
+    
+        function previewImage(input) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('profile-picture').src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    </script>
+    
 </x-app-layout>

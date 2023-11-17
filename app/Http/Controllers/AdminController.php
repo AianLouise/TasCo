@@ -116,9 +116,10 @@ class AdminController extends Controller
 
     public function AdminEditProfile($id)
     {
+        $categories = Category::all();
         $user = User::find($id);
 
-        return view('admin.admin-editProfile', ['user' => $user]);
+        return view('admin.admin-editProfile', ['user' => $user ,'categories'=> $categories]);
     }
 
     public function deleteProfile($id)
@@ -143,6 +144,7 @@ class AdminController extends Controller
             'lname' => 'required|string',
             'address' => 'required|string',
             'email' => 'required|email|unique:users,email,'.$id,
+            'role' => 'required|string|in:admin,worker,user',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules for the avatar as needed
         ], [
             'avatar.max' => 'The avatar file size must not exceed 2 MB.',
@@ -170,6 +172,9 @@ class AdminController extends Controller
         $user->name = $request->fname . ' ' . $request->lname;
         $user->address = $request->input('address');
         $user->email = $request->input('email');
+        $user->role = $request->role;
+        $user->category_id = $request->category;
+        $user->is_verified = $request->verified;
 
         $user->save();
 
