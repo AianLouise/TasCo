@@ -63,6 +63,10 @@
                     <x-nav-link :href="route('user.chatify')" :active="request()->routeIs('user.chatify')">
                         {{ __('Chatify') }}
                     </x-nav-link>    
+
+                    <x-nav-link :href="route('user.customerService')" :active="request()->routeIs('user.customerService')">
+                        {{ __('Customer Service') }}
+                    </x-nav-link>    
                     @endisUser
                 </div>              
             </div>

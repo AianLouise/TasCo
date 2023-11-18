@@ -57,7 +57,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/admin/deleteProfile/{id}', [AdminController::class, 'deleteProfile'])->name('admin.deleteProfile');
     Route::get('/admin/services', [AdminController::class, 'AdminServices'])->name('admin.services');
     Route::get('/admin/application', [AdminController::class, 'AdminApplication'])->name('admin.application');
+
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
+
     Route::get('/admin/auditTrail', [AdminController::class, 'AdminAuditTrail'])->name('admin.auditTrail');
     Route::get('/admin/settings', [AdminController::class, 'AdminSettings'])->name('admin.settings');
 }); //End Group Admin Middleware
@@ -70,6 +72,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/home-page', [UserController::class, 'UserHomePage'])->name('user.homePage');
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
+    Route::get('/customer-service', [UserController::class, 'UserCustomerService'])->name('user.customerService');
+
+    Route::post('/email-sent', [UserController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');
+
 })->middleware(['auth', 'verified'])->name('dashboard'); //End Group User Middleware
 
 // //Route for Chatify

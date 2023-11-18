@@ -10,6 +10,7 @@ use App\Models\ServicesLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Models\CustomerServiceMessage;
 use Illuminate\Support\Facades\Password;
 
 class AdminController extends Controller
@@ -197,7 +198,9 @@ class AdminController extends Controller
 
     public function AdminInbox()
     {
-        return view("admin.admin-inbox");
+        $messages = CustomerServiceMessage::all();
+
+        return view("admin.admin-inbox", compact('messages'));
     }
 
     public function AdminAuditTrail()
