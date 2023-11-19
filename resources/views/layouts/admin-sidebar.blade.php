@@ -112,7 +112,7 @@
 
         </ul>
         <!-- End: Menu -->
-        <div class="fixed top-5 left-0 w-full h-full z-40 sidebar-overlay ml-53">
+        <div class="fixed top-5 left-0 w-full h-full z-40 sm:hidden md:hidden sidebar-overlay ml-53">
             <!-- Mobile Sidebar Overlay Icon -->
             <i class="ri-menu-line text-xl text-gray-800"></i>
         </div>

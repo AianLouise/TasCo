@@ -32,7 +32,7 @@
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md">
             <div class="flex justify-between mb-4 items-start">
                 <!-- Heading for Application Section -->
-                <div class="font-medium2">Application</div>
+                <div class="font-medium2">Inbox</div>
             </div>
 
             <!-- Inbox Table -->

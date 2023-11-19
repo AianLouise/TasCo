@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Password;
 
 class AdminController extends Controller
 {
+    // Dashboard view for the admin
     public function AdminDashboard()
     {
+        // Retrieve necessary data for the admin dashboard
         $activityLogs = ActivityLog::all();
         $jobSeekersCount = User::where('role', 'worker')->where('is_verified', 1)->count();
         $employersCount = User::where('role', 'user')->where('is_verified', 1)->count();
@@ -30,20 +32,24 @@ class AdminController extends Controller
             ->where('is_verified', 1)
             ->get();
 
+        // Pass data to the admin-dashboard view
         return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers'));
     }
 
+    // Chatify view for the admin
     public function AdminChatify()
     {
         return view('admin.admin-chatify');
     }
 
+    // View to display all users for the admin
     public function AdminViewAllUsers()
     {
         $users = User::all();
         return view('admin.admin-viewAllUsers', compact('users'));
     }
 
+    // View to display job seekers for the admin
     public function AdminJobSeeker()
     {
         $workers = User::where('role', 'worker')
@@ -53,6 +59,7 @@ class AdminController extends Controller
         return view('admin.admin-jobSeeker', compact('workers'));
     }
 
+    // View to display employers for the admin
     public function AdminEmployer()
     {
         $employers = User::where('role', 'user')
@@ -62,14 +69,17 @@ class AdminController extends Controller
         return view("admin.admin-employer", compact("employers"));
     }
 
+    // View to add a new profile for the admin
     public function AdminAddProfile()
     {
         $categories = Category::all();
         return view('admin.admin-addProfile', compact('categories'));
     }
 
+    // Create a new user based on the admin's input
     public function createUser(Request $request)
     {
+        // Validate the input data
         $validated = $request->validate([
             'fname' => 'required|string|max:255',
             'lname' => 'required|string|max:255',
@@ -81,8 +91,8 @@ class AdminController extends Controller
             'avatar.max' => 'The avatar file size must not exceed 2 MB.',
             'email.unique' => 'The email has already been taken.',
         ]);
-        
-        
+
+        // Create a new user instance
         $user = new User;
         $user->first_name = $request->fname;
         $user->last_name = $request->lname;
@@ -94,27 +104,28 @@ class AdminController extends Controller
         $user->category_id = $request->category;
         $user->is_verified = $request->verified;
 
-        // Handle file upload
+        // Handle file upload for the user's avatar
         if ($request->hasFile('avatar')) {
+            // Process the uploaded avatar file
             $avatar = $request->file('avatar');
-
             // Check file size before storing
             if ($avatar->getSize() > 2048 * 1024) { // 2 MB in kilobytes
                 return redirect()->back()->with('messages', 'The avatar file size must not exceed 2 MB.');
             }
-
             $avatarName = $avatar->hashName(); // Generate a unique file name
             $avatar->storeAs('public/users-avatar', $avatarName); // Store the file with the desired path and name
             $user->avatar = $avatarName; // Save the file name in the database
         }
 
+        // Save the user instance to the database
         $user->save();
 
-
+        // Retrieve all users and pass them to the admin-viewAllUsers view
         $users = User::all();
         return view('admin.admin-viewAllUsers', compact('users'));
     }
 
+    // View to edit a user profile for the admin
     public function AdminEditProfile($id)
     {
         $categories = Category::all();
@@ -123,18 +134,20 @@ class AdminController extends Controller
         return view('admin.admin-editProfile', ['user' => $user ,'categories'=> $categories]);
     }
 
+    // Delete a user profile based on the provided user ID
     public function deleteProfile($id)
     {
         $user = User::findOrFail($id);
 
-        // Perform any additional checks if needed before deleting
+        // Additional checks if needed before deleting
 
+        // Delete the user profile
         $user->delete();
 
         return redirect()->route('admin.jobSeeker')->with('success', 'Profile deleted successfully');
     }
 
-
+    // Update a user profile based on the provided user ID and input data
     public function updateProfile(Request $request, $id)
     {
         $user = User::find($id);
@@ -151,17 +164,15 @@ class AdminController extends Controller
             'avatar.max' => 'The avatar file size must not exceed 2 MB.',
             'email.unique' => 'The email has already been taken.',
         ]);
-        
 
-        // Handle file upload
+        // Handle file upload for the updated avatar
         if ($request->hasFile('avatar')) {
+            // Process the updated avatar file
             $avatar = $request->file('avatar');
-
             // Check file size before storing
             if ($avatar->getSize() > 2048 * 1024) { // 2 MB in kilobytes
                 return redirect()->back()->with('messages', 'The avatar file size must not exceed 2 MB.');
             }
-
             $avatarName = $avatar->hashName(); // Generate a unique file name
             $avatar->storeAs('public/users-avatar', $avatarName); // Store the file with the desired path and name
             $user->avatar = $avatarName; // Save the file name in the database
@@ -177,13 +188,15 @@ class AdminController extends Controller
         $user->category_id = $request->category;
         $user->is_verified = $request->verified;
 
+        // Save the updated user details
         $user->save();
 
+        // Retrieve all users and pass them to the admin-viewAllUsers view
         $users = User::all();
         return view('admin.admin-viewAllUsers', compact('users'));
     }
 
-
+    // View to display all services for the admin
     public function AdminServices()
     {
         $services = Service::with('category')->get();
@@ -191,11 +204,13 @@ class AdminController extends Controller
         return view('admin.admin-services', compact('services'));
     }
 
+    // View for admin application
     public function AdminApplication()
     {
         return view("admin.admin-application");
     }
 
+    // View to display inbox messages for the admin
     public function AdminInbox()
     {
         $messages = CustomerServiceMessage::all();
@@ -203,12 +218,14 @@ class AdminController extends Controller
         return view("admin.admin-inbox", compact('messages'));
     }
 
+    // View to display the audit trail for the admin
     public function AdminAuditTrail()
     {
         $activityLogs = ActivityLog::all();
         return view('admin.admin-auditTrail', compact('activityLogs'));
     }
 
+    // View for admin settings
     public function AdminSettings()
     {
         return view("admin.admin-settings");

@@ -31,7 +31,7 @@
         <!-- Start: Job Seeker Content -->
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md">
             <div class="flex justify-between mb-4 items-start">
-                <div class="font-medium2">Job Seeker Profile</div>
+                <div class="font-medium2">Total Users</div>
                 <!-- Add Profile Button -->
                 <button type="button" class="font-medium2 text-gray-600 hover:text-gray-600">
                     <a href="{{ route('admin.addProfile') }}">
