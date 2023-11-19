@@ -58,6 +58,13 @@
                 color: #3182ce;	
             }
 
+            .pt-52{
+                padding-top: 13rem; /* 208px */
+            }
+
+            .pl-1{
+                padding-left: 0.25rem; /* 4px */
+            }	
 
             /* DELETE IF NOT USED */
 
@@ -79,7 +86,7 @@
 
             .text-gray-800{
                 color: #2d3748;
-            }	
+            }
 
             /* For trial purposes only! DELETE LATER */
             .bg-red-600{
@@ -109,107 +116,120 @@
     <body>
 
     <section class="shadow-sm">
+
+    <!-- Start: Header Navigation-->
         <div class="shadow-lg">
-        <div class="max-w-6xl px-4 mx-auto" x-data="{open:false}">
-            <nav class="flex items-center justify-between py-4">
-                <a href="" class="text-3xl font-bold leading-none">TasCo</a>
-                <div class="flex justify-between lg:space-x-9">
-                    <div class="lg:hidden">
-                        <button
-                            class="flex items-center px-3 py-2 text-blue-600 border border-blue-200 rounded navbar-burger hover:text-blue-800 hover:border-blue-500 lg:hidden"
-                            @click="open =true">
-                            
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z" fill="rgba(70,146,221,1)"></path></svg>
+            <div class="max-w-6xl px-4 mx-auto" x-data="{open:false}">
+                <nav class="flex items-center justify-between py-4">
+                    <a href="" class="text-3xl font-bold leading-none">TasCo</a>
+                    <div class="flex justify-between lg:space-x-9">
+                        <div class="lg:hidden">
+                            <button
+                                class="flex items-center px-3 py-2 text-blue-600 border border-blue-200 rounded navbar-burger hover:text-blue-800 hover:border-blue-500 lg:hidden"
+                                @click="open =true">
+                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z" fill="rgba(70,146,221,1)"></path></svg>
+                            </button>
+                        </div>
+                        <ul class="hidden lg:w-auto lg:space-x-9 lg:items-center lg:flex">
+                            <li><a href=""
+                                    class="nav-a text-sm font-medium">Home</a>
+                            </li>
+                            <li><a href=""
+                                    class="nav-a text-sm font-medium">Search</a>
+                            </li>
+                            <li><a href=""
+                                    class="nav-a text-sm font-medium">Profile</a>
+                            </li>
+                            <li><a href=""
+                                    class="nav-a text-sm font-medium">Settings
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <!-- Start: Navigation Mobile Sidebar -->
+                <div class="fixed inset-0 w-full bg-gray-900 opacity-25 lg:hidden"
+                    :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}">
+                </div>
+
+                <div class="absolute inset-0 z-50 h-screen p-3 text-gray-400 duration-500 transform bg-blue-50 w-80 lg:hidden lg:transform-none lg:relative"
+                    :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}">              
+                    
+                    <div class="flex justify-between lg:hidden">
+                        <a class="p-2 text-4xl font-bold text-gray-700" href="#">TasCo</a>
+                        <button class="p-2 text-gray-700 rounded-md hover:text-blue-300 lg:hidden "
+                            @click="open=false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 10.5858L14.8284 7.75736L16.2426 9.17157L13.4142 12L16.2426 14.8284L14.8284 16.2426L12 13.4142L9.17157 16.2426L7.75736 14.8284L10.5858 12L7.75736 9.17157L9.17157 7.75736L12 10.5858Z"></path></svg>
                         </button>
                     </div>
-                    <ul class="hidden lg:w-auto lg:space-x-9 lg:items-center lg:flex ">
-                        <li><a href=""
-                                class="nav-a text-sm font-medium">Home</a>
+
+                    <!-- Start: Nav List -->
+                    <ul class="px-4 text-left mt-7">
+                        <li class="pb-3">
+                            <a href="" class="text-sm text-gray-700 hover:text-blue-400">Home</a>
                         </li>
-                        <li><a href=""
-                                class="nav-a text-sm font-medium">Search</a>
+                        <li class="pb-3">
+                            <a href="" class="text-sm text-gray-700 hover:text-blue-400">Search</a>
                         </li>
-                        <li><a href=""
-                                class="nav-a text-sm font-medium">Profile</a>
+                        <li class="pb-3">
+                            <a href="" class="text-sm text-gray-700 hover:text-blue-400">Profile</a>
                         </li>
-                        <li><a href=""
-                                class="nav-a text-sm font-medium">Settings
-                            </a>
+                        <li class="pb-3">
+                            <a href="" class="text-sm text-gray-700 hover:text-blue-400">Settings</a>
                         </li>
                     </ul>
+                    <!-- End: Nav List -->
                 </div>
-            </nav>
-            
-            <!-- Start: Navigation Mobile Sidebar -->
-            <div class="fixed inset-0 w-full bg-gray-900 opacity-25 lg:hidden"
-                :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}">
-            </div>
-            <div class="absolute inset-0 z-50 h-screen p-3 text-gray-400 duration-500 transform bg-blue-50 w-80 lg:hidden lg:transform-none lg:relative"
-                :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}">              
-                <div class="flex justify-between lg:hidden">
-                    <a class="p-2 text-4xl font-bold text-gray-700" href="#">TasCo</a>
-                    <button class="p-2 text-gray-700 rounded-md hover:text-blue-300 lg:hidden "
-                        @click="open=false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 10.5858L14.8284 7.75736L16.2426 9.17157L13.4142 12L16.2426 14.8284L14.8284 16.2426L12 13.4142L9.17157 16.2426L7.75736 14.8284L10.5858 12L7.75736 9.17157L9.17157 7.75736L12 10.5858Z"></path></svg>
-                    </button>
-                </div>
-                <ul class="px-4 text-left mt-7">
-                    <li class="pb-3">
-                        <a href="" class="text-sm text-gray-700 hover:text-blue-400">Home</a>
-                    </li>
-                    <li class="pb-3">
-                        <a href="" class="text-sm text-gray-700 hover:text-blue-400">Search</a>
-                    </li>
-                    <li class="pb-3">
-                        <a href="" class="text-sm text-gray-700 hover:text-blue-400">Profile</a>
-                    </li>
-                    <li class="pb-3">
-                        <a href="" class="text-sm text-gray-700 hover:text-blue-400">Settings</a>
-                    </li>
-                </ul>
+                <!-- End: Navigation Mobile Sidebar -->
             </div>
         </div>
-    </div>
+        <!-- End: Header Navigation-->
 
+        <!-- Start: Hero Section-->
+
+        <!-- Start: Hero Background Image -->
         <div class="relative flex items-center justify-center w-full h-screen text-center bg-center bg-cover">
             <!-- style="background-image:url();" -->
 
+            <!-- Start: Hero Background Color -->
             <div class="absolute top-0 bottom-0 left-0 right-0 bg-blue-50 opacity-80"></div>
-            <div class="z-10 px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h1 class="mb-6 text-5xl font-bold tracking-tight md:text-6xl">
-                        Welcome to  <span class="text-blue-500">Tasco</span>
-                    </h1>
-                    <p class="mb-6 tracking-wide text-gray-500 sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5">
-                    Discover a new level of convenience and reliability with Tasco, your trusted local service management partner. At Tasco, we take pride in offering a wide range of services to meet your needs.
-                    </p>
-                    <div class="justify-center sm:flex">
-                        <div class="">
-                            <a href="#"
-                                class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
-                                Get started</a>
-                        </div>
-                        <div class="mt-3 sm:mt-0 sm:ml-3">
-                            <a href="#"
-                                class="flex items-center justify-center w-full px-8 py-3 text-blue-600 bg-gray-100 rounded-md shadow hover:text-gray-100 hover:bg-blue-500 ">
-                                Learn More</a>
+                <div class="z-10 px-4 sm:px-6 lg:px-8">
+                    <div class="text-center">
+
+                        <h1 class="mb-6 text-5xl font-bold tracking-tight md:text-6xl">
+                            Welcome to  <span class="text-blue-500">Tasco</span>
+                        </h1>
+
+                        <p class="mb-6 tracking-wide text-gray-500 sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5">
+                        Discover a new level of convenience and reliability with Tasco, your trusted local service management partner. At Tasco, we take pride in offering a wide range of services to meet your needs.
+                        </p>
+                        
+                        <div class="justify-center sm:flex">
+                            <div class="">
+                                <a href="#"
+                                    class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
+                                    Get started</a>
+                            </div>
+                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                <a href="#"
+                                    class="flex items-center justify-center w-full px-8 py-3 text-blue-600 rounded-md shadow hover:text-gray-100 hover:bg-blue-500 ">
+                                    Learn More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- End: Hero Section-->
     </section>
+
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- Start: Browse Section -->
 
-
-
-
-
-
-    
-        <!-- Start: Browse Section -->
-        <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
+    <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
             <div class="container xl:max-w-6xl mx-auto px-4">
                 
                 <!-- Start: Heading-->
@@ -223,23 +243,22 @@
                     <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">See what the community offers</p>
                 </div>
 
-                
-
                 <div class="flex flex-wrap flex-row -mx-4 text-center">
                     
                 <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-                        <!-- Browse -->
                         
-                        <div class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                    <!-- Browse Box-->
+                        
+                        <div class="py-8 px-12 mb-12 bg-blue-100 border rounded-md border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
                                 
-                                <div class="flex flex-col items-center">
+                            <div class="flex flex-col items-center">
                                 <div class="inline-block text-gray-900 mb-4">
-                                <!-- icon -->
-
+                                        
+                                    <!-- Browse Icon -->
                                 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z"></path></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z"></path></svg>
 
-                            </div>
+                                </div>
                                     <h5 class="mb-1 text-xl font-medium text-gray-900">Calendar</h5>
                                 </div>
                             </div>
@@ -248,31 +267,35 @@
 
 
                     <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-                        <!-- Browse -->
                         
-                        <div class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                    <!-- Browse Box-->
+                        
+                        <div class="py-8 px-12 mb-12 bg-blue-100 border rounded-md border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
                                 
-                                <div class="flex flex-col items-center">
+                            <div class="flex flex-col items-center">
                                 <div class="inline-block text-gray-900 mb-4">
-                                <!-- icon -->
+                                        
+                                    <!-- Browse Icon -->
 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M12 11C14.7614 11 17 13.2386 17 16V22H15V16C15 14.4023 13.7511 13.0963 12.1763 13.0051L12 13C10.4023 13 9.09634 14.2489 9.00509 15.8237L9 16V22H7V16C7 13.2386 9.23858 11 12 11ZM5.5 14C5.77885 14 6.05009 14.0326 6.3101 14.0942C6.14202 14.594 6.03873 15.122 6.00896 15.6693L6 16L6.0007 16.0856C5.88757 16.0456 5.76821 16.0187 5.64446 16.0069L5.5 16C4.7203 16 4.07955 16.5949 4.00687 17.3555L4 17.5V22H2V17.5C2 15.567 3.567 14 5.5 14ZM18.5 14C20.433 14 22 15.567 22 17.5V22H20V17.5C20 16.7203 19.4051 16.0796 18.6445 16.0069L18.5 16C18.3248 16 18.1566 16.03 18.0003 16.0852L18 16C18 15.3343 17.8916 14.694 17.6915 14.0956C17.9499 14.0326 18.2211 14 18.5 14ZM5.5 8C6.88071 8 8 9.11929 8 10.5C8 11.8807 6.88071 13 5.5 13C4.11929 13 3 11.8807 3 10.5C3 9.11929 4.11929 8 5.5 8ZM18.5 8C19.8807 8 21 9.11929 21 10.5C21 11.8807 19.8807 13 18.5 13C17.1193 13 16 11.8807 16 10.5C16 9.11929 17.1193 8 18.5 8ZM5.5 10C5.22386 10 5 10.2239 5 10.5C5 10.7761 5.22386 11 5.5 11C5.77614 11 6 10.7761 6 10.5C6 10.2239 5.77614 10 5.5 10ZM18.5 10C18.2239 10 18 10.2239 18 10.5C18 10.7761 18.2239 11 18.5 11C18.7761 11 19 10.7761 19 10.5C19 10.2239 18.7761 10 18.5 10ZM12 2C14.2091 2 16 3.79086 16 6C16 8.20914 14.2091 10 12 10C9.79086 10 8 8.20914 8 6C8 3.79086 9.79086 2 12 2ZM12 4C10.8954 4 10 4.89543 10 6C10 7.10457 10.8954 8 12 8C13.1046 8 14 7.10457 14 6C14 4.89543 13.1046 4 12 4Z"></path></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M12 11C14.7614 11 17 13.2386 17 16V22H15V16C15 14.4023 13.7511 13.0963 12.1763 13.0051L12 13C10.4023 13 9.09634 14.2489 9.00509 15.8237L9 16V22H7V16C7 13.2386 9.23858 11 12 11ZM5.5 14C5.77885 14 6.05009 14.0326 6.3101 14.0942C6.14202 14.594 6.03873 15.122 6.00896 15.6693L6 16L6.0007 16.0856C5.88757 16.0456 5.76821 16.0187 5.64446 16.0069L5.5 16C4.7203 16 4.07955 16.5949 4.00687 17.3555L4 17.5V22H2V17.5C2 15.567 3.567 14 5.5 14ZM18.5 14C20.433 14 22 15.567 22 17.5V22H20V17.5C20 16.7203 19.4051 16.0796 18.6445 16.0069L18.5 16C18.3248 16 18.1566 16.03 18.0003 16.0852L18 16C18 15.3343 17.8916 14.694 17.6915 14.0956C17.9499 14.0326 18.2211 14 18.5 14ZM5.5 8C6.88071 8 8 9.11929 8 10.5C8 11.8807 6.88071 13 5.5 13C4.11929 13 3 11.8807 3 10.5C3 9.11929 4.11929 8 5.5 8ZM18.5 8C19.8807 8 21 9.11929 21 10.5C21 11.8807 19.8807 13 18.5 13C17.1193 13 16 11.8807 16 10.5C16 9.11929 17.1193 8 18.5 8ZM5.5 10C5.22386 10 5 10.2239 5 10.5C5 10.7761 5.22386 11 5.5 11C5.77614 11 6 10.7761 6 10.5C6 10.2239 5.77614 10 5.5 10ZM18.5 10C18.2239 10 18 10.2239 18 10.5C18 10.7761 18.2239 11 18.5 11C18.7761 11 19 10.7761 19 10.5C19 10.2239 18.7761 10 18.5 10ZM12 2C14.2091 2 16 3.79086 16 6C16 8.20914 14.2091 10 12 10C9.79086 10 8 8.20914 8 6C8 3.79086 9.79086 2 12 2ZM12 4C10.8954 4 10 4.89543 10 6C10 7.10457 10.8954 8 12 8C13.1046 8 14 7.10457 14 6C14 4.89543 13.1046 4 12 4Z"></path></svg>
 
-                            </div>
+                                </div>
                                     <h5 class="mb-1 text-xl font-medium text-gray-900">Service</h5>
                                 </div>
                             </div>
-                        <!-- End: Browse -->
+                        <!-- End: Browse Box -->
                     </div>
 
                     <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-                        <!-- Browse -->
                         
-                        <div class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                    <!-- Browse Box-->
+                        
+                        <div class="py-8 px-12 mb-12 bg-blue-100 border rounded-md border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
                                 
-                                <div class="flex flex-col items-center">
+                            <div class="flex flex-col items-center">
                                 <div class="inline-block text-gray-900 mb-4">
-                                <!-- icon -->
+                                        
+                                    <!-- Browse Icon -->
 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M19.9381 8H21C22.1046 8 23 8.89543 23 10V14C23 15.1046 22.1046 16 21 16H19.9381C19.446 19.9463 16.0796 23 12 23V21C15.3137 21 18 18.3137 18 15V9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9V16H3C1.89543 16 1 15.1046 1 14V10C1 8.89543 1.89543 8 3 8H4.06189C4.55399 4.05369 7.92038 1 12 1C16.0796 1 19.446 4.05369 19.9381 8ZM3 10V14H4V10H3ZM20 10V14H21V10H20ZM7.75944 15.7849L8.81958 14.0887C9.74161 14.6662 10.8318 15 12 15C13.1682 15 14.2584 14.6662 15.1804 14.0887L16.2406 15.7849C15.0112 16.5549 13.5576 17 12 17C10.4424 17 8.98882 16.5549 7.75944 15.7849Z"></path></svg>
 
@@ -282,22 +305,17 @@
                             </div>
                         <!-- End: Browse -->
                     </div>
-
-
-
-
-                <!-- End: Heading -->
             </div>
         </section>
         <!-- End: Browse Section -->
 
-
         <!-- Start: Roles Section -->
-        <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
+        <section class="relative pt-20 pb-8 md:pt-16 md:pb-0">
 
             <div class="container xl:max-w-6xl mx-auto px-4">
                 
                 <!-- Start: Heading-->
+
                 <div class="text-center mx-auto mb-12 lg:px-20">
                     <h2 class=" leading-normal mb-2 text-4xl font-bold text-black">The Roles</h2>
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
@@ -308,44 +326,31 @@
                     <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">in our community</p>
                 </div>
                 <!-- End: Heading -->
-  
-            <div class="flex flex-wrap items-center">
-            <div class="relative w-full px-4 mb-10 md:w-1/2 lg:mb-0">
-                    <img src="https://placehold.co/500x500" alt=""
-                        class="relative z-40 object-cover w-full rounded-md md:h-96 h-44">
-                </div>
-                <div class="w-full px-4 mb-10 md:w-1/2 lg:mb-0 ">
-                    <h2 class="mb-4 text-2xl font-bold text-gray-700">
-                        The Job Seekers
-                    </h2>
-                    <p class="mb-4 text-base leading-7 text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam
-                    </p>
-                </div>  
-            </div>
 
-
-            <div class="flex flex-wrap items-center mt-16">
-                <div class="w-full px-4 mb-10 md:w-1/2 lg:mb-0 ">
-                    <h2 class="mb-4 text-2xl font-bold text-gray-700">
-                        The Employers
-                    </h2>
-                    <p class="mb-4 text-base leading-7 text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam
-                    </p>
-                
-                </div>
-                <div class="relative w-full px-4 mb-10 md:w-1/2 lg:mb-0">
-                    <img src="https://placehold.co/500x500" alt=""
-                        class="relative z-40 object-cover w-full rounded-md md:h-96 h-44">
-                </div>
+        <div class="lg:flex border rounded-md shadow-md border-blue-500 mb-12">
+            <div class="relative w-full mb-10 md:w-1/2 lg:mb-0 bg-blue-500">
+                <img src="https://placehold.co/500x500" alt=""
+                class="relative z-40 object-cover w-full md:h-96">
             </div>
+            <div class="w-full py-6 px-6 mb-10 md:w-1/2 lg:mb-0">
+                <h2 class="md:text-2xl text-3xl font-bold">The Job Seeker</h2>
+                <p class="mt-4 leading-loose">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia dolorem, sapiente iusto itaque error at fugiat sequi enim dolorum iure tempora, vel earum nulla! Ullam, illo! Fuga, maiores. Est, similique.</p>
+             </div>  
+        </div>
 
+        <!-- Roles -->    
+        
+        <div class="lg:flex border rounded-md shadow-md border-blue-500">
+            <div class="w-full py-6 px-6 mb-10 md:w-1/2 lg:mb-0">
+                <h2 class="md:text-2xl text-3xl font-bold">The Employer</h2>
+                <p class="mt-4 leading-loose">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia dolorem, sapiente iusto itaque error at fugiat sequi enim dolorum iure tempora, vel earum nulla! Ullam, illo! Fuga, maiores. Est, similique.</p>
+            </div>  
+            <div class="relative w-full h-full md:w-1/2 lg:mb-0 bg-blue-500">
+                <img src="https://placehold.co/500x500" alt=""
+                class="relative z-40 object-cover w-full md:h-96 ">
             </div>
+        </div>
+            
         </section>
         <!-- End: Roles Section -->
 
@@ -353,8 +358,6 @@
         <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
 
             <div class="container xl:max-w-6xl mx-auto px-4">
-                
-
             
             <!-- Start: Heading-->
             <div class="text-center mx-auto mb-12 lg:px-20">
@@ -369,48 +372,39 @@
                     
                 </div>
                 <!-- End: Heading -->
-
-
                 
-
                 
-                <div class="w-full px-3 ">
-<div class="px-3 mb-4">
-<div class="items-center justify-between hidden px-3 py-2 bg-gray-100 md:flex">
-<div class="flex">
-</div>
-<div class="flex items-center justify-between">
-<div class="pr-3 border-r border-gray-300">
-<select name="" id="" class="block w-40 text-base bg-gray-100 cursor-pointer ">
-    <option value="">Sort by Category</option>
-    <option value="">Sort by Popularity</option>
-</select>
-</div>
-<div class="flex items-center pl-3">
-<p class="text-xs text-gray-400">Show</p>
-<div class="px-2 py-2 text-xs text-gray-500 ">
-<select name="" id="" class="block text-base bg-gray-100 cursor-pointer w-11">
-<option value="">All</option>
-<option value=""></option>
-<option value="">19</option>
-</select>
-</div>
-</div>
-</div>
-</div>
-</div>
-             <!-- Start: Worker Section Row -->
+    <form class="mb-12 w-full">
+        <div class="flex">        
+            <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">All categories <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+    </svg></button>
+            
+            <div class="relative w-full">
+                <input type="search" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Search for Workers, Employer, Category..." required>
+                <button type="submit" class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-500 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                    
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                    <span class="sr-only">Search</span>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Start: Worker Section Row -->
 
              <div class="flex flex-wrap flex-row -mx-4 text-center">
-
              
                     <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-                        <!-- Worker Profile -->
                         
-                        <div class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                    <!-- Worker Profile -->
+                        
+                        <div class="py-8 px-12 mb-12 border border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
                                 
                                 <div class="flex flex-col items-center pb-10">
-                                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://placehold.co/100x100.jpg" alt="Bonnie image"/>
+                                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://placehold.co/100x100.jpg"/>
                                     <h5 class="mb-1 text-xl font-medium text-gray-900">Sample Worker</h5>
                                     <span class="text-sm text-gray-500 ">Sample Work</span>
                                         <div class="flex mt-4 md:mt-6">
@@ -423,12 +417,13 @@
                     </div>
 
                     <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
+
                          <!-- Worker Profile -->
                         
-                         <div class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                         <div class="py-8 px-12 mb-12 border border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
                                 
                                 <div class="flex flex-col items-center pb-10">
-                                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://placehold.co/100x100.jpg" alt="Bonnie image"/>
+                                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://placehold.co/100x100.jpg"/>
                                     <h5 class="mb-1 text-xl font-medium text-gray-900">Sample Worker</h5>
                                     <span class="text-sm text-gray-500 ">Sample Work</span>
                                         <div class="flex mt-4 md:mt-6">
@@ -444,10 +439,10 @@
 
                         <!-- Worker Profile -->
                         
-                            <div class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                            <div class="py-8 px-12 mb-12 border border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
                                 
                                 <div class="flex flex-col items-center pb-10">
-                                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://placehold.co/100x100.jpg" alt="Bonnie image"/>
+                                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://placehold.co/100x100.jpg"/>
                                     <h5 class="mb-1 text-xl font-medium text-gray-900">Sample Worker</h5>
                                     <span class="text-sm text-gray-500">Sample Work</span>
                                         <div class="flex mt-4 md:mt-6">
@@ -612,7 +607,7 @@
 
             <!-- Div Box for Text Upper Footer Section -->
 
-            <div class="w-full bg-gray-100 border-t  py-4">
+            <div class="w-full bg-blue-50 border-t py-4">
 
                 <!-- Div Box for Text Area -->
                 <div class="max-w-6xl mx-auto">
