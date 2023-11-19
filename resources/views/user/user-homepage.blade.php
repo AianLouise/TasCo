@@ -12,8 +12,8 @@
 
         <style>
             
-            .max-w-7xl{
-                max-width: 80rem; /* 1280px */
+            .max-w-6xl{
+                max-width: 72rem; /* 1152px */
             }
 
             .inset-0{
@@ -22,6 +22,10 @@
 
             .space-x-2{
                 margin-left: 0.625rem; /* 10px */
+            }
+
+            .space-x-12{
+                margin-left: 3rem; /* 48px */
             }
 
             .space-y-6{
@@ -123,7 +127,7 @@
                 <nav class="flex items-center justify-between py-4">
                     <a href="" class="text-3xl font-bold leading-none">TasCo</a>
                     <div class="flex justify-between lg:space-x-9">
-                        <div class="lg:hidden">
+                        <div class="flex lg:hidden">
                             <button
                                 class="flex items-center px-3 py-2 text-blue-600 border border-blue-200 rounded navbar-burger hover:text-blue-800 hover:border-blue-500 lg:hidden"
                                 @click="open =true">
@@ -136,9 +140,6 @@
                                     class="nav-a text-sm font-medium">Home</a>
                             </li>
                             <li><a href=""
-                                    class="nav-a text-sm font-medium">Search</a>
-                            </li>
-                            <li><a href=""
                                     class="nav-a text-sm font-medium">Profile</a>
                             </li>
                             <li><a href=""
@@ -146,9 +147,22 @@
                                 </a>
                             </li>
                         </ul>
+                        
+                        <div class="items-center hidden pl-2 ml-auto mr-8 lg:flex lg:ml-0 lg:mr-0">
+                            <form>   
+                                <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                                <div class="relative">
+                                    <input type="search" class="block w-full  ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search..." required>
+                                    <button type="submit" class="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1">
+                                        <svg class="w-4 h-4 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path></svg>
+                                    
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </nav>
-                
+
                 <!-- Start: Navigation Mobile Sidebar -->
                 <div class="fixed inset-0 w-full bg-gray-900 opacity-25 lg:hidden"
                     :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}">
@@ -171,15 +185,22 @@
                             <a href="" class="text-sm text-gray-700 hover:text-blue-400">Home</a>
                         </li>
                         <li class="pb-3">
-                            <a href="" class="text-sm text-gray-700 hover:text-blue-400">Search</a>
-                        </li>
-                        <li class="pb-3">
                             <a href="" class="text-sm text-gray-700 hover:text-blue-400">Profile</a>
                         </li>
                         <li class="pb-3">
                             <a href="" class="text-sm text-gray-700 hover:text-blue-400">Settings</a>
                         </li>
                     </ul>
+                    <form class="px-3">   
+                        <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                         <div class="relative">
+                              <input type="search" class="block w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search..." required>
+                             <button type="submit" class="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1">
+                                 <svg class="w-4 h-4 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path></svg>
+                                    
+                             </button>
+                        </div>
+                    </form>
                     <!-- End: Nav List -->
                 </div>
                 <!-- End: Navigation Mobile Sidebar -->
@@ -333,7 +354,8 @@
                 class="relative z-40 object-cover w-full md:h-96">
             </div>
             <div class="w-full py-6 px-6 mb-10 md:w-1/2 lg:mb-0">
-                <h2 class="md:text-2xl text-3xl font-bold">The Job Seeker</h2>
+                <h2 class="md:text-2xl text-3xl font-bold mb-4">The Job Seeker</h2>
+                <div class="w-16 mb-4 border-b-2 border-blue-500"></div>
                 <p class="mt-4 leading-loose">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia dolorem, sapiente iusto itaque error at fugiat sequi enim dolorum iure tempora, vel earum nulla! Ullam, illo! Fuga, maiores. Est, similique.</p>
              </div>  
         </div>
@@ -342,7 +364,8 @@
         
         <div class="lg:flex border rounded-md shadow-md border-blue-500">
             <div class="w-full py-6 px-6 mb-10 md:w-1/2 lg:mb-0">
-                <h2 class="md:text-2xl text-3xl font-bold">The Employer</h2>
+                <h2 class="md:text-2xl text-3xl font-bold mb-4">The Employer</h2>
+                <div class="w-16 mb-4 border-b-2 border-blue-500"></div>
                 <p class="mt-4 leading-loose">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia dolorem, sapiente iusto itaque error at fugiat sequi enim dolorum iure tempora, vel earum nulla! Ullam, illo! Fuga, maiores. Est, similique.</p>
             </div>  
             <div class="relative w-full h-full md:w-1/2 lg:mb-0 bg-blue-500">
