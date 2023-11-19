@@ -1,7 +1,7 @@
 <x-app-layout>
     <!-- Start: Main Content -->
     <link href="{{ asset('css/chatify/style.css') }}" rel="stylesheet" />
-    <main class="w-full md:w-[calc(100%-256px)] md:ml-64 min-h-screen">
+    <main class="w-full md:w-[calc(100%-256px)] md:ml-64 min-h-screen transition-all main">
 
         <!-- Start: Header -->
 

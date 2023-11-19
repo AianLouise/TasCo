@@ -3,12 +3,15 @@
     <div class="fixed left-0 top-0 w-64 h-full p-4 z-50 sidebar-menu bg-white">
         
         <!-- Start: Logo -->
-
+<div>
         <a href="#" class="flex items-center pb-4 border-b">
             <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover">
             <span class="text-lg font-bold ml-3">Tas<span class="text-blue-500">Co</span></span>
+            <button type="button" class="text-lg text-gray-600 sidebar-close">
+                <i class="ri-menu-fold-fill h-full w-64  blue ml-28"></i>
+            </button>
         </a>
-
+</div>        
         <!-- End: Logo -->
       
         <!-- Start: Menu -->

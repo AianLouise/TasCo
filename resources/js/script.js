@@ -1,6 +1,7 @@
 // start: Sidebar
 const sidebarToggle = document.querySelector('.sidebar-toggle')
 const sidebarOverlay = document.querySelector('.sidebar-overlay')
+const sidebarClose = document.querySelector('.sidebar-close')
 const sidebarMenu = document.querySelector('.sidebar-menu')
 const main = document.querySelector('.main')
 sidebarToggle.addEventListener('click', function (e) {
@@ -15,6 +16,13 @@ sidebarOverlay.addEventListener('click', function (e) {
     sidebarOverlay.classList.add('hidden')
     sidebarMenu.classList.add('-translate-x-full')
 })
+sidebarClose.addEventListener('click', function (e){
+    e.preventDefault()
+    main.classList.add('active')
+    sidebarOverlay.classList.add('hidden')
+    sidebarMenu.classList.add('-translate-x-full')
+}) 
+
 document.querySelectorAll('.sidebar-dropdown-toggle').forEach(function (item) {
     item.addEventListener('click', function (e) {
         e.preventDefault()

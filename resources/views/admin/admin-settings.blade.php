@@ -1,7 +1,7 @@
 <x-app-layout>
      <!-- Start: Main Content -->
 
-     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-blue-50 min-h-screen">
+     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-blue-50 min-h-screen transition-all main">
 
         <!-- Start: Header -->
 
