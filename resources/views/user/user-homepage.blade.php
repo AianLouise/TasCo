@@ -58,7 +58,12 @@
                 color: #3182ce;	
             }
 
+
             /* DELETE IF NOT USED */
+
+            .hover\:border-blue-500:hover{
+                border-color: rgb(59 130 246);
+            }
 
             .mt-32{
                 margin-top: 8rem;
@@ -84,79 +89,70 @@
             .bg-rose-600{
                 background-color: rgb(225 29 72);
             }
+
+            .nav-a:after{
+                display:block;
+                content: '';
+                border-bottom: solid 2px #3182ce;  
+                transform: scaleX(0);  
+                transition: transform 250ms ease-in-out;
+            }
+            
+            .nav-a:hover:after{
+                transform: scaleX(1); 
+            }
+
         </style>
 
     </head>
     
     <body>
-        
 
-    <!-- Start: Navigation -->
-
-    <section class="shadow-lg">
+    <section class="shadow-sm">
+        <div class="shadow-lg">
         <div class="max-w-6xl px-4 mx-auto" x-data="{open:false}">
-            <div class="relative flex items-center justify-between py-4">
-                <a href="" class="text-2xl font-bold leading-none">TasCo</a>
-                <div class="lg:hidden">
-                    <button
-
-                        class="flex items-center px-3 py-2 text-blue-600 border border-blue-200 rounded navbar-burger hover:text-blue-800 hover:border-blue-300 lg:hidden"
-
-                        @click="open =true">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-
-                            class="bi bi-list" viewBox="0 0 16 16">
-
-                            <path fill-rule="evenodd"
-
-                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-
-                        </svg>
-                    </button>
+            <nav class="flex items-center justify-between py-4">
+                <a href="" class="text-3xl font-bold leading-none">TasCo</a>
+                <div class="flex justify-between lg:space-x-9">
+                    <div class="lg:hidden">
+                        <button
+                            class="flex items-center px-3 py-2 text-blue-600 border border-blue-200 rounded navbar-burger hover:text-blue-800 hover:border-blue-500 lg:hidden"
+                            @click="open =true">
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z" fill="rgba(70,146,221,1)"></path></svg>
+                        </button>
+                    </div>
+                    <ul class="hidden lg:w-auto lg:space-x-9 lg:items-center lg:flex ">
+                        <li><a href=""
+                                class="nav-a text-sm font-medium">Home</a>
+                        </li>
+                        <li><a href=""
+                                class="nav-a text-sm font-medium">Search</a>
+                        </li>
+                        <li><a href=""
+                                class="nav-a text-sm font-medium">Profile</a>
+                        </li>
+                        <li><a href=""
+                                class="nav-a text-sm font-medium">Settings
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-
-                <ul class="hidden lg:w-auto lg:space-x-12 lg:items-center lg:flex ">
-                    <li>
-                        <a href="" class="text-sm text-gray-700 hover:text-blue-600">Home</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-sm text-gray-700 hover:text-blue-600">Search</a>
-                    </li>
-                    <li>
-                        <a href="" class="text-sm text-gray-700 hover:text-blue-600">Profile </a>
-                    </li>
-                    <li>
-                        <a href="" class="text-sm text-gray-700 hover:text-blue-600">Settings</a>
-                    </li>
-                </ul>
-            </div>
-
+            </nav>
+            
             <!-- Start: Navigation Mobile Sidebar -->
-
             <div class="fixed inset-0 w-full bg-gray-900 opacity-25 lg:hidden"
-
                 :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}">
-
             </div>
-
-            <div class="absolute inset-0 z-10 h-screen p-3 text-gray-400 duration-500 transform bg-blue-50 w-80 lg:hidden lg:transform-none lg:relative"
-
-                :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}">
-
-                <div class="flex justify-between lg:">
-                    <a class="p-2 text-2xl font-bold text-gray-700" href="#">TasCo</a>
+            <div class="absolute inset-0 z-50 h-screen p-3 text-gray-400 duration-500 transform bg-blue-50 w-80 lg:hidden lg:transform-none lg:relative"
+                :class="{'translate-x-0 ease-in-opacity-100' :open===true, '-translate-x-full ease-out opacity-0' : open===false}">              
+                <div class="flex justify-between lg:hidden">
+                    <a class="p-2 text-4xl font-bold text-gray-700" href="#">TasCo</a>
                     <button class="p-2 text-gray-700 rounded-md hover:text-blue-300 lg:hidden "
                         @click="open=false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            class="bi bi-x-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                            <path
-                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 10.5858L14.8284 7.75736L16.2426 9.17157L13.4142 12L16.2426 14.8284L14.8284 16.2426L12 13.4142L9.17157 16.2426L7.75736 14.8284L10.5858 12L7.75736 9.17157L9.17157 7.75736L12 10.5858Z"></path></svg>
                     </button>
                 </div>
-                
                 <ul class="px-4 text-left mt-7">
                     <li class="pb-3">
                         <a href="" class="text-sm text-gray-700 hover:text-blue-400">Home</a>
@@ -172,46 +168,48 @@
                     </li>
                 </ul>
             </div>
-            <!-- End: Navigation Mobile Sidebar -->
         </div>
-    </section>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- End: Navigation -->
+    </div>
 
-    
-    <!-- Start: Featured Content Section -->
-    
-    <section class="overflow-hidden mt-32 lg:relative md:pb-24">
-        <div class="relative max-w-6xl px-4 mx-auto">
-            <div class="max-w-5xl mx-auto text-center">
-                <h1 class="max-w-4xl mx-auto mt-6 text-5xl font-bold sm:text-4xl lg:text-5xl">
-                    Welcome to <span class="text-blue-500">Tasco.</span></h1>
-                <p class="mt-6 text-xl font-medium leading-8 text-gray-500">
-                Discover a new level of convenience and reliability with Tasco, your trusted local service management partner. At Tasco, we take pride in offering a wide range of services to meet your needs.
-                </p>
-                <div class="justify-center mt-6 mb-11 md:mb-20 sm:flex">
-                    <div class="">
-                        <a href="#"
-                            class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 rounded-md hover:bg-blue-500">
-                            Get started</a>
-                    </div>
-                    <div class="mt-3 sm:mt-0 sm:ml-3">
-                        <a href="#"
-                            class="flex items-center justify-center w-full px-8 py-3 text-blue-600 border border-blue-600 rounded-md bg-gray-50 hover:text-gray-100 hover:bg-blue-500 ">
-                            Learn More</a>
+        <div class="relative flex items-center justify-center w-full h-screen text-center bg-center bg-cover">
+            <!-- style="background-image:url();" -->
+
+            <div class="absolute top-0 bottom-0 left-0 right-0 bg-blue-50 opacity-80"></div>
+            <div class="z-10 px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="mb-6 text-5xl font-bold tracking-tight md:text-6xl">
+                        Welcome to  <span class="text-blue-500">Tasco</span>
+                    </h1>
+                    <p class="mb-6 tracking-wide text-gray-500 sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5">
+                    Discover a new level of convenience and reliability with Tasco, your trusted local service management partner. At Tasco, we take pride in offering a wide range of services to meet your needs.
+                    </p>
+                    <div class="justify-center sm:flex">
+                        <div class="">
+                            <a href="#"
+                                class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
+                                Get started</a>
+                        </div>
+                        <div class="mt-3 sm:mt-0 sm:ml-3">
+                            <a href="#"
+                                class="flex items-center justify-center w-full px-8 py-3 text-blue-600 bg-gray-100 rounded-md shadow hover:text-gray-100 hover:bg-blue-500 ">
+                                Learn More</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    
-    </div>
     </section>
-       
-    <!-- End: Featured Content Section-->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+
+
+
+
+
+
+    
         <!-- Start: Browse Section -->
         <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
-
             <div class="container xl:max-w-6xl mx-auto px-4">
                 
                 <!-- Start: Heading-->
