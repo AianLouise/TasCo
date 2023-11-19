@@ -106,11 +106,14 @@
 
         </ul>
         <!-- End: Menu -->
-        <div class="fixed top-0 left-0 w-full h-full z-40 sm:hidden md:hidden sidebar-overlay"></div>
+        <div class="fixed top-5 left-0 w-full h-full z-40 sidebar-overlay ml-53">
+            <!-- Add an icon or content for the overlay here -->
+            <i class="ri-menu-line text-xl text-gray-800"></i>
+        </div>
+        
+        
+        
     </div>
     
     <!-- End: Sidebar -->
-
-    {{-- <script src="https://unpkg.com/@popperjs/core@2"></script>
-    @vite(['resources/js/script.js']) --}}
 </nav>
