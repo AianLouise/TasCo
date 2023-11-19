@@ -1,7 +1,7 @@
 <x-app-layout>
     <!-- Start: Main Content -->
 
-    <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen">
+    <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
 
         <!-- Start: Header -->
 
@@ -47,6 +47,7 @@
                 <div class="col-span-2 flex flex-auto items-center justify-between p-3 text-sm">
 
                     <div class="font-bold text-gray-600">Profiles</div>
+                    <!-- Add Profile Button -->
                     <button type="button" class="font-medium2 text-gray-600 hover:text-gray-600">
                         <a href="{{ route('admin.addProfile') }}">
                             <i class="ri-add-box-line mr-1"></i> Add Profile
