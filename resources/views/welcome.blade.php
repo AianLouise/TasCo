@@ -145,6 +145,15 @@
           .mt-52{
             margin-top: 13rem; /* 240px */
           }
+
+          .mt-32{
+            margin-top: 8rem; /* 128px */
+          }
+
+          .px-32{
+            padding-left: 8rem; /* 128px */
+            padding-right: 8rem; /* 128px */
+          }
         </style>
     </head>
     
@@ -210,7 +219,7 @@
                         TasCo is your all-in-one destination for the services you require within your community.
                     </p>
 
-                    <div class="flex flex-wrap mb-6 -mx-2"></div>
+                    <div class="flex flex-wrap mb-6 -mx-2 "></div>
                       <form>
                                     <div class="ContentLeft2 searchbox relative flex">
                                       
@@ -228,8 +237,8 @@
 
       
 
-          <div class="flex mt-52 md:justify-end md:w-1/2 lg:absolute lg:inset-y-0 lg:right-0">
-            <img src={{ URL('images/hero.png') }} alt="" class="object-cover sm:h-72 md:h-96"> 
+          <div class="flex mt-52 md:justify-end md:w-1/2 lg:absolute lg:inset-y-0 lg:right-0 lg:px-32">
+            <img src={{ URL('images/hero.png') }} alt="" class="object-cover sm:h-72 md:h-96 "> 
           </div>
           
         </section>      
