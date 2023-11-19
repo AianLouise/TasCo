@@ -66,6 +66,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/worker/dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
+    Route::get('/worker/chatify', [WorkerController::class, 'WorkerChatify'])->name('worker.chatify');
 }); //End Group Worker Middleware
 
 Route::middleware(['auth', 'role:user'])->group(function () {

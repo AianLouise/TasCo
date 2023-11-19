@@ -3,17 +3,18 @@
     <div class="fixed left-0 top-0 w-64 h-full p-4 z-50 sidebar-menu bg-white">
         
         <!-- Start: Logo -->
-
         <a href="#" class="flex items-center pb-4 border-b">
+            <!-- Logo Image -->
             <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover">
+            <!-- Company Name -->
             <span class="text-lg font-bold ml-3">Tas<span class="text-blue-500">Co</span></span>
         </a>
-
         <!-- End: Logo -->
       
         <!-- Start: Menu -->
         <ul class="mt-4">
            
+            <!-- Dashboard Link -->
             <li class="mb-1 group {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center py-2 px-4 text-gray-800 
                     hover:bg-blue-400 hover:text-white rounded-md
@@ -25,6 +26,7 @@
                 </a>
             </li>
 
+            <!-- Job Seeker Link -->
             <li class="mb-1 group {{ request()->routeIs('admin.jobSeeker') ? 'active' : '' }}">
                 <a href="{{ route('admin.jobSeeker') }}" class="flex items-center py-2 px-4 text-gray-800 
                 hover:bg-blue-400 hover:text-white rounded-md 
@@ -36,6 +38,7 @@
                 </a>
             </li>
 
+            <!-- Employer Link -->
             <li class="mb-1 group {{ request()->routeIs('admin.employer') ? 'active' : '' }}">
                 <a href="{{ route('admin.employer') }}" class="flex items-center py-2 px-4 text-gray-800 
                 hover:bg-blue-400 hover:text-gray-100 rounded-md 
@@ -47,6 +50,7 @@
                 </a>
             </li>
 
+            <!-- Services Link -->
             <li class="mb-1 group {{ request()->routeIs('admin.services') ? 'active' : '' }}">
                 <a href="{{ route('admin.services') }}" class="flex items-center py-2 px-4 text-gray-800 
                 hover:bg-blue-400 hover:text-gray-100 rounded-md 
@@ -58,6 +62,7 @@
                 </a>
             </li>
 
+            <!-- Application Link -->
             <li class="mb-1 group {{ request()->routeIs('admin.application') ? 'active' : '' }}">
                 <a href="{{ route('admin.application') }}" class="flex items-center py-2 px-4 text-gray-800 
                 hover:bg-blue-400 hover:text-gray-100 rounded-md 
@@ -69,6 +74,7 @@
                 </a>
             </li>
  
+            <!-- Inbox Link -->
             <li class="mb-1 group {{ request()->routeIs('admin.inbox') ? 'active' : '' }}">
                 <a href="{{ route('admin.inbox') }}" class="flex items-center py-2 px-4 text-gray-800 
                 hover:bg-blue-400 hover:text-gray-100 rounded-md 
@@ -80,6 +86,7 @@
                 </a>
             </li>
 
+            <!-- Audit Trail Link -->
             <li class="mb-1 group {{ request()->routeIs('admin.auditTrail') ? 'active' : '' }}">
                 <a href="{{ route('admin.auditTrail') }}" class="flex items-center py-2 px-4 text-gray-800 
                     hover:bg-blue-400 hover:text-gray-100 rounded-md 
@@ -91,8 +98,7 @@
                 </a>
             </li>
             
-            
-
+            <!-- Settings Link -->
             <li class="mb-1 group {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
                 <a href="{{ route('admin.settings') }}" class="flex items-center py-2 px-4 text-gray-800 
                 hover:bg-blue-400 hover:text-gray-100 rounded-md 
@@ -107,13 +113,10 @@
         </ul>
         <!-- End: Menu -->
         <div class="fixed top-5 left-0 w-full h-full z-40 sidebar-overlay ml-53">
-            <!-- Add an icon or content for the overlay here -->
+            <!-- Mobile Sidebar Overlay Icon -->
             <i class="ri-menu-line text-xl text-gray-800"></i>
         </div>
         
-        
-        
     </div>
-    
     <!-- End: Sidebar -->
 </nav>
