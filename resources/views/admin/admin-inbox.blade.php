@@ -34,82 +34,80 @@
 
         <!-- End: Header -->
 
-            <!-- Start: Document Table -->
-            <div class="grid lg:grid-cols-1  md:grid-cols-1 p-6 gap-3">
-                <div class="col-span-2 flex flex-auto items-center justify-between bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5  ">
-                  <table class="min-w-full divide-y divide-gray-200 table-auto "> 
+        <!-- Start: Document Table -->
+
+        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md">
+            <div class="flex justify-between mb-4 items-start">
+                <div class="font-medium2">Inbox</div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full min-w-[540px]">
                     <thead>
                         <tr>
-                          <th scope="col"
-                              class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                              Name
-                          </th>
-                          <th scope="col"
-                              class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                              Subject
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Name
                             </th>
                             <th scope="col"
-                              class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                              Date Posted
+                                class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Subject
                             </th>
-    
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Action                      
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Date Posted
+                            </th>
+
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Action
                             </th>
                         </tr>
-                      </thead>             
+                    </thead>
                     <tbody class="bg-white divide-y divide-gray-200 ">
-                        @foreach($messages as $message)
-                      <tr>
-                        <td class="px-6 py-4 whitespace-nowrap ">
-                          <div class="flex items-center">
-                            <div class="flex-shrink-0 h-10 w-10">
-                                @if($message->avatar == 'avatar.png')
-                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($message->user->name) }}&color=7F9CF5&background=EBF4FF" 
-                                    alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                                @else
-                                    <img src="{{ asset('storage/users-avatar/' . basename($message->user->avatar)) }}" 
-                                    alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                                @endif
-                            </div>
-                            <div class="ml-4">
-                                <div class="text-sm font-medium2 text-gray-900">
-                                    {{ $message->user->name }}
-                                </div>
-                                <div class="text-sm text-gray-800">
-                                    {{ $message->user->email }}
-                                </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap font-medium text-sm text-gray-800">
-                            <i class="ri-user-3-line mr-1"></i> Sample User
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap font-medium text-sm text-gray-800">
-                            <i class="ri-time-line mr-1"></i> 24 hrs ago
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium ">
-                            <a href="editUser.html" class="text-blue-400 hover:text-blue-600">View</a>
-                            <span class="text-gray-600">/</span>
-                            <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
-                        </td>
-                      </tr>
-                      
-                      
-      
-                      <!-- More people... -->
-                      @endforeach
+                        @foreach ($messages as $message)
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap ">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-10 w-10">
+                                            @if ($message->avatar == 'avatar.png')
+                                                <img src="https://ui-avatars.com/api/?name={{ urlencode($message->user->name) }}&color=7F9CF5&background=EBF4FF"
+                                                    alt=""
+                                                    class="w-8 h-8 rounded block object-cover align-middle">
+                                            @else
+                                                <img src="{{ asset('storage/users-avatar/' . basename($message->user->avatar)) }}"
+                                                    alt=""
+                                                    class="w-8 h-8 rounded block object-cover align-middle">
+                                            @endif
+                                        </div>
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium2 text-gray-900">
+                                                {{ $message->user->name }}
+                                            </div>
+                                            <div class="text-sm text-gray-800">
+                                                {{ $message->user->email }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-sm text-gray-800">
+                                    <i class="ri-user-3-line mr-1"></i> Sample User
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-sm text-gray-800">
+                                    <i class="ri-time-line mr-1"></i> 24 hrs ago
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium ">
+                                    <a href="editUser.html" class="text-blue-400 hover:text-blue-600">View</a>
+                                    <span class="text-gray-600">/</span>
+                                    <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
+                                </td>
+                            </tr>
+                            <!-- More people... -->
+                        @endforeach
                     </tbody>
-                  </table>
-                </div>
-              </div>
+                </table>
             </div>
-          </div>
         </div>
-        
     </main>
-    <!-- end: Main -->
-
-    {{-- <script src="https://unpkg.com/@popperjs/core@2"></script>
-    @vite(['resources/js/script.js']) --}}
+    <!-- End: Main Content -->
 </x-app-layout>
