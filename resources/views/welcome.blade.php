@@ -138,6 +138,13 @@
             letter-spacing: 0.1em;
           }
 
+          .mt-60{
+            margin-top: 15rem; /* 240px */
+          }
+
+          .mt-52{
+            margin-top: 13rem; /* 240px */
+          }
         </style>
     </head>
     
@@ -187,13 +194,13 @@
 
     <!-- Start: Hero Section-->
 
-          <div class="relative overflow-hidden bg-blue-50">
-            <div class="max-w-6xl mx-auto max-h-6xl">
+          <div class="relative overflow-hidden min-h-screen bg-blue-50">
+            <div class="max-w-6xl mx-auto">
               <div class="relative pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:full lg:pb-28 xl:pb-32">
                 <div class="px-4 mx-auto mt-10 max-w-7xl sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-4 xl:mt-28">
                   <div class="max-w-lg mx-auto mb-8 text-center lg:max-w-md lg:mx-0 lg:text-left">
 
-                    <h1 class="mt-24 sm:mt-10 text-3xl sm:text-5xl max-sm:text-[72px] max-sm:leading-[82px] font-bold">
+                    <h1 class="mt-60 sm:mt-52 text-5xl sm:text-5xl max-sm:text-[72px] max-sm:leading-[82px] font-bold">
                       <span class="FindLocal xl:whitespace-nowrap relative z-10 pr-10">Find Local Services </span>
                       <br />
                       with <span class="AppName inline-block sm:mt-3 z-10"></span>
@@ -207,7 +214,7 @@
                       <form>
                                     <div class="ContentLeft2 searchbox relative flex">
                                       
-                                        <input type="text" name="search" class="flex flex-1 bg-white rounded-md justify-center items-center gap-2 px-5 py-4 sm:w-96 sm:py-3 w-full border text-lg">
+                                        <input type="text" name="search" class="flex flex-1 bg-white rounded-md justify-center items-center border-blue-500 gap-2 px-5 py-4 sm:w-96 sm:py-3 w-full border text-lg">
                                         <span>Search for Services</span>              
                                         
                                         <button class="absolute text-white end-2.5 bottom-2.5 bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">    
@@ -219,8 +226,10 @@
             </div>
           </div>
 
-          <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/4">
-            <img src={{ URL('images/laptop.png') }} alt="" class="object-cover w-full h-56 sm:h-72 md:h-96 lg:w-full lg:h-full">
+      
+
+          <div class="flex mt-52 md:justify-end md:w-1/2 lg:absolute lg:inset-y-0 lg:right-0">
+            <img src={{ URL('images/hero.png') }} alt="" class="object-cover sm:h-72 md:h-96"> 
           </div>
           
         </section>      
