@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -9,9 +11,6 @@ use App\Models\CustomerServiceMessage;
 
 class UserController extends Controller
 {
-    // public function UserDashboard(){
-    //     return view("user.dashboard");
-    // }
 
     public function UserSettings(){
         return view("user.user-settings");
@@ -21,8 +20,13 @@ class UserController extends Controller
         return view("user.chatify");
     }
 
-    public function UserHomePage(){
-        return view("user.user-homepage");
+    public function UserHomePage()
+    {
+        $workerUsers = User::where('role', 'worker')->get();
+        // Retrieve categories
+        $categories = Category::all();
+
+        return view("user.user-homepage", compact('workerUsers', 'categories'));
     }
 
     public function UserActivityLog(){

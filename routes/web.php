@@ -75,7 +75,6 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 // User Routes (Requires Authentication and User Role)
 Route::middleware(['auth', 'role:user'])->group(function () {
     // User Dashboard and Related Routes
-    Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/home', [UserController::class, 'UserHomePage'])->name('user.home');
     Route::get('/settings', [UserController::class, 'UserSettings'])->name('user.settings');
     Route::get('/terms', [UserController::class, 'UserTerms'])->name('user.terms');
