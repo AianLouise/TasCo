@@ -27,9 +27,10 @@
             @if(Auth::user()->role === 'admin')
                 <!-- Include Admin Sidebar for admin role -->
                 @include('layouts.admin-sidebar')
-            @elseif(Auth::user()->role === 'worker' || Auth::user()->role === 'user')
-                <!-- Include Navigation for worker or user role -->
+            @elseif(Auth::user()->role === 'worker')
                 @include('layouts.navigation')
+            @elseif (Auth::user()->role === 'user')
+                @include('layouts.user-navbar')
             @endif
         @endif
 
