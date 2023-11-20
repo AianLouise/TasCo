@@ -81,6 +81,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/guidelines', [UserController::class, 'UserGuidelines'])->name('user.guidelines');
     Route::get('/activitylog', [UserController::class, 'UserActivityLog'])->name('user.activitylog');
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
+    Route::get('/apply-as-jobseeker', [UserController::class, 'UserApplyJobseeker'])->name('user.applyJobseeker');
+    Route::get('/apply-as-employer', [UserController::class, 'UserApplyEmployer'])->name('user.applyEmployer');
     Route::get('/customer-service', [UserController::class, 'UserCustomerService'])->name('user.customerService');
     Route::post('/email-sent', [UserController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');
 });

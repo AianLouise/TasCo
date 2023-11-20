@@ -41,6 +41,11 @@ class UserController extends Controller
         return view("user.user-guidelines");
     }
 
+    public function UserApplyEmployer()
+    {
+        return view("user.user-apply-employer");
+    }
+
     public function UserCustomerService(){
         return view("user.user-customerService");
     }
