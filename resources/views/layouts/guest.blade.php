@@ -255,7 +255,7 @@
 
         <section class="side">
             @if (request()->is('register'))
-            <img class="RegisterLogo" src="{{ URL('images/register.jpg') }}" alt="Register Logo">
+                <img class="RegisterLogo" src="{{ URL('images/register.jpg') }}" alt="Register Logo">
             @else
                 <img class="LoginLogo" src="{{ URL('images/login.jpg') }}" alt="Login Logo">
             @endif

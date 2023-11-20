@@ -1673,3 +1673,117 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
+
+.max-w-6xl {
+  max-width: 72rem;
+  /* 1152px */
+}
+
+.inset-0 {
+  inset: 0px;
+}
+
+.space-x-2 {
+  margin-left: 0.625rem;
+  /* 10px */
+}
+
+.space-x-12 {
+  margin-left: 3rem;
+  /* 48px */
+}
+
+.space-y-6 {
+  margin-top: 1.5rem;
+  /* 24px */
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pt-36 {
+  padding-top: 9rem;
+  /* 144px */
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  /* 36px */
+  line-height: 2.5rem;
+  /* 40px */
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+  /* 24px */
+}
+
+.m-auto {
+  margin-top: auto;
+}
+
+.border-t {
+  border-top-width: 1px;
+}
+
+.hover\:text-blue-600:hover {
+  color: #3182ce;
+}
+
+.pt-52 {
+  padding-top: 13rem;
+  /* 208px */
+}
+
+.pl-1 {
+  padding-left: 0.25rem;
+  /* 4px */
+}
+
+/* DELETE IF NOT USED */
+
+.hover\:border-blue-500:hover {
+  border-color: rgb(59 130 246);
+}
+
+.mt-32 {
+  margin-top: 8rem;
+}
+
+.border-t-blue-500 {
+  border-top-color: rgb(59 130 246);
+}
+
+.border-blue-500 {
+  border-color: #4299e1;
+}
+
+.text-gray-800 {
+  color: #2d3748;
+}
+
+/* For trial purposes only! DELETE LATER */
+.bg-red-600 {
+  background-color: rgb(220 38 38);
+}
+
+.bg-rose-600 {
+  background-color: rgb(225 29 72);
+}
+
+.nav-a:after {
+  display: block;
+  content: '';
+  border-bottom: solid 2px #3182ce;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+
+.nav-a:hover:after {
+  transform: scaleX(1);
+}

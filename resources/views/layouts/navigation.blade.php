@@ -22,9 +22,7 @@
 
                     <!-- User Logo -->
                     @isUser
-                        <a href="{{ route('user.dashboard') }}">
-                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                        </a>
+                        <a href="" class="text-3xl font-bold leading-none">TasCo</a>
                     @endisUser
                 </div>
 
