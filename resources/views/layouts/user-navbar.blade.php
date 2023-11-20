@@ -4,7 +4,10 @@
     <div class="shadow-lg">
         <div class="max-w-6xl px-4 mx-auto" x-data="{ open: false }">
             <nav class="flex items-center justify-between py-4">
-                <a href="" class="text-3xl font-bold leading-none">TasCo</a>
+                <div class="flex">
+                    <x-application-logo />
+                    <a href="" class="text-3xl font-bold leading-none mt-2.5">TasCo</a>
+                </div>
                 <div class="flex justify-between lg:space-x-9">
                     <div class="flex lg:hidden">
                         <button

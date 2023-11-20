@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -9,23 +11,37 @@ use App\Models\CustomerServiceMessage;
 
 class UserController extends Controller
 {
-    public function UserDashboard(){
-        return view("user.dashboard");
+    public function UserHomePage()
+    {
+        $workerUsers = User::where('role', 'worker')->get();
+        // Retrieve categories
+        $categories = Category::all();
+
+        return view("user.user-homepage", compact('workerUsers', 'categories'));
     }
 
-    public function UserSettings(){
+    public function UserSettings()
+    {
         return view("user.user-settings");
     }
-    
-    public function UserChatify(){
+
+    public function UserChatify()
+    {
         return view("user.chatify");
     }
 
-    public function UserHomePage(){
-        return view("user.user-homepage");
+    public function UserApplyJobseeker()
+    {
+        return view("user.user-apply-jobseeker");
     }
 
-    public function UserCustomerService(){
+    public function UserApplyEmployer()
+    {
+        return view("user.user-apply-employer");
+    }
+
+    public function UserCustomerService()
+    {
         return view("user.user-customerService");
     }
 
@@ -49,5 +65,5 @@ class UserController extends Controller
         return redirect()->route('user.customerService'); // Adjust the route name as needed
     }
 
-    
+
 }

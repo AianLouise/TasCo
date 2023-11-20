@@ -25,7 +25,7 @@
                             needs.
                         </p>
 
-                        <div class="justify-center sm:flex">
+                        <div class="justify-center sm:flex" onclick="scrollToBrowseSection()">
                             <div class="">
                                 <a href="#"
                                     class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
@@ -53,7 +53,7 @@
 
                 <!-- Start: Heading-->
                 <div class="text-center mx-auto mb-12 lg:px-20">
-                    <h2 class=" leading-normal mb-2 text-4xl font-bold text-black">Browse</h2>
+                    <h2 class=" leading-normal mb-2 text-4xl font-bold text-black" id="browse">Browse</h2>
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
                         <circle cx="50.1" cy="30.4" r="5" class="stroke-primary"
@@ -242,13 +242,35 @@
 
                 <form class="mb-12 w-full">
                     <div class="flex">
+                        <!-- Your existing button -->
                         <button id="dropdown-button" data-dropdown-toggle="dropdown"
                             class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
-                            type="button">All categories <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            type="button">
+                            All categories
+                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg></button>
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown content -->
+                        <div id="dropdown-content"
+                            class="hidden absolute z-10 mt-10 bg-white border border-gray-300 rounded-lg shadow-md">
+                            <!-- Add your dynamic categories here -->
+                            @foreach ($categories as $category)
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ $category->name }}</a>
+                            @endforeach
+                        </div>
+
+                        <!-- JavaScript to toggle the dropdown -->
+                        <script>
+                            document.getElementById('dropdown-button').addEventListener('click', function() {
+                                document.getElementById('dropdown-content').classList.toggle('hidden');
+                            });
+                        </script>
+
 
                         <div class="relative w-full">
                             <input type="search" id="search-dropdown"
@@ -269,90 +291,53 @@
                 </form>
 
                 <!-- Start: Worker Section Row -->
-
                 <div class="flex flex-wrap flex-row -mx-4 text-center">
 
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s"
-                        style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+                    @foreach ($workerUsers->take(6) as $worker)
+                        <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
+                            data-wow-duration="1s"
+                            style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
 
-                        <!-- Worker Profile -->
+                            <!-- Worker Profile -->
+                            <div
+                                class="py-8 px-12 mb-12 border border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                                <div class="flex flex-col items-center pb-10">
+                                    @if ($worker->avatar == 'avatar.png')
+                                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                                            src="https://ui-avatars.com/api/?name={{ urlencode($worker->name) }}&color=7F9CF5&background=EBF4FF"
+                                            alt="{{ $worker->name }}" />
+                                    @else
+                                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                                            src="{{ asset('storage/users-avatar/' . basename($worker->avatar)) }}"
+                                            alt="{{ $worker->name }}">
+                                    @endif
 
-                        <div
-                            class="py-8 px-12 mb-12 border border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
-
-                            <div class="flex flex-col items-center pb-10">
-                                <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                                    src="https://placehold.co/100x100.jpg" />
-                                <h5 class="mb-1 text-xl font-medium text-gray-900">Sample Worker</h5>
-                                <span class="text-sm text-gray-500 ">Sample Work</span>
-                                <div class="flex mt-4 md:mt-6">
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View
-                                        Profile</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 ms-3">Message</a>
+                                    <h5 class="mb-1 text-xl font-medium text-gray-900">{{ $worker->name }}</h5>
+                                    <span class="text-sm text-gray-500 ">{{ $worker->category->name }}</span>
+                                    <div class="flex mt-4 md:mt-6">
+                                        <a href=""
+                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                            View Profile
+                                        </a>
+                                        <a href=""
+                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 ms-3">
+                                            Message
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- End: Worker Profile -->
+
                         </div>
-                        <!-- End: Worker Profile -->
+                    @endforeach
+
+                    <!-- See More Jobs Button -->
+                    <div class="w-full flex justify-center">
+                        <a href="#" class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">See More Jobs</a>
                     </div>
-
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s" data-wow-delay=".1s"
-                        style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
-
-                        <!-- Worker Profile -->
-
-                        <div
-                            class="py-8 px-12 mb-12 border border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
-
-                            <div class="flex flex-col items-center pb-10">
-                                <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                                    src="https://placehold.co/100x100.jpg" />
-                                <h5 class="mb-1 text-xl font-medium text-gray-900">Sample Worker</h5>
-                                <span class="text-sm text-gray-500 ">Sample Work</span>
-                                <div class="flex mt-4 md:mt-6">
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View
-                                        Profile</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 ms-3">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End: Worker Profile -->
-                    </div>
-
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s" data-wow-delay=".3s"
-                        style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-
-                        <!-- Worker Profile -->
-
-                        <div
-                            class="py-8 px-12 mb-12 border border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
-
-                            <div class="flex flex-col items-center pb-10">
-                                <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                                    src="https://placehold.co/100x100.jpg" />
-                                <h5 class="mb-1 text-xl font-medium text-gray-900">Sample Worker</h5>
-                                <span class="text-sm text-gray-500">Sample Work</span>
-                                <div class="flex mt-4 md:mt-6">
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View
-                                        Profile</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 ms-3">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End: Worker Profile -->
-                    </div>
-
-
                 </div>
                 <!-- end row -->
+
 
 
             </div>
@@ -530,50 +515,94 @@
 
         <!-- Start: Apply Now Section -->
         <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
-
             <div class="container xl:max-w-6xl mx-auto px-4">
-
-
-                <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
-                    <h5 class="mb-2 text-3xl font-bold">Apply Now</h5>
-                    <p class="mb-5 text-base text-gray-500 sm:text-lg">Interested in joining our community?</p>
-                    <div
-                        class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
-                        <a href="#"
-                            class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
-                            <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H4ZM13 16.083V20H17.6586C16.9423 17.9735 15.1684 16.4467 13 16.083ZM11 20V16.083C8.83165 16.4467 7.05766 17.9735 6.34141 20H11ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.2104 11 16 9.21043 16 7C16 4.78957 14.2104 3 12 3C9.78957 3 8 4.78957 8 7C8 9.21043 9.78957 11 12 11Z"
-                                    fill="rgba(255,255,255,1)"></path>
-                            </svg>
-                            <div class="text-left rtl:text-right">
-                                <div class="mb-1 text-xs">Apply as</div>
-                                <div class="-mt-1 font-sans text-sm font-semibold">Job Seeker</div>
+                @auth
+                    @if (auth()->user()->is_verified)
+                        <!-- User is verified, hide the Apply Now Section -->
+                    @else
+                        <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+                            <h5 class="mb-2 text-3xl font-bold">Apply Now</h5>
+                            <p class="mb-5 text-base text-gray-500 sm:text-lg">Interested in joining our community?</p>
+                            <div
+                                class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+                                <a href="{{ route('user.applyJobseeker') }}"
+                                    class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
+                                    <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path
+                                            d="M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H4ZM13 16.083V20H17.6586C16.9423 17.9735 15.1684 16.4467 13 16.083ZM11 20V16.083C8.83165 16.4467 7.05766 17.9735 6.34141 20H11ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.2104 11 16 9.21043 16 7C16 4.78957 14.2104 3 12 3C9.78957 3 8 4.78957 8 7C8 9.21043 9.78957 11 12 11Z"
+                                            fill="rgba(255,255,255,1)"></path>
+                                    </svg>
+                                    <div class="text-left rtl:text-right">
+                                        <div class="mb-1 text-xs">Apply as</div>
+                                        <div class="-mt-1 font-sans text-sm font-semibold">Job Seeker</div>
+                                    </div>
+                                </a>
+                                <a href="#"
+                                    class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
+                                    <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path
+                                            d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z"
+                                            fill="rgba(255,255,255,1)"></path>
+                                    </svg>
+                                    <div class="text-left rtl:text-right">
+                                        <div class="mb-1 text-xs">Apply as</div>
+                                        <div class="-mt-1 font-sans text-sm font-semibold">Employer</div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                        <a href="#"
-                            class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
-                            <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z"
-                                    fill="rgba(255,255,255,1)"></path>
-                            </svg>
-                            <div class="text-left rtl:text-right">
-                                <div class="mb-1 text-xs">Apply as</div>
-                                <div class="-mt-1 font-sans text-sm font-semibold">Employer</div>
-                            </div>
-                        </a>
+                        </div>
+                    @endif
+                @else
+                    <!-- User is not authenticated, show the Apply Now Section -->
+                    <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+                        <h5 class="mb-2 text-3xl font-bold">Apply Now</h5>
+                        <p class="mb-5 text-base text-gray-500 sm:text-lg">Interested in joining our community?</p>
+                        <div
+                            class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+                            <a href="#"
+                                class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
+                                <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path
+                                        d="M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H4ZM13 16.083V20H17.6586C16.9423 17.9735 15.1684 16.4467 13 16.083ZM11 20V16.083C8.83165 16.4467 7.05766 17.9735 6.34141 20H11ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.2104 11 16 9.21043 16 7C16 4.78957 14.2104 3 12 3C9.78957 3 8 4.78957 8 7C8 9.21043 9.78957 11 12 11Z"
+                                        fill="rgba(255,255,255,1)"></path>
+                                </svg>
+                                <div class="text-left rtl:text-right">
+                                    <div class="mb-1 text-xs">Apply as</div>
+                                    <div class="-mt-1 font-sans text-sm font-semibold">Job Seeker</div>
+                                </div>
+                            </a>
+                            <a href="#"
+                                class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
+                                <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path
+                                        d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z"
+                                        fill="rgba(255,255,255,1)"></path>
+                                </svg>
+                                <div class="text-left rtl:text-right">
+                                    <div class="mb-1 text-xs">Apply as</div>
+                                    <div class="-mt-1 font-sans text-sm font-semibold">Employer</div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-
+                @endauth
             </div>
         </section>
         <!-- End: Apply Now Section -->
 
-
         <x-footer />
 
     </main>
+    <script>
+        function scrollToBrowseSection() {
+            var browseSection = document.getElementById('browse');
+            browseSection.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </x-app-layout>
