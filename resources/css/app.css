@@ -61,3 +61,9 @@
       @apply font-poppins text-slate-gray text-lg leading-7;
     }
   }
+
+  @layer components {
+    .text-slate-gray {
+      color: #718096; /* Replace with your desired color */
+    }
+  }

@@ -244,6 +244,11 @@
                 letter-spacing: 1px;             
             }
 
+            .px-54{
+                padding-left: 13.2rem; /* 224px */
+                padding-right: 13.2rem; /* 224px */
+            }
+
         </style>
     </head>
     <body class="font-sans text-gray-900 antialiased">

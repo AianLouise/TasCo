@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <!-- Meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <!-- Title -->
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -18,20 +20,18 @@
         <!-- In your Blade view or layout -->
         <link href="{{ asset('css/chatify/style.css') }}" rel="stylesheet" />
 
-
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
         @if(Auth::check())
             @if(Auth::user()->role === 'admin')
+                <!-- Include Admin Sidebar for admin role -->
                 @include('layouts.admin-sidebar')
-            @elseif(Auth::user()->role === 'worker')
-                @include('layouts.navigation')
-            @elseif(Auth::user()->role === 'user')
+            @elseif(Auth::user()->role === 'worker' || Auth::user()->role === 'user')
+                <!-- Include Navigation for worker or user role -->
                 @include('layouts.navigation')
             @endif
         @endif
-
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -48,6 +48,7 @@
             </main>
         </div>
 
+        <!-- External Scripts -->
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         @vite(['resources/js/script.js'])
     </body>

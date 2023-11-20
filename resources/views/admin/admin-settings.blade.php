@@ -4,11 +4,9 @@
      <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-blue-50 min-h-screen transition-all main">
 
         <!-- Start: Header -->
-
         <div class="py-2 px-6 bg-white flex items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
             
             <!-- Start: Logo / Active Menu -->
-
             <button type="button" class="text-lg text-gray-600 sidebar-toggle">
                 <i class="ri-menu-2-line"></i>
             </button>
@@ -24,19 +22,12 @@
             <!-- End: Logo / Active Menu -->
 
             <!-- Start: Profile -->
-
             <x-admin-profile-dropdown :user="Auth::user()" />
-
             <!-- End: Profile -->
 
         </div>
-
         <!-- End: Header -->  
-        
           
     </main>
-    <!-- end: Main -->
-   
-    {{-- <script src="https://unpkg.com/@popperjs/core@2"></script>
-    @vite(['resources/js/script.js']) --}}
+    <!-- End: Main -->
 </x-app-layout>

@@ -12,6 +12,10 @@ class WorkerController extends Controller
         return view("worker.worker-dashboard");
     }
 
+    public function WorkerChatify(){
+        return view("worker.chatify");
+    }
+
     public function editProfile($id)
     {
         $worker = Worker::find($id);
