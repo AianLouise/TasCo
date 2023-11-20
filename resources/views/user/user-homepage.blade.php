@@ -148,13 +148,21 @@
                             </li>
                         </ul>
                         
+                        
                         <div class="items-center hidden pl-2 ml-auto mr-8 lg:flex lg:ml-0 lg:mr-0">
-                            <form>   
+                            <form>
                                 <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                                 <div class="relative">
-                                    <input type="search" class="block w-full  ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search..." required>
-                                    <button type="submit" class="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1">
-                                        <svg class="w-4 h-4 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path></svg>
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                                        <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="rgba(173,184,194,1)"></path></svg>
+                                        
+                                        </button>
+                                    </span>
+                                    <input type="search" class="pl-3 ps-8 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search...">
+                                    
+                                    <button type="submit" class="text-blue-500 absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:text-blue-500  focus:hide focus:ring-blue-300 font-medium rounded-lg text-sm px-1">
                                     
                                     </button>
                                 </div>
@@ -194,11 +202,14 @@
                     <form class="px-3">   
                         <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                          <div class="relative">
-                              <input type="search" class="block w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search..." required>
-                             <button type="submit" class="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1">
-                                 <svg class="w-4 h-4 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path></svg>
+                            <input type="search" class="block w-full text-sm pl-8 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search...">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                                    <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="rgba(173,184,194,1)"></path></svg>
                                     
-                             </button>
+                                    </button>
+                                </span>
                         </div>
                     </form>
                     <!-- End: Nav List -->
@@ -230,12 +241,12 @@
                         <div class="justify-center sm:flex">
                             <div class="">
                                 <a href="#"
-                                    class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
+                                    class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 font-medium rounded-md shadow hover:bg-blue-500 ">
                                     Get started</a>
                             </div>
                             <div class="mt-3 sm:mt-0 sm:ml-3">
                                 <a href="#"
-                                    class="flex items-center justify-center w-full px-8 py-3 text-blue-600 rounded-md shadow hover:text-gray-100 hover:bg-blue-500 ">
+                                    class="flex items-center justify-center w-full px-8 py-3 text-blue-600 rounded-md font-medium shadow hover:text-gray-100 hover:bg-blue-500 ">
                                     Learn More</a>
                             </div>
                         </div>
