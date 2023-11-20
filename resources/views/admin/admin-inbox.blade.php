@@ -32,7 +32,7 @@
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md">
             <div class="flex justify-between mb-4 items-start">
                 <!-- Heading for Application Section -->
-                <div class="font-medium2">Application</div>
+                <div class="font-medium2">Inbox</div>
             </div>
 
             <!-- Inbox Table -->
@@ -101,11 +101,11 @@
                                 </td>
 
                                 <!-- Table Data for Actions (View and Delete) -->
-                                <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium ">
-                                    <a href="editUser.html" class="text-blue-400 hover:text-blue-600">View</a>
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
+                                    <a href="{{ route('admin.showEmailView', ['user' => $message->user_id]) }}" class="text-blue-400 hover:text-blue-600">View</a>
                                     <span class="text-gray-600">/</span>
                                     <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
-                                </td>
+                                </td>                                
                             </tr>
                         @endforeach
                     </tbody>
