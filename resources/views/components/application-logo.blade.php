@@ -4,4 +4,6 @@
 
 {{-- <img class="LoginLogo" src="{{ URL('images/Logo.jpg') }}" alt="Login Logo" style="width: 50px"> --}}
 
-<h1 class="font-bold">TasCo</h1>
+{{-- <h1 class="font-bold">TasCo</h1> --}}
+
+<img src="{{ asset('images/logo2.jpg') }}" alt="Logo" width="50">

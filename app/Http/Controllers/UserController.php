@@ -11,12 +11,13 @@ use App\Models\CustomerServiceMessage;
 
 class UserController extends Controller
 {
-
-    public function UserSettings(){
+    public function UserSettings()
+    {
         return view("user.user-settings");
     }
-    
-    public function UserChatify(){
+
+    public function UserChatify()
+    {
         return view("user.chatify");
     }
 
@@ -44,9 +45,16 @@ class UserController extends Controller
     public function UserApplyEmployer()
     {
         return view("user.user-apply-employer");
+
     }
 
-    public function UserCustomerService(){
+    public function UserApplyEmployer()
+    {
+        return view("user.user-apply-employer");
+    }
+
+    public function UserCustomerService()
+    {
         return view("user.user-customerService");
     }
 
@@ -70,5 +78,5 @@ class UserController extends Controller
         return redirect()->route('user.customerService'); // Adjust the route name as needed
     }
 
-    
+
 }

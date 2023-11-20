@@ -21,6 +21,6 @@ class userprofile extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.user-profile');
+        return view('components.userprofile');
     }
 }

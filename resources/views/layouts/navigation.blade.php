@@ -58,7 +58,7 @@
 
                     <!-- User Navigation Links -->
                     @isUser
-                        <x-nav-link :href="route('user.homePage')" :active="request()->routeIs('user.homePage')">
+                        <x-nav-link :href="route('user.home')" :active="request()->routeIs('user.home')">
                             {{ __('Home Page') }}
                         </x-nav-link>
 
@@ -133,9 +133,9 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <!-- Responsive Dashboard Link -->
-            <x-responsive-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
+            {{-- <x-responsive-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
                 {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            </x-responsive-nav-link> --}}
         </div>
 
         <!-- Responsive Settings Options -->
