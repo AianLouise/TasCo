@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
         }elseif($request->user()->role === 'worker'){
             $url = 'worker/dashboard';
         }elseif($request->user()->role === 'user'){
-            $url = 'user/home';
+            $url = 'home';
         }
 
         // Check if the user is verified

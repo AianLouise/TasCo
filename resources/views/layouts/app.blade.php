@@ -30,7 +30,7 @@
             @elseif(Auth::user()->role === 'worker')
                 @include('layouts.navigation')
             @elseif (Auth::user()->role === 'user')
-                @include('layouts.navigation')
+                @include('layouts.user-navbar')
             @endif
         @endif
 

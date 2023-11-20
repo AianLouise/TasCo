@@ -3,9 +3,6 @@
     <main>
 
         <section class="shadow-sm">
-
-
-
             <!-- Start: Hero Section-->
 
             <!-- Start: Hero Background Image -->
