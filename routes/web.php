@@ -78,6 +78,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/home', [UserController::class, 'UserHomePage'])->name('user.home');
     Route::get('/settings', [UserController::class, 'UserSettings'])->name('user.settings');
+    Route::get('/terms', [UserController::class, 'UserTerms'])->name('user.terms');
+    Route::get('/guidelines', [UserController::class, 'UserGuidelines'])->name('user.guidelines');
+    Route::get('/activitylog', [UserController::class, 'UserActivityLog'])->name('user.activitylog');
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
     Route::get('/customer-service', [UserController::class, 'UserCustomerService'])->name('user.customerService');
     Route::post('/email-sent', [UserController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');

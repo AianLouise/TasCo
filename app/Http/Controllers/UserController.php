@@ -9,9 +9,9 @@ use App\Models\CustomerServiceMessage;
 
 class UserController extends Controller
 {
-    public function UserDashboard(){
-        return view("user.dashboard");
-    }
+    // public function UserDashboard(){
+    //     return view("user.dashboard");
+    // }
 
     public function UserSettings(){
         return view("user.user-settings");
@@ -23,6 +23,18 @@ class UserController extends Controller
 
     public function UserHomePage(){
         return view("user.user-homepage");
+    }
+
+    public function UserActivityLog(){
+        return view("user.user-activitylog");
+    }
+    
+    public function UserTerms(){
+        return view("user.user-terms");
+    }
+
+    public function UserGuidelines(){
+        return view("user.user-guidelines");
     }
 
     public function UserCustomerService(){
