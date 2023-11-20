@@ -8,7 +8,9 @@ use App\Models\Category;
 use App\Models\ActivityLog;
 use App\Models\ServicesLog;
 use Illuminate\Http\Request;
+use Symfony\Component\Mime\Email;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CustomerServiceMessage;
 use Illuminate\Support\Facades\Password;
@@ -131,7 +133,7 @@ class AdminController extends Controller
         $categories = Category::all();
         $user = User::find($id);
 
-        return view('admin.admin-editProfile', ['user' => $user ,'categories'=> $categories]);
+        return view('admin.admin-editProfile', ['user' => $user, 'categories' => $categories]);
     }
 
     // Delete a user profile based on the provided user ID
@@ -157,7 +159,7 @@ class AdminController extends Controller
             'fname' => 'required|string',
             'lname' => 'required|string',
             'address' => 'required|string',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'role' => 'required|string|in:admin,worker,user',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules for the avatar as needed
         ], [
@@ -217,6 +219,35 @@ class AdminController extends Controller
 
         return view("admin.admin-inbox", compact('messages'));
     }
+
+    public function showEmailView(User $user)
+    {
+        return view('admin.admin-inboxMessage', compact('user'));
+    }
+
+    public function replyEmail(Request $request, $emailId)
+    {
+        // Find the customer service message by its ID
+        $email = CustomerServiceMessage::find($emailId);
+    
+        // Check if the message with the given $emailId exists
+        if ($email) {
+            // The $email variable is not null, and it represents an existing message
+            // Now you can safely call the replies() method on the message
+            $email->replies()->create([
+                'user_id' => Auth::id(),            // Set the user ID for the reply
+                'message' => $request->input('reply_message'),  // Set the reply message content
+            ]);
+    
+            // Redirect back with a success message after submitting the reply
+            return redirect()->back()->with('success', 'Reply submitted successfully.');
+        } else {
+            // Handle the case where the message with the given $emailId is not found
+            // For example, you can redirect the user back or display an error message
+            return redirect()->back()->with('error', 'Message not found.');
+        }
+    }
+
 
     // View to display the audit trail for the admin
     public function AdminAuditTrail()

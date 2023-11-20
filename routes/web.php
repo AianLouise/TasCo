@@ -58,6 +58,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/services', [AdminController::class, 'AdminServices'])->name('admin.services');
     Route::get('/admin/application', [AdminController::class, 'AdminApplication'])->name('admin.application');
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
+    Route::get('/inbox/{user}/view', [AdminController::class, 'showEmailView'])->name('admin.showEmailView');
+    Route::post('/admin/reply-email/{emailId}', [AdminController::class, 'replyEmail'])->name('admin.replyEmail');
     Route::get('/admin/auditTrail', [AdminController::class, 'AdminAuditTrail'])->name('admin.auditTrail');
     Route::get('/admin/settings', [AdminController::class, 'AdminSettings'])->name('admin.settings');
 });
