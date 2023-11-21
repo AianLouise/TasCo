@@ -14,6 +14,10 @@
                 <div class="z-10 px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
 
+                        <div class="flex items-center justify-center">
+                            <img src="{{ asset('images/App-Logo.png') }}" alt="Logo" width="200">
+                        </div>    
+
                         <h1 class="mb-6 text-5xl font-bold tracking-tight md:text-6xl">
                             Welcome to <span class="text-blue-500">Tasco</span>
                         </h1>
