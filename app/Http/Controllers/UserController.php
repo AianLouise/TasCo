@@ -48,11 +48,6 @@ class UserController extends Controller
 
     }
 
-    public function UserApplyEmployer()
-    {
-        return view("user.user-apply-employer");
-    }
-
     public function UserCustomerService()
     {
         return view("user.user-customerService");
