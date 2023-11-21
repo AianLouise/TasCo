@@ -103,15 +103,6 @@ class UserController extends Controller
         return view("user.chatify");
     }
 
-    public function UserHomePage()
-    {
-        $workerUsers = User::where('role', 'worker')->get();
-        // Retrieve categories
-        $categories = Category::all();
-
-        return view("user.user-homepage", compact('workerUsers', 'categories'));
-    }
-
     public function UserActivityLog(){
         return view("user.user-activitylog");
     }
