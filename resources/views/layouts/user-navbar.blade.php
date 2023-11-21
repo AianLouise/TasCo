@@ -88,6 +88,9 @@
                         <a href="{{ route('user.home') }}" class="text-sm text-gray-700 hover:text-blue-400">Home</a>
                     </li>
                     <li class="pb-3">
+                        <a href="{{ route('user.showWorker') }}" class="text-sm text-gray-700 hover:text-blue-400">Worker</a>
+                    </li>
+                    <li class="pb-3">
                         <a href="" class="text-sm text-gray-700 hover:text-blue-400">Profile</a>
                     </li>
                     <li class="pb-3">
