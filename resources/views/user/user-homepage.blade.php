@@ -14,6 +14,10 @@
                 <div class="z-10 px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
 
+                        <div class="flex items-center justify-center">
+                            <img src="{{ asset('images/App-Logo.png') }}" alt="Logo" width="200">
+                        </div>    
+
                         <h1 class="mb-6 text-5xl font-bold tracking-tight md:text-6xl">
                             Welcome to <span class="text-blue-500">Tasco</span>
                         </h1>
@@ -25,9 +29,9 @@
                             needs.
                         </p>
 
-                        <div class="justify-center sm:flex" onclick="scrollToBrowseSection()">
+                        <div class="justify-center sm:flex" >
                             <div class="">
-                                <a href="#"
+                                <a href="{{ route('user.home')}}#browse"
                                     class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
                                     Get started</a>
                             </div>
@@ -46,8 +50,8 @@
 
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+        <a id="browse"></a>
         <!-- Start: Browse Section -->
-
         <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
             <div class="container xl:max-w-6xl mx-auto px-4">
 
@@ -216,6 +220,7 @@
         <!-- End: Roles Section -->
 
         <!-- Start: Workers Section -->
+        <a id="top"></a>
         <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
 
             <div class="container xl:max-w-6xl mx-auto px-4">
@@ -234,19 +239,21 @@
                             style="stroke-width: 2;stroke-miterlimit: 10;"></line>
                     </svg>
                     <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">With their services</p>
-
-
                 </div>
                 <!-- End: Heading -->
 
-
-                <form class="mb-12 w-full">
-                    <div class="flex">
+                <!-- Your updated form -->
+                <form class="mb-12 w-full" action="{{ route('workers.sort') }}#top" method="get">
+                    <div class="flex relative" onclick="toggleDropdown()">
                         <!-- Your existing button -->
-                        <button id="dropdown-button" data-dropdown-toggle="dropdown"
+                        <button id="dropdown-button"
                             class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
                             type="button">
-                            All categories
+                            @if (request()->has('category'))
+                                {{ $categories->firstWhere('id', request('category'))->name }}
+                            @else
+                                All categories
+                            @endif
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -256,29 +263,26 @@
 
                         <!-- Dropdown content -->
                         <div id="dropdown-content"
-                            class="hidden absolute z-10 mt-10 bg-white border border-gray-300 rounded-lg shadow-md">
+                            class="hidden absolute z-10 mt-10 bg-white border border-gray-300 rounded-lg shadow-md p-3">
+                            <!-- Add "All categories" option -->
+                            <a href="{{ route('workers.sort') }}#top"
+                                class="block text-sm font-medium text-gray-900 hover:bg-gray-200 p-2">All
+                                categories</a>
                             <!-- Add your dynamic categories here -->
                             @foreach ($categories as $category)
-                                <a href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ $category->name }}</a>
+                                <a href="{{ route('workers.sort', ['category' => $category->id]) }}#top"
+                                    class="block text-sm font-medium text-gray-900 hover:bg-gray-200 p-2">{{ $category->name }}</a>
                             @endforeach
                         </div>
 
-                        <!-- JavaScript to toggle the dropdown -->
-                        <script>
-                            document.getElementById('dropdown-button').addEventListener('click', function() {
-                                document.getElementById('dropdown-content').classList.toggle('hidden');
-                            });
-                        </script>
-
-
+                        <!-- Your updated search input and button -->
                         <div class="relative w-full">
-                            <input type="search" id="search-dropdown"
+                            <input type="search" id="search-dropdown" name="search"
                                 class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Search for Workers, Employer, Category..." required>
+                                placeholder="Search for Workers, Category..." required value="{{ old('search') }}" />
                             <button type="submit"
-                                class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-500 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-
+                                class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-500 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                                onclick="scrollToElement('top')">
                                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -289,6 +293,23 @@
                         </div>
                     </div>
                 </form>
+
+                <script>
+                    function toggleDropdown() {
+                        var dropdownContent = document.getElementById('dropdown-content');
+                        dropdownContent.classList.toggle('hidden');
+                    }
+
+                    // Function to scroll to a specific element by ID
+                    function scrollToElement(elementId) {
+                        var element = document.getElementById(elementId);
+                        if (element) {
+                            element.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                </script>
 
                 <!-- Start: Worker Section Row -->
                 <div class="flex flex-wrap flex-row -mx-4 text-center">
@@ -333,7 +354,9 @@
 
                     <!-- See More Jobs Button -->
                     <div class="w-full flex justify-center">
-                        <a href="#" class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">See More Jobs</a>
+                        <a href="#"
+                            class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">See
+                            More Workers</a>
                     </div>
                 </div>
                 <!-- end row -->

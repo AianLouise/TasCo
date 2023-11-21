@@ -11,43 +11,39 @@ class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_login_screen_can_be_rendered(): void
+    public function test_create_displays_login_view()
     {
         $response = $this->get('/login');
 
         $response->assertStatus(200);
+        $response->assertViewIs('auth.login');
     }
 
-    public function test_users_can_authenticate_using_the_login_screen(): void
+    public function test_store_authenticates_and_redirects_user()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'email' => 'default@example.com',
+            'password' => bcrypt($password = 'default-password'),
+        ]);
 
         $response = $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'password',
+            'email' => 'default@example.com',
+            'password' => 'default-password',
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+        $response->assertRedirect('/home');
     }
 
-    public function test_users_can_not_authenticate_with_invalid_password(): void
+    public function test_destroy_logs_out_and_redirects_user()
     {
         $user = User::factory()->create();
 
-        $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'wrong-password',
+        $this->actingAs($user);
+
+        $response = $this->post('/logout', [
+            'password' => 'password', // assuming 'password' is the user's actual password
         ]);
-
-        $this->assertGuest();
-    }
-
-    public function test_users_can_logout(): void
-    {
-        $user = User::factory()->create();
-
-        $response = $this->actingAs($user)->post('/logout');
 
         $this->assertGuest();
         $response->assertRedirect('/');

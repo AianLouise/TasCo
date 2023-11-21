@@ -6,4 +6,4 @@
 
 {{-- <h1 class="font-bold">TasCo</h1> --}}
 
-<img src="{{ asset('images/logo2.jpg') }}" alt="Logo" width="50">
+<img src="{{ asset('images/App-Logo.png') }}" alt="Logo" width="50">

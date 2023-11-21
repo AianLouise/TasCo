@@ -9,6 +9,7 @@ use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 // Profile Routes (Requires Authentication)
 Route::middleware('auth')->group(function () {
@@ -76,6 +79,8 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 Route::middleware(['auth', 'role:user'])->group(function () {
     // User Dashboard and Related Routes
     Route::get('/home', [UserController::class, 'UserHomePage'])->name('user.home');
+    Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
+    Route::get('/available-worker', [UserController::class, 'UserWorkerPage'])->name('user.showWorker');
     Route::get('/settings', [UserController::class, 'UserSettings'])->name('user.settings');
     Route::get('/terms', [UserController::class, 'UserTerms'])->name('user.terms');
     Route::get('/guidelines', [UserController::class, 'UserGuidelines'])->name('user.guidelines');
