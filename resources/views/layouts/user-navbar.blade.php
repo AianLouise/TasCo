@@ -3,18 +3,21 @@
     <!-- Start: Header Navigation-->
     <div class="shadow-lg">
         <div class="max-w-6xl px-4 mx-auto" x-data="{ open: false }">
-            <nav class="flex items-center justify-between py-2">
+            <nav class="flex items-center justify-between py-4">
                 <div class="flex">
                     <x-application-logo />
-                    <a href="" class="text-3xl font-bold px-1 leading-none mt-2.5">TasCo</a>
+                    <a href="" class="text-3xl font-bold leading-none mt-2.5">TasCo</a>
                 </div>
                 <div class="flex justify-between lg:space-x-9">
                     <div class="flex lg:hidden">
                         <button
-                            class="flex items-center px-3 py-2 text-blue-600 rounded navbar-burger hover:border-blue-500 lg:hidden"
+                            class="flex items-center px-3 py-2 text-blue-600 border border-blue-200 rounded navbar-burger hover:text-blue-800 hover:border-blue-500 lg:hidden"
                             @click="open =true">
 
-                            <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z" fill="rgba(70,146,221,1)">
+                                </path>
+                            </svg>
                         </button>
                     </div>
                     <ul class="hidden lg:w-auto lg:space-x-9 lg:items-center lg:flex">
@@ -33,20 +36,20 @@
                                 <input type="search"
                                     class="block w-full  ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                                     placeholder="Search..." required>
-                                    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                                        <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
-
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="rgba(173,184,194,1)"></path></svg>
-                                        
-                                        </button>
-                                    </span>
+                                <button type="submit"
+                                    class="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1">
+                                    <svg class="w-4 h-4 text-black" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path
+                                            d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z">
+                                        </path>
+                                    </svg>
 
                                 </button>
                             </div>
                         </form>
-                        <x-user-profile />
                     </div>
-                    
+                    <x-user-profile />
                 </div>
             </nav>
 
@@ -96,13 +99,16 @@
                         <input type="search"
                             class="block w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Search..." required>
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                                    <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                        <button type="submit"
+                            class="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1">
+                            <svg class="w-4 h-4 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z">
+                                </path>
+                            </svg>
 
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="rgba(173,184,194,1)"></path></svg>
-                                    
-                                    </button>
-                                </span>
+                        </button>
                     </div>
                 </form>
                 <!-- End: Nav List -->

@@ -28,12 +28,12 @@
                         <div class="justify-center sm:flex" onclick="scrollToBrowseSection()">
                             <div class="">
                                 <a href="#"
-                                    class="flex items-center justify-center font-medium px-6 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-600 hover:text-white">
+                                    class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
                                     Get started</a>
                             </div>
                             <div class="mt-3 sm:mt-0 sm:ml-3">
                                 <a href="#"
-                                    class="flex items-center justify-center font-medium px-6 py-3 text-blue-500 rounded-md shadow hover:text-blue-500 hover:bg-white hover:border hover:border-blue-500">
+                                    class="flex items-center justify-center w-full px-8 py-3 text-blue-600 rounded-md shadow hover:text-gray-100 hover:bg-blue-500 ">
                                     Learn More</a>
                             </div>
                         </div>
@@ -274,7 +274,7 @@
 
                         <div class="relative w-full">
                             <input type="search" id="search-dropdown"
-                                class="block p-2.5 w-full z-20 text-sm text-gray-900 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="Search for Workers, Employer, Category..." required>
                             <button type="submit"
                                 class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-500 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
@@ -333,7 +333,7 @@
 
                     <!-- See More Jobs Button -->
                     <div class="w-full flex justify-center">
-                        <a href="#" class="w-full sm:w-auto bg-blue-500 hover:bg-blue-700 font-medium text-white rounded-md inline-flex items-center justify-center px-4 py-2.5">See More Jobs</a>
+                        <a href="#" class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">See More Jobs</a>
                     </div>
                 </div>
                 <!-- end row -->
@@ -379,7 +379,7 @@
                         style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="bg-grad py-8 px-12 mb-12 border border-blue-500 rounded-md transform transition duration-300 ease-in-out hover:-translate-y-2">
+                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                             <div class="inline-block text-gray-900 mb-4">
                                 <!-- icon -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
@@ -401,7 +401,7 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 border border-blue-500 rounded-md transform transition duration-300 ease-in-out hover:-translate-y-2">
+                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                             <div class="inline-block text-gray-900 mb-4">
                                 <!-- icon -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
@@ -414,7 +414,7 @@
                             </div>
                             <h3 class="text-lg leading-normal mb-2 font-semibold text-black">Verified Documents</h3>
                             <p class="text-gray-500">In our community, documents are verified before any transactions
-                                happen in the community!</p>
+                                happen in the community to keep a safe and secure local area!</p>
                         </div>
                         <!-- end service block -->
                     </div>
@@ -423,7 +423,7 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 border border-blue-500 rounded-md transform transition duration-300 ease-in-out hover:-translate-y-2">
+                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                             <div class="inline-block text-gray-900 mb-4">
                                 <!-- icon -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
@@ -445,7 +445,7 @@
                         style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 border border-blue-500 rounded-md transform transition duration-300 ease-in-out hover:-translate-y-2">
+                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                             <div class="inline-block text-gray-900 mb-4">
                                 <!-- icon -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
@@ -467,7 +467,7 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 border border-blue-500 rounded-md transform transition duration-300 ease-in-out hover:-translate-y-2">
+                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                             <div class="inline-block text-gray-900 mb-4">
                                 <!-- icon -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
@@ -488,7 +488,7 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 border border-blue-500 rounded-md transform transition duration-300 ease-in-out hover:-translate-y-2">
+                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                             <div class="inline-block text-gray-900 mb-4">
                                 <!-- icon -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
@@ -514,13 +514,13 @@
         <!-- End: Services Section -->
 
         <!-- Start: Apply Now Section -->
-        <section class="relative pt-16 pb-8 md:pt-4 md:pb-0 bg-white">
+        <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
             <div class="container xl:max-w-6xl mx-auto px-4">
                 @auth
                     @if (auth()->user()->is_verified)
                         <!-- User is verified, hide the Apply Now Section -->
                     @else
-                        <div class="w-full p-4 bg-white-50 text-center border border-blue-500 rounded-lg shadow sm:p-8">
+                        <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
                             <h5 class="mb-2 text-3xl font-bold">Apply Now</h5>
                             <p class="mb-5 text-base text-gray-500 sm:text-lg">Interested in joining our community?</p>
                             <div

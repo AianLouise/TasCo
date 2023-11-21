@@ -4,7 +4,7 @@
 
     <link rel="stylesheet" href="guest.blade.php">
 
-    <div>
+    <div sty>
         <form method="POST" action="{{ route('login') }}">
             @csrf
     

@@ -15,7 +15,7 @@
 
                             <a href="#" class="inline-block pb-2 text-lg font-bold">Tasco</a>
                             <div class="w-16 mb-4 border-b-2 border-blue-500"></div>
-                            <p class="text-base leading-6 lg:w-64">TasCo is a dynamic Local Service
+                            <p class="text-base font-normal leading-6 lg:w-64">TasCo is a dynamic Local Service
                                 Marketplace designed to seamlessly connect job seekers with employers, fostering
                                 collaboration and unlocking opportunities within the community.</p>
                         </div>
@@ -87,8 +87,8 @@
         </div>
 
         <!-- Start: Footer Copyright -->
-        <div class="px-4 py-6 bg-blue-400">
-            <div class="flex font-medium flex-wrap items-center justify-center max-w-6xl gap-4 mx-auto">
+        <div class="px-4 py-6 bg-blue-500">
+            <div class="flex flex-wrap items-center justify-center max-w-6xl gap-4 mx-auto">
                 <span>Copyright © 2023 TasCo. All Rights Reserved</span>
             </div>
         </div>

@@ -6,12 +6,12 @@
 
         <p class="uppercase text-5xl font-bold text-center mb-5">Register</p>
         
-        <div class="flex gap-4">
+
        <!-- First Name -->
         <div class="relative">
             <div class="w-full relative mb-5">
                 <x-text-input id="fname" placeholder="First Name" class="pl-12 py-2 i-1 block mt-1 w-full" type="text" name="fname" :value="old('fname')" required autofocus autocomplete="fname" />
-                <i ><x-healthicons-f-F class="h-5 w-5"/></i>
+                <i class="ri-user-line"></i>
             </div>
             <x-input-error :messages="$errors->get('fname')" class="mt-2" />
         </div>
@@ -20,11 +20,11 @@
         <div class="relative">
             <div class="w-full relative mb-5">
                 <x-text-input id="lname" placeholder="Last Name" class="pl-12 py-2 i-1 block mt-1 w-full" type="text" name="lname" :value="old('lname')" required autofocus autocomplete="lname" />
-                <i><x-healthicons-f-L class="h-5 w-5"/></i>
+                <i class="ri-user-line"></i>
             </div>
             <x-input-error :messages="$errors->get('lname')" class="mt-2" />
         </div>
-</div>
+
         <!-- Address -->
         <div class="relative">
             <div class="w-full relative mb-5">
@@ -64,7 +64,7 @@
                 <x-text-input id="password_confirmation" placeholder="Confirm Password" class="sliders pl-12 py-2 block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required autocomplete="new-password" />
-                <i class="ri-pass-valid-line"></i>
+                <i class="ri-lock-line"></i>
                 <span id="toggleConfirmPassword" class="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer">
                     <i class="ri-eye-line" id="toggleIconConfirmPassword" style="color: #777;"></i>
                 </span>
@@ -99,7 +99,7 @@
         @if (Route::has('login'))
             <div class="text-left"> <!-- Change text-center to text-left, and reduce mt value -->
                 <a class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none" href="{{ route('login') }}">
-                    {{ __("Already have an account?") }} <span class="text-blue-500 font-medium">Log In</span>
+                    {{ __("Already have an account?") }} <span class="text-blue-500">Log In</span>
                 </a>
             </div>
         @endif

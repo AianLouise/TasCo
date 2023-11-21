@@ -190,7 +190,7 @@
                           <!-- No need to display anything here since redirection is done above -->
                       @else
                           <a href="{{ route('login') }}" class="inline-block text-gray-900 hover:text-blue-500 text-sm font-medium">Log In</a>
-                          <span class="text-sm font-medium px-1 text-black">/</span>
+                          <span class="text-sm font-medium px-1">/</span>
                       @endauth
                       <a href="{{ route('register') }}" class="inline-block text-gray-900 hover:text-blue-500 text-sm font-medium ">Register</a>
                   
@@ -209,8 +209,8 @@
                 <div class="px-4 mx-auto mt-10 max-w-7xl sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-4 xl:mt-28">
                   <div class="max-w-lg mx-auto mb-8 text-center lg:max-w-md lg:mx-0 lg:text-left">
 
-                    <h1 class="mt-16 sm:mt-16 text-6xl sm:text-5xl max-sm:text-[72px] max-sm:leading-[82px] font-bold">
-                      <span class="FindLocal xl:whitespace-nowrap relative  z-10 pr-10">Find Local Services </span>
+                    <h1 class="mt-60 sm:mt-52 text-5xl sm:text-5xl max-sm:text-[72px] max-sm:leading-[82px] font-bold">
+                      <span class="FindLocal xl:whitespace-nowrap relative z-10 pr-10">Find Local Services </span>
                       <br />
                       with <span class="AppName inline-block sm:mt-3 z-10"></span>
                     </h1>
@@ -237,8 +237,8 @@
 
       
 
-          <div class="flex mt-12 md:justify-end md:w-1/2 lg:absolute lg:inset-y-0 lg:right-0 lg:px-32">
-            <img src={{ URL('images/hero.png') }} alt="" class="object-cover sm:h-72 md:h-96"> 
+          <div class="flex mt-52 md:justify-end md:w-1/2 lg:absolute lg:inset-y-0 lg:right-0 lg:px-32">
+            <img src={{ URL('images/hero.png') }} alt="" class="object-cover sm:h-72 md:h-96 "> 
           </div>
           
         </section>      
