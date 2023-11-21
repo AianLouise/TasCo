@@ -23,15 +23,11 @@
                     <ul class="hidden lg:w-auto lg:space-x-9 lg:items-center lg:flex">
                         <li><a href="{{ route('user.home') }}" class="nav-a text-sm font-medium">Home</a>
                         </li>
-                        <li><a href="{{ route('user.showWorker') }}" class="nav-a text-sm font-medium">Workers</a>
-                        </li>
-                        <li><a href="" class="nav-a text-sm font-medium">Profile</a>
-                        </li>
-                        <li><a href="{{ route('user.settings') }}" class="nav-a text-sm font-medium">Settings</a>
+                        <li><a href="{{ route('user.showWorker') }}" class="nav-a text-sm font-medium">Job Listing</a>
                         </li>
                     </ul>
 
-                    <div class="items-center hidden pl-2 ml-auto mr-8 lg:flex lg:ml-0 lg:mr-0">
+                    {{-- <div class="items-center hidden pl-2 ml-auto mr-8 lg:flex lg:ml-0 lg:mr-0">
                         <form>
                             <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                             <div class="relative">
@@ -50,7 +46,7 @@
                                 </button>
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
                     <x-user-profile />
                 </div>
             </nav>
@@ -84,18 +80,12 @@
 
                 <!-- Start: Nav List -->
                 <ul class="px-4 text-left mt-7">
+                    <x-user-profile />
                     <li class="pb-3">
                         <a href="{{ route('user.home') }}" class="text-sm text-gray-700 hover:text-blue-400">Home</a>
                     </li>
                     <li class="pb-3">
-                        <a href="{{ route('user.showWorker') }}" class="text-sm text-gray-700 hover:text-blue-400">Worker</a>
-                    </li>
-                    <li class="pb-3">
-                        <a href="" class="text-sm text-gray-700 hover:text-blue-400">Profile</a>
-                    </li>
-                    <li class="pb-3">
-                        <a href="{{ route('user.settings') }}"
-                            class="text-sm text-gray-700 hover:text-blue-400">Settings</a>
+                        <a href="{{ route('user.showWorker') }}" class="text-sm text-gray-700 hover:text-blue-400">Job Listing</a>
                     </li>
                 </ul>
                 <form class="px-3">

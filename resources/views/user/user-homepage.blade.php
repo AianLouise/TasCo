@@ -15,7 +15,7 @@
                     <div class="text-center">
 
                         <div class="flex items-center justify-center">
-                            <img src="{{ asset('images/Logo3.png') }}" alt="Logo" width="200">
+                            <img src="{{ asset('images/Logo3.png') }}" alt="Logo" width="300">
                         </div>    
 
                         <h1 class="mb-6 text-5xl font-bold tracking-tight md:text-6xl">

@@ -36,6 +36,10 @@
                     {{ __('Profile') }}
                 </x-dropdown-link>
 
+                <x-dropdown-link :href="route('user.settings')">
+                    {{ __('Settings') }}
+                </x-dropdown-link>
+
                 <!-- Logout Form -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
