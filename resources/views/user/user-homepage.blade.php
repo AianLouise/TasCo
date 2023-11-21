@@ -240,10 +240,11 @@
                 </div>
                 <!-- End: Heading -->
 
+                <!-- Your existing form -->
                 <form class="mb-12 w-full" action="{{ route('workers.sort') }}#top" method="get">
-                    <div class="flex">
+                    <div class="flex relative" onclick="toggleDropdown()">
                         <!-- Your existing button -->
-                        <button id="dropdown-button" data-dropdown-toggle="dropdown"
+                        <button id="dropdown-button"
                             class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
                             type="button">
                             @if (request()->has('category'))
@@ -260,25 +261,27 @@
 
                         <!-- Dropdown content -->
                         <div id="dropdown-content"
-                            class="hidden absolute z-10 mt-10 bg-white border border-gray-300 rounded-lg shadow-md p-2.5">
+                            class="hidden absolute z-10 mt-10 bg-white border border-gray-300 rounded-lg shadow-md p-3">
                             <!-- Add "All categories" option -->
-                            <a href="{{ route('workers.sort') }}"
-                                class="block text-sm font-medium text-gray-900 hover:bg-gray-200 p-1">All
+                            <a href="{{ route('workers.sort') }}#top"
+                                class="block text-sm font-medium text-gray-900 hover:bg-gray-200 p-2">All
                                 categories</a>
                             <!-- Add your dynamic categories here -->
                             @foreach ($categories as $category)
-                                <a href="{{ route('workers.sort', ['category' => $category->id]) }}"
-                                    class="block text-sm font-medium text-gray-900 hover:bg-gray-200 p-1">{{ $category->name }}</a>
+                                <a href="{{ route('workers.sort', ['category' => $category->id]) }}#top"
+                                    class="block text-sm font-medium text-gray-900 hover:bg-gray-200 p-2">{{ $category->name }}</a>
                             @endforeach
                         </div>
 
+                        <!-- Your existing search input and button -->
                         <div class="relative w-full">
                             <input type="search" id="search-dropdown" name="search"
                                 class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Search for Workers, Employer, Category..." required
-                                value="{{ old('search') }}"> <!-- Display old input value -->
+                                placeholder="Search for Workers, Category..." required
+                                value="{{ old('search') }}" />
                             <button type="submit"
-                                class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-500 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-500 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                                onclick="scrollToElement('top')">
                                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -289,6 +292,27 @@
                         </div>
                     </div>
                 </form>
+
+                <script>
+                    function toggleDropdown() {
+                        var dropdownContent = document.getElementById('dropdown-content');
+                        dropdownContent.classList.toggle('hidden');
+                    }
+
+                    // Function to scroll to a specific element by ID
+                    function scrollToElement(elementId) {
+                        var element = document.getElementById(elementId);
+                        if (element) {
+                            element.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                </script>
+
+
+
+
 
                 <!-- Start: Worker Section Row -->
                 <div class="flex flex-wrap flex-row -mx-4 text-center">

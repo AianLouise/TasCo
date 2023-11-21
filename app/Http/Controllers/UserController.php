@@ -23,7 +23,7 @@ class UserController extends Controller
     public function sort(Request $request)
     {
         $query = User::where('role', 'worker');
-
+    
         // Category filter logic
         if ($request->has('category')) {
             $categoryId = $request->input('category');
@@ -31,22 +31,25 @@ class UserController extends Controller
                 $query->where('category_id', $categoryId);
             }
         }
-
+    
         // Search logic
         if ($request->has('search')) {
             $searchTerm = $request->input('search');
-            $query->where('name', 'like', "%$searchTerm%")
-                ->orWhereHas('category', function ($q) use ($searchTerm) {
-                    $q->where('name', 'like', "%$searchTerm%");
-                });
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'like', "%$searchTerm%")
+                    ->orWhereHas('category', function ($subQ) use ($searchTerm) {
+                        $subQ->where('name', 'like', "%$searchTerm%");
+                    });
+            })->where('role', 'worker'); // Ensure only 'worker' role is included in the search
         }
-
+    
         // Pagination without sorting
-        $workers = $query->paginate(6);
+        $workers = $query->paginate(100);
         $categories = Category::all();
-
+    
         return view('user.user-homepage', ['workerUsers' => $workers, 'categories' => $categories]);
     }
+    
 
     public function UserSettings()
     {
