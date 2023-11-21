@@ -240,7 +240,7 @@
                 </div>
                 <!-- End: Heading -->
 
-                <!-- Your existing form -->
+                <!-- Your updated form -->
                 <form class="mb-12 w-full" action="{{ route('workers.sort') }}#top" method="get">
                     <div class="flex relative" onclick="toggleDropdown()">
                         <!-- Your existing button -->
@@ -273,12 +273,11 @@
                             @endforeach
                         </div>
 
-                        <!-- Your existing search input and button -->
+                        <!-- Your updated search input and button -->
                         <div class="relative w-full">
                             <input type="search" id="search-dropdown" name="search"
                                 class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Search for Workers, Category..." required
-                                value="{{ old('search') }}" />
+                                placeholder="Search for Workers, Category..." required value="{{ old('search') }}" />
                             <button type="submit"
                                 class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-500 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
                                 onclick="scrollToElement('top')">
@@ -309,6 +308,7 @@
                         }
                     }
                 </script>
+
 
 
 
