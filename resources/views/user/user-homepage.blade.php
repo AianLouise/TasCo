@@ -29,9 +29,9 @@
                             needs.
                         </p>
 
-                        <div class="justify-center sm:flex" onclick="scrollToBrowseSection()">
+                        <div class="justify-center sm:flex" >
                             <div class="">
-                                <a href="#"
+                                <a href="{{ route('user.home')}}#browse"
                                     class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
                                     Get started</a>
                             </div>
@@ -50,8 +50,8 @@
 
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+        <a id="browse"></a>
         <!-- Start: Browse Section -->
-
         <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
             <div class="container xl:max-w-6xl mx-auto px-4">
 
@@ -239,8 +239,6 @@
                             style="stroke-width: 2;stroke-miterlimit: 10;"></line>
                     </svg>
                     <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">With their services</p>
-
-
                 </div>
                 <!-- End: Heading -->
 
@@ -312,11 +310,6 @@
                         }
                     }
                 </script>
-
-
-
-
-
 
                 <!-- Start: Worker Section Row -->
                 <div class="flex flex-wrap flex-row -mx-4 text-center">

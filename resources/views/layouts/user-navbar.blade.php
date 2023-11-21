@@ -23,6 +23,8 @@
                     <ul class="hidden lg:w-auto lg:space-x-9 lg:items-center lg:flex">
                         <li><a href="{{ route('user.home') }}" class="nav-a text-sm font-medium">Home</a>
                         </li>
+                        <li><a href="{{ route('user.showWorker') }}" class="nav-a text-sm font-medium">Workers</a>
+                        </li>
                         <li><a href="" class="nav-a text-sm font-medium">Profile</a>
                         </li>
                         <li><a href="{{ route('user.settings') }}" class="nav-a text-sm font-medium">Settings</a>

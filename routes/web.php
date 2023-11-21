@@ -79,7 +79,8 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 Route::middleware(['auth', 'role:user'])->group(function () {
     // User Dashboard and Related Routes
     Route::get('/home', [UserController::class, 'UserHomePage'])->name('user.home');
-    Route::get('/home/worker', [UserController::class, 'Sort'])->name('workers.sort');
+    Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
+    Route::get('/available-worker', [UserController::class, 'UserWorkerPage'])->name('user.showWorker');
     Route::get('/settings', [UserController::class, 'UserSettings'])->name('user.settings');
     Route::get('/apply-as-jobseeker', [UserController::class, 'UserApplyJobseeker'])->name('user.applyJobseeker');
     Route::get('/apply-as-employer', [UserController::class, 'UserApplyEmployer'])->name('user.applyEmployer');
