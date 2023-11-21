@@ -21,9 +21,9 @@ class Role
                 return redirect('admin/dashboard');
             } elseif ($request->user()->role === 'worker') {
                 return redirect('worker/dashboard');
-            } elseif ($request->user()->role === 'user') {
+            } else {
                 // Handle the user role here
-                return redirect('home');
+                return redirect('dashboard');
             }
         }
         

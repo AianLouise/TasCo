@@ -123,7 +123,8 @@ class AdminController extends Controller
         $user->save();
 
         // Retrieve all users and pass them to the admin-viewAllUsers view
-        return redirect()->back()->with('success', 'Reply submitted successfully.');
+        $users = User::all();
+        return view('admin.admin-viewAllUsers', compact('users'));
     }
 
     // View to edit a user profile for the admin

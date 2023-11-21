@@ -25,7 +25,7 @@
                             needs.
                         </p>
 
-                        <div class="justify-center sm:flex" onclick="scrollToBrowseSection()">
+                        <div class="justify-center sm:flex">
                             <div class="">
                                 <a href="#"
                                     class="flex items-center justify-center font-medium px-6 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-600 hover:text-white">
@@ -53,7 +53,7 @@
 
                 <!-- Start: Heading-->
                 <div class="text-center mx-auto mb-12 lg:px-20">
-                    <h2 class=" leading-normal mb-2 text-4xl font-bold text-black" id="browse">Browse</h2>
+                    <h2 class=" leading-normal mb-2 text-4xl font-bold text-black">Browse</h2>
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
                         <circle cx="50.1" cy="30.4" r="5" class="stroke-primary"
@@ -242,35 +242,13 @@
 
                 <form class="mb-12 w-full">
                     <div class="flex">
-                        <!-- Your existing button -->
                         <button id="dropdown-button" data-dropdown-toggle="dropdown"
                             class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
-                            type="button">
-                            All categories
-                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
+                            type="button">All categories <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-
-                        <!-- Dropdown content -->
-                        <div id="dropdown-content"
-                            class="hidden absolute z-10 mt-10 bg-white border border-gray-300 rounded-lg shadow-md">
-                            <!-- Add your dynamic categories here -->
-                            @foreach ($categories as $category)
-                                <a href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ $category->name }}</a>
-                            @endforeach
-                        </div>
-
-                        <!-- JavaScript to toggle the dropdown -->
-                        <script>
-                            document.getElementById('dropdown-button').addEventListener('click', function() {
-                                document.getElementById('dropdown-content').classList.toggle('hidden');
-                            });
-                        </script>
-
+                            </svg></button>
 
                         <div class="relative w-full">
                             <input type="search" id="search-dropdown"
@@ -291,12 +269,12 @@
                 </form>
 
                 <!-- Start: Worker Section Row -->
+
                 <div class="flex flex-wrap flex-row -mx-4 text-center">
 
-                    @foreach ($workerUsers->take(6) as $worker)
-                        <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                            data-wow-duration="1s"
-                            style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
+                        data-wow-duration="1s"
+                        style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
 
                             <!-- Worker Profile -->
                             <div
@@ -333,11 +311,12 @@
 
                     <!-- See More Jobs Button -->
                     <div class="w-full flex justify-center">
-                        <a href="#" class="w-full sm:w-auto bg-blue-500 hover:bg-blue-700 font-medium text-white rounded-md inline-flex items-center justify-center px-4 py-2.5">See More Jobs</a>
+                        <a href="#" class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">See More Jobs</a>
                     </div>
+
+
                 </div>
                 <!-- end row -->
-
 
 
             </div>
@@ -520,7 +499,7 @@
                     @if (auth()->user()->is_verified)
                         <!-- User is verified, hide the Apply Now Section -->
                     @else
-                        <div class="w-full p-4 bg-white-50 text-center border border-blue-500 rounded-lg shadow sm:p-8">
+                        <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
                             <h5 class="mb-2 text-3xl font-bold">Apply Now</h5>
                             <p class="mb-5 text-base text-gray-500 sm:text-lg">Interested in joining our community?</p>
                             <div
@@ -594,15 +573,8 @@
         </section>
         <!-- End: Apply Now Section -->
 
+
         <x-footer />
 
     </main>
-    <script>
-        function scrollToBrowseSection() {
-            var browseSection = document.getElementById('browse');
-            browseSection.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    </script>
 </x-app-layout>

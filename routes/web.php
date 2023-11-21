@@ -75,10 +75,9 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 // User Routes (Requires Authentication and User Role)
 Route::middleware(['auth', 'role:user'])->group(function () {
     // User Dashboard and Related Routes
+    Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/home', [UserController::class, 'UserHomePage'])->name('user.home');
     Route::get('/settings', [UserController::class, 'UserSettings'])->name('user.settings');
-    Route::get('/apply-as-jobseeker', [UserController::class, 'UserApplyJobseeker'])->name('user.applyJobseeker');
-    Route::get('/apply-as-employer', [UserController::class, 'UserApplyEmployer'])->name('user.applyEmployer');
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
     Route::get('/customer-service', [UserController::class, 'UserCustomerService'])->name('user.customerService');
     Route::post('/email-sent', [UserController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');

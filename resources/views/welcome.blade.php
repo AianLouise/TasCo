@@ -175,7 +175,7 @@
                         </script>
                     @elseif(Auth::user()->role === 'user')
                         <script>
-                            window.location.href = "{{ route('user.home') }}";
+                            window.location.href = "{{ route('user.dashboard') }}";
                         </script>
                     @endif
                 @endauth
