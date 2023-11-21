@@ -37,6 +37,15 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
 
+      - name: Set up environment variables
+        run: |
+          echo "DB_CONNECTION=mysql" >> $GITHUB_ENV
+          echo "DB_HOST=127.0.0.1" >> $GITHUB_ENV
+          echo "DB_PORT=3306" >> $GITHUB_ENV
+          echo "DB_DATABASE=tasco" >> $GITHUB_ENV
+          echo "DB_USERNAME=root" >> $GITHUB_ENV
+          echo "DB_PASSWORD=" >> $GITHUB_ENV
+
       - name: Copy environment file
         run: cp .env.example .env
 
