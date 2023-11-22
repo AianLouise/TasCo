@@ -89,4 +89,9 @@ class AppController extends Controller
     {
         return view("tasco.guidelines");
     }
+
+    public function AboutUs()
+    {
+        return view("tasco.about-us");
+    }
 }

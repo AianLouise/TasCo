@@ -27,19 +27,46 @@
 
         </div>
         <!-- End: Header -->
-        <!-- Start: Audit Trail Content -->
-        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-7 ml-4 mt-4 mr-4 rounded-md">
+        <!-- Start: General Settings Content -->
+        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-7 ml-10 mt-4 mr-10 rounded-md">
             <div class="flex justify-between mb-4 items-start">
                 <!-- Heading for Audit Trail Section -->
                 <div class="font-medium2">General Settings</div>
             </div>
 
             <div class="overflow-x-auto">
-                <!-- Audit Trail Table -->
-                
+                <!-- Site Settings -->
+
+                <!-- Site Name -->
+                <div class="mb-2 sm:mb-6">
+                    <!-- Label and Input for Site Name -->
+                    <label for="address" class="block mb-2 text-sm font-medium text-indigo-900">Site Name:</label>
+                    <input type="text" id="address" name="address"
+                        class="border text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
+                        placeholder="Site Name" value="" required>
+                </div>
+
+                <!-- Site Description -->
+                <div class="mb-2 sm:mb-6">
+                    <!-- Label and Textarea for Site Description -->
+                    <label for="address" class="block mb-2 text-sm font-medium text-indigo-900">Site
+                        Description:</label>
+                    <textarea id="address" name="address"
+                        class="border text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
+                        placeholder="Site Description" required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-center">
+                    <button type="submit"
+                        class="text-white mt-2 bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+                        Submit
+                    </button>
+                </div>
             </div>
         </div>
-        <!-- End: Audit Trail Table -->
+        <!-- End: General Settings Content -->
+
     </main>
     <!-- End: Main -->
 </x-app-layout>

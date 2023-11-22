@@ -61,7 +61,7 @@ class RegisteredUserController extends Controller
     
         Auth::login($user);
     
-        return redirect()->route('verification.notice')->with('resent', true);
+        return redirect()->route('verification.notice');
     }
     
 }

@@ -22,16 +22,20 @@
                     </div>
                     <ul class="hidden lg:w-auto lg:space-x-9 lg:items-center lg:flex">
                         <li><a href="{{ route('app.home') }}" class="nav-a text-sm font-medium">Home</a></li>
-                    
-                        @if(auth()->user()->role == 'user' && auth()->user()->is_verified == 1)
-                            <li><a href="{{ route('user.dashboard') }}" class="nav-a text-sm font-medium">Employer Dashboard</a></li>
+
+                        @if (auth()->user()->role == 'user' && auth()->user()->is_verified == 1)
+                            <li><a href="{{ route('user.dashboard') }}" class="nav-a text-sm font-medium">Employer
+                                    Dashboard</a></li>
                         @elseif(auth()->user()->role == 'worker' && auth()->user()->is_verified == 1)
-                            <li><a href="{{ route('worker.dashboard') }}" class="nav-a text-sm font-medium">Job Seeker Dashboard</a></li>
+                            <li><a href="{{ route('worker.dashboard') }}" class="nav-a text-sm font-medium">Job Seeker
+                                    Dashboard</a></li>
                         @endif
-                    
-                        <li><a href="{{ route('app.jobListing') }}" class="nav-a text-sm font-medium">Job Listing</a></li>
+
+                        <li><a href="{{ route('app.jobListing') }}" class="nav-a text-sm font-medium">Job Listing</a>
+                        </li>
+                        <li><a href="{{ route('app.aboutUs') }}" class="nav-a text-sm font-medium">About Us</a></li>
                     </ul>
-                    
+
 
                     {{-- <div class="items-center hidden pl-2 ml-auto mr-8 lg:flex lg:ml-0 lg:mr-0">
                         <form>
@@ -72,7 +76,7 @@
                         true,
                     '-translate-x-full ease-out opacity-0': open === false
                 }">
-
+                
                 <div class="flex justify-between lg:hidden">
                     <a class="p-2 text-4xl font-bold text-gray-700" href="#">TasCo</a>
                     <button class="p-2 text-gray-700 rounded-md hover:text-blue-300 lg:hidden " @click="open=false">
@@ -86,15 +90,36 @@
 
                 <!-- Start: Nav List -->
                 <ul class="px-4 text-left mt-7">
-                    <x-user-profile />
                     <li class="pb-3">
                         <a href="{{ route('app.home') }}" class="text-sm text-gray-700 hover:text-blue-400">Home</a>
                     </li>
+
+                    @if (auth()->check())
+                        @if (auth()->user()->role == 'user' && auth()->user()->is_verified == 1)
+                            <li class="pb-3">
+                                <a href="{{ route('user.dashboard') }}"
+                                    class="text-sm text-gray-700 hover:text-blue-400">Employer Dashboard</a>
+                            </li>
+                        @elseif(auth()->user()->role == 'worker' && auth()->user()->is_verified == 1)
+                            <li class="pb-3">
+                                <a href="{{ route('worker.dashboard') }}"
+                                    class="text-sm text-gray-700 hover:text-blue-400">Job Seeker Dashboard</a>
+                            </li>
+                        @endif
+                    @endif
+
                     <li class="pb-3">
-                        <a href="{{ route('app.jobListing') }}" class="text-sm text-gray-700 hover:text-blue-400">Job Listing</a>
+                        <a href="{{ route('app.jobListing') }}" class="text-sm text-gray-700 hover:text-blue-400">Job
+                            Listing</a>
+                    </li>
+
+                    <li class="pb-3">
+                        <a href="{{ route('app.aboutUs') }}" class="text-sm text-gray-700 hover:text-blue-400">About
+                            Us</a>
                     </li>
                 </ul>
-                <form class="px-3">
+
+                {{-- <form class="px-3">
                     <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                     <div class="relative">
                         <input type="search"
@@ -111,7 +136,7 @@
 
                         </button>
                     </div>
-                </form>
+                </form> --}}
                 <!-- End: Nav List -->
             </div>
             <!-- End: Navigation Mobile Sidebar -->
