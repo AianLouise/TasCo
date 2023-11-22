@@ -11,7 +11,8 @@ use App\Models\CustomerServiceMessage;
 
 class UserController extends Controller
 {
-    public function UserDashboard()
+    public function UserHomePage()
+
     {
         $workerUsers = User::where('role', 'worker')->get();
         // Retrieve categories
@@ -57,9 +58,72 @@ class UserController extends Controller
         return view('user.user-homepage', ['workerUsers' => $workers, 'categories' => $categories]);
     }
 
+    public function UserWorkerPage(Request $request)
+    {
+        $query = User::where('role', 'worker');
+
+        // Category filter logic
+        if ($request->has('category')) {
+            $categoryId = $request->input('category');
+            if ($categoryId !== 'all') {
+                $query->where('category_id', $categoryId);
+            }
+        }
+
+        // Search logic
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'like', "%$searchTerm%")
+                    ->orWhereHas('category', function ($subQ) use ($searchTerm) {
+                        $subQ->where('name', 'like', "%$searchTerm%");
+                    });
+            })->where('role', 'worker'); // Ensure only 'worker' role is included in the search
+
+            // If both name and category are provided, refine the search
+            if ($request->has('category') && $request->has('search')) {
+                $query->whereHas('category', function ($subQ) use ($searchTerm) {
+                    $subQ->where('name', 'like', "%$searchTerm%");
+                });
+            }
+        }
+
+        $workerUsers = $query->get();
+        $categories = Category::all();
+
+        return view("user.user-showWorker", compact('workerUsers', 'categories'));
+    }
+
+    public function UserSettings()
+    {
+        return view("user.user-settings");
+    }
     public function UserChatify()
     {
         return view("user.chatify");
+    }
+
+    public function UserActivityLog(){
+        return view("user.user-activitylog");
+    }
+    
+    public function UserTerms(){
+        return view("user.user-terms");
+    }
+
+    public function UserGuidelines(){
+        return view("user.user-guidelines");
+    }
+
+    public function UserApplyEmployer()
+    {
+        return view("user.user-apply-employer");
+
+    }
+
+    public function UserCustomerService()
+    {
+        return view("user.user-customerService");
     }
 
     public function storeCustomerServiceMessage(Request $request)
