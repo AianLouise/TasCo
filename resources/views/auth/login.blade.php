@@ -17,6 +17,7 @@
                     <i class="ri-mail-line"> <!-- Add a custom class for padding -->
                     </i>
                 </div>
+            </div>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
     
