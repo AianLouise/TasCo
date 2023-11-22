@@ -77,9 +77,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/job-listing', [AppController::class, 'JobListing'])->name('app.jobListing');
     Route::get('/settings', [AppController::class, 'Settings'])->name('app.settings');
     Route::get('/customer-service', [AppController::class, 'CustomerService'])->name('app.customerService');
+    Route::post('/email-sent', [AppController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');
     Route::get('/activity-logs', [AppController::class, 'ActivityLog'])->name('app.activitylog');
     Route::get('/terms', [AppController::class, 'Terms'])->name('app.terms');
     Route::get('/guidelines', [AppController::class, 'Guidelines'])->name('app.guidelines');
+
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
@@ -96,5 +98,4 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
-    Route::post('/email-sent', [UserController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');
 });

@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\CustomerServiceMessage;
 
 class AppController extends Controller
 {
@@ -80,6 +82,26 @@ class AppController extends Controller
         $pageTitle = 'Customer Service';
 
         return view("tasco.customer-service", compact('pageTitle'));
+    }
+
+    public function storeCustomerServiceMessage(Request $request)
+    {
+        $validatedData = $request->validate([
+            'subject' => 'required|string',
+            'message' => 'required|string',
+        ]);
+
+        // Get the authenticated user's ID
+        $user_id = Auth::id();
+
+        // Create a new CustomerServiceMessage model and save the data
+        CustomerServiceMessage::create([
+            'user_id' => $user_id,
+            'subject' => $validatedData['subject'],
+            'message' => $validatedData['message'],
+        ]);
+
+        return redirect()->route('app.customerService'); // Adjust the route name as needed
     }
 
     public function ActivityLog()
