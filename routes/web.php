@@ -89,17 +89,19 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 // User Routes (Requires Authentication and User Role)
 Route::middleware(['auth', 'role:user'])->group(function () {
     // User Dashboard and Related Routes
-    Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
-    Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
-    Route::get('/available-worker', [UserController::class, 'UserWorkerPage'])->name('user.showWorker');
+    Route::get('/home', [UserController::class, 'UserHomePage'])->name('user.home');
     Route::get('/settings', [UserController::class, 'UserSettings'])->name('user.settings');
     Route::get('/terms', [UserController::class, 'UserTerms'])->name('user.terms');
     Route::get('/guidelines', [UserController::class, 'UserGuidelines'])->name('user.guidelines');
     Route::get('/activitylog', [UserController::class, 'UserActivityLog'])->name('user.activitylog');
+    Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+    Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
     Route::get('/apply-as-jobseeker', [UserController::class, 'UserApplyJobseeker'])->name('user.applyJobseeker');
     Route::get('/apply-as-employer', [UserController::class, 'UserApplyEmployer'])->name('user.applyEmployer');
     Route::get('/customer-service', [UserController::class, 'UserCustomerService'])->name('user.customerService');
+=========
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
+>>>>>>>>> Temporary merge branch 2
     Route::post('/email-sent', [UserController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');
 });
