@@ -31,9 +31,9 @@
                 <!-- Include Admin Sidebar for admin role -->
                 @include('layouts.admin-sidebar')
             @elseif(Auth::user()->role === 'worker')
-                @include('layouts.navigation')
+                @include('layouts.tasco-navbar')
             @elseif (Auth::user()->role === 'user')
-                @include('layouts.user-navbar')
+                @include('layouts.tasco-navbar')
             @endif
         @endif
 

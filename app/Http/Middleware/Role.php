@@ -20,10 +20,10 @@ class Role
             if ($request->user()->role === 'admin') {
                 return redirect('admin/dashboard');
             } elseif ($request->user()->role === 'worker') {
-                return redirect('worker/dashboard');
+                return redirect('Home');
             } elseif ($request->user()->role === 'user') {
                 // Handle the user role here
-                return redirect('home');
+                return redirect('Home');
             }
         }
         

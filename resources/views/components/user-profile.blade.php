@@ -1,6 +1,11 @@
 <div>
     <!-- Settings Dropdown -->
     <div class="hidden sm:flex sm:items-center sm:ml-6">
+        <div class="mr-6">
+            <a href="{{ route('user.chatify') }}">
+                <i class="ri-message-3-line text-2xl"></i>
+            </a>
+        </div>
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">
                 <button
@@ -29,6 +34,10 @@
                 <!-- Profile Link -->
                 <x-dropdown-link :href="route('profile.edit')">
                     {{ __('Profile') }}
+                </x-dropdown-link>
+
+                <x-dropdown-link :href="route('app.settings')">
+                    {{ __('Settings') }}
                 </x-dropdown-link>
 
                 <!-- Logout Form -->

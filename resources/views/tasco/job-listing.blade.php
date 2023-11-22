@@ -19,7 +19,7 @@
             </div>
             <!-- End: Heading -->
             <!-- Your updated form -->
-            <form class="mb-12 w-full" action="{{ route('user.showWorker') }}#top" method="get">
+            <form class="mb-12 w-full" action="{{ route('app.jobListing') }}#top" method="get">
                 <div class="flex relative" onclick="toggleDropdown()">
                     <!-- Your existing button -->
                     <button id="dropdown-button"
@@ -41,12 +41,12 @@
                     <div id="dropdown-content"
                         class="hidden absolute z-10 mt-10 bg-white border border-gray-300 rounded-lg shadow-md p-3">
                         <!-- Add "All categories" option -->
-                        <a href="{{ route('user.showWorker') }}#top"
+                        <a href="{{ route('app.jobListing') }}#top"
                             class="block text-sm font-medium text-gray-900 hover:bg-gray-200 p-2">All
                             categories</a>
                         <!-- Add your dynamic categories here -->
                         @foreach ($categories as $category)
-                            <a href="{{ route('user.showWorker', ['category' => $category->id]) }}#top"
+                            <a href="{{ route('app.jobListing', ['category' => $category->id]) }}#top"
                                 class="block text-sm font-medium text-gray-900 hover:bg-gray-200 p-2">{{ $category->name }}</a>
                         @endforeach
                     </div>
