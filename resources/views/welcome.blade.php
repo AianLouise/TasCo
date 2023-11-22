@@ -171,11 +171,11 @@
                         </script>
                     @elseif(Auth::user()->role === 'worker')
                         <script>
-                            window.location.href = "{{ route('worker.dashboard') }}";
+                            window.location.href = "{{ route('app.home') }}";
                         </script>
                     @elseif(Auth::user()->role === 'user')
                         <script>
-                            window.location.href = "{{ route('user.home') }}";
+                            window.location.href = "{{ route('app.home') }}";
                         </script>
                     @endif
                 @endauth

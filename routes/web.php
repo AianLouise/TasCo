@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
@@ -68,6 +69,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [AppController::class, 'Home'])->name('app.home');
+    Route::get('/apply-as-jobseeker', [AppController::class, 'ApplyJobseeker'])->name('app.applyJobseeker');
+    Route::get('/apply-as-employer', [AppController::class, 'ApplyEmployer'])->name('app.applyEmployer');
+    Route::get('/job-listing', [AppController::class, 'JobListing'])->name('app.jobListing');
+    Route::get('/settings', [AppController::class, 'Settings'])->name('app.settings');
+    Route::get('/customer-service', [AppController::class, 'CustomerService'])->name('app.customerService');
+});
+
+// Worker Routes (Requires Authentication and Worker Role)
 Route::middleware(['auth', 'role:worker'])->group(function () {
     // Worker Dashboard and Related Routes
     Route::get('/worker/dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
@@ -78,13 +89,8 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 // User Routes (Requires Authentication and User Role)
 Route::middleware(['auth', 'role:user'])->group(function () {
     // User Dashboard and Related Routes
-    Route::get('/home', [UserController::class, 'UserHomePage'])->name('user.home');
+    Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
-    Route::get('/available-worker', [UserController::class, 'UserWorkerPage'])->name('user.showWorker');
-    Route::get('/settings', [UserController::class, 'UserSettings'])->name('user.settings');
-    Route::get('/apply-as-jobseeker', [UserController::class, 'UserApplyJobseeker'])->name('user.applyJobseeker');
-    Route::get('/apply-as-employer', [UserController::class, 'UserApplyEmployer'])->name('user.applyEmployer');
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
-    Route::get('/customer-service', [UserController::class, 'UserCustomerService'])->name('user.customerService');
     Route::post('/email-sent', [UserController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');
 });

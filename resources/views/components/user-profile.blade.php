@@ -36,7 +36,7 @@
                     {{ __('Profile') }}
                 </x-dropdown-link>
 
-                <x-dropdown-link :href="route('user.settings')">
+                <x-dropdown-link :href="route('app.settings')">
                     {{ __('Settings') }}
                 </x-dropdown-link>
 

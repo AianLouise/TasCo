@@ -21,11 +21,17 @@
                         </button>
                     </div>
                     <ul class="hidden lg:w-auto lg:space-x-9 lg:items-center lg:flex">
-                        <li><a href="{{ route('user.home') }}" class="nav-a text-sm font-medium">Home</a>
-                        </li>
-                        <li><a href="{{ route('user.showWorker') }}" class="nav-a text-sm font-medium">Job Listing</a>
-                        </li>
+                        <li><a href="{{ route('app.home') }}" class="nav-a text-sm font-medium">Home</a></li>
+                    
+                        @if(auth()->user()->role == 'user' && auth()->user()->is_verified == 1)
+                            <li><a href="{{ route('user.dashboard') }}" class="nav-a text-sm font-medium">Employer Dashboard</a></li>
+                        @elseif(auth()->user()->role == 'worker' && auth()->user()->is_verified == 1)
+                            <li><a href="{{ route('worker.dashboard') }}" class="nav-a text-sm font-medium">Job Seeker Dashboard</a></li>
+                        @endif
+                    
+                        <li><a href="{{ route('app.jobListing') }}" class="nav-a text-sm font-medium">Job Listing</a></li>
                     </ul>
+                    
 
                     {{-- <div class="items-center hidden pl-2 ml-auto mr-8 lg:flex lg:ml-0 lg:mr-0">
                         <form>
@@ -82,10 +88,10 @@
                 <ul class="px-4 text-left mt-7">
                     <x-user-profile />
                     <li class="pb-3">
-                        <a href="{{ route('user.home') }}" class="text-sm text-gray-700 hover:text-blue-400">Home</a>
+                        <a href="{{ route('app.home') }}" class="text-sm text-gray-700 hover:text-blue-400">Home</a>
                     </li>
                     <li class="pb-3">
-                        <a href="{{ route('user.showWorker') }}" class="text-sm text-gray-700 hover:text-blue-400">Job Listing</a>
+                        <a href="{{ route('app.jobListing') }}" class="text-sm text-gray-700 hover:text-blue-400">Job Listing</a>
                     </li>
                 </ul>
                 <form class="px-3">

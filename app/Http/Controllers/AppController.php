@@ -6,21 +6,29 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Models\CustomerServiceMessage;
 
-class UserController extends Controller
+class AppController extends Controller
 {
-    public function UserDashboard()
+    public function Home()
     {
         $workerUsers = User::where('role', 'worker')->get();
         // Retrieve categories
         $categories = Category::all();
 
-        return view("user.user-dashboard", compact('workerUsers', 'categories'));
+        return view("tasco.home", compact('workerUsers', 'categories'));
     }
 
-    public function sort(Request $request)
+    public function ApplyJobseeker()
+    {
+        return view("tasco.apply-jobseeker");
+    }
+
+    public function ApplyEmployer()
+    {
+        return view("tasco.apply-employer");
+    }
+
+    public function JobListing(Request $request)
     {
         $query = User::where('role', 'worker');
 
@@ -50,37 +58,20 @@ class UserController extends Controller
             }
         }
 
-        // Pagination without sorting
-        $workers = $query->paginate(6);
+        $workerUsers = $query->get();
         $categories = Category::all();
 
-        return view('user.user-homepage', ['workerUsers' => $workers, 'categories' => $categories]);
+        return view("tasco.job-listing", compact('workerUsers', 'categories'));
     }
 
-    public function UserChatify()
+    public function Settings()
     {
-        return view("user.chatify");
-    }
-
-    public function storeCustomerServiceMessage(Request $request)
-    {
-        $validatedData = $request->validate([
-            'subject' => 'required|string',
-            'message' => 'required|string',
-        ]);
-
-        // Get the authenticated user's ID
-        $user_id = Auth::id();
-
-        // Create a new CustomerServiceMessage model and save the data
-        CustomerServiceMessage::create([
-            'user_id' => $user_id,
-            'subject' => $validatedData['subject'],
-            'message' => $validatedData['message'],
-        ]);
-
-        return redirect()->route('user.customerService'); // Adjust the route name as needed
+        return view("tasco.settings");
     }
 
     
+    public function CustomerService()
+    {
+        return view("tasco.customer-service");
+    }
 }
