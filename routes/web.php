@@ -100,8 +100,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/apply-as-jobseeker', [UserController::class, 'UserApplyJobseeker'])->name('user.applyJobseeker');
     Route::get('/apply-as-employer', [UserController::class, 'UserApplyEmployer'])->name('user.applyEmployer');
     Route::get('/customer-service', [UserController::class, 'UserCustomerService'])->name('user.customerService');
-=========
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
->>>>>>>>> Temporary merge branch 2
     Route::post('/email-sent', [UserController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');
 });
