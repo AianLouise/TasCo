@@ -8,18 +8,18 @@ use App\Models\Worker;
 
 class WorkerController extends Controller
 {
-    public function WorkerDashboard(){
-        return view("worker.worker-dashboard");
-    }
-
-    public function WorkerChatify(){
-        return view("worker.chatify");
-    }
-
-    public function editProfile($id)
+    public function WorkerDashboard()
     {
-        $worker = Worker::find($id);
+        $pageTitle = 'Dashboard';
 
-        return view('admin.admin-editProfile', compact('worker'));
+        return view("worker.worker-dashboard", compact('pageTitle'));
     }
+
+    public function WorkerChatify()
+    {
+        $pageTitle = 'Chatify';
+
+        return view("worker.chatify", compact('pageTitle'));
+    }
+
 }

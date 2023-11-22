@@ -1,4 +1,5 @@
 <x-app-layout>
+    <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
     <!-- Start: Main Content -->
 
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">

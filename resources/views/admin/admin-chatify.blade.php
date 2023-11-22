@@ -1,4 +1,5 @@
 <x-app-layout>
+    <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
     <!-- Start: Main Content -->
     <!-- Include Chatify Styles -->
     <link href="{{ asset('css/chatify/style.css') }}" rel="stylesheet" />

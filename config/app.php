@@ -18,6 +18,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'default_title' => 'Tasco',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

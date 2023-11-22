@@ -1,4 +1,5 @@
 <x-app-layout>
+    <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
     <nav x-data="flex { open: false }" class="bg-white border-b border-gray-100">
         <!-- Start: Sidebar -->
         <div class="fixed top-30 w-64 h-full p-4 z-50 sidebar-menu bg-white">

@@ -1,10 +1,11 @@
 <x-app-layout>
+    <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
+
     <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Customer Service</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;

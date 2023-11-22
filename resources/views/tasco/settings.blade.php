@@ -1,5 +1,7 @@
 <x-app-layout>
 
+    <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
+
     <style>
         .template{
             background-color: #fff; 

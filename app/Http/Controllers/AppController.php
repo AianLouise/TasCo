@@ -15,7 +15,9 @@ class AppController extends Controller
         // Retrieve categories
         $categories = Category::all();
 
-        return view("tasco.home", compact('workerUsers', 'categories'));
+        $pageTitle = 'Home';
+
+        return view("tasco.home", compact('workerUsers', 'categories', 'pageTitle'));
     }
 
     public function ApplyJobseeker()
@@ -60,38 +62,51 @@ class AppController extends Controller
 
         $workerUsers = $query->get();
         $categories = Category::all();
+        $pageTitle = 'Job Listing';
 
-        return view("tasco.job-listing", compact('workerUsers', 'categories'));
+        return view("tasco.job-listing", compact('workerUsers', 'categories', 'pageTitle'));
     }
 
     public function Settings()
     {
-        return view("tasco.settings");
+        $pageTitle = 'Settings';
+
+        return view("tasco.settings", compact('pageTitle'));
     }
 
     
     public function CustomerService()
     {
-        return view("tasco.customer-service");
+        $pageTitle = 'Customer Service';
+
+        return view("tasco.customer-service", compact('pageTitle'));
     }
 
     public function ActivityLog()
     {
-        return view("tasco.activity-logs");
+        $pageTitle = 'Activity Log';
+
+        return view("tasco.activity-logs", compact('pageTitle'));
     }
 
     public function Terms()
     {
-        return view("tasco.terms");
+        $pageTitle = 'Terms & Conditions';
+
+        return view("tasco.terms", compact('pageTitle'));
     }
 
     public function Guidelines()
     {
-        return view("tasco.guidelines");
+        $pageTitle = 'Guidelines';
+
+        return view("tasco.guidelines", compact('pageTitle'));
     }
 
     public function AboutUs()
     {
-        return view("tasco.about-us");
+        $pageTitle = 'About Us';
+
+        return view("tasco.about-us", compact('pageTitle'));
     }
 }

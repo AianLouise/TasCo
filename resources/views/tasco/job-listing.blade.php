@@ -1,4 +1,5 @@
 <x-app-layout class="bg-white">
+    <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
 
     <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
 

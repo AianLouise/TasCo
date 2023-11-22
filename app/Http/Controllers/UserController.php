@@ -16,8 +16,9 @@ class UserController extends Controller
         $workerUsers = User::where('role', 'worker')->get();
         // Retrieve categories
         $categories = Category::all();
+        $pageTitle = 'Dashboard';
 
-        return view("user.user-dashboard", compact('workerUsers', 'categories'));
+        return view("user.user-dashboard", compact('workerUsers', 'categories', 'pageTitle'));
     }
 
     public function sort(Request $request)
@@ -54,7 +55,7 @@ class UserController extends Controller
         $workers = $query->paginate(6);
         $categories = Category::all();
 
-        return view('user.user-homepage', ['workerUsers' => $workers, 'categories' => $categories]);
+        return view('tasco.home', ['workerUsers' => $workers, 'categories' => $categories]);
     }
 
     public function UserChatify()

@@ -34,21 +34,26 @@ class AdminController extends Controller
             ->where('is_verified', 1)
             ->get();
 
+        $pageTitle = 'Admin Dashboard';
         // Pass data to the admin-dashboard view
-        return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers'));
+        return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers', 'pageTitle'));
     }
 
     // Chatify view for the admin
     public function AdminChatify()
     {
-        return view('admin.admin-chatify');
+        $pageTitle = 'Chatify';
+
+        return view('admin.admin-chatify', compact('pageTitle'));
     }
 
     // View to display all users for the admin
     public function AdminViewAllUsers()
     {
         $users = User::all();
-        return view('admin.admin-viewAllUsers', compact('users'));
+        $pageTitle = 'All Users';
+
+        return view('admin.admin-viewAllUsers', compact('users', 'pageTitle'));
     }
 
     // View to display job seekers for the admin
@@ -57,8 +62,8 @@ class AdminController extends Controller
         $workers = User::where('role', 'worker')
             ->where('is_verified', 1)
             ->get();
-
-        return view('admin.admin-jobSeeker', compact('workers'));
+        $pageTitle = 'All Job Seekers';
+        return view('admin.admin-jobSeeker', compact('workers', 'pageTitle'));
     }
 
     // View to display employers for the admin
@@ -68,14 +73,17 @@ class AdminController extends Controller
             ->where('is_verified', 1)
             ->get();
 
-        return view("admin.admin-employer", compact("employers"));
+        $pageTitle = 'All Employers';
+        return view("admin.admin-employer", compact("employers", 'pageTitle'));
     }
 
     // View to add a new profile for the admin
     public function AdminAddProfile()
     {
         $categories = Category::all();
-        return view('admin.admin-addProfile', compact('categories'));
+        $pageTitle = 'Add New Profile';
+
+        return view('admin.admin-addProfile', compact('categories', 'pageTitle'));
     }
 
     // Create a new user based on the admin's input
@@ -131,8 +139,9 @@ class AdminController extends Controller
     {
         $categories = Category::all();
         $user = User::find($id);
+        $pageTitle = 'Edit Profile';
 
-        return view('admin.admin-editProfile', ['user' => $user, 'categories' => $categories]);
+        return view('admin.admin-editProfile', ['user' => $user, 'categories' => $categories, 'pageTitle' => $pageTitle]);
     }
 
     // Delete a user profile based on the provided user ID
@@ -194,6 +203,7 @@ class AdminController extends Controller
 
         // Retrieve all users and pass them to the admin-viewAllUsers view
         $users = User::all();
+
         return view('admin.admin-viewAllUsers', compact('users'));
     }
 
@@ -201,27 +211,33 @@ class AdminController extends Controller
     public function AdminServices()
     {
         $services = Service::with('category')->get();
+        $pageTitle = 'Services';
 
-        return view('admin.admin-services', compact('services'));
+        return view('admin.admin-services', compact('services', 'pageTitle'));
     }
 
     // View for admin application
     public function AdminApplication()
     {
-        return view("admin.admin-application");
+        $pageTitle = 'Applications';
+
+        return view("admin.admin-application", compact('pageTitle'));
     }
 
     // View to display inbox messages for the admin
     public function AdminInbox()
     {
         $messages = CustomerServiceMessage::all();
+        $pageTitle = 'Inbox';
 
-        return view("admin.admin-inbox", compact('messages'));
+        return view("admin.admin-inbox", compact('messages', 'pageTitle'));
     }
 
     public function showEmailView(User $user)
     {
-        return view('admin.admin-inboxMessage', compact('user'));
+        $pageTitle = 'Email';
+
+        return view('admin.admin-inboxMessage', compact('user', 'pageTitle'));
     }
 
     public function replyEmail(Request $request, $emailId)
@@ -252,12 +268,16 @@ class AdminController extends Controller
     public function AdminAuditTrail()
     {
         $activityLogs = ActivityLog::all();
-        return view('admin.admin-auditTrail', compact('activityLogs'));
+        $pageTitle = 'Audit Trail';
+
+        return view('admin.admin-auditTrail', compact('activityLogs', 'pageTitle'));
     }
 
     // View for admin settings
     public function AdminSettings()
     {
-        return view("admin.admin-settings");
+        $pageTitle = 'Admin Settings';
+
+        return view("admin.admin-settings", compact('pageTitle'));
     }
 }
