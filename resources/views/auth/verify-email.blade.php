@@ -14,7 +14,7 @@
             @csrf
 
             <div>
-                <x-primary-button class="submit" style=" font-size: 12px">
+                <x-primary-button class="submit bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 w-full rounded mt-5" style=" font-size: 12px">
                     {{ __('Resend Verification Email') }}
                 </x-primary-button>
             </div>

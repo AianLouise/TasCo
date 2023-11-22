@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('role')->default('user');
             $table->string('category_id')->nullable();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('name');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->string('email')->unique();
             $table->boolean('is_verified')->default(false);
             $table->timestamp('email_verified_at')->nullable();

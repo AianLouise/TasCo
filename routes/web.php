@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,8 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 // Profile Routes (Requires Authentication)
 Route::middleware('auth')->group(function () {
@@ -65,6 +69,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [AppController::class, 'Home'])->name('app.home');
+    Route::get('/apply-as-jobseeker', [AppController::class, 'ApplyJobseeker'])->name('app.applyJobseeker');
+    Route::get('/apply-as-employer', [AppController::class, 'ApplyEmployer'])->name('app.applyEmployer');
+    Route::get('/job-listing', [AppController::class, 'JobListing'])->name('app.jobListing');
+    Route::get('/settings', [AppController::class, 'Settings'])->name('app.settings');
+    Route::get('/customer-service', [AppController::class, 'CustomerService'])->name('app.customerService');
+});
+
+// Worker Routes (Requires Authentication and Worker Role)
 Route::middleware(['auth', 'role:worker'])->group(function () {
     // Worker Dashboard and Related Routes
     Route::get('/worker/dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
@@ -80,6 +94,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/terms', [UserController::class, 'UserTerms'])->name('user.terms');
     Route::get('/guidelines', [UserController::class, 'UserGuidelines'])->name('user.guidelines');
     Route::get('/activitylog', [UserController::class, 'UserActivityLog'])->name('user.activitylog');
+    Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+    Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
     Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
     Route::get('/apply-as-jobseeker', [UserController::class, 'UserApplyJobseeker'])->name('user.applyJobseeker');
     Route::get('/apply-as-employer', [UserController::class, 'UserApplyEmployer'])->name('user.applyEmployer');
