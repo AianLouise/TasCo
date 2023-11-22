@@ -74,4 +74,19 @@ class AppController extends Controller
     {
         return view("tasco.customer-service");
     }
+
+    public function ActivityLog()
+    {
+        return view("tasco.activity-logs");
+    }
+
+    public function Terms()
+    {
+        return view("tasco.terms");
+    }
+
+    public function Guidelines()
+    {
+        return view("tasco.guidelines");
+    }
 }

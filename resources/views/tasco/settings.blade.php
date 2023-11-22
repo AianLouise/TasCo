@@ -40,7 +40,7 @@
                                    
                                     <!-- Information Detail/Dashboard Link -->
                                     <li class="mb-1 group">
-                                        <a href="{{ route('user.settings') }}" class="flex items-center py-2 px-4 text-gray-800 
+                                        <a href="{{ route('app.settings') }}" class="flex items-center py-2 px-4 text-gray-800 
                                             hover:bg-blue-400 hover:text-white rounded-md
                                             group-[.active]:bg-blue-600 group-[.active]:text-white
                                             group-[.selected]:bg-blue-600 group-[.selected]:text-white">
@@ -52,7 +52,7 @@
                         
                                     <!-- Activity Log Link -->
                                     <li class="mb-1 group">
-                                        <a href="{{ route('user.activitylog') }}" class="flex items-center py-2 px-4 text-gray-800 
+                                        <a href="{{ route('app.activitylog') }}" class="flex items-center py-2 px-4 text-gray-800 
                                         hover:bg-blue-400 hover:text-white rounded-md 
                                         group-[.active]:bg-blue-600 group-[.active]:text-white 
                                         group-[.selected]:bg-blue-600 group-[.selected]:text-white">
@@ -74,7 +74,7 @@
                         
                                     <!-- Terms and Conditions Link -->
                                     <li class="mb-1 group">
-                                        <a href="{{ route('user.terms') }}" class="flex items-center py-2 px-4 text-gray-800 
+                                        <a href="{{ route('app.terms') }}" class="flex items-center py-2 px-4 text-gray-800 
                                         hover:bg-blue-400 hover:text-gray-100 rounded-md 
                                         group-[.active]:bg-blue-500 group-[.active]:text-white 
                                         group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
@@ -86,7 +86,7 @@
                         
                                     <!-- Guidelines Link -->
                                     <li class=" ">
-                                        <a href="{{ route('user.guidelines') }}" class="flex items-center py-2 px-4 text-gray-800 
+                                        <a href="{{ route('app.guidelines') }}" class="flex items-center py-2 px-4 text-gray-800 
                                         hover:bg-blue-400 hover:text-gray-100 rounded-md 
                                         group-[.active]:bg-blue-500 group-[.active]:text-white 
                                         group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">

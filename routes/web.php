@@ -76,6 +76,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/job-listing', [AppController::class, 'JobListing'])->name('app.jobListing');
     Route::get('/settings', [AppController::class, 'Settings'])->name('app.settings');
     Route::get('/customer-service', [AppController::class, 'CustomerService'])->name('app.customerService');
+    Route::get('/activity-logs', [AppController::class, 'ActivityLog'])->name('app.activitylog');
+    Route::get('/terms', [AppController::class, 'Terms'])->name('app.terms');
+    Route::get('/guidelines', [AppController::class, 'Guidelines'])->name('app.guidelines');
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
