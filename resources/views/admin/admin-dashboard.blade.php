@@ -3,7 +3,7 @@
     <!-- Start: Dashboard -->
 
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 min-h-screen transition-all main">
-        
+
         <!-- Start: Header -->
 
         <div class="py-2 px-6 bg-white flex items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
@@ -45,9 +45,9 @@
                         <div>
                             <div class="flex items-center mb-1">
                                 <div class="text-2xl font-semibold">{{ $jobSeekersCount }}</div>
-                                <div
+                                {{-- <div
                                     class="p-1 rounded bg-rose-500/10 text-rose-500 text-[12px] font-semibold leading-none ml-2">
-                                    -1%</div>
+                                    -1%</div> --}}
                             </div>
                             <div class="text-sm font-medium text-gray-800">Job Seekers</div>
                         </div>
@@ -85,9 +85,9 @@
                         <div>
                             <div class="flex items-center mb-1">
                                 <div class="text-2xl font-semibold">{{ $employersCount }}</div>
-                                <div
+                                {{-- <div
                                     class="p-1 rounded bg-blue-500/10 text-blue-500 text-[12px] font-semibold leading-none ml-2">
-                                    +1%</div>
+                                    +1%</div> --}}
                             </div>
                             <div class="text-sm font-medium text-gray-800">Employers</div>
                         </div>
