@@ -86,6 +86,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
 });
 
+Route::middleware(['auth', 'is_verified'])->group(function () {
+    Route::get('/hiring-form', [WorkerController::class, 'hireWorker'])->name('worker.hire');
+});
+
 // Worker Routes (Requires Authentication and Worker Role)
 Route::middleware(['auth', 'role:worker'])->group(function () {
     // Worker Dashboard and Related Routes

@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // ...
         'chatify' => \App\Http\Middleware\AuthenticateChatify::class,
+        'is_verified' => \App\Http\Middleware\IsVerified::class,
     ];
     
 }

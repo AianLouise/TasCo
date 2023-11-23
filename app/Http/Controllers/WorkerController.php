@@ -29,5 +29,12 @@ class WorkerController extends Controller
         return view("worker.chatify", compact('pageTitle'));
     }
 
+    public function hireWorker(Request $request)
+    {
+        // Logic for hiring the worker goes here
+        // You can access the worker ID using $request->route('worker')
 
+        // For demonstration purposes, let's redirect back to the worker's profile
+        return view('worker.hiring-form');
+    }
 }

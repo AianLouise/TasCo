@@ -34,9 +34,25 @@
                 @endif
                 <!-- Add more profile details as needed -->
                 <div class="mt-4">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">Hire</button>
-                    <button
-                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Employments</button>
+                    <!-- Hire button -->
+                    <div class="flex justify-center">
+                      
+                            <a href="{{ route('worker.hire')}}"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">Hire</a>
+
+                        <form action="" class="mr-4">
+                            @csrf
+                            <button type="submit"
+                                class="border hover:border-blue-700 text-gray font-bold py-2 px-4 rounded w-36">Message</button>
+                        </form>
+                    </div>
+
+
+                    <div class="mt-4">
+                        <button
+                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-36">Employments</button>
+                    </div>
+
                 </div>
                 <div class="mt-4">
                     <div class="grid grid-cols-2 gap-4">
