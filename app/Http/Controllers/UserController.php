@@ -11,6 +11,12 @@ use App\Models\CustomerServiceMessage;
 
 class UserController extends Controller
 {
+    public function profile()
+    {
+        $user = Auth::user(); // Get the currently authenticated user
+
+        return view("user.user-profile", compact('user'));
+    }
     public function UserDashboard()
     {
         $workerUsers = User::where('role', 'worker')->get();

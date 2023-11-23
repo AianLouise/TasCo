@@ -23,6 +23,11 @@ class AppController extends Controller
         return view("tasco.home", compact('workerUsers', 'categories', 'pageTitle'));
     }
 
+    public function showProfile()
+    {
+        return view("tasco.profile");
+    }
+
     public function ApplyJobseeker()
     {
         return view("tasco.apply-jobseeker");

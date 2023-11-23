@@ -339,7 +339,7 @@
                                     <h5 class="mb-1 text-xl font-medium text-gray-900">{{ $worker->name }}</h5>
                                     <span class="text-sm text-gray-500 ">{{ $worker->category->name }}</span>
                                     <div class="flex mt-4 md:mt-6">
-                                        <a href=""
+                                        <a href="{{ route('app.workerprofile', ['worker' => $worker->id]) }}"
                                             class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                                             View Profile
                                         </a>
