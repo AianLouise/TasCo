@@ -81,7 +81,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/activity-logs', [AppController::class, 'ActivityLog'])->name('app.activitylog');
     Route::get('/terms', [AppController::class, 'Terms'])->name('app.terms');
     Route::get('/guidelines', [AppController::class, 'Guidelines'])->name('app.guidelines');
-
+    Route::get('/messenger', [AppController::class, 'Chatify'])->name('app.chatify');
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
@@ -97,5 +97,4 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // User Dashboard and Related Routes
     Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
-    Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
 });

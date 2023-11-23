@@ -131,4 +131,9 @@ class AppController extends Controller
 
         return view("tasco.about-us", compact('pageTitle'));
     }
+
+    public function Chatify()
+    {
+        return view("tasco.chatify");
+    }
 }

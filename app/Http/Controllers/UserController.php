@@ -57,11 +57,4 @@ class UserController extends Controller
 
         return view('tasco.home', ['workerUsers' => $workers, 'categories' => $categories]);
     }
-
-    public function UserChatify()
-    {
-        return view("user.chatify");
-    }
-
-    
 }
