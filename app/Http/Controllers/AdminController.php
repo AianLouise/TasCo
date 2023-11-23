@@ -244,7 +244,7 @@ class AdminController extends Controller
     {
         // Find the customer service message by its ID
         $email = CustomerServiceMessage::find($emailId);
-    
+
         // Check if the message with the given $emailId exists
         if ($email) {
             // The $email variable is not null, and it represents an existing message
@@ -253,7 +253,7 @@ class AdminController extends Controller
                 'user_id' => Auth::id(),            // Set the user ID for the reply
                 'message' => $request->input('reply_message'),  // Set the reply message content
             ]);
-    
+
             // Redirect back with a success message after submitting the reply
             return redirect()->back()->with('success', 'Reply submitted successfully.');
         } else {
@@ -262,6 +262,23 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'Message not found.');
         }
     }
+
+    public function deleteEmail($emailId)
+    {
+        // Find the email by ID
+        $email = CustomerServiceMessage::findOrFail($emailId);
+    
+        // Delete related replies
+        $email->replies()->delete();
+    
+        // Now, delete the email
+        $email->delete();
+    
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Email deleted successfully');
+    }
+    
+
 
 
     // View to display the audit trail for the admin
@@ -280,4 +297,5 @@ class AdminController extends Controller
 
         return view("admin.admin-settings", compact('pageTitle'));
     }
+
 }

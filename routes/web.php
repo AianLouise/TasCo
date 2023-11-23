@@ -64,6 +64,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
     Route::get('/inbox/{user}/view', [AdminController::class, 'showEmailView'])->name('admin.showEmailView');
     Route::post('/admin/reply-email/{emailId}', [AdminController::class, 'replyEmail'])->name('admin.replyEmail');
+    Route::delete('/admin/delete-email/{emailId}', [AdminController::class, 'deleteEmail'])->name('admin.deleteEmail');
     Route::get('/admin/auditTrail', [AdminController::class, 'AdminAuditTrail'])->name('admin.auditTrail');
     Route::get('/admin/settings', [AdminController::class, 'AdminSettings'])->name('admin.settings');
 });
@@ -77,7 +78,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/job-listing', [AppController::class, 'JobListing'])->name('app.jobListing');
     Route::get('/settings', [AppController::class, 'Settings'])->name('app.settings');
     Route::get('/customer-service', [AppController::class, 'CustomerService'])->name('app.customerService');
-    Route::post('/email-sent', [AppController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');
+    Route::post('/email-sent', [AppController::class, 'storeCustomerServiceMessage'])->name('app.EmailSent');
     Route::get('/activity-logs', [AppController::class, 'ActivityLog'])->name('app.activitylog');
     Route::get('/terms', [AppController::class, 'Terms'])->name('app.terms');
     Route::get('/guidelines', [AppController::class, 'Guidelines'])->name('app.guidelines');

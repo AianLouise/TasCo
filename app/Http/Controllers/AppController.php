@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Reply;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -76,7 +77,7 @@ class AppController extends Controller
         return view("tasco.settings", compact('pageTitle'));
     }
 
-    
+
     public function CustomerService()
     {
         $pageTitle = 'Customer Service';

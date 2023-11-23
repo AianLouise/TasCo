@@ -93,20 +93,23 @@
 
                                 <!-- Table Data for Subject -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium text-sm text-gray-800">
-                                    <i class="ri-user-3-line mr-1"></i> Sample User
+                                    <i class="ri-mail-line"></i></i> {{ $message->subject }}
                                 </td>
 
                                 <!-- Table Data for Date Posted -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium text-sm text-gray-800">
-                                    <i class="ri-time-line mr-1"></i> 24 hrs ago
+                                    <i class="ri-time-line mr-1"></i>
+                                    {{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}
                                 </td>
+
 
                                 <!-- Table Data for Actions (View and Delete) -->
                                 <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
-                                    <a href="{{ route('admin.showEmailView', ['user' => $message->user_id]) }}" class="text-blue-400 hover:text-blue-600">View</a>
+                                    <a href="{{ route('admin.showEmailView', ['user' => $message->user_id]) }}"
+                                        class="text-blue-400 hover:text-blue-600">View</a>
                                     <span class="text-gray-600">/</span>
                                     <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
-                                </td>                                
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
