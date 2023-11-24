@@ -247,9 +247,9 @@
 
                 <!-- Your updated form -->
                 <form class="mb-12 w-full" action="{{ route('workers.sort') }}#top" method="get">
-                    <div class="flex relative" onclick="toggleDropdown()">
+                    <div class="flex relative">
                         <!-- Your existing button -->
-                        <button id="dropdown-button"
+                        <button id="dropdown-button" onclick="toggleDropdown()"
                             class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
                             type="button">
                             @if (request()->has('category'))
