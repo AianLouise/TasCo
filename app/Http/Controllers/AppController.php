@@ -3,42 +3,67 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Reply;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerServiceMessage;
 
 class AppController extends Controller
 {
-    public function Home()
+    /**
+     * Display the home page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function home()
     {
+        // Retrieve worker users and categories
         $workerUsers = User::where('role', 'worker')->get();
-        // Retrieve categories
         $categories = Category::all();
-
         $pageTitle = 'Home';
 
         return view("tasco.home", compact('workerUsers', 'categories', 'pageTitle'));
     }
 
+    /**
+     * Display the user profile page.
+     *
+     * @return \Illuminate\View\View
+     */
     public function showProfile()
     {
-        return view("tasco.profile");
+        $pageTitle = 'Profile';
+
+        return view("tasco.profile", compact('pageTitle'));
     }
 
-    public function ApplyJobseeker()
+    /**
+     * Display the job seeker application page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function applyJobseeker()
     {
         return view("tasco.apply-jobseeker");
     }
 
-    public function ApplyEmployer()
+    /**
+     * Display the employer application page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function applyEmployer()
     {
         return view("tasco.apply-employer");
     }
 
-    public function JobListing(Request $request)
+    /**
+     * Display the job listing page with filters.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\View\View
+     */
+    public function jobListing(Request $request)
     {
         $query = User::where('role', 'worker');
 
@@ -75,21 +100,36 @@ class AppController extends Controller
         return view("tasco.job-listing", compact('workerUsers', 'categories', 'pageTitle'));
     }
 
-    public function Settings()
+    /**
+     * Display the settings page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function settings()
     {
         $pageTitle = 'Settings';
 
         return view("tasco.settings", compact('pageTitle'));
     }
 
-
-    public function CustomerService()
+    /**
+     * Display the customer service page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function customerService()
     {
         $pageTitle = 'Customer Service';
 
         return view("tasco.customer-service", compact('pageTitle'));
     }
 
+    /**
+     * Store a new customer service message.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function storeCustomerServiceMessage(Request $request)
     {
         $validatedData = $request->validate([
@@ -110,35 +150,60 @@ class AppController extends Controller
         return redirect()->route('app.customerService'); // Adjust the route name as needed
     }
 
-    public function ActivityLog()
+    /**
+     * Display the activity log page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function activityLog()
     {
         $pageTitle = 'Activity Log';
 
         return view("tasco.activity-logs", compact('pageTitle'));
     }
 
-    public function Terms()
+    /**
+     * Display the terms and conditions page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function terms()
     {
         $pageTitle = 'Terms & Conditions';
 
         return view("tasco.terms", compact('pageTitle'));
     }
 
-    public function Guidelines()
+    /**
+     * Display the guidelines page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function guidelines()
     {
         $pageTitle = 'Guidelines';
 
         return view("tasco.guidelines", compact('pageTitle'));
     }
 
-    public function AboutUs()
+    /**
+     * Display the about us page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function aboutUs()
     {
         $pageTitle = 'About Us';
 
         return view("tasco.about-us", compact('pageTitle'));
     }
 
-    public function Chatify()
+    /**
+     * Display the Chatify page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function chatify()
     {
         return view("tasco.chatify");
     }

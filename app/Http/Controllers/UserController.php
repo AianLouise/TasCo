@@ -14,8 +14,9 @@ class UserController extends Controller
     public function profile()
     {
         $user = Auth::user(); // Get the currently authenticated user
+        $pageTitle = 'Profile';
 
-        return view("user.user-profile", compact('user'));
+        return view("user.user-profile", compact('user', 'pageTitle'));
     }
     public function UserDashboard()
     {

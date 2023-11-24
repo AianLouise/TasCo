@@ -1,4 +1,5 @@
 <x-app-layout>
+    <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
     <main class="bg-gray-200 min-h-screen flex items-center justify-center">
         <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-center rounded-lg"> <!-- Added rounded-lg class -->
             <!-- Modified: Increased max width to max-w-2xl -->

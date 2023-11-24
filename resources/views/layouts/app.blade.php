@@ -12,6 +12,9 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
+    <!-- flatpickr styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @vite(['resources/css/style2.css'])
@@ -57,6 +60,9 @@
     <!-- Add this in your HTML or Blade file -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"
         integrity="sha256-Z2DGFn+s0NAOrgHvU5DBxToLyg2enKxjZ8m12jPOpmQ=" crossorigin="anonymous"></script>
+
+     <!-- flatpickr scripts -->
+     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </body>
 
