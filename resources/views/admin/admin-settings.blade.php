@@ -61,7 +61,7 @@
                 <div class="flex justify-center">
                     <button type="submit"
                         class="text-white mt-2 bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
-                        Submit
+                        Save
                     </button>
                 </div>
             </div>

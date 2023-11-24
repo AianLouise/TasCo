@@ -11,6 +11,13 @@ use App\Models\CustomerServiceMessage;
 
 class UserController extends Controller
 {
+    public function profile()
+    {
+        $user = Auth::user(); // Get the currently authenticated user
+        $pageTitle = 'Profile';
+
+        return view("user.user-profile", compact('user', 'pageTitle'));
+    }
     public function UserDashboard()
     {
         $workerUsers = User::where('role', 'worker')->get();
@@ -57,31 +64,4 @@ class UserController extends Controller
 
         return view('tasco.home', ['workerUsers' => $workers, 'categories' => $categories]);
     }
-
-    public function UserChatify()
-    {
-        return view("user.chatify");
-    }
-
-    public function storeCustomerServiceMessage(Request $request)
-    {
-        $validatedData = $request->validate([
-            'subject' => 'required|string',
-            'message' => 'required|string',
-        ]);
-
-        // Get the authenticated user's ID
-        $user_id = Auth::id();
-
-        // Create a new CustomerServiceMessage model and save the data
-        CustomerServiceMessage::create([
-            'user_id' => $user_id,
-            'subject' => $validatedData['subject'],
-            'message' => $validatedData['message'],
-        ]);
-
-        return redirect()->route('user.customerService'); // Adjust the route name as needed
-    }
-
-    
 }

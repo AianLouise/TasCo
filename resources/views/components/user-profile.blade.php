@@ -2,7 +2,7 @@
     <!-- Settings Dropdown -->
     <div class="hidden sm:flex sm:items-center sm:ml-6">
         <div class="mr-6">
-            <a href="{{ route('user.chatify') }}">
+            <a href="{{ route('app.chatify') }}" target="_new">
                 <i class="ri-message-3-line text-2xl"></i>
             </a>
         </div>
@@ -32,9 +32,15 @@
             <!-- Dropdown Content -->
             <x-slot name="content">
                 <!-- Profile Link -->
-                <x-dropdown-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-dropdown-link>
+                @if (Auth::user()->role == 'user' && Auth::user()->is_verified == 1)
+                    <x-dropdown-link :href="route('user.profile')">
+                        {{ __('Profile') }}
+                    </x-dropdown-link>
+                @elseif (Auth::user()->role == 'worker' && Auth::user()->is_verified == 1)
+                    <x-dropdown-link :href="route('worker.profile')">
+                        {{ __('Profile') }}
+                    </x-dropdown-link>
+                @endif
 
                 <x-dropdown-link :href="route('app.settings')">
                     {{ __('Settings') }}

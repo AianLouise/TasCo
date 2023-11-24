@@ -15,6 +15,13 @@ class WorkerController extends Controller
         return view("worker.worker-dashboard", compact('pageTitle'));
     }
 
+    public function WorkerProfile()
+    {
+        $pageTitle = 'Profile';
+
+        return view("worker.worker-profile", compact('pageTitle'));
+    }
+
     public function WorkerChatify()
     {
         $pageTitle = 'Chatify';

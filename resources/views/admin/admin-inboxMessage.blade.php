@@ -33,8 +33,9 @@
 
         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md">
             <div class="flex justify-between mb-4 items-start">
-                <!-- Heading for Application Section -->
-                <div class="font-medium2">Inbox</div>
+                <button type="button" class="text-lg text-gray-600 sidebar-toggle" onclick="goBack()">
+                    <i class="ri-arrow-left-line"></i> Back
+                </button>
             </div>
 
             <!-- Inbox Table -->
@@ -68,31 +69,53 @@
                                                 <button class="bg-blue-500 text-white px-4 py-2 rounded-md reply-btn"
                                                     data-email-id="{{ $email->id }}">Reply
                                                 </button>
-                                                <button
-                                                    class="bg-red-500 text-white px-4 py-2 rounded-md ml-2">Delete</button>
+
+                                                <!-- Delete Form -->
+                                                <form
+                                                    action="{{ route('admin.deleteEmail', ['emailId' => $email->id]) }}"
+                                                    method="post" id="delete-form-{{ $email->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+
+                                                <button type="button"
+                                                    class="bg-red-500 text-white px-4 py-2 rounded-md ml-2"
+                                                    onclick="confirmDelete({{ $email->id }})">Delete</button>
+
+
                                             </div>
                                             <!-- Reply Form -->
                                             <form action="{{ route('admin.replyEmail', ['emailId' => $email->id]) }}"
                                                 method="post" class="mt-2 reply-form" style="display: none;"
                                                 data-email-id="{{ $email->id }}">
                                                 @csrf
+                                                <input type="hidden" name="email_id" value="{{ $email->id }}">
                                                 <!-- ... reply form fields ... -->
                                                 <textarea name="reply_message" class="w-full h-16 border rounded-md p-2 mt-2" placeholder="Type your reply here"></textarea>
                                                 <div class="flex justify-end mt-2">
                                                     <button type="submit"
                                                         class="bg-green-500 text-white px-4 py-2 rounded-md">Submit
-                                                        Reply
-                                                    </button>
+                                                        Reply</button>
                                                 </div>
                                             </form>
 
-
-
+                                            <!-- Display Replies -->
+                                            @if ($email->replies->isNotEmpty())
+                                                <div class="mt-4">
+                                                    <h5 class="text-lg font-semibold">Replies:</h5>
+                                                    @foreach ($email->replies as $reply)
+                                                        <div class="border p-2 rounded-md mt-2">
+                                                            <p class="text-gray-600">{{ $reply->message }}</p>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endif
                                         </div>
                                     @endforeach
                                 @else
                                     <p class="text-gray-600">No emails found for this user.</p>
                                 @endif
+
                             </div>
                         </div>
                     </div>
@@ -107,6 +130,10 @@
     <!-- End: Main Content -->
     <!-- Add this script at the end of your HTML file, before the closing </body> tag -->
     <script>
+        function goBack() {
+            window.history.back();
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.reply-btn').forEach(function(button) {
                 button.addEventListener('click', function() {
@@ -120,5 +147,12 @@
                 });
             });
         });
+
+        function confirmDelete(emailId) {
+            if (confirm('Are you sure you want to delete this email?')) {
+                // If the user clicks "OK", submit the delete form
+                document.getElementById('delete-form-' + emailId).submit();
+            }
+        }
     </script>
 </x-app-layout>

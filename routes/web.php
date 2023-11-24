@@ -10,6 +10,7 @@ use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\WorkerHiringController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
@@ -64,6 +65,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
     Route::get('/inbox/{user}/view', [AdminController::class, 'showEmailView'])->name('admin.showEmailView');
     Route::post('/admin/reply-email/{emailId}', [AdminController::class, 'replyEmail'])->name('admin.replyEmail');
+    Route::delete('/admin/delete-email/{emailId}', [AdminController::class, 'deleteEmail'])->name('admin.deleteEmail');
     Route::get('/admin/auditTrail', [AdminController::class, 'AdminAuditTrail'])->name('admin.auditTrail');
     Route::get('/admin/settings', [AdminController::class, 'AdminSettings'])->name('admin.settings');
 });
@@ -77,15 +79,24 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/job-listing', [AppController::class, 'JobListing'])->name('app.jobListing');
     Route::get('/settings', [AppController::class, 'Settings'])->name('app.settings');
     Route::get('/customer-service', [AppController::class, 'CustomerService'])->name('app.customerService');
+    Route::post('/email-sent', [AppController::class, 'storeCustomerServiceMessage'])->name('app.EmailSent');
     Route::get('/activity-logs', [AppController::class, 'ActivityLog'])->name('app.activitylog');
     Route::get('/terms', [AppController::class, 'Terms'])->name('app.terms');
     Route::get('/guidelines', [AppController::class, 'Guidelines'])->name('app.guidelines');
+    Route::get('/messenger', [AppController::class, 'Chatify'])->name('app.chatify');
+    Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
+});
+
+Route::middleware(['auth', 'is_verified'])->group(function () {
+    Route::get('/hiring-form/{worker}', [WorkerHiringController::class, 'hireWorker'])->name('worker.hire');
+    Route::post('/submit-hiring-form/{worker}', [WorkerHiringController::class, 'submitHiringForm'])->name('submit.hiring.form');
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
 Route::middleware(['auth', 'role:worker'])->group(function () {
     // Worker Dashboard and Related Routes
     Route::get('/worker/dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
+    Route::get('/worker/profile', [WorkerController::class, 'WorkerProfile'])->name('worker.profile');
     Route::get('/worker/chatify', [WorkerController::class, 'WorkerChatify'])->name('worker.chatify');
     // Other Worker Routes...
 });
@@ -93,8 +104,7 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 // User Routes (Requires Authentication and User Role)
 Route::middleware(['auth', 'role:user'])->group(function () {
     // User Dashboard and Related Routes
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
-    Route::get('/chatify', [UserController::class, 'UserChatify'])->name('user.chatify');
-    Route::post('/email-sent', [UserController::class, 'storeCustomerServiceMessage'])->name('user.EmailSent');
 });
