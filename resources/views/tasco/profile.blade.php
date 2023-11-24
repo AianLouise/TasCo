@@ -69,10 +69,10 @@
                             <div class="bg-white border-blue-400 border hover:text-blue-400 transition-all p-4 rounded min-h-32 shadow"> <!-- Added shadow class -->
                                 <h3 class="text-lg font-semibold mb-2">Number of Employment</h3>
                                 <!-- Add services employed details here -->
-                                <p class="text-gray-700 text-4xl  hover:text-blue-400 hover:text-6xl hover:p-6 transition-all">20</p> <!-- Increased font size to text-xl -->
+                                <p class="text-gray-700 text-4xl hover:text-blue-400 hover:font-semibold hover:text-5xl hover:p-2 transition-all">20</p> <!-- Increased font size to text-xl -->
                             </div>
                         </div>
-                        <div class="text-lg border p-2 rounded bg-blue-400 text-white hover:text-black hover:bg-white hover:text-2xl transition-all">
+                        <div class="text-lg border p-2 rounded bg-blue-400 text-white hover:text-black hover:bg-white hover:text-xl hover:font-semibold transition-all">
                             <h3 class="text-2xl font-semibold mb-2">Contacts</h3>
                             <!-- Increased font size to text-2xl -->
                             <!-- Add contacts details here -->
