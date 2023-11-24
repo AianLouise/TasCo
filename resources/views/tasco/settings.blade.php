@@ -149,7 +149,7 @@
                 </div>
             </div>
 
-            <dialog class="content-center shadow-lg rounded-lg w-1/4" id="modal">
+            <dialog class="content-center shadow-lg rounded-lg w-96" id="modal">
                 <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-56 mt-4">
                     <div>
                         <i class="ri-mail-line text-blue-400 text-2xl"></i>
@@ -180,7 +180,7 @@
                 </div>
             </dialog>
 
-            <dialog class="content-center shadow-lg rounded-lg w-1/4" id="editModal">
+            <dialog class="content-center shadow-lg rounded-lg w-96" id="editModal">
                 <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-56 mt-4">
                     <div>
                         <i class="ri-edit-box-line text-blue-400 text-2xl"></i>
@@ -226,7 +226,7 @@
             </div>
         </div>
 
-        <dialog class="content-center shadow-lg rounded-lg w-1/4" id="modal">
+        <dialog class="content-center shadow-lg rounded-lg w-full" id="modal">
             <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-56 mt-4">
                 <div>
                     <i class="ri-mail-line text-blue-400 text-2xl"></i>
