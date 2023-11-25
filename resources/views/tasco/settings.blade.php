@@ -129,11 +129,12 @@
         </nav>
     </section>
 
-    
+
     <div class="p-2 mt">
         <i id="show-sidebar-icon" class="ri-settings-5-fill text-2xl text-gray-800"></i>
     </div>
-    <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-5 md:w-1/2 mx-auto w-full mt-4 rounded-md lg:px-4">
+    <div
+        class="bg-white border border-gray-100 shadow-md shadow-black/5 p-5 md:w-1/2 mx-auto w-full mt-4 rounded-md lg:px-4">
         <div class="pl-4 grid grid-cols-1">
             <span class="titleinfo text-2xl pb-2 pt-2">Personal Information</span>
         </div>
@@ -333,7 +334,7 @@
                 // Add click event listener to close-button in Phone Dialog
                 const closeEmailButton = document.querySelector('#emailModal .close-button');
                 closeEmailButton.addEventListener('click', () => {
-                    const modal = document.getElementById('emailModal'); 
+                    const modal = document.getElementById('emailModal');
                     modal.close();
                 });
             </script>
@@ -401,12 +402,85 @@
         </div>
     </div>
 
+    <div
+        class="bg-white border border-gray-100 shadow-md shadow-black/5 p-5 md:w-1/2 mx-auto w-full mt-4 rounded-md lg:px-4">
+        <div class="pl-4 grid grid-cols-1">
+            <span class="titleinfo text-2xl pb-2 pt-2">Password and Security</span>
+        </div>
+        {{-- Name --}}
+        <div>
+            <div
+                class="open-button flex items-center py-2 text-gray-800 
+                hover:bg-blue-400 hover:text-white
+                group-[.active]:bg-blue-600 group-[.active]:text-white
+                group-[.selected]:bg-blue-600 group-[.selected]:text-white">
+                <div class="grid grid-cols-1 pl-4">
+                    <span>Change Password</span>
+                    {{-- <span>{{ Auth::user()->name }}</span> --}}
+                </div>
+            </div>
+
+            <!-- Updated HTML Structure for Change Password -->
+            <dialog class="content-center shadow-lg rounded-lg w-96 h-80" id="passwordModal" style="margin: auto;">
+                <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-48 mt-4">
+                    <div>
+                        <i class="ri-lock-password-line text-blue-400 text-base"></i>
+                        <span class="tracking-wider font-semibold text-base">Change Password</span>
+                        <button class="text-3xl close-button">
+                            <i class="ri-close-line absolute top-2 right-2 close-button hover:text-blue-400"></i>
+                        </button>
+                    </div>
+                    <div>
+                        <form class="mt-2 p-4">
+                            <div class="grid grid-cols-1 gap-4">
+                                <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
+                                    type="password" id="currentPassword" name="currentPassword"
+                                    placeholder="Current Password">
+                                <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
+                                    type="password" id="newPassword" name="newPassword" placeholder="New Password">
+                                <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
+                                    type="password" id="confirmPassword" name="confirmPassword"
+                                    placeholder="Confirm Password">
+                            </div>
+                        </form>
+
+                        <button
+                            class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
+                    hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
+                    group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
+                            <span class="rounded-lg w-full text-base tracking-wide">
+                                <i class="ri-save-line font-bold mr-2 saveButton"></i>Save
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </dialog>
+
+            <script>
+                // Add click event listener to open-button for Change Password
+                const openPasswordButton = document.querySelectorAll('.open-button')[4]; // Selecting the fourth open-button
+                openPasswordButton.addEventListener('click', () => {
+                    const modal = document.getElementById('passwordModal');
+                    modal.showModal();
+                });
+
+                // Add click event listener to close-button in Change Password Dialog
+                const closePasswordButton = document.querySelector('#passwordModal .close-button');
+                closePasswordButton.addEventListener('click', () => {
+                    const modal = document.getElementById('passwordModal');
+                    modal.close();
+                });
+            </script>
+
+
+        </div>
 
 
 
 
 
-    {{-- <div class="pl-4 grid grid-cols-1">
+
+        {{-- <div class="pl-4 grid grid-cols-1">
             <span class="titleinfo text-2xl pb-2 pt-2">Contact Info</span>
         </div>
 
@@ -565,9 +639,9 @@
     </div>
     </div> --}}
 
-    {{-- !! PASSWORD AND SECURITY --}}
+        {{-- !! PASSWORD AND SECURITY --}}
 
-    {{-- <div class="h-56 w-3/5 grid grid-col-3 divide-y content-center shadow-lg template">
+        {{-- <div class="h-56 w-3/5 grid grid-col-3 divide-y content-center shadow-lg template">
             <div class="grid grid-cols-1">
                 <span class="titleinfo text-2xl pl-4 pb-2 pt-2">Password and Security</span>
             </div>
@@ -597,9 +671,9 @@
 
          {{-- !! END OF PASSWORD AND SECURITY --}}
 
-    {{-- !! LEGAL INFORMATION --}}
+        {{-- !! LEGAL INFORMATION --}}
 
-    {{--  <div class="h-56 w-3/5 grid grid-col-3 divide-y content-center shadow-lg template">
+        {{--  <div class="h-56 w-3/5 grid grid-col-3 divide-y content-center shadow-lg template">
             <div class="grid grid-cols-1">
                 <span class="titleinfo text-2xl pb-2 pt-2 pl-4">Legal Information</span>
             </div>
@@ -649,11 +723,11 @@
             </div>
         </div>     --}}
 
-    {{-- !! END OF LEGAL INFORMATION --}}
+        {{-- !! END OF LEGAL INFORMATION --}}
 
-    {{-- SCRIPT FOR MODALS/POP UP --}}
+        {{-- SCRIPT FOR MODALS/POP UP --}}
 
-    {{-- <script>
+        {{-- <script>
         // Email
         const modal = document.querySelector('#modal');
         const openModal = document.querySelector('.open-button');
@@ -693,30 +767,30 @@
         // Email
     </script> --}}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const settingsSidebar = document.querySelector('.sidebar-menu');
-            const sidebarOverlay = document.querySelector('.sidebar-overlay');
-            const showSidebarIcon = document.getElementById('show-sidebar-icon');
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const settingsSidebar = document.querySelector('.sidebar-menu');
+                const sidebarOverlay = document.querySelector('.sidebar-overlay');
+                const showSidebarIcon = document.getElementById('show-sidebar-icon');
 
-            function toggleSidebar() {
-                settingsSidebar.classList.toggle('hidden');
-                sidebarOverlay.classList.toggle('hidden');
-            }
+                function toggleSidebar() {
+                    settingsSidebar.classList.toggle('hidden');
+                    sidebarOverlay.classList.toggle('hidden');
+                }
 
-            // Event listener for the settings icon click
-            const settingsIcon = document.getElementById('settings-icon');
-            if (settingsIcon) {
-                settingsIcon.addEventListener('click', toggleSidebar);
-            }
+                // Event listener for the settings icon click
+                const settingsIcon = document.getElementById('settings-icon');
+                if (settingsIcon) {
+                    settingsIcon.addEventListener('click', toggleSidebar);
+                }
 
-            // Event listener for the show sidebar icon click
-            if (showSidebarIcon) {
-                showSidebarIcon.addEventListener('click', toggleSidebar);
-            }
+                // Event listener for the show sidebar icon click
+                if (showSidebarIcon) {
+                    showSidebarIcon.addEventListener('click', toggleSidebar);
+                }
 
-            // Event listener for the sidebar overlay click to close the sidebar
-            sidebarOverlay.addEventListener('click', toggleSidebar);
-        });
-    </script>
+                // Event listener for the sidebar overlay click to close the sidebar
+                sidebarOverlay.addEventListener('click', toggleSidebar);
+            });
+        </script>
 </x-app-layout>
