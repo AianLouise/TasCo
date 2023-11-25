@@ -4,10 +4,55 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             About Us
         </h2>
+
+        <style>
+            .teamimg:hover{
+                border-radius: 2rem;  
+                border: rgb(98, 98, 255) 1px solid;
+                width: 12rem;  
+                height: auto;
+                padding: 1rem;
+                background-color: white;
+                transition: width 2s, height 1s, color 2s, margin-top 2s, padding 1s, border 2s, border-radius 0.5s, transform 2s;
+                color: gray;
+                z-index: 4;
+            }
+
+            .teamimg2:hover{
+                border-radius: 2rem;  
+                border: rgb(98, 98, 255) 1px solid;
+                width: 12rem;  
+                transition: width 4s, height 2s, color 2s, margin-top 2s, border 2s, border-radius 0.5s, z-index 1s, transform 2s;
+                color: gray;
+                z-index: 4;
+            }
+
+            .teamimg{
+                width: 9rem;
+                border-radius: 30rem;
+                border: white;
+                padding: 2rem;
+                background-color: transparent;
+                color: transparent;
+                z-index: 1;
+                padding: 0;
+            }
+
+            .teamimg2{
+                width: 8rem;
+                border-radius: 30rem;
+                border: white;
+                color: transparent;
+                z-index: 1;
+                padding: 0;
+            }
+
+        </style>
     </x-slot>
 
+<main class="flex flex-wrap flex-row -mx-4 justify-center">
     <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-2xl sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="text-4xl font-bold mb-4 text-gray-800">Welcome to TasCo</h1>
@@ -49,4 +94,65 @@
             </div>
         </div>
     </div>
+
+    <div class="py-12">
+        <div class="max-w-xl max-h-80 sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg text-center p-10">
+                <h1 class="text-4xl font-bold mb-2 text-gray-800">Our TasCo Team</h1>
+                <div class="grid grid-cols-3 text-center pt-16">
+                    <div class="teamimg transition-all">
+                    <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                        <span class="">Maglalang MR Rey</span>
+                        <br>
+                        <span class="font-bold p-4">Developer</span>
+                     </div>
+                     <div class="teamimg transition-all">
+                        <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                            <span class="">Maglalang MR Rey</span>
+                            <br>
+                            <span class="font-bold p-4">Developer</span>
+                         </div>
+                         <div class="teamimg transition-all">
+                            <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                <span class="">Maglalang MR Rey</span>
+                                <br>
+                                <span class="font-bold p-4">Developer</span>
+                             </div>
+                             <div class="teamimg transition-all">
+                                <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                    <span class="">Maglalang MR Rey</span>
+                                    <br>
+                                    <span class="font-bold p-4">Developer</span>
+                                 </div>
+                                 <div class="teamimg transition-all">
+                                    <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                        <span class="">Maglalang MR Rey</span>
+                                        <br>
+                                        <span class="font-bold p-4">Developer</span>
+                                     </div>
+                                     <div class="teamimg transition-all">
+                                        <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                            <span class="">Maglalang MR Rey</span>
+                                            <br>
+                                            <span class="font-bold p-4">Developer</span>
+                                         </div>
+                                         <div class="teamimg transition-all">
+                                            <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                                <span class="">Maglalang MR Rey</span>
+                                                <br>
+                                                <span class="font-bold p-4">Developer</span>
+                                             </div>
+                                             <div class="teamimg transition-all">
+                                                <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                                    <span class="">Maglalang MR Rey</span>
+                                                    <br>
+                                                    <span class="font-bold p-4">Developer</span>
+                                                 </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>    
 </x-app-layout>

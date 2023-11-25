@@ -141,14 +141,21 @@
         {{-- Name --}}
         <div>
             <div
-                class="open-button flex items-center py-2 text-gray-800 
+                class="open-button flex items-center py-2 text-gray-800 rounded-lg
                 hover:bg-blue-400 hover:text-white
                 group-[.active]:bg-blue-600 group-[.active]:text-white
-                group-[.selected]:bg-blue-600 group-[.selected]:text-white">
+                group-[.selected]:bg-blue-600 group-[.selected]:text-white
+                cursor-pointer
+                ">
+                <i class="ri-price-tag-3-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
                     <span>Name:</span>
                     <span>{{ Auth::user()->name }}</span>
                 </div>
+                <div class="flex items-end">
+                    {{-- <i class="ri-arrow-right-s-line text-4xl ml-auto"></i> --}}
+                </div>
+                
             </div>
 
             <!-- Updated HTML Structure for First Name and Last Name -->
@@ -221,10 +228,13 @@
         {{-- Address --}}
         <div>
             <div
-                class="open-button flex items-center py-2 text-gray-800 
+                class="open-button flex items-center py-2 text-gray-800 rounded-lg
         hover:bg-blue-400 hover:text-white
         group-[.active]:bg-blue-600 group-[.active]:text-white
-        group-[.selected]:bg-blue-600 group-[.selected]:text-white">
+        group-[.selected]:bg-blue-600 group-[.selected]:text-white
+        cursor-pointer
+        ">
+        <i class="ri-home-2-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
                     <span>Address:</span>
                     <span>{{ Auth::user()->address }}</span>
@@ -282,10 +292,13 @@
         {{-- Email --}}
         <div>
             <div
-                class="open-button flex items-center py-2 text-gray-800 
+                class="open-button flex items-center py-2 text-gray-800 rounded-lg
         hover:bg-blue-400 hover:text-white
         group-[.active]:bg-blue-600 group-[.active]:text-white
-        group-[.selected]:bg-blue-600 group-[.selected]:text-white">
+        group-[.selected]:bg-blue-600 group-[.selected]:text-white
+        cursor-pointer
+        ">
+        <i class="ri-mail-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
                     <span>Email:</span>
                     <span>{{ Auth::user()->email }}</span>
@@ -343,11 +356,14 @@
         {{-- Phone --}}
         <div>
             <div
-                class="open-button flex items-center py-2 text-gray-800 
+                class="open-button flex items-center py-2 text-gray-800 rounded-lg
         hover:bg-blue-400 hover:text-white
         group-[.active]:bg-blue-600 group-[.active]:text-white
-        group-[.selected]:bg-blue-600 group-[.selected]:text-white">
+        group-[.selected]:bg-blue-600 group-[.selected]:text-white
+        cursor-pointer
+        ">   <i class="ri-phone-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
+                 
                     <span>Phone:</span>
                     <span>{{ Auth::user()->phone }}</span>
                 </div>
@@ -410,16 +426,32 @@
         {{-- Name --}}
         <div>
             <div
-                class="open-button flex items-center py-2 text-gray-800 
+                class="open-button flex items-center py-2 text-gray-800 rounded-lg
                 hover:bg-blue-400 hover:text-white
                 group-[.active]:bg-blue-600 group-[.active]:text-white
-                group-[.selected]:bg-blue-600 group-[.selected]:text-white">
+                group-[.selected]:bg-blue-600 group-[.selected]:text-white
+                cursor-pointer
+                ">
+                <i class="ri-lock-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
                     <span>Change Password</span>
                     {{-- <span>{{ Auth::user()->name }}</span> --}}
                 </div>
             </div>
-
+            <div
+            class="open-button flex items-center py-2 text-gray-800 rounded-lg
+            hover:bg-blue-400 hover:text-white
+            group-[.active]:bg-blue-600 group-[.active]:text-white
+            group-[.selected]:bg-blue-600 group-[.selected]:text-white
+            cursor-pointer
+            ">
+            <i class="ri-mail-check-line text-2xl p-1 ml-3"></i>
+            <div class="grid grid-cols-1 pl-4">
+                <span>Two Factor Authentication</span>
+                {{-- <span>{{ Auth::user()->name }}</span> --}}
+            </div>
+            </div>
+            
             <!-- Updated HTML Structure for Change Password -->
             <dialog class="content-center shadow-lg rounded-lg w-96 h-80" id="passwordModal" style="margin: auto;">
                 <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-48 mt-4">
@@ -456,6 +488,9 @@
                 </div>
             </dialog>
 
+        </div>
+    </div>
+    
             <script>
                 // Add click event listener to open-button for Change Password
                 const openPasswordButton = document.querySelectorAll('.open-button')[4]; // Selecting the fourth open-button
@@ -474,298 +509,6 @@
 
 
         </div>
-
-
-
-
-
-
-        {{-- <div class="pl-4 grid grid-cols-1">
-            <span class="titleinfo text-2xl pb-2 pt-2">Contact Info</span>
-        </div>
-
-        <div>
-            <div
-                class="open-button flex items-center py-2 text-gray-800 
-                hover:bg-blue-400 hover:text-white
-                group-[.active]:bg-blue-600 group-[.active]:text-white
-                group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                <div class="grid grid-cols-1 pl-4">
-                    <span>Email</span>
-                    <span>example</span>
-                </div>
-            </div>
-
-            <dialog class="content-center shadow-lg rounded-lg w-96" id="modal">
-                <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-56 mt-4">
-                    <div>
-                        <i class="ri-mail-line text-blue-400 text-2xl"></i>
-                        <span class="tracking-wider font-semibold text-2xl ">Email</span>
-                        <button class="text-3xl">
-                            <i
-                                class="ri-close-line absolute top-2 right-2 close-button
-                        hover:text-blue-400"></i>
-                        </button>
-                    </div>
-                    <div>
-                        <form class="mt-2 p-4">
-                            <input class="rounded-lg w-full p-4 text-2xl border-gray-200 tracking-wide" type="text"
-                                id="fname" name="fname" placeholder="Email">
-                        </form>
-
-                        <button
-                            class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 h-34 text-gray-600
-                    hover:bg-blue-400 hover:text-gray-100
-                    group-[.active]:bg-blue-500 group-[.active]:text-white 
-                    group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
-                            <span class="rounded-lg w-full text-xl tracking-wide">
-                                <i class="ri-edit-box-line font-bold mr-2 editButton"></i>Edit
-                            </span>
-                        </button>
-
-                    </div>
-                </div>
-            </dialog>
-
-            <dialog class="content-center shadow-lg rounded-lg w-96" id="editModal">
-                <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-56 mt-4">
-                    <div>
-                        <i class="ri-edit-box-line text-blue-400 text-2xl"></i>
-                        <span class="tracking-wider font-semibold text-2xl">Edit Email</span>
-                        <button class="text-3xl">
-                            <i class="ri-close-line absolute top-2 right-2 hover:text-blue-400 editClose"></i>
-                        </button>
-                    </div>
-                    <div>
-                        <form class="mt-2 p-4">
-                            <input class="rounded-lg w-full p-4 text-2xl border-gray-200 tracking-wide" type="text"
-                                id="fname" name="fname" placeholder="Email">
-                        </form>
-
-                        <button
-                            class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 h-34 text-gray-600
-                        hover:bg-blue-400 hover:text-gray-100
-                        group-[.active]:bg-blue-500 group-[.active]:text-white 
-                        group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
-                            <span class="rounded-lg w-full text-xl tracking-wide">
-                                <i class="ri-shield-check-line font-bold mr-2 verifyButton"></i>Authenticate
-                            </span>
-                        </button>
-
-                    </div>
-                </div>
-            </dialog>
-
-            <dialog class="content-center shadow-lg rounded-lg w-1/4" id="verifyModal">
-                <span>example</span>
-            </dialog>
-        </div>
-
-
-        <div
-            class="open-button flex items-center py-2 text-gray-800 
-            hover:bg-blue-400 hover:text-white
-            group-[.active]:bg-blue-600 group-[.active]:text-white
-            group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-            <div class="grid grid-cols-1 pl-4">
-                <span>Email</span>
-                <span>example</span>
-            </div>
-        </div>
-
-        <dialog class="content-center shadow-lg rounded-lg w-full" id="modal">
-            <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-56 mt-4">
-                <div>
-                    <i class="ri-mail-line text-blue-400 text-2xl"></i>
-                    <span class="tracking-wider font-semibold text-2xl ">Email</span>
-                    <button class="text-3xl">
-                        <i
-                            class="ri-close-line absolute top-2 right-2 close-button
-                    hover:text-blue-400"></i>
-                    </button>
-                </div>
-                <div>
-                    <form class="mt-2 p-4">
-                        <input class="rounded-lg w-full p-4 text-2xl border-gray-200 tracking-wide" type="text"
-                            id="fname" name="fname" placeholder="Email">
-                    </form>
-
-                    <button
-                        class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 h-34 text-gray-600
-                hover:bg-blue-400 hover:text-gray-100
-                group-[.active]:bg-blue-500 group-[.active]:text-white 
-                group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
-                        <span class="rounded-lg w-full text-xl tracking-wide">
-                            <i class="ri-edit-box-line font-bold mr-2 editButton"></i>Edit
-                        </span>
-                    </button>
-
-                </div>
-            </div>
-        </dialog>
-
-        <dialog class="content-center shadow-lg rounded-lg w-1/4" id="editModal">
-            <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-56 mt-4">
-                <div>
-                    <i class="ri-edit-box-line text-blue-400 text-2xl"></i>
-                    <span class="tracking-wider font-semibold text-2xl">Edit Email</span>
-                    <button class="text-3xl">
-                        <i class="ri-close-line absolute top-2 right-2 hover:text-blue-400 editClose"></i>
-                    </button>
-                </div>
-                <div>
-                    <form class="mt-2 p-4">
-                        <input class="rounded-lg w-full p-4 text-2xl border-gray-200 tracking-wide" type="text"
-                            id="fname" name="fname" placeholder="Email">
-                    </form>
-
-                    <button
-                        class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 h-34 text-gray-600
-                    hover:bg-blue-400 hover:text-gray-100
-                    group-[.active]:bg-blue-500 group-[.active]:text-white 
-                    group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
-                        <span class="rounded-lg w-full text-xl tracking-wide">
-                            <i class="ri-shield-check-line font-bold mr-2 verifyButton"></i>Authenticate
-                        </span>
-                    </button>
-
-                </div>
-            </div>
-        </dialog>
-
-        <dialog class="content-center shadow-lg rounded-lg w-1/4" id="verifyModal">
-            <span>example</span>
-        </dialog>
-    </div>
-    </div> --}}
-
-        {{-- !! PASSWORD AND SECURITY --}}
-
-        {{-- <div class="h-56 w-3/5 grid grid-col-3 divide-y content-center shadow-lg template">
-            <div class="grid grid-cols-1">
-                <span class="titleinfo text-2xl pl-4 pb-2 pt-2">Password and Security</span>
-            </div>
-            <div>
-                <a href=" " class="flex items-center py-2 text-gray-800 
-                hover:bg-blue-400 hover:text-white
-                group-[.active]:bg-blue-600 group-[.active]:text-white
-                group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                <div class="grid grid-cols-1 pl-4">
-                    <span>Name</span>
-                    <span>example</span>
-                </div>
-                </a>
-            </div>
-            <div>
-                <a href=" " class="flex items-center py-2 text-gray-800 
-                hover:bg-blue-400 hover:text-white
-                group-[.active]:bg-blue-600 group-[.active]:text-white
-                group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                <div class="grid grid-cols-1 pl-4">
-                    <span>Name</span>
-                    <span>example</span>
-                </div>
-                </a>
-            </div>
-        </div>    
-
-         {{-- !! END OF PASSWORD AND SECURITY --}}
-
-        {{-- !! LEGAL INFORMATION --}}
-
-        {{--  <div class="h-56 w-3/5 grid grid-col-3 divide-y content-center shadow-lg template">
-            <div class="grid grid-cols-1">
-                <span class="titleinfo text-2xl pb-2 pt-2 pl-4">Legal Information</span>
-            </div>
-            <div>
-                <a href=" " class="flex items-center py-2 text-gray-800 
-                hover:bg-blue-400 hover:text-white
-                group-[.active]:bg-blue-600 group-[.active]:text-white
-                group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                <div class="grid grid-cols-1 pl-4">
-                    <span>Name</span>
-                    <span>example</span>
-                </div>
-                </a>
-            </div>
-            <div>
-                <a href=" " class="flex items-center py-2 text-gray-800 
-                hover:bg-blue-400 hover:text-white
-                group-[.active]:bg-blue-600 group-[.active]:text-white
-                group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                <div class="grid grid-cols-1 pl-4">
-                    <span>Name</span>
-                    <span>example</span>
-                </div>
-                </a>
-            </div>
-            <div>
-                <a href=" " class="flex items-center py-2 text-gray-800 
-                hover:bg-blue-400 hover:text-white
-                group-[.active]:bg-blue-600 group-[.active]:text-white
-                group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                <div class="grid grid-cols-1 pl-4">
-                    <span>Name</span>
-                    <span>example</span>
-                </div>
-                </a>
-            </div>
-            <div>
-                <a href=" " class="flex items-center py-2 text-gray-800 
-                hover:bg-blue-400 hover:text-white
-                group-[.active]:bg-blue-600 group-[.active]:text-white
-                group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                <div class="grid grid-cols-1 pl-4">
-                    <span>Name</span>
-                    <span>example</span>
-                </div>
-                </a>
-            </div>
-        </div>     --}}
-
-        {{-- !! END OF LEGAL INFORMATION --}}
-
-        {{-- SCRIPT FOR MODALS/POP UP --}}
-
-        {{-- <script>
-        // Email
-        const modal = document.querySelector('#modal');
-        const openModal = document.querySelector('.open-button');
-        const closeModal = document.querySelector('.close-button');
-        const editButton = document.querySelector('.edit-button');
-        const editModal = document.querySelector('#editModal');
-        const editClose = document.querySelector('.editClose')
-        const verifyButton = document.querySelector('.verifyButton');
-        const verifyModal = document.querySelector('#verifyModal');
-        const verifyClose = document.querySelector('.verifyClose')
-
-        openModal.addEventListener('click', () => {
-            modal.showModal();
-        })
-
-        closeModal.addEventListener('click', () => {
-            modal.close();
-        })
-
-        editButton.addEventListener('click', () => {
-            editModal.showModal();
-            modal.close();
-        })
-
-        editClose.addEventListener('click', () => {
-            editModal.close();
-        })
-
-        verifyButton.addEventListener('click', () => {
-            verifyModal.showModal();
-            editModal.close();
-        })
-
-        verifyClose.addEventListener('click', () => {
-            verifyModal.close();
-        })
-        // Email
-    </script> --}}
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
