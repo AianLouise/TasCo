@@ -20,7 +20,7 @@
                     alt="" class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
             @else
                 <img src="{{ asset('storage/users-avatar/' . basename($user->avatar)) }}" alt=""
-                    class="w-48 h-48 rounded-full mx-auto mb-4">
+                class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
             @endif
             <!-- Modified: Increased width and height to w-48 and h-48 -->
 
