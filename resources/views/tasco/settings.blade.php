@@ -262,11 +262,11 @@
                                     value="{{ Auth::user()->address }}">
                             </div>
                         </form>
-
+            
                         <button
                             class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
-                        hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
-                        group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100 saveButton">
+                            hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
+                            group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100 saveButton">
                             <span class="rounded-lg w-full text-base tracking-wide">
                                 <i class="ri-save-line font-bold mr-2"></i>Save
                             </span>
@@ -274,6 +274,7 @@
                     </div>
                 </div>
             </dialog>
+            
 
             <script>
                 // Add click event listener to open-button for Address

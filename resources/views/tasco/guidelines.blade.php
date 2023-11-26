@@ -108,7 +108,7 @@
                 </li>
 
                 <!-- Guidelines Link -->
-                <li class="mb-1 group ">
+                <li class="mb-1 group {{ request()->routeIs('app.guidelines') ? 'active' : '' }}">
                     <a href="{{ route('app.guidelines') }}"
                         class="flex items-center py-2 px-4 text-gray-800 
                                         hover:bg-blue-400 hover:text-gray-100 rounded-md 
