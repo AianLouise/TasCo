@@ -32,7 +32,11 @@
             <!-- Dropdown Content -->
             <x-slot name="content">
                 <!-- Profile Link -->
-                @if (Auth::user()->role == 'user' && Auth::user()->is_verified == 1)
+                @if (Auth::user()->role == 'user' && Auth::user()->is_verified == 0)
+                    <x-dropdown-link :href="route('user.profile')">
+                        {{ __('Profile') }}
+                    </x-dropdown-link>
+                @elseif (Auth::user()->role == 'user' && Auth::user()->is_verified == 1)
                     <x-dropdown-link :href="route('user.profile')">
                         {{ __('Profile') }}
                     </x-dropdown-link>
