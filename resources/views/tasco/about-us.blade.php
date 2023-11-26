@@ -96,51 +96,51 @@
     </div>
 
     <div class="py-12">
-        <div class="max-w-xl max-h-80 sm:px-6 lg:px-8">
+        <div class="max-w-xl max-h-md sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg text-center p-10">
                 <h1 class="text-4xl font-bold mb-2 text-gray-800">Our TasCo Team</h1>
                 <div class="grid grid-cols-3 text-center pt-16">
                     <div class="teamimg transition-all">
-                    <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
-                        <span class="">Maglalang MR Rey</span>
+                    <img src="{{ asset('images/Alfaro.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                        <span class="">Alfaro Aian Louise</span>
                         <br>
                         <span class="font-bold p-4">Developer</span>
                      </div>
                      <div class="teamimg transition-all">
-                        <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
-                            <span class="">Maglalang MR Rey</span>
+                        <img src="{{ asset('images/Capili.JPG') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                            <span class="">Capili Dana Maxine</span>
                             <br>
                             <span class="font-bold p-4">Developer</span>
                          </div>
                          <div class="teamimg transition-all">
-                            <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
-                                <span class="">Maglalang MR Rey</span>
+                            <img src="{{ asset('images/Castro.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                <span class="">Castro Shania Nicole</span>
                                 <br>
-                                <span class="font-bold p-4">Developer</span>
+                                <span class="font-bold p-4">Documents</span>
                              </div>
                              <div class="teamimg transition-all">
-                                <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
-                                    <span class="">Maglalang MR Rey</span>
+                                <img src="{{ asset('images/Bautista.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                    <span class="">Bautista Jo Ann</span>
                                     <br>
-                                    <span class="font-bold p-4">Developer</span>
+                                    <span class="font-bold p-4">Researcher</span>
                                  </div>
                                  <div class="teamimg transition-all">
-                                    <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
-                                        <span class="">Maglalang MR Rey</span>
+                                    <img src="{{ asset('images/Gonzales.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                        <span class="">Gonzales Emmanual Louise</span>
                                         <br>
-                                        <span class="font-bold p-4">Developer</span>
+                                        <span class="font-bold p-4">Documents</span>
                                      </div>
                                      <div class="teamimg transition-all">
-                                        <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
-                                            <span class="">Maglalang MR Rey</span>
+                                        <img src="{{ asset('images/Casupang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                            <span class="">Casupang Joshua</span>
                                             <br>
-                                            <span class="font-bold p-4">Developer</span>
+                                            <span class="font-bold p-4">Researcher</span>
                                          </div>
                                          <div class="teamimg transition-all">
-                                            <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
-                                                <span class="">Maglalang MR Rey</span>
+                                            <img src="{{ asset('images/Dizon.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">
+                                                <span class="">Dizon Joshua</span>
                                                 <br>
-                                                <span class="font-bold p-4">Developer</span>
+                                                <span class="font-bold p-4">Documents</span>
                                              </div>
                                              <div class="teamimg transition-all">
                                                 <img src="{{ asset('images/Maglalang.jpg') }}" alt="" class="teamimg2 ease-in-out shadow-xl">

@@ -88,7 +88,7 @@
 
                                     <!-- Browse Icon -->
 
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem"
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" 
                                         viewBox="0 0 24 24">
                                         <path
                                             d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
@@ -400,13 +400,17 @@
                 <!-- Start: Service Section Row -->
 
                 <div class="flex flex-wrap flex-row -mx-4 text-center">
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
+                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp "
                         data-wow-duration="1s"
                         style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                            <div class="inline-block text-gray-900 mb-4">
+                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
+                            hover:bg-blue-400
+                            hover:text-white
+                            hover:rounded-xl
+                            ">
+                            <div class="inline-block mb-4">
                                 <!-- icon -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
                                     fill="currentColor" viewBox="0 0 24 24">
@@ -415,8 +419,8 @@
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold text-black">Approved Services</h3>
-                            <p class="text-gray-500">In our community, services are approved not only by the
+                            <h3 class="text-lg leading-normal mb-2 font-semibold" >Approved Services</h3>
+                            <p class="">In our community, services are approved not only by the
                                 administration
                                 but also by the community!</p>
                         </div>
@@ -427,10 +431,14 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                            <div class="inline-block text-gray-900 mb-4">
+                             class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
+                            hover:bg-blue-400
+                            hover:text-white
+                            hover:rounded-xl
+                            ">
+                            <div class="inline-block mb-4">
                                 <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                                     viewBox="0 0 24 24">
                                     <path
                                         d="M14 8V4H5V20H19V9H16V13.6195C16 14.4641 15.5544 15.2529 14.8125 15.7215L12 17.4978L9.18747 15.7215C8.4456 15.2529 8 14.4641 8 13.6195V8H14ZM21 8V20.9932C21 21.5501 20.5552 22 20.0066 22H3.9934C3.44495 22 3 21.556 3 21.0082V2.9918C3 2.45531 3.4487 2 4.00221 2H14.9968L21 8ZM10 13.6195C10 13.7698 10.0872 13.9242 10.2554 14.0305L12 15.1323L13.7446 14.0305C13.9128 13.9242 14 13.7698 14 13.6195V10H10V13.6195Z">
@@ -438,8 +446,8 @@
                                 </svg>
 
                             </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold text-black">Verified Documents</h3>
-                            <p class="text-gray-500">In our community, documents are verified before any transactions
+                            <h3 class="text-lg leading-normal mb-2 font-semibold">Verified Documents</h3>
+                            <p class="">In our community, documents are verified before any transactions
                                 happen in the community to keep a safe and secure local area!</p>
                         </div>
                         <!-- end service block -->
@@ -449,18 +457,22 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                            <div class="inline-block text-gray-900 mb-4">
+                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
+                            hover:bg-blue-400
+                            hover:text-white
+                            hover:rounded-xl
+                            ">
+                            <div class="inline-block mb-4">
                                 <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                                     viewBox="0 0 24 24">
                                     <path
                                         d="M6.45455 19L2 22.5V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.45455ZM4 18.3851L5.76282 17H20V5H4V18.3851ZM11 13H13V15H11V13ZM11 7H13V12H11V7Z">
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold text-black">Feedbacks</h3>
-                            <p class="text-gray-500">In our community, your feedbacks matters to us and we'll always
+                            <h3 class="text-lg leading-normal mb-2 font-semibold">Feedbacks</h3>
+                            <p class="">In our community, your feedbacks matters to us and we'll always
                                 hear
                                 you out if you have concerns or request!</p>
                         </div>
@@ -471,18 +483,22 @@
                         style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                            <div class="inline-block text-gray-900 mb-4">
+                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
+                            hover:bg-blue-400
+                            hover:text-white
+                            hover:rounded-xl
+                            ">
+                            <div class="inline-block mb-4">
                                 <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                                     viewBox="0 0 24 24">
                                     <path
                                         d="M17 9.2L22.2133 5.55071C22.4395 5.39235 22.7513 5.44737 22.9096 5.6736C22.9684 5.75764 23 5.85774 23 5.96033V18.0397C23 18.3158 22.7761 18.5397 22.5 18.5397C22.3974 18.5397 22.2973 18.5081 22.2133 18.4493L17 14.8V19C17 19.5523 16.5523 20 16 20H2C1.44772 20 1 19.5523 1 19V5C1 4.44772 1.44772 4 2 4H16C16.5523 4 17 4.44772 17 5V9.2ZM17 12.3587L21 15.1587V8.84131L17 11.6413V12.3587ZM3 6V18H15V6H3ZM5 8H7V10H5V8Z">
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold text-black">Monitoring</h3>
-                            <p class="text-gray-500">Not only do we monitor your documents, feedbacks, services, we
+                            <h3 class="text-lg leading-normal mb-2 font-semibold">Monitoring</h3>
+                            <p class="">Not only do we monitor your documents, feedbacks, services, we
                                 also
                                 monitor on how well the community interact with each other</p>
                         </div>
@@ -493,18 +509,22 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                            <div class="inline-block text-gray-900 mb-4">
+                             class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
+                            hover:bg-blue-400
+                            hover:text-white
+                            hover:rounded-xl
+                            ">
+                            <div class="inline-block mb-4">
                                 <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                                     viewBox="0 0 24 24">
                                     <path
                                         d="M6 10V20H19V10H6ZM18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16ZM7 11H9V13H7V11ZM7 14H9V16H7V14ZM7 17H9V19H7V17Z">
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold text-black">Secure</h3>
-                            <p class="text-gray-500">We secure the safety of every individual that will be working or
+                            <h3 class="text-lg leading-normal mb-2 font-semibold ">Secure</h3>
+                            <p class="">We secure the safety of every individual that will be working or
                                 employing each other. We prioritize security overall along with monitoring.</p>
                         </div>
                         <!-- end service block -->
@@ -514,10 +534,14 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                            <div class="inline-block text-gray-900 mb-4">
+                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
+                            hover:bg-blue-400
+                            hover:text-white
+                            hover:rounded-xl
+                            ">
+                            <div class="inline-block mb-4">
                                 <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                                     viewBox="0 0 24 24">
                                     <path
                                         d="M5 3V19H21V21H3V3H5ZM20.2929 6.29289L21.7071 7.70711L16 13.4142L13 10.415L8.70711 14.7071L7.29289 13.2929L13 7.58579L16 10.585L20.2929 6.29289Z">
@@ -525,8 +549,8 @@
                                 </svg>
 
                             </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold text-black">Growth</h3>
-                            <p class="text-gray-500">In our community, every individual matters, we secure, hear, and
+                            <h3 class="text-lg leading-normal mb-2 font-semibold">Growth</h3>
+                            <p class="">In our community, every individual matters, we secure, hear, and
                                 talk
                                 to one another in order to have an efficient growth of the community!
                             </p>
