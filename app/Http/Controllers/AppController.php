@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerServiceMessage;
@@ -157,9 +158,11 @@ class AppController extends Controller
      */
     public function activityLog()
     {
+        $activityLogs = ActivityLog::where('causer_id', auth()->id())->get();
         $pageTitle = 'Activity Log';
+        $users = User::all();
 
-        return view("tasco.activity-logs", compact('pageTitle'));
+        return view("tasco.activity-logs", compact('pageTitle', 'activityLogs', 'users'));
     }
 
     /**
@@ -181,7 +184,7 @@ class AppController extends Controller
      */
     public function guidelines()
     {
-        $pageTitle = 'Guidelines';
+        $pageTitle = 'Community Guidelines';
 
         return view("tasco.guidelines", compact('pageTitle'));
     }
