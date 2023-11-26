@@ -1,8 +1,8 @@
 <x-app-layout>
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
-    
+
     <style>
-        .avatarimg{
+        .avatarimg {
             margin-top: -10rem;
         }
     </style>
@@ -17,10 +17,11 @@
             <!-- Modified: Increased max width to max-w-2xl -->
             @if ($user->avatar == 'avatar.png')
                 <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&color=7F9CF5&background=EBF4FF"
-                    alt="" class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
+                    alt=""
+                    class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
             @else
                 <img src="{{ asset('storage/users-avatar/' . basename($user->avatar)) }}" alt=""
-                class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
+                    class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
             @endif
             <!-- Modified: Increased width and height to w-48 and h-48 -->
 
@@ -44,10 +45,15 @@
                 <!-- Add more profile details as needed -->
                 <div class="mt-4">
                     <!-- Hire button -->
-                    <div class="flex justify-center">
+                    <div class="flex justify-center space-x-4">
+                        @if (Auth::user()->is_verified)
+                            <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">Hire</a>
+                        @else
+                            <span class="inline-block bg-red-500 text-white font-bold py-2 px-4 rounded">You are not
+                                verified to Hire</span>
+                        @endif
 
-                        <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">Hire</a>
 
                         <form action="" class="mr-4">
                             @csrf
@@ -66,13 +72,18 @@
                 <div class="mt-4">
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <div class="bg-white border-blue-400 border hover:text-blue-400 transition-all p-4 rounded min-h-32 shadow"> <!-- Added shadow class -->
+                            <div
+                                class="bg-white border-blue-400 border hover:text-blue-400 transition-all p-4 rounded min-h-32 shadow">
+                                <!-- Added shadow class -->
                                 <h3 class="text-lg font-semibold mb-2">Number of Employment</h3>
                                 <!-- Add services employed details here -->
-                                <p class="text-gray-700 text-4xl hover:text-blue-400 hover:font-semibold hover:text-5xl hover:p-2 transition-all">20</p> <!-- Increased font size to text-xl -->
+                                <p
+                                    class="text-gray-700 text-4xl hover:text-blue-400 hover:font-semibold hover:text-5xl hover:p-2 transition-all">
+                                    20</p> <!-- Increased font size to text-xl -->
                             </div>
                         </div>
-                        <div class="text-lg border p-2 rounded bg-blue-400 text-white hover:text-black hover:bg-white hover:text-xl hover:font-semibold transition-all">
+                        <div
+                            class="text-lg border p-2 rounded bg-blue-400 text-white hover:text-black hover:bg-white hover:text-xl hover:font-semibold transition-all">
                             <h3 class="text-2xl font-semibold mb-2">Contacts</h3>
                             <!-- Increased font size to text-2xl -->
                             <!-- Add contacts details here -->

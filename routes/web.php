@@ -87,7 +87,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
 });
 
-Route::middleware(['auth', 'is_verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/hiring-form/{worker}', [WorkerHiringController::class, 'hireWorker'])->name('worker.hire');
     Route::post('/submit-hiring-form/{worker}', [WorkerHiringController::class, 'submitHiringForm'])->name('submit.hiring.form');
 });
