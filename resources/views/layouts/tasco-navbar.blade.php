@@ -36,27 +36,6 @@
                         <li><a href="{{ route('app.aboutUs') }}" class="nav-a text-sm font-medium">About Us</a></li>
                     </ul>
 
-
-                    {{-- <div class="items-center hidden pl-2 ml-auto mr-8 lg:flex lg:ml-0 lg:mr-0">
-                        <form>
-                            <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-                            <div class="relative">
-                                <input type="search"
-                                    class="block w-full  ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="Search..." required>
-                                <button type="submit"
-                                    class="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1">
-                                    <svg class="w-4 h-4 text-black" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path
-                                            d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z">
-                                        </path>
-                                    </svg>
-
-                                </button>
-                            </div>
-                        </form>
-                    </div> --}}
                     <x-user-profile />
                 </div>
             </nav>
@@ -76,7 +55,7 @@
                         true,
                     '-translate-x-full ease-out opacity-0': open === false
                 }">
-                
+
                 <div class="flex justify-between lg:hidden">
                     <a class="p-2 text-4xl font-bold text-gray-700" href="#">TasCo</a>
                     <button class="p-2 text-gray-700 rounded-md hover:text-blue-300 lg:hidden " @click="open=false">
@@ -118,25 +97,31 @@
                             Us</a>
                     </li>
                 </ul>
+                <ul class="px-4 mt-10">
+                    <li class="pb-3 flex items-center">
+                        <i class="ri-user-fill text-blue-400 text-lg mr-2"></i>
+                        <a href="{{ route('user.profile') }}"
+                            class="text-sm text-black hover:text-blue-400">Profile</a>
+                    </li>
+                    <li class="pb-3 flex items-center">
+                        <i class="ri-settings-fill text-blue-400 text-lg mr-2"></i>
+                        <a href="{{ route('app.settings') }}"
+                            class="text-sm text-black hover:text-blue-400">Settings</a>
+                    </li>
+                    <li class="pb-3 flex items-center">
+                        <i class="ri-logout-box-line text-blue-400 text-lg mr-2"></i>
+                        <a href="{{ route('logout') }}" class="text-sm text-black hover:text-blue-400"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                    </li>
 
-                {{-- <form class="px-3">
-                    <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-                    <div class="relative">
-                        <input type="search"
-                            class="block w-full ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Search..." required>
-                        <button type="submit"
-                            class="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1">
-                            <svg class="w-4 h-4 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z">
-                                </path>
-                            </svg>
+                    <!-- Add this form at the end of your HTML, typically near the closing </body> tag -->
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
 
-                        </button>
-                    </div>
-                </form> --}}
+                </ul>
                 <!-- End: Nav List -->
             </div>
             <!-- End: Navigation Mobile Sidebar -->

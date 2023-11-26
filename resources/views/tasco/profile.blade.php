@@ -12,7 +12,7 @@
             $userId = request()->route('worker');
             $user = \App\Models\User::find($userId);
         @endphp
-        <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-right rounded-lg">
+        <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-right rounded-lg mt-20">
             <!-- Added rounded-lg class -->
             <!-- Modified: Increased max width to max-w-2xl -->
             @if ($user->avatar == 'avatar.png')
