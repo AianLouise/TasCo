@@ -175,48 +175,70 @@
                             <thead>
                                 <tr>
                                     <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left rounded-tl-md rounded-bl-md">
+                                        class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left rounded-tl-md rounded-bl-md">
                                         Name</th>
                                     <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left">
-                                        File Type</th>
+                                        class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left">
+                                        Subject</th>
                                     <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left">
-                                        Time</th>
+                                        class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left">
+                                        Date Posted</th>
                                     <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left rounded-tr-md rounded-br-md">
+                                        class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left rounded-tr-md rounded-br-md">
+                                        Action
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-300">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 w-6">
-                                                <i class="ri-attachment-2"></i>
+                                @foreach ($messages as $index => $message)
+                                    <tr class="{{ $index === count($messages) - 1 ? 'border-b' : '' }}">
+                                        <!-- Table Data for Name -->
+                                        <td class="px-2 py-1 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-8 w-8">
+                                                    <!-- Display User Avatar -->
+                                                    @if ($message->avatar == 'avatar.png')
+                                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($message->user->name) }}&color=7F9CF5&background=EBF4FF"
+                                                            alt=""
+                                                            class="w-6 h-6 rounded block object-cover align-middle">
+                                                    @else
+                                                        <img src="{{ asset('storage/users-avatar/' . basename($message->user->avatar)) }}"
+                                                            alt=""
+                                                            class="w-6 h-6 rounded block object-cover align-middle">
+                                                    @endif
+                                                </div>
+                                                <!-- User Name and Email -->
+                                                <div class="ml-2">
+                                                    <div class="text-xs font-medium text-gray-800">
+                                                        {{ $message->user->name }}
+                                                    </div>
+                                                    <div class="text-xs text-gray-700">
+                                                        {{ $message->user->email }}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <a href="#"
-                                                class="text-gray-800 text-sm font-medium hover:text-blue-500 truncate">User
-                                                No.1 Application for Job Seeking</a>
-                                        </div>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-300">
-                                        <span class="text-[13px] font-medium text-gray-800">PDF</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-300">
-                                        <span class="text-[13px] font-medium text-gray-800">12:20 PM</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-300">
-                                        <div>
-                                            <button type="button"
-                                                class="dropdown-toggle text-gray-800 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center"><i
-                                                    class="ri-more-2-fill"></i></button>
-                                            <ul
-                                                class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-200 w-full max-w-[140px]">
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+
+                                        <!-- Table Data for Subject -->
+                                        <td class="px-2 py-1 whitespace-nowrap font-medium text-xs text-gray-700">
+                                            <i class="ri-mail-line text-sm"></i> {{ $message->subject }}
+                                        </td>
+
+                                        <!-- Table Data for Date Posted -->
+                                        <td class="px-2 py-1 whitespace-nowrap font-medium text-xs text-gray-700">
+                                            <i class="ri-time-line text-sm mr-1"></i>
+                                            {{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}
+                                        </td>
+
+                                        <!-- Table Data for Actions (View and Delete) -->
+                                        <td class="px-2 py-1 whitespace-nowrap text-left text-xs font-medium">
+                                            <a href="{{ route('admin.showEmailView', ['user' => $message->user_id]) }}"
+                                                class="text-blue-400 hover:text-blue-600">View</a>
+                                            <span class="text-gray-600">/</span>
+                                            <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
                             </tbody>
                         </table>
@@ -257,53 +279,74 @@
                             <thead>
                                 <tr>
                                     <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left rounded-tl-md rounded-bl-md">
-                                        User</th>
+                                        class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left rounded-tl-md rounded-bl-md">
+                                        Name</th>
                                     <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left">
+                                        class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left">
                                         Subject</th>
                                     <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left">
-                                        Time</th>
+                                        class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left">
+                                        Date Posted</th>
                                     <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-800 py-2 px-4 text-left rounded-tr-md rounded-br-md">
+                                        class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left rounded-tr-md rounded-br-md">
+                                        Action
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-300">
-                                        <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt=""
-                                                class="w-8 h-8 rounded object-cover block">
-                                            <a href="#"
-                                                class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">John
-                                                Doe</a>
-                                        </div>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-300">
-                                        <span class="text-[13px] font-medium text-gray-800">Job Application</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-300">
-                                        <span class="text-[13px] font-medium text-gray-800">12:20 PM</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-300">
-                                        <div>
-                                            <button type="button"
-                                                class="dropdown-toggle text-gray-800 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center"><i
-                                                    class="ri-more-2-fill"></i></button>
-                                            <ul
-                                                class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-200 w-full max-w-[140px]">
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($messages as $index => $message)
+                                    <tr class="{{ $index === count($messages) - 1 ? 'border-b' : '' }}">
+                                        <!-- Table Data for Name -->
+                                        <td class="px-2 py-1 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-8 w-8">
+                                                    <!-- Display User Avatar -->
+                                                    @if ($message->avatar == 'avatar.png')
+                                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($message->user->name) }}&color=7F9CF5&background=EBF4FF"
+                                                            alt=""
+                                                            class="w-6 h-6 rounded block object-cover align-middle">
+                                                    @else
+                                                        <img src="{{ asset('storage/users-avatar/' . basename($message->user->avatar)) }}"
+                                                            alt=""
+                                                            class="w-6 h-6 rounded block object-cover align-middle">
+                                                    @endif
+                                                </div>
+                                                <!-- User Name and Email -->
+                                                <div class="ml-2">
+                                                    <div class="text-xs font-medium text-gray-800">
+                                                        {{ $message->user->name }}
+                                                    </div>
+                                                    <div class="text-xs text-gray-700">
+                                                        {{ $message->user->email }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
 
+                                        <!-- Table Data for Subject -->
+                                        <td class="px-2 py-1 whitespace-nowrap font-medium text-xs text-gray-700">
+                                            <i class="ri-mail-line text-sm"></i> {{ $message->subject }}
+                                        </td>
+
+                                        <!-- Table Data for Date Posted -->
+                                        <td class="px-2 py-1 whitespace-nowrap font-medium text-xs text-gray-700">
+                                            <i class="ri-time-line text-sm mr-1"></i>
+                                            {{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}
+                                        </td>
+
+                                        <!-- Table Data for Actions (View and Delete) -->
+                                        <td class="px-2 py-1 whitespace-nowrap text-left text-xs font-medium">
+                                            <a href="{{ route('admin.showEmailView', ['user' => $message->user_id]) }}"
+                                                class="text-blue-400 hover:text-blue-600">View</a>
+                                            <span class="text-gray-600">/</span>
+                                            <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>

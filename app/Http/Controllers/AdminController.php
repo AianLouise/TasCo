@@ -25,6 +25,7 @@ class AdminController extends Controller
         $jobSeekersCount = User::where('role', 'worker')->where('is_verified', 1)->count();
         $employersCount = User::where('role', 'user')->where('is_verified', 1)->count();
         $allUsersCount = User::count();
+        $messages = CustomerServiceMessage::all();
 
         $workers = User::where('role', 'worker')
             ->where('is_verified', 1)
@@ -36,7 +37,7 @@ class AdminController extends Controller
 
         $pageTitle = 'Admin Dashboard';
         // Pass data to the admin-dashboard view
-        return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers', 'pageTitle'));
+        return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers', 'pageTitle', 'messages'));
     }
 
     // Chatify view for the admin
