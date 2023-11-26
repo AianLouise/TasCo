@@ -35,102 +35,106 @@
         }
     </style>
 
-<section>
-    <nav x-data="flex { open: false }" class="bg-white border-b border-gray-100">
-        <!-- Start: Sidebar -->
-        <div class="fixed top-30 w-64 h-full p-4 z-50 sidebar-menu bg-white">
-            <div class="flex justify-between">
-                <span class="text-lg font-bold ml-2">Settings</span>
-                <i id="settings-icon" class="ri-menu-fold-fill text-xl text-gray-800"></i>
-            </div>
-
-            <!-- Start: Logo -->
-            <div>
-                <a href="#" class="flex items-center pb-4 border-b">
-                </a>
-            </div>
-            <!-- End: Logo -->
-
-            <!-- Start: Menu -->
-            <ul class="mt-4">
-
-                <!-- Information Detail/Dashboard Link -->
-                <li class="mb-1 group {{ request()->routeIs('app.settings') ? 'active' : '' }}">
-                    <a href="{{ route('app.settings') }}"
-                        class="flex items-center py-2 px-4 text-gray-800 
-                                        hover:bg-blue-400 hover:text-white rounded-md
-                                        group-[.active]:bg-blue-600 group-[.active]:text-white
-                                        group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                        <i class="ri-user-line mr-3 text-lg"></i>
-                        <span class="text-sm">Information Details</span>
-                        <i class="ri-arrow-right-s-line ml-auto"></i>
-                    </a>
-                </li>
-
-                <!-- Activity Log Link -->
-                <li class="mb-1 group">
-                    <a href="{{ route('app.activitylog') }}"
-                        class="flex items-center py-2 px-4 text-gray-800 
-                                        hover:bg-blue-400 hover:text-white rounded-md 
-                                        group-[.active]:bg-blue-600 group-[.active]:text-white 
-                                        group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                        <i class="ri-history-line mr-3 text-lg"></i>
-                        <span class="text-sm">Activity Log</span>
-                        <i class="ri-arrow-right-s-line ml-auto"></i>
-                    </a>
-                </li>
-            </ul>
-            <span class="flex text-lg font-bold ml-3 border-t items-center pb-2 pt-2 mt-2">Community</span>
-            <!-- Start: Logo -->
-            <div>
-                <a href="#" class="flex items-center pb-2 border-b">
-                </a>
-            </div>
-
-
-            <ul class="mt-4">
-
-                <!-- Terms and Conditions Link -->
-                <li class="mb-1 group">
-                    <a href="{{ route('app.terms') }}"
-                        class="flex items-center py-2 px-4 text-gray-800 
-                                        hover:bg-blue-400 hover:text-gray-100 rounded-md 
-                                        group-[.active]:bg-blue-500 group-[.active]:text-white 
-                                        group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
-                        <i class="ri-book-read-line mr-3 text-lg"></i>
-                        <span class="text-sm">Terms and Conditions</span>
-                        <i class="ri-arrow-right-s-line ml-auto"></i>
-                    </a>
-                </li>
-
-                <!-- Guidelines Link -->
-                <li class="mb-1 group ">
-                    <a href="{{ route('app.guidelines') }}"
-                        class="flex items-center py-2 px-4 text-gray-800 
-                                        hover:bg-blue-400 hover:text-gray-100 rounded-md 
-                                        group-[.active]:bg-blue-500 group-[.active]:text-white 
-                                        group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
-                        <i class="ri-shake-hands-line mr-3 text-lg"></i>
-                        <span class="text-sm">Community Guideline</span>
-                        <i class="ri-arrow-right-s-line ml-auto"></i>
-                    </a>
-                </li>
-            </ul>
-            <!-- End: Menu -->
-            <div class="fixed top-5 left-0 w-full h-full z-40 sm:hidden md:hidden sidebar-overlay ml-53">
-                <!-- Mobile Sidebar Overlay Icon -->
-                <i class="ri-menu-line text-xl text-gray-800"></i>
-            </div>
-
+<nav x-data="flex { open: false }" class="fixed z-50 top-0 bg-white border-b border-gray-100">
+    <!-- Start: Sidebar -->
+    <div class="fixed top-30 w-64 h-full p-4 z-50 sidebar-menu bg-white">
+        <div class="flex justify-between mt-20">
+            <span class="text-lg font-bold ml-2">Settings</span>
+            <i id="settings-icon" class="ri-menu-fold-fill text-xl text-gray-800 cursor-pointer transition-all 
+                    hover:pr-2
+                    hover:font-bold
+                    hover:text-blue-400
+            "></i>
         </div>
-        <!-- End: Sidebar -->
-    </nav>
-</section>
+
+        <!-- Start: Logo -->
+        <div>
+            <span class="flex items-center pb-2 pt-2 border-b">
+            </span>
+        </div>
+        <!-- End: Logo -->
+
+        <!-- Start: Menu -->
+        <ul class="mt-4">
+
+            <!-- Information Detail/Dashboard Link -->
+            <li class="mb-1 group {{ request()->routeIs('app.settings') ? 'active' : '' }}">
+                <a href="{{ route('app.settings') }}"
+                    class="flex items-center py-2 px-4 text-gray-800 
+                                    hover:bg-blue-400 hover:text-white rounded-md
+                                    group-[.active]:bg-blue-600 group-[.active]:text-white
+                                    group-[.selected]:bg-blue-600 group-[.selected]:text-white">
+                    <i class="ri-user-line mr-3 text-lg"></i>
+                    <span class="text-sm">Information Details</span>
+                    <i class="ri-arrow-right-s-line ml-auto"></i>
+                </a>
+            </li>
+
+            <!-- Activity Log Link -->
+            <li class="mb-1 group">
+                <a href="{{ route('app.activitylog') }}"
+                    class="flex items-center py-2 px-4 text-gray-800 
+                                    hover:bg-blue-400 hover:text-white rounded-md 
+                                    group-[.active]:bg-blue-600 group-[.active]:text-white 
+                                    group-[.selected]:bg-blue-600 group-[.selected]:text-white">
+                    <i class="ri-history-line mr-3 text-lg"></i>
+                    <span class="text-sm">Activity Log</span>
+                    <i class="ri-arrow-right-s-line ml-auto"></i>
+                </a>
+            </li>
+        </ul>
+        <span class="flex text-lg font-bold ml-3 border-t items-center pb-2 pt-2 mt-2">Community</span>
+        <!-- Start: Logo -->
+        <div>
+            <span class="flex items-center pb-2 border-b">
+            </span>
+        </div>
 
 
+        <ul class="mt-4">
 
-    <div class="p-2 mt">
-        <i id="show-sidebar-icon" class="ri-settings-5-fill text-2xl text-gray-800"></i>
+            <!-- Terms and Conditions Link -->
+            <li class="mb-1 group">
+                <a href="{{ route('app.terms') }}"
+                    class="flex items-center py-2 px-4 text-gray-800 
+                                    hover:bg-blue-400 hover:text-gray-100 rounded-md 
+                                    group-[.active]:bg-blue-500 group-[.active]:text-white 
+                                    group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
+                    <i class="ri-book-read-line mr-3 text-lg"></i>
+                    <span class="text-sm">Terms and Conditions</span>
+                    <i class="ri-arrow-right-s-line ml-auto"></i>
+                </a>
+            </li>
+
+            <!-- Guidelines Link -->
+            <li class="mb-1 group ">
+                <a href="{{ route('app.guidelines') }}"
+                    class="flex items-center py-2 px-4 text-gray-800 
+                                    hover:bg-blue-400 hover:text-gray-100 rounded-md 
+                                    group-[.active]:bg-blue-500 group-[.active]:text-white 
+                                    group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
+                    <i class="ri-shake-hands-line mr-3 text-lg"></i>
+                    <span class="text-sm">Community Guideline</span>
+                    <i class="ri-arrow-right-s-line ml-auto"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- End: Menu -->
+        <div class="fixed top-5 left-0 w-full h-full z-40 sm:hidden md:hidden sidebar-overlay ml-53">
+            <!-- Mobile Sidebar Overlay Icon -->
+            <i class="ri-menu-line text-xl text-gray-800"></i>
+        </div>
+
+    </div>
+    <!-- End: Sidebar -->
+</nav>
+
+ <div class="">
+        <i id="show-sidebar-icon" class="fixed ri-settings-5-fill text-2xl text-gray-800 bg-white p-4 round-lg mt-64 cursor-pointer transition-all 
+                hover:text-blue-300
+                hover:pl-6
+                hover:text-4xl
+        "></i>
     </div>
     <div
         class="bg-white border border-gray-100 shadow-md shadow-black/5 p-5 md:w-1/2 mx-auto w-full mt-4 rounded-md lg:px-4">
