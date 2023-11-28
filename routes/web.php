@@ -10,6 +10,7 @@ use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\WorkerHiringController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -107,4 +108,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
+});
+
+
+Route::controller(FullCalenderController::class)->group(function(){
+    Route::get('fullcalender', 'index');
+    Route::post('fullcalenderAjax', 'ajax');
 });
