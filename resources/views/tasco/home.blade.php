@@ -588,7 +588,7 @@
                                         <div class="-mt-1 font-sans text-sm font-semibold">Job Seeker</div>
                                     </div>
                                 </a>
-                                <a href="#"
+                                <a href="{{ route('app.applyEmployer') }}"
                                     class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
                                     <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -611,7 +611,7 @@
                         <p class="mb-5 text-base text-gray-500 sm:text-lg">Interested in joining our community?</p>
                         <div
                             class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
-                            <a href="{{ route('app.applyJobseeker') }}}}"
+                            <a href="{{ route('app.applyEmployer') }}"
                                 class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
                                 <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -624,7 +624,7 @@
                                     <div class="-mt-1 font-sans text-sm font-semibold">Job Seeker</div>
                                 </div>
                             </a>
-                            <a href="{{ route('app.applyEmployer') }}}}"
+                            <a href="{{ route('app.applyEmployer') }}"
                                 class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
                                 <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

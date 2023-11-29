@@ -75,8 +75,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [AppController::class, 'Home'])->name('app.home');
     Route::get('/about-us', [AppController::class, 'AboutUs'])->name('app.aboutUs');
-    Route::get('/apply-as-jobseeker', [AppController::class, 'ApplyJobseeker'])->name('app.applyJobseeker');
-    Route::get('/apply-as-employer', [AppController::class, 'ApplyEmployer'])->name('app.applyEmployer');
+    Route::get('/apply-as-jobseeker', [AppController::class, 'applyJobseeker'])->name('app.applyJobseeker');
+    Route::get('/apply-as-employer', [AppController::class, 'applyEmployer'])->name('app.applyEmployer');    
     Route::get('/job-listing', [AppController::class, 'JobListing'])->name('app.jobListing');
     Route::get('/settings', [AppController::class, 'Settings'])->name('app.settings');
     Route::get('/customer-service', [AppController::class, 'CustomerService'])->name('app.customerService');
