@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerServiceMessage;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -64,4 +66,79 @@ class UserController extends Controller
 
         return view('tasco.home', ['workerUsers' => $workers, 'categories' => $categories]);
     }
+
+    public function updateName(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+        ]);
+
+        // Update the user's name
+        $user = Auth::user();
+        $user->update([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Name updated successfully');
+    }
+
+    public function updateAddress(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'address' => 'required|string',
+        ]);
+
+        // Update the user's address
+        $user = Auth::user();
+        $user->update([
+            'address' => $request->input('address'),
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Address updated successfully');
+    }
+
+    public function updateEmail(Request $request)
+    {
+        // Validate the request
+        $validator = Validator::make($request->all(), [
+            'email' => [
+                'required',
+                'string',
+                'email',
+                Rule::unique('users')->ignore(Auth::user()->id),
+            ],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Send verification email
+        Auth::user()->sendEmailVerificationNotification();
+
+        return redirect()->route('verification.notice')->with('status', 'A verification link has been sent to your email.');
+    }
+
+    public function updatePhone(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'phone' => 'required|string',
+        ]);
+    
+        // Update the user's phone
+        $user = Auth::user();
+        $user->update([
+            'phone' => $request->input('phone'),
+        ]);
+    
+        return redirect()->back()->with('status', 'Phone updated successfully');
+    }
+    
 }

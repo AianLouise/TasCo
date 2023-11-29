@@ -35,102 +35,104 @@
         }
     </style>
 
-<nav x-data="flex { open: false }" class="fixed z-50 top-0 bg-white border-b border-gray-100">
-    <!-- Start: Sidebar -->
-    <div class="fixed top-30 w-64 h-full p-4 z-50 sidebar-menu bg-white">
-        <div class="flex justify-between mt-20">
-            <span class="text-lg font-bold ml-2">Settings</span>
-            <i id="settings-icon" class="ri-menu-fold-fill text-xl text-gray-800 cursor-pointer transition-all 
+    <nav x-data="flex { open: false }" class="fixed z-50 top-0 bg-white border-b border-gray-100">
+        <!-- Start: Sidebar -->
+        <div class="fixed top-30 w-64 h-full p-4 z-50 sidebar-menu bg-white">
+            <div class="flex justify-between mt-20">
+                <span class="text-lg font-bold ml-2">Settings</span>
+                <i id="settings-icon"
+                    class="ri-menu-fold-fill text-xl text-gray-800 cursor-pointer transition-all 
                     hover:pr-2
                     hover:font-bold
                     hover:text-blue-400
             "></i>
-        </div>
+            </div>
 
-        <!-- Start: Logo -->
-        <div>
-            <span class="flex items-center pb-2 pt-2 border-b">
-            </span>
-        </div>
-        <!-- End: Logo -->
+            <!-- Start: Logo -->
+            <div>
+                <span class="flex items-center pb-2 pt-2 border-b">
+                </span>
+            </div>
+            <!-- End: Logo -->
 
-        <!-- Start: Menu -->
-        <ul class="mt-4">
+            <!-- Start: Menu -->
+            <ul class="mt-4">
 
-            <!-- Information Detail/Dashboard Link -->
-            <li class="mb-1 group {{ request()->routeIs('app.settings') ? 'active' : '' }}">
-                <a href="{{ route('app.settings') }}"
-                    class="flex items-center py-2 px-4 text-gray-800 
+                <!-- Information Detail/Dashboard Link -->
+                <li class="mb-1 group {{ request()->routeIs('app.settings') ? 'active' : '' }}">
+                    <a href="{{ route('app.settings') }}"
+                        class="flex items-center py-2 px-4 text-gray-800 
                                     hover:bg-blue-400 hover:text-white rounded-md
                                     group-[.active]:bg-blue-600 group-[.active]:text-white
                                     group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                    <i class="ri-user-line mr-3 text-lg"></i>
-                    <span class="text-sm">Information Details</span>
-                    <i class="ri-arrow-right-s-line ml-auto"></i>
-                </a>
-            </li>
+                        <i class="ri-user-line mr-3 text-lg"></i>
+                        <span class="text-sm">Information Details</span>
+                        <i class="ri-arrow-right-s-line ml-auto"></i>
+                    </a>
+                </li>
 
-            <!-- Activity Log Link -->
-            <li class="mb-1 group">
-                <a href="{{ route('app.activitylog') }}"
-                    class="flex items-center py-2 px-4 text-gray-800 
+                <!-- Activity Log Link -->
+                <li class="mb-1 group">
+                    <a href="{{ route('app.activitylog') }}"
+                        class="flex items-center py-2 px-4 text-gray-800 
                                     hover:bg-blue-400 hover:text-white rounded-md 
                                     group-[.active]:bg-blue-600 group-[.active]:text-white 
                                     group-[.selected]:bg-blue-600 group-[.selected]:text-white">
-                    <i class="ri-history-line mr-3 text-lg"></i>
-                    <span class="text-sm">Activity Log</span>
-                    <i class="ri-arrow-right-s-line ml-auto"></i>
-                </a>
-            </li>
-        </ul>
-        <span class="flex text-lg font-bold ml-3 border-t items-center pb-2 pt-2 mt-2">Community</span>
-        <!-- Start: Logo -->
-        <div>
-            <span class="flex items-center pb-2 border-b">
-            </span>
-        </div>
+                        <i class="ri-history-line mr-3 text-lg"></i>
+                        <span class="text-sm">Activity Log</span>
+                        <i class="ri-arrow-right-s-line ml-auto"></i>
+                    </a>
+                </li>
+            </ul>
+            <span class="flex text-lg font-bold ml-3 border-t items-center pb-2 pt-2 mt-2">Community</span>
+            <!-- Start: Logo -->
+            <div>
+                <span class="flex items-center pb-2 border-b">
+                </span>
+            </div>
 
 
-        <ul class="mt-4">
+            <ul class="mt-4">
 
-            <!-- Terms and Conditions Link -->
-            <li class="mb-1 group">
-                <a href="{{ route('app.terms') }}"
-                    class="flex items-center py-2 px-4 text-gray-800 
+                <!-- Terms and Conditions Link -->
+                <li class="mb-1 group">
+                    <a href="{{ route('app.terms') }}"
+                        class="flex items-center py-2 px-4 text-gray-800 
                                     hover:bg-blue-400 hover:text-gray-100 rounded-md 
                                     group-[.active]:bg-blue-500 group-[.active]:text-white 
                                     group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
-                    <i class="ri-book-read-line mr-3 text-lg"></i>
-                    <span class="text-sm">Terms and Conditions</span>
-                    <i class="ri-arrow-right-s-line ml-auto"></i>
-                </a>
-            </li>
+                        <i class="ri-book-read-line mr-3 text-lg"></i>
+                        <span class="text-sm">Terms and Conditions</span>
+                        <i class="ri-arrow-right-s-line ml-auto"></i>
+                    </a>
+                </li>
 
-            <!-- Guidelines Link -->
-            <li class="mb-1 group ">
-                <a href="{{ route('app.guidelines') }}"
-                    class="flex items-center py-2 px-4 text-gray-800 
+                <!-- Guidelines Link -->
+                <li class="mb-1 group ">
+                    <a href="{{ route('app.guidelines') }}"
+                        class="flex items-center py-2 px-4 text-gray-800 
                                     hover:bg-blue-400 hover:text-gray-100 rounded-md 
                                     group-[.active]:bg-blue-500 group-[.active]:text-white 
                                     group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
-                    <i class="ri-shake-hands-line mr-3 text-lg"></i>
-                    <span class="text-sm">Community Guideline</span>
-                    <i class="ri-arrow-right-s-line ml-auto"></i>
-                </a>
-            </li>
-        </ul>
-        <!-- End: Menu -->
-        <div class="fixed top-5 left-0 w-full h-full z-40 sm:hidden md:hidden sidebar-overlay ml-53">
-            <!-- Mobile Sidebar Overlay Icon -->
-            <i class="ri-menu-line text-xl text-gray-800"></i>
+                        <i class="ri-shake-hands-line mr-3 text-lg"></i>
+                        <span class="text-sm">Community Guideline</span>
+                        <i class="ri-arrow-right-s-line ml-auto"></i>
+                    </a>
+                </li>
+            </ul>
+            <!-- End: Menu -->
+            <div class="fixed top-5 left-0 w-full h-full z-40 sm:hidden md:hidden sidebar-overlay ml-53">
+                <!-- Mobile Sidebar Overlay Icon -->
+                <i class="ri-menu-line text-xl text-gray-800"></i>
+            </div>
+
         </div>
+        <!-- End: Sidebar -->
+    </nav>
 
-    </div>
-    <!-- End: Sidebar -->
-</nav>
-
- <div class="">
-        <i id="show-sidebar-icon" class="fixed ri-settings-5-fill text-2xl text-gray-800 bg-white p-4 round-lg mt-64 cursor-pointer transition-all 
+    <div class="">
+        <i id="show-sidebar-icon"
+            class="fixed ri-settings-5-fill text-2xl text-gray-800 bg-white p-4 round-lg mt-64 cursor-pointer transition-all 
                 hover:text-blue-300
                 hover:pl-6
                 hover:text-4xl
@@ -158,7 +160,7 @@
                 <div class="flex items-end">
                     {{-- <i class="ri-arrow-right-s-line text-4xl ml-auto"></i> --}}
                 </div>
-                
+
             </div>
 
             <!-- Updated HTML Structure for First Name and Last Name -->
@@ -172,28 +174,36 @@
                         </button>
                     </div>
                     <div>
-                        <form class="mt-2 p-4">
+                        <form class="mt-2 p-4" id="updateNameForm" action="{{ route('update.name') }}" method="POST">
+                            @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
-                                    type="text" id="fname" name="fname" placeholder="First Name"
+                                    type="text" id="fname" name="first_name" placeholder="First Name"
                                     value="{{ Auth::user()->first_name }}">
                                 <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
-                                    type="text" id="lname" name="lname" placeholder="Last Name"
+                                    type="text" id="lname" name="last_name" placeholder="Last Name"
                                     value="{{ Auth::user()->last_name }}">
                             </div>
-                        </form>
 
-                        <button
-                            class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
-                                hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
-                                group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
-                            <span class="rounded-lg w-full text-base tracking-wide">
-                                <i class="ri-save-line font-bold mr-2 saveButton"></i>Save
-                            </span>
-                        </button>
+                            <button type="submit"
+                                class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
+                    hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
+                    group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
+                                <span class="rounded-lg w-full text-base tracking-wide">
+                                    <i class="ri-save-line font-bold mr-2 saveButton"></i>Save
+                                </span>
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                            </button>
+                        </form>
                     </div>
                 </div>
             </dialog>
+
 
 
             <script>
@@ -237,7 +247,7 @@
         group-[.selected]:bg-blue-600 group-[.selected]:text-white
         cursor-pointer
         ">
-        <i class="ri-home-2-line text-2xl p-1 ml-3"></i>
+                <i class="ri-home-2-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
                     <span>Address:</span>
                     <span>{{ Auth::user()->address }}</span>
@@ -255,26 +265,27 @@
                         </button>
                     </div>
                     <div>
-                        <form class="mt-2 p-4">
+                        <form class="mt-2 p-4" action="{{ route('update.address') }}" method="POST">
+                            @csrf
                             <div class="grid gap-4">
                                 <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
                                     type="text" id="address" name="address" placeholder="Address"
                                     value="{{ Auth::user()->address }}">
                             </div>
+                            <button
+                                class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
+                hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
+                group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100 saveButton">
+                                <span class="rounded-lg w-full text-base tracking-wide">
+                                    <i class="ri-save-line font-bold mr-2"></i>Save
+                                </span>
+                            </button>
                         </form>
-            
-                        <button
-                            class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
-                            hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
-                            group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100 saveButton">
-                            <span class="rounded-lg w-full text-base tracking-wide">
-                                <i class="ri-save-line font-bold mr-2"></i>Save
-                            </span>
-                        </button>
                     </div>
                 </div>
             </dialog>
-            
+
+
 
             <script>
                 // Add click event listener to open-button for Address
@@ -302,14 +313,14 @@
         group-[.selected]:bg-blue-600 group-[.selected]:text-white
         cursor-pointer
         ">
-        <i class="ri-mail-line text-2xl p-1 ml-3"></i>
+                <i class="ri-mail-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
                     <span>Email:</span>
                     <span>{{ Auth::user()->email }}</span>
                 </div>
             </div>
 
-            <!-- Updated HTML Structure for Phone -->
+            <!-- Updated HTML Structure for Email -->
             <dialog class="content-center shadow-lg rounded-lg w-96" id="emailModal" style="margin: auto;">
                 <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-48 mt-4">
                     <div>
@@ -320,25 +331,26 @@
                         </button>
                     </div>
                     <div>
-                        <form class="mt-2 p-4">
+                        <form class="mt-2 p-4" method="POST" action="{{ route('update.email') }}">
+                            @csrf
                             <div class="grid gap-4">
                                 <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
                                     type="text" id="email" name="email" placeholder="Email"
                                     value="{{ Auth::user()->email }}">
                             </div>
-                        </form>
-
-                        <button
-                            class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
+                            <button type="submit"
+                                class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
                     hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
                     group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100 saveButton">
-                            <span class="rounded-lg w-full text-base tracking-wide">
-                                <i class="ri-save-line font-bold mr-2"></i>Save
-                            </span>
-                        </button>
+                                <span class="rounded-lg w-full text-base tracking-wide">
+                                    <i class="ri-save-line font-bold mr-2"></i>Save
+                                </span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </dialog>
+
 
             <script>
                 // Add click event listener to open-button for Email
@@ -365,9 +377,10 @@
         group-[.active]:bg-blue-600 group-[.active]:text-white
         group-[.selected]:bg-blue-600 group-[.selected]:text-white
         cursor-pointer
-        ">   <i class="ri-phone-line text-2xl p-1 ml-3"></i>
+        ">
+                <i class="ri-phone-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
-                 
+
                     <span>Phone:</span>
                     <span>{{ Auth::user()->phone }}</span>
                 </div>
@@ -384,25 +397,27 @@
                         </button>
                     </div>
                     <div>
-                        <form class="mt-2 p-4">
+                        <form class="mt-2 p-4" method="POST" action="{{ route('update.phone') }}">
+                            @csrf
                             <div class="grid gap-4">
                                 <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
                                     type="text" id="phone" name="phone" placeholder="Phone"
                                     value="{{ Auth::user()->phone }}">
                             </div>
-                        </form>
-
-                        <button
-                            class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
+                            <button type="submit"
+                                class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
                     hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
                     group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100 saveButton">
-                            <span class="rounded-lg w-full text-base tracking-wide">
-                                <i class="ri-save-line font-bold mr-2"></i>Save
-                            </span>
-                        </button>
+                                <span class="rounded-lg w-full text-base tracking-wide">
+                                    <i class="ri-save-line font-bold mr-2"></i>Save
+                                </span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </dialog>
+
+
 
             <script>
                 // Add click event listener to open-button for Phone
@@ -443,19 +458,19 @@
                 </div>
             </div>
             <div
-            class="open-button flex items-center py-2 text-gray-800 rounded-lg
+                class="open-button flex items-center py-2 text-gray-800 rounded-lg
             hover:bg-blue-400 hover:text-white
             group-[.active]:bg-blue-600 group-[.active]:text-white
             group-[.selected]:bg-blue-600 group-[.selected]:text-white
             cursor-pointer
             ">
-            <i class="ri-mail-check-line text-2xl p-1 ml-3"></i>
-            <div class="grid grid-cols-1 pl-4">
-                <span>Two Factor Authentication</span>
-                {{-- <span>{{ Auth::user()->name }}</span> --}}
+                <i class="ri-mail-check-line text-2xl p-1 ml-3"></i>
+                <div class="grid grid-cols-1 pl-4">
+                    <span>Two Factor Authentication</span>
+                    {{-- <span>{{ Auth::user()->name }}</span> --}}
+                </div>
             </div>
-            </div>
-            
+
             <!-- Updated HTML Structure for Change Password -->
             <dialog class="content-center shadow-lg rounded-lg w-96 h-80" id="passwordModal" style="margin: auto;">
                 <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-48 mt-4">
@@ -494,50 +509,50 @@
 
         </div>
     </div>
-    
-            <script>
-                // Add click event listener to open-button for Change Password
-                const openPasswordButton = document.querySelectorAll('.open-button')[4]; // Selecting the fourth open-button
-                openPasswordButton.addEventListener('click', () => {
-                    const modal = document.getElementById('passwordModal');
-                    modal.showModal();
-                });
 
-                // Add click event listener to close-button in Change Password Dialog
-                const closePasswordButton = document.querySelector('#passwordModal .close-button');
-                closePasswordButton.addEventListener('click', () => {
-                    const modal = document.getElementById('passwordModal');
-                    modal.close();
-                });
-            </script>
+    <script>
+        // Add click event listener to open-button for Change Password
+        const openPasswordButton = document.querySelectorAll('.open-button')[4]; // Selecting the fourth open-button
+        openPasswordButton.addEventListener('click', () => {
+            const modal = document.getElementById('passwordModal');
+            modal.showModal();
+        });
+
+        // Add click event listener to close-button in Change Password Dialog
+        const closePasswordButton = document.querySelector('#passwordModal .close-button');
+        closePasswordButton.addEventListener('click', () => {
+            const modal = document.getElementById('passwordModal');
+            modal.close();
+        });
+    </script>
 
 
-        </div>
+    </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const settingsSidebar = document.querySelector('.sidebar-menu');
-                const sidebarOverlay = document.querySelector('.sidebar-overlay');
-                const showSidebarIcon = document.getElementById('show-sidebar-icon');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const settingsSidebar = document.querySelector('.sidebar-menu');
+            const sidebarOverlay = document.querySelector('.sidebar-overlay');
+            const showSidebarIcon = document.getElementById('show-sidebar-icon');
 
-                function toggleSidebar() {
-                    settingsSidebar.classList.toggle('hidden');
-                    sidebarOverlay.classList.toggle('hidden');
-                }
+            function toggleSidebar() {
+                settingsSidebar.classList.toggle('hidden');
+                sidebarOverlay.classList.toggle('hidden');
+            }
 
-                // Event listener for the settings icon click
-                const settingsIcon = document.getElementById('settings-icon');
-                if (settingsIcon) {
-                    settingsIcon.addEventListener('click', toggleSidebar);
-                }
+            // Event listener for the settings icon click
+            const settingsIcon = document.getElementById('settings-icon');
+            if (settingsIcon) {
+                settingsIcon.addEventListener('click', toggleSidebar);
+            }
 
-                // Event listener for the show sidebar icon click
-                if (showSidebarIcon) {
-                    showSidebarIcon.addEventListener('click', toggleSidebar);
-                }
+            // Event listener for the show sidebar icon click
+            if (showSidebarIcon) {
+                showSidebarIcon.addEventListener('click', toggleSidebar);
+            }
 
-                // Event listener for the sidebar overlay click to close the sidebar
-                sidebarOverlay.addEventListener('click', toggleSidebar);
-            });
-        </script>
+            // Event listener for the sidebar overlay click to close the sidebar
+            sidebarOverlay.addEventListener('click', toggleSidebar);
+        });
+    </script>
 </x-app-layout>

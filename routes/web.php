@@ -86,6 +86,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/guidelines', [AppController::class, 'Guidelines'])->name('app.guidelines');
     Route::get('/messenger', [AppController::class, 'Chatify'])->name('app.chatify');
     Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
+
+    Route::post('/update-name', [UserController::class, 'updateName'])->name('update.name');
+    Route::post('/update-address', [UserController::class, 'updateAddress'])->name('update.address');
+    Route::post('/update-email', [UserController::class, 'updateEmail'])->name('update.email');
+    Route::post('/update-phone', [UserController::class, 'updatePhone'])->name('update.phone');
 });
 
 Route::middleware(['auth'])->group(function () {
