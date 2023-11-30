@@ -100,11 +100,11 @@
                 <!-- You can customize the confirmation message as needed -->
 
                 <!-- Redirect to home after a delay -->
-                <script>
+                {{-- <script>
                     setTimeout(function() {
                         window.location.href = '/';
                     }, 5000); // 5000 milliseconds (5 seconds) delay before redirecting
-                </script>
+                </script> --}}
             </div>
         </div>
     </div>

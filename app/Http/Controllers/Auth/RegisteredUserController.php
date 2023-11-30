@@ -43,6 +43,7 @@ class RegisteredUserController extends Controller
             'last_name' => $request->lname,
             'name' => $request->fname . ' ' . $request->lname,
             'address' => $request->address,
+            'phone' => '',
             'email' => $request->email,
             'messenger_color' => '#2180f3',
             'password' => Hash::make($request->password),
