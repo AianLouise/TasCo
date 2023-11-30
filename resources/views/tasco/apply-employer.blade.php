@@ -95,24 +95,6 @@
         </div>
     </div>
 
-    <!-- Submission Confirmation Page for Employer -->
-    <div id="submissionConfirmationPage" class="hidden flex items-center justify-center h-screen">
-        <div class="container mx-auto p-4">
-            <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
-                <p class="text-2xl font-bold text-gray-800 mb-2">Application Submitted</p>
-                <p class="text-gray-600 mb-4">Thank you for submitting your application. Please wait for approval.</p>
-                <!-- You can customize the confirmation message as needed -->
-
-                <!-- Redirect to home after a delay -->
-                {{-- <script>
-                    setTimeout(function() {
-                        window.location.href = '/';
-                    }, 5000); // 5000 milliseconds (5 seconds) delay before redirecting
-                </script> --}}
-            </div>
-        </div>
-    </div>
-
     <script>
         // Add this script at the end of your blade file or in a separate JS file
 

@@ -32,7 +32,7 @@
             </script>
 
             @if (Route::has('password.request'))
-                <a class="text-sm text-gray-600 hover:text-gray-900 block text-center" href="{{ route('password.request') }}">
+                <a class="text-sm text-gray-600 hover:text-gray-900 block text-left" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
@@ -41,14 +41,14 @@
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 w-full rounded mt-5">Log In</button>
             </div>
 
-            <div class="flex items-center justify-center mt-3"> 
+            <div class="flex items-center justify-center mt-3 text-center"> 
                 <a class="bg-transparent text-blue-500 font-semibold hover:text-blue-500 py-2 px-6 border border-blue-500 rounded w-full" href="{{ route('welcome') }}">Back</a>
             </div>
 
             @if (Route::has('login'))
                 <div class="mt-4 text-center"> 
                     <a class="text-sm text-gray-600 hover:text-gray-900 block" href="{{ route('register') }}">
-                        {{ __("Don't have an account?") }}
+                        {{ __("Don't have an account?") }} <span class="text-blue-500">Register</span>
                     </a>
                 </div>
             @endif

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ApplicationController extends Controller
 {
@@ -24,22 +25,16 @@ class ApplicationController extends Controller
         $barangayClearanceFileName = $request->file('barangayClearance')->storeAs('application_documents', 'barangay_clearance_' . $user->id . '.' . $request->file('barangayClearance')->extension());
         $latestPictureFileName = $request->file('latestPicture')->storeAs('application_documents', 'latest_picture_' . $user->id . '.' . $request->file('latestPicture')->extension());
 
-        // Debug statements
-        // dd([
-        //     'User ID' => $user->id,
-        //     'Valid ID File Name' => $validIdFileName,
-        //     'Barangay Clearance File Name' => $barangayClearanceFileName,
-        //     'Latest Picture File Name' => $latestPictureFileName,
-        // ]);
-
         $user->employerApplication()->create([
             'valid_id' => $validIdFileName,
             'barangay_clearance' => $barangayClearanceFileName,
             'latest_picture' => $latestPictureFileName,
         ]);
 
-        // You can add more logic, such as sending an email notification or redirecting to a confirmation page
-        return back()->with('success', 'Application submitted successfully');
+        // Redirect to the submission confirmation page
+        return view('tasco.submissionConfirmationPage');
     }
+
+
 
 }
