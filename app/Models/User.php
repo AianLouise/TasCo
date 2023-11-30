@@ -70,4 +70,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function employerApplication()
+    {
+        return $this->hasOne(EmployerApplication::class);
+    }
+
 }

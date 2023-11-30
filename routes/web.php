@@ -10,6 +10,7 @@ use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\WorkerHiringController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -96,6 +97,8 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/hiring-form/{worker}', [WorkerHiringController::class, 'hireWorker'])->name('worker.hire');
     Route::post('/submit-hiring-form/{worker}', [WorkerHiringController::class, 'submitHiringForm'])->name('submit.hiring.form');
+
+    Route::post('/submit-application', [ApplicationController::class, 'submitApplication'])->name('submit.application');
 });
 
 // Worker Routes (Requires Authentication and Worker Role)

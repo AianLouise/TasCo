@@ -76,17 +76,21 @@
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Upload Requirements</h2>
                 <div class="max-h-60 overflow-y-auto mb-4">
                     <!-- Add your form elements for uploading requirements here -->
-                    <label for="validId">Upload Valid ID:</label>
-                    <input type="file" id="validId" name="validId" accept="image/*">
-
-                    <label for="barangayClearance">Upload Barangay Clearance:</label>
-                    <input type="file" id="barangayClearance" name="barangayClearance" accept="image/*">
-
-                    <label for="latestPicture">Upload Latest Picture:</label>
-                    <input type="file" id="latestPicture" name="latestPicture" accept="image/*">
+                    <form id="uploadRequirementsForm" method="POST" action="{{ route('submit.application') }}" enctype="multipart/form-data">
+                        @csrf
+                        <label for="validId">Upload Valid ID:</label>
+                        <input type="file" id="validId" name="validId" accept="image/*">
+    
+                        <label for="barangayClearance">Upload Barangay Clearance:</label>
+                        <input type="file" id="barangayClearance" name="barangayClearance" accept="image/*">
+    
+                        <label for="latestPicture">Upload Latest Picture:</label>
+                        <input type="file" id="latestPicture" name="latestPicture" accept="image/*">
+    
+                        <!-- Update the button type to "submit" -->
+                        <button type="submit" id="submitBtn" class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 block mx-auto">Submit</button>
+                    </form>
                 </div>
-                <button id="submitBtn"
-                    class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 block mx-auto">Submit</button>
             </div>
         </div>
     </div>
@@ -110,6 +114,8 @@
     </div>
 
     <script>
+        // Add this script at the end of your blade file or in a separate JS file
+
         document.getElementById('startApplicationBtn').addEventListener('click', function() {
             // Hide the welcome page
             document.getElementById('welcomePage').classList.add('hidden');
@@ -126,14 +132,13 @@
             document.getElementById('uploadRequirementsPage').classList.remove('hidden');
         });
 
-        // Add event listener for the 'Submit' button
-        // Add event listener for the 'Submit' button
+        // Update the event listener for the 'Submit' button
         document.getElementById('submitBtn').addEventListener('click', function() {
-            // Hide the Upload Requirements page
-            document.getElementById('uploadRequirementsPage').classList.add('hidden');
+            // Get the form element
+            const form = document.getElementById('uploadRequirementsForm');
 
-            // Show the Submission Confirmation page
-            document.getElementById('submissionConfirmationPage').classList.remove('hidden');
+            // Submit the form
+            form.submit();
         });
     </script>
 </x-app-layout>
