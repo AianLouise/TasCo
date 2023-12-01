@@ -6,7 +6,9 @@
         <div>
             <a href="#" class="flex items-center pb-4 border-b">
                 <!-- Logo Image -->
-                <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover">
+                <div class="w-8 h-8 rounded object-cover">
+                    <x-application-logo />
+                </div>
                 <!-- Company Name -->
                 <span class="text-lg font-bold ml-3">Tas<span class="text-blue-500">Co</span></span>
                 <button type="button" class="text-lg text-gray-600 sidebar-close">
