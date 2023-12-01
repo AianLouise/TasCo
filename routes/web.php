@@ -65,8 +65,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/services', [AdminController::class, 'AdminServices'])->name('admin.services');
     Route::get('/admin/application', [AdminController::class, 'AdminApplication'])->name('admin.application');
     Route::get('/admin/application/{id}', [AdminController::class, 'AdminApplicationEmployerDetails'])->name('admin.employerapplication');
+    Route::get('/admin/jobseeker-application/{id}', [AdminController::class, 'AdminApplicationJobseekerDetails'])->name('admin.jobseekerapplication');
     Route::get('/updateIsVerified/{user_id}', [AdminController::class, 'updateIsVerified'])->name('updateIsVerified');
+    Route::get('/updateIsVerifiedjob/{user_id}', [AdminController::class, 'updateIsVerifiedJobSeeker'])->name('updateIsVerifiedJobSeeker');
     Route::get('/updateIsRejected/{user_id}', [AdminController::class, 'updateIsRejected'])->name('updateIsRejected');
+    Route::get('/updateIsRejectedjob/{user_id}', [AdminController::class, 'updateIsRejectedJobSeeker'])->name('updateIsRejectedJobSeeker');
 
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
     Route::get('/inbox/{user}/view', [AdminController::class, 'showEmailView'])->name('admin.showEmailView');

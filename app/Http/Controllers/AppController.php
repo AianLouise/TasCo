@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobSeekerApplication;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\ActivityLog;
@@ -48,6 +49,16 @@ class AppController extends Controller
     {
         $categories = Category::all();
         $pageTitle = 'Job Seeker Application';
+
+        $user = auth()->user();
+
+        // Check if the user has already submitted an employer application
+        $hasSubmittedApplication = JobSeekerApplication::where('user_id', $user->id)->exists();
+
+        if ($hasSubmittedApplication) {
+            // User has already submitted an application, return a view with a message
+            return view('tasco.application-already-submitted');
+        }
 
         return view("tasco.apply-jobseeker", compact('categories', 'pageTitle'));
     }

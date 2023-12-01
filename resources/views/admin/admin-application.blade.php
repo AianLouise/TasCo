@@ -147,6 +147,10 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Status
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                 Action
                             </th>
                         </tr>
@@ -177,10 +181,22 @@
                                 <td class="px-6 py-4 whitespace-nowrap font-medium text-sm text-gray-800">
                                     <i class="ri-time-line mr-1"></i> {{ $application->created_at->diffForHumans() }}
                                 </td>
+                                 <!-- Status Column -->
+                                 <td class="px-6 py-4 whitespace-nowrap font-medium text-sm">
+                                    @if ($application->status == 'Pending')
+                                        <span class="bg-yellow-300 px-2 py-1 rounded">{{ $application->status }}</span>
+                                    @elseif ($application->status == 'Accepted')
+                                        <span class="bg-green-500 text-white px-2 py-1 rounded">{{ $application->status }}</span>
+                                    @elseif ($application->status == 'Rejected')
+                                        <span class="bg-red-500 text-white px-2 py-1 rounded">{{ $application->status }}</span>
+                                    @else
+                                        {{ $application->status }}
+                                    @endif
+                                </td>
                                 <!-- Action Column -->
                                 <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                                     <!-- View and Delete Links -->
-                                    <a href="{{ route('admin.employerapplication', ['id' => $application->id]) }}" class="text-blue-400 hover:text-blue-600">View</a>
+                                    <a href="{{ route('admin.jobseekerapplication', ['id' => $application->id]) }}" class="text-blue-400 hover:text-blue-600">View</a>
                                     {{-- <span class="text-gray-600">/</span> --}}
                                     {{-- <a href="{{ route('delete.application', ['id' => $application->id]) }}" class="text-gray-600 hover:text-gray-600">Delete</a> --}}
                                 </td>

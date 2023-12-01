@@ -39,7 +39,7 @@
             </div>
 
             <!-- Display user details and document information here -->
-            @foreach ($employerApplications as $application)
+            @foreach ($jobseekerApplications as $application)
                 <div>
                     <!-- User Details -->
                     <div class="mb-4">
@@ -56,25 +56,54 @@
                         <!-- Display document information based on your application structure -->
 
                         <div class="flex flex-col gap-4">
+                            <!-- Resume Image -->
+                            <div class="flex flex-col items-center">
+                                <p><strong>Resume:</strong></p>
+                                <a href="{{ asset('storage/application_documents/' . basename($application->resume)) }}"
+                                    data-lightbox="resume">
+                                    <img src="{{ asset('storage/application_documents/' . basename($application->resume)) }}"
+                                        alt="Resume Image" class="max-w-full mb-2 h-auto">
+                                </a>
+                            </div>
+
                             <!-- Valid ID Image -->
                             <div class="flex flex-col items-center">
                                 <p><strong>Valid ID:</strong></p>
-                                <img src="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
-                                    alt="Valid ID Image" class="max-w-full mb-2 h-auto">
+                                <a href="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
+                                    data-lightbox="valid-id">
+                                    <img src="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
+                                        alt="Valid ID Image" class="max-w-full mb-2 h-auto">
+                                </a>
                             </div>
 
                             <!-- Barangay Clearance Image -->
                             <div class="flex flex-col items-center">
                                 <p><strong>Barangay Clearance:</strong></p>
-                                <img src="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
-                                    alt="Barangay Clearance Image" class="max-w-full mb-2 h-auto">
+                                <a href="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
+                                    data-lightbox="barangay-clearance">
+                                    <img src="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
+                                        alt="Barangay Clearance Image" class="max-w-full mb-2 h-auto">
+                                </a>
+                            </div>
+
+                            <!-- Police Clearance Image -->
+                            <div class="flex flex-col items-center">
+                                <p><strong>Police Clearance:</strong></p>
+                                <a href="{{ asset('storage/application_documents/' . basename($application->police_clearance)) }}"
+                                    data-lightbox="police-clearance">
+                                    <img src="{{ asset('storage/application_documents/' . basename($application->police_clearance)) }}"
+                                        alt="Police Clearance Image" class="max-w-full mb-2 h-auto">
+                                </a>
                             </div>
 
                             <!-- Latest Picture Image -->
                             <div class="flex flex-col items-center">
                                 <p><strong>Latest Picture:</strong></p>
-                                <img src="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
+                                <a href="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
+                                    data-lightbox="latest_picture">
+                                    <img src="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
                                     alt="Latest Picture Image" class="max-w-full h-auto">
+                                </a>
                             </div>
                         </div>
 
@@ -90,7 +119,7 @@
 
                 @if ($application->status != 'Accepted' && $application->status != 'Rejected')
                     <div class="flex justify-center space-x-4 mt-4 mb-4">
-                        <a href="{{ route('updateIsVerified', ['user_id' => $application->user_id]) }}"
+                        <a href="{{ route('updateIsVerifiedJobSeeker', ['user_id' => $application->user_id]) }}"
                             class="text-white mt-2 bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
                             Accept
                         </a>

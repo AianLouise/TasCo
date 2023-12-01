@@ -59,22 +59,32 @@
                             <!-- Valid ID Image -->
                             <div class="flex flex-col items-center">
                                 <p><strong>Valid ID:</strong></p>
-                                <img src="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
+                                <a href="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
+                                    data-lightbox="valid_id">
+                                    <img src="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
                                     alt="Valid ID Image" class="max-w-full mb-2 h-auto">
+                                </a>
+                                
                             </div>
 
                             <!-- Barangay Clearance Image -->
                             <div class="flex flex-col items-center">
                                 <p><strong>Barangay Clearance:</strong></p>
-                                <img src="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
+                                <a href="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
+                                    data-lightbox="barangay_clearance">
+                                    <img src="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
                                     alt="Barangay Clearance Image" class="max-w-full mb-2 h-auto">
+                                </a>
                             </div>
 
                             <!-- Latest Picture Image -->
                             <div class="flex flex-col items-center">
                                 <p><strong>Latest Picture:</strong></p>
-                                <img src="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
+                                <a href="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
+                                    data-lightbox="latest_picture">
+                                    <img src="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
                                     alt="Latest Picture Image" class="max-w-full h-auto">
+                                </a>
                             </div>
                         </div>
 
