@@ -35,6 +35,47 @@ class ApplicationController extends Controller
         return view('tasco.submissionConfirmationPage');
     }
 
+    public function submitJobSeekerApplication(Request $request)
+    {
+        // dd($request->input('selectedCategoryId'));
+
+        // Validate the form data (you can add more validation rules)
+        $validatedData = $request->validate([
+            'resume' => 'required|mimes:pdf,jpeg,png,jpg,gif,svg|max:2048',
+            'validId' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'barangayClearance' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'policeClearance' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'latestPicture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'selectedCategoryId' => 'required|integer', // Add validation for category ID
+        ]);
+
+        // Save the files and associate them with the user
+        $user = auth()->user();
+
+        // Get file names
+        $resumeFileName = $request->file('resume')->storeAs('application_documents', "job_resume_{$user->id}.{$request->file('resume')->extension()}");
+        $validIdFileName = $request->file('validId')->storeAs('application_documents', "job_valid_id_{$user->id}.{$request->file('validId')->extension()}");
+        $barangayClearanceFileName = $request->file('barangayClearance')->storeAs('application_documents', "job_barangay_clearance_{$user->id}.{$request->file('barangayClearance')->extension()}");
+        $policeClearanceFileName = $request->file('policeClearance')->storeAs('application_documents', "job_police_clearance_{$user->id}.{$request->file('policeClearance')->extension()}");
+        $latestPictureFileName = $request->file('latestPicture')->storeAs('application_documents', "job_latest_picture_{$user->id}.{$request->file('latestPicture')->extension()}");
+
+        // Save the application data to the database
+        $application = $user->jobseekerApplication()->create([
+            'resume' => $resumeFileName,
+            'valid_id' => $validIdFileName,
+            'barangay_clearance' => $barangayClearanceFileName,
+            'police_clearance' => $policeClearanceFileName,
+            'latest_picture' => $latestPictureFileName,
+        ]);
+
+        // Associate the category with the application
+        $application->category()->associate($request->input('selectedCategoryId'));
+        $application->save();
+
+        // Redirect to the submission confirmation page
+        return view('tasco.submissionConfirmationPage');
+    }
+    
 
 
 }

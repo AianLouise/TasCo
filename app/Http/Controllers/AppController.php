@@ -46,7 +46,10 @@ class AppController extends Controller
      */
     public function applyJobseeker()
     {
-        return view("tasco.apply-jobseeker");
+        $categories = Category::all();
+        $pageTitle = 'Job Seeker Application';
+
+        return view("tasco.apply-jobseeker", compact('categories', 'pageTitle'));
     }
 
     /**
@@ -56,6 +59,8 @@ class AppController extends Controller
      */
     public function applyEmployer()
     {
+        $pageTitle = 'Employer Application';
+
         $user = auth()->user();
 
         // Check if the user has already submitted an employer application
@@ -67,7 +72,7 @@ class AppController extends Controller
         }
 
         // User hasn't submitted an application yet, proceed to the application form
-        return view('tasco.apply-employer');
+        return view('tasco.apply-employer', compact('pageTitle'));
     }
 
     /**

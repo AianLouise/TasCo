@@ -99,6 +99,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/submit-hiring-form/{worker}', [WorkerHiringController::class, 'submitHiringForm'])->name('submit.hiring.form');
 
     Route::post('/submit-application', [ApplicationController::class, 'submitApplication'])->name('submit.application');
+    Route::post('/submit-application', [ApplicationController::class, 'submitJobSeekerApplication'])->name('submit.jobseekerapplication');
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
