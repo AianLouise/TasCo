@@ -80,10 +80,11 @@ class UserController extends Controller
         $user->update([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
+            'name' => $request->input('first_name') . ' ' . $request->input('last_name'),
         ]);
 
         // Log the activity with a specific log_name
-        activity('user_name_updates')
+        activity('User Informaton Updates')
             ->causedBy($user) // Set the user who caused the activity
             ->performedOn($user) // Set the user as the subject of the activity
             ->withProperties([
@@ -110,7 +111,7 @@ class UserController extends Controller
         ]);
 
         // Log the activity with a specific log_name
-        activity('user_address_updates')
+        activity('User Information Updates')
             ->causedBy($user) // Set the user who caused the activity
             ->performedOn($user) // Set the user as the subject of the activity
             ->withProperties([
@@ -158,7 +159,7 @@ class UserController extends Controller
         ]);
 
         // Log the activity with a specific log_name
-        activity('user_phone_updates')
+        activity('User Information Updates')
             ->causedBy($user) // Set the user who caused the activity
             ->performedOn($user) // Set the user as the subject of the activity
             ->withProperties([

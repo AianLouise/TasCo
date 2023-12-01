@@ -192,13 +192,12 @@
                                 <span class="rounded-lg w-full text-base tracking-wide">
                                     <i class="ri-save-line font-bold mr-2 saveButton"></i>Save
                                 </span>
-                                @if (session('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-
                             </button>
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         </form>
                     </div>
                 </div>
