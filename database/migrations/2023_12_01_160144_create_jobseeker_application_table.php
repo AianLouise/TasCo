@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('barangay_clearance');
             $table->string('police_clearance');
             $table->string('latest_picture');
+            $table->string('status')->default('Pending');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

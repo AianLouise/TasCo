@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('valid_id');
             $table->string('barangay_clearance');
             $table->string('latest_picture');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }

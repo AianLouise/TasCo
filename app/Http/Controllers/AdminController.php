@@ -240,16 +240,29 @@ class AdminController extends Controller
     public function updateIsVerified(Request $request)
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter
-    
+
         // Update the 'is_verified' field in the users table
         // Replace 'users' with your actual table name if different
         // Also, make sure to handle validation and error checking appropriately
         User::where('id', $userId)->update(['is_verified' => 1]);
-    
+
+        // Update the status in the employer_applications table
+        EmployerApplication::where('user_id', $userId)->update(['status' => 'Accepted']);
+
         // return response()->json(['message' => 'User is now verified']);
         return redirect()->route('admin.application')->with('success', 'User is now verified');
     }
+
+    public function updateIsRejected(Request $request)
+    {
+        $userId = $request->route('user_id'); // Use route() to get the parameter
     
+        // Update the status in the employer_applications table to 'Rejected'
+        EmployerApplication::where('user_id', $userId)->update(['status' => 'Rejected']);
+    
+        return redirect()->route('admin.application')->with('success', 'User application has been rejected');
+    }    
+
 
     // View to display inbox messages for the admin
     public function AdminInbox()
@@ -294,17 +307,17 @@ class AdminController extends Controller
     {
         // Find the email by ID
         $email = CustomerServiceMessage::findOrFail($emailId);
-    
+
         // Delete related replies
         $email->replies()->delete();
-    
+
         // Now, delete the email
         $email->delete();
-    
+
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Email deleted successfully');
     }
-    
+
 
 
 

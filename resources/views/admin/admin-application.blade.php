@@ -92,9 +92,18 @@
                                     <i class="ri-time-line mr-1"></i> {{ $application->created_at->diffForHumans() }}
                                 </td>
                                 <!-- Status Column -->
-                                <td class="px-6 py-4 whitespace-nowrap font-medium text-sm text-gray-800">
-                                     status
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-sm">
+                                    @if ($application->status == 'Pending')
+                                        <span class="bg-yellow-300 px-2 py-1 rounded">{{ $application->status }}</span>
+                                    @elseif ($application->status == 'Accepted')
+                                        <span class="bg-green-500 text-white px-2 py-1 rounded">{{ $application->status }}</span>
+                                    @elseif ($application->status == 'Rejected')
+                                        <span class="bg-red-500 text-white px-2 py-1 rounded">{{ $application->status }}</span>
+                                    @else
+                                        {{ $application->status }}
+                                    @endif
                                 </td>
+                                
                                 <!-- Action Column -->
                                 <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                                     <!-- View and Delete Links -->
