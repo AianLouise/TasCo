@@ -212,7 +212,7 @@
                                                         @endif
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </td>
                                         <!-- Author Column -->
@@ -405,16 +405,22 @@
                                 <tr>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt=""
-                                                class="w-8 h-8 rounded object-cover block">
+                                            @php
+                                                $user = \App\Models\User::find($log->causer_id);
+                                            @endphp
+                                            @if ($user->avatar == 'avatar.png')
+                                                <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&color=7F9CF5&background=EBF4FF"
+                                                    alt=""
+                                                    class="w-8 h-8 rounded block object-cover align-middle">
+                                            @else
+                                                <img src="{{ asset('storage/users-avatar/' . basename($user->avatar)) }}"
+                                                    alt=""
+                                                    class="w-8 h-8 rounded block object-cover align-middle">
+                                            @endif
                                             <a href="#"
-                                                class="text-gray-600 text-sm font-medium2 hover:text-blue-500 ml-2 truncate">
-                                                @php
-                                                    $user = \App\Models\User::find($log->causer_id);
-                                                @endphp
+                                                class="text-gray-600 text-xs md:text-sm font-medium2 hover:text-blue-500 ml-2 truncate">
                                                 {{ $user ? $user->name : 'Unknown User' }}
                                             </a>
-
                                         </div>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">

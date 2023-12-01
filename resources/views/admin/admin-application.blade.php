@@ -42,7 +42,7 @@
                 <table class="w-full min-w-[540px]">
                     <thead>
                         <!-- Table Header -->
-                        <tr>
+                        <tr class="border-b">
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                 Pending Application
@@ -132,7 +132,7 @@
                 <table class="w-full min-w-[540px]">
                     <thead>
                         <!-- Table Header -->
-                        <tr>
+                        <tr class="border-b">
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                 Pending Application
