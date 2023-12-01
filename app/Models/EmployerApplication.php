@@ -14,4 +14,10 @@ class EmployerApplication extends Model
         'barangay_clearance',
         'latest_picture'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

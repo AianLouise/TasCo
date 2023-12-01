@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmployerApplication;
+use App\Models\JobSeekerApplication;
 use App\Models\User;
 use App\Models\Service;
 use App\Models\Category;
@@ -221,9 +223,33 @@ class AdminController extends Controller
     public function AdminApplication()
     {
         $pageTitle = 'Applications';
+        $employerApplications = EmployerApplication::all();
+        $jobseekerApplications = JobSeekerApplication::all();
 
-        return view("admin.admin-application", compact('pageTitle'));
+        return view("admin.admin-application", compact('pageTitle', 'employerApplications', 'jobseekerApplications'));
     }
+
+    public function AdminApplicationEmployerDetails()
+    {
+        $pageTitle = 'Application Details';
+        $employerApplications = EmployerApplication::all();
+
+        return view("admin.admin-employer-application-details", compact('pageTitle', 'employerApplications'));
+    }
+
+    public function updateIsVerified(Request $request)
+    {
+        $userId = $request->route('user_id'); // Use route() to get the parameter
+    
+        // Update the 'is_verified' field in the users table
+        // Replace 'users' with your actual table name if different
+        // Also, make sure to handle validation and error checking appropriately
+        User::where('id', $userId)->update(['is_verified' => 1]);
+    
+        // return response()->json(['message' => 'User is now verified']);
+        return redirect()->route('admin.application')->with('success', 'User is now verified');
+    }
+    
 
     // View to display inbox messages for the admin
     public function AdminInbox()

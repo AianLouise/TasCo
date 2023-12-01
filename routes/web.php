@@ -64,6 +64,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/admin/deleteProfile/{id}', [AdminController::class, 'deleteProfile'])->name('admin.deleteProfile');
     Route::get('/admin/services', [AdminController::class, 'AdminServices'])->name('admin.services');
     Route::get('/admin/application', [AdminController::class, 'AdminApplication'])->name('admin.application');
+    Route::get('/admin/application/{id}', [AdminController::class, 'AdminApplicationEmployerDetails'])->name('admin.employerapplication');
+    Route::get('/updateIsVerified/{user_id}', [AdminController::class, 'updateIsVerified'])->name('updateIsVerified');
+
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
     Route::get('/inbox/{user}/view', [AdminController::class, 'showEmailView'])->name('admin.showEmailView');
     Route::post('/admin/reply-email/{emailId}', [AdminController::class, 'replyEmail'])->name('admin.replyEmail');
@@ -98,8 +101,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/hiring-form/{worker}', [WorkerHiringController::class, 'hireWorker'])->name('worker.hire');
     Route::post('/submit-hiring-form/{worker}', [WorkerHiringController::class, 'submitHiringForm'])->name('submit.hiring.form');
 
-    Route::post('/submit-application', [ApplicationController::class, 'submitApplication'])->name('submit.application');
-    Route::post('/submit-application', [ApplicationController::class, 'submitJobSeekerApplication'])->name('submit.jobseekerapplication');
+    Route::post('/employer-submit-application', [ApplicationController::class, 'submitApplication'])->name('submit.application');
+    Route::post('/jobseeker-submit-application', [ApplicationController::class, 'submitJobSeekerApplication'])->name('submit.jobseekerapplication');
+    Route::get('/submission-confirmation', [ApplicationController::class, 'showSubmissionConfirmationPage'])
+    ->name('tasco.submissionConfirmationPage');
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
