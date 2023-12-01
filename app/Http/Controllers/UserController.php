@@ -82,6 +82,16 @@ class UserController extends Controller
             'last_name' => $request->input('last_name'),
         ]);
 
+        // Log the activity with a specific log_name
+        activity('user_name_updates')
+            ->causedBy($user) // Set the user who caused the activity
+            ->performedOn($user) // Set the user as the subject of the activity
+            ->withProperties([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+            ]) // Add additional properties
+            ->log('User updated their name');
+
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Name updated successfully');
     }
@@ -98,6 +108,15 @@ class UserController extends Controller
         $user->update([
             'address' => $request->input('address'),
         ]);
+
+        // Log the activity with a specific log_name
+        activity('user_address_updates')
+            ->causedBy($user) // Set the user who caused the activity
+            ->performedOn($user) // Set the user as the subject of the activity
+            ->withProperties([
+                'address' => $request->input('address'),
+            ]) // Add additional properties
+            ->log('User updated their address');
 
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Address updated successfully');
@@ -131,14 +150,23 @@ class UserController extends Controller
         $request->validate([
             'phone' => 'required|string',
         ]);
-    
+
         // Update the user's phone
         $user = Auth::user();
         $user->update([
             'phone' => $request->input('phone'),
         ]);
-    
+
+        // Log the activity with a specific log_name
+        activity('user_phone_updates')
+            ->causedBy($user) // Set the user who caused the activity
+            ->performedOn($user) // Set the user as the subject of the activity
+            ->withProperties([
+                'phone' => $request->input('phone'),
+            ]) // Add additional properties
+            ->log('User updated their phone number');
+
         return redirect()->back()->with('status', 'Phone updated successfully');
     }
-    
+
 }
