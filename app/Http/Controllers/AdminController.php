@@ -133,6 +133,17 @@ class AdminController extends Controller
         // Save the user instance to the database
         $user->save();
 
+        activity('Admin Created an Account')
+            ->causedBy(auth()->user()) // Assuming the authenticated user is causing the activity
+            ->performedOn($user) // Set the user as the subject of the activity
+            ->withProperties([
+                'user_id' => $user->id,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+                // ... (other relevant properties)
+            ]) // Add additional properties
+            ->log('User created'); // Log the activity
+
         // Retrieve all users and pass them to the admin-viewAllUsers view
         return redirect()->back()->with('success', 'Reply submitted successfully.');
     }
@@ -207,6 +218,18 @@ class AdminController extends Controller
         // Retrieve all users and pass them to the admin-viewAllUsers view
         $users = User::all();
 
+        // Log the activity with a specific log_name
+        activity('Admin Updated a User Profile')
+            ->causedBy(auth()->user()) // Assuming the authenticated user is causing the activity
+            ->performedOn($user) // Set the user as the subject of the activity
+            ->withProperties([
+                'user_id' => $user->id,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+                // ... (other relevant properties)
+            ]) // Add additional properties
+            ->log('Admin updated profile information.');
+
         return view('admin.admin-viewAllUsers', compact('users'));
     }
 
@@ -264,45 +287,45 @@ class AdminController extends Controller
     public function updateIsRejected(Request $request)
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter
-    
+
         // Update the status in the employer_applications table to 'Rejected'
         EmployerApplication::where('user_id', $userId)->update(['status' => 'Rejected']);
-    
+
         return redirect()->route('admin.application')->with('success', 'User application has been rejected');
-    }    
+    }
 
     public function updateIsVerifiedJobSeeker(Request $request)
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter
-    
+
         // Retrieve the 'category_id' from the 'jobseeker_applications' table
         $category = JobSeekerApplication::where('user_id', $userId)->value('category_id');
-    
+
         // Update the user information in a single query
         User::where('id', $userId)->update([
             'is_verified' => 1,
             'role' => 'worker',
             'category_id' => $category,
         ]);
-    
+
         // Update the status in the 'jobseeker_applications' table
         JobSeekerApplication::where('user_id', $userId)->update(['status' => 'Accepted']);
-    
+
         // return response()->json(['message' => 'User is now verified']);
         return redirect()->route('admin.application')->with('success', 'User is now verified');
     }
-    
-    
+
+
 
     public function updateIsRejectedJobSeeker(Request $request)
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter
-    
+
         // Update the status in the employer_applications table to 'Rejected'
         EmployerApplication::where('user_id', $userId)->update(['status' => 'Rejected']);
-    
+
         return redirect()->route('admin.application')->with('success', 'User application has been rejected');
-    } 
+    }
 
 
     // View to display inbox messages for the admin
