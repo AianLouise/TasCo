@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\ActivityLog;
 use Illuminate\Http\Request;
+use App\Models\EmployerApplication;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerServiceMessage;
 
@@ -55,7 +56,18 @@ class AppController extends Controller
      */
     public function applyEmployer()
     {
-        return view("tasco.apply-employer");
+        $user = auth()->user();
+
+        // Check if the user has already submitted an employer application
+        $hasSubmittedApplication = EmployerApplication::where('user_id', $user->id)->exists();
+
+        if ($hasSubmittedApplication) {
+            // User has already submitted an application, return a view with a message
+            return view('tasco.application-already-submitted');
+        }
+
+        // User hasn't submitted an application yet, proceed to the application form
+        return view('tasco.apply-employer');
     }
 
     /**

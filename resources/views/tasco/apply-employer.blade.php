@@ -24,13 +24,13 @@
                 </p>
 
                 <a href="#" id="startApplicationBtn"
-                    class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 block mx-auto">Start
+                    class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Start
                     Your Application Now</a>
             </div>
         </div>
     </div>
 
-    <div id="termsAndConditionsPage" class="hidden flex items-center justify-center h-screen">
+    <div id="termsAndConditionsPage" class="hidden items-center justify-center h-screen">
         <div class="container mx-auto p-4">
             <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Terms and Conditions</h2>
@@ -64,13 +64,13 @@
                     </ol>
                 </div>
                 <a href="#" id="agreeBtn"
-                    class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 block mx-auto">I
+                    class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">I
                     Agree</a>
             </div>
         </div>
     </div>
 
-    <div id="uploadRequirementsPage" class="hidden flex items-center justify-center h-screen">
+    <div id="uploadRequirementsPage" class="hidden items-center justify-center h-screen">
         <div class="container mx-auto p-4">
             <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Upload Requirements</h2>
@@ -88,7 +88,7 @@
                         <input type="file" id="latestPicture" name="latestPicture" accept="image/*">
     
                         <!-- Update the button type to "submit" -->
-                        <button type="submit" id="submitBtn" class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 block mx-auto">Submit</button>
+                        <button type="submit" id="submitBtn" class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
                     </form>
                 </div>
             </div>
