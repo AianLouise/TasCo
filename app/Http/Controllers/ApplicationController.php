@@ -31,6 +31,12 @@ class ApplicationController extends Controller
             'latest_picture' => $latestPictureFileName,
         ]);
 
+        // Log the activity
+        activity('Employer Application Submission')
+            ->causedBy($user) // Set the user who caused the activity
+            ->performedOn($user) // Set the user as the subject of the activity
+            ->log('User submitted a employer application');
+
         // Redirect to the submission confirmation page
         // After successful submission
         return redirect()->route('tasco.submissionConfirmationPage');
@@ -72,6 +78,12 @@ class ApplicationController extends Controller
         // Associate the category with the application
         $application->category()->associate($request->input('selectedCategoryId'));
         $application->save();
+
+        // Log the activity
+        activity('Job Seeker Application Submission')
+            ->causedBy($user) // Set the user who caused the activity
+            ->performedOn($user) // Set the user as the subject of the activity
+            ->log('User submitted a job seeker application');
 
         // Redirect to the submission confirmation page
         return redirect()->route('tasco.submissionConfirmationPage');
