@@ -138,8 +138,7 @@
             <!-- End: Dashboard Analytics -->
 
 
-            <!-- Start: Documents Preview -->
-
+            <!-- Start: Application Preview -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
 
                 <div class="bg-white border border-gray-200 shadow-md shadow-black/5 p-6 rounded-md">
@@ -176,70 +175,84 @@
                                 <tr>
                                     <th
                                         class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left rounded-tl-md rounded-bl-md">
-                                        Name</th>
+                                        Pending Application</th>
                                     <th
                                         class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left">
-                                        Subject</th>
+                                        Author</th>
                                     <th
                                         class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left">
                                         Date Posted</th>
+                                    <th
+                                        class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left">
+                                        Status</th>
                                     <th
                                         class="text-xs uppercase tracking-wide font-medium text-gray-600 py-2 px-2 text-left rounded-tr-md rounded-br-md">
                                         Action
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($messages as $index => $message)
-                                    <tr class="{{ $index === count($messages) - 1 ? 'border-b' : '' }}">
-                                        <!-- Table Data for Name -->
-                                        <td class="px-2 py-1 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <div class="flex-shrink-0 h-8 w-8">
-                                                    <!-- Display User Avatar -->
-                                                    @if ($message->avatar == 'avatar.png')
-                                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($message->user->name) }}&color=7F9CF5&background=EBF4FF"
-                                                            alt=""
-                                                            class="w-6 h-6 rounded block object-cover align-middle">
-                                                    @else
-                                                        <img src="{{ asset('storage/users-avatar/' . basename($message->user->avatar)) }}"
-                                                            alt=""
-                                                            class="w-6 h-6 rounded block object-cover align-middle">
-                                                    @endif
+                            <tbody class="bg-white divide-y divide-gray-200 text-xs">
+                                <!-- Loop through each employer application to populate table rows -->
+                                @foreach ($pendingApplications as $application)
+                                    <tr>
+                                        <!-- Application Info -->
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center ">
+                                                <div class="flex-shrink-0 w-6">
+                                                    <i class="ri-attachment-2"></i>
                                                 </div>
-                                                <!-- User Name and Email -->
-                                                <div class="ml-2">
-                                                    <div class="text-xs font-medium text-gray-800">
-                                                        {{ $message->user->name }}
-                                                    </div>
-                                                    <div class="text-xs text-gray-700">
-                                                        {{ $message->user->email }}
+                                                <div class="ml-4">
+                                                    <!-- Application Title -->
+                                                    <div class="font-medium text-gray-900">
+                                                        User No.{{ $application->user_id }} Application
+                                                        @if ($application instanceof \App\Models\EmployerApplication)
+                                                            Employer
+                                                        @elseif ($application instanceof \App\Models\JobSeekerApplication)
+                                                            Job Seeker
+                                                        @endif
                                                     </div>
                                                 </div>
+                                                
                                             </div>
                                         </td>
-
-                                        <!-- Table Data for Subject -->
-                                        <td class="px-2 py-1 whitespace-nowrap font-medium text-xs text-gray-700">
-                                            <i class="ri-mail-line text-sm"></i> {{ $message->subject }}
+                                        <!-- Author Column -->
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium  text-gray-800">
+                                            <i class="ri-user-3-line mr-1"></i> {{ $application->user->name }}
                                         </td>
-
-                                        <!-- Table Data for Date Posted -->
-                                        <td class="px-2 py-1 whitespace-nowrap font-medium text-xs text-gray-700">
-                                            <i class="ri-time-line text-sm mr-1"></i>
-                                            {{ \Carbon\Carbon::parse($message->created_at)->diffForHumans() }}
+                                        <!-- Date Posted Column -->
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium  text-gray-800">
+                                            <i class="ri-time-line mr-1"></i>
+                                            {{ $application->created_at->diffForHumans() }}
                                         </td>
-
-                                        <!-- Table Data for Actions (View and Delete) -->
-                                        <td class="px-2 py-1 whitespace-nowrap text-left text-xs font-medium">
-                                            <a href="{{ route('admin.showEmailView', ['user' => $message->user_id]) }}"
-                                                class="text-blue-400 hover:text-blue-600">View</a>
-                                            <span class="text-gray-600">/</span>
-                                            <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
+                                        <!-- Status Column -->
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium ">
+                                            @if ($application->status == 'Pending')
+                                                <span
+                                                    class="bg-yellow-300 px-2 py-1 rounded">{{ $application->status }}</span>
+                                            @elseif ($application->status == 'Accepted')
+                                                <span
+                                                    class="bg-green-500 text-white px-2 py-1 rounded">{{ $application->status }}</span>
+                                            @elseif ($application->status == 'Rejected')
+                                                <span
+                                                    class="bg-red-500 text-white px-2 py-1 rounded">{{ $application->status }}</span>
+                                            @else
+                                                {{ $application->status }}
+                                            @endif
+                                        </td>
+                                        <!-- Action Column -->
+                                        <!-- Action Column -->
+                                        <td class="px-6 py-4 whitespace-nowrap text-left font-medium">
+                                            <!-- View Links -->
+                                            @if ($application instanceof \App\Models\EmployerApplication)
+                                                <a href="{{ route('admin.employerapplication', ['id' => $application->id]) }}"
+                                                    class="text-blue-400 hover:text-blue-600">View</a>
+                                            @elseif ($application instanceof \App\Models\JobSeekerApplication)
+                                                <a href="{{ route('admin.jobseekerapplication', ['id' => $application->id]) }}"
+                                                    class="text-blue-400 hover:text-blue-600">View</a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>

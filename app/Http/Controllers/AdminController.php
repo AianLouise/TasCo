@@ -29,6 +29,13 @@ class AdminController extends Controller
         $allUsersCount = User::count();
         $messages = CustomerServiceMessage::all();
 
+        // Fetch pending applications from both tables
+        $employerApplications = EmployerApplication::where('status', 'Pending')->get();
+        $jobSeekerApplications = JobSeekerApplication::where('status', 'Pending')->get();
+
+        // Merge the collections or combine them as needed
+        $pendingApplications = $employerApplications->merge($jobSeekerApplications);
+
         $workers = User::where('role', 'worker')
             ->where('is_verified', 1)
             ->get();
@@ -39,7 +46,7 @@ class AdminController extends Controller
 
         $pageTitle = 'Admin Dashboard';
         // Pass data to the admin-dashboard view
-        return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers', 'pageTitle', 'messages'));
+        return view('admin.admin-dashboard', compact('activityLogs', 'jobSeekersCount', 'employersCount', 'allUsersCount', 'workers', 'employers', 'pageTitle', 'messages', 'pendingApplications'));
     }
 
     // Chatify view for the admin
