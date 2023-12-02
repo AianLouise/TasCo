@@ -238,4 +238,21 @@ class AppController extends Controller
     {
         return view("tasco.chatify");
     }
+
+    public function UserChatify($user_id)
+    {
+        // Retrieve the user based on the user_id
+        $user = User::find($user_id);
+
+        if (!$user) {
+            // Handle the case where the user is not found
+            abort(404);
+        }
+
+        // Load or create the chat conversation for the specific user
+        // Your logic to load or create the chat conversation goes here
+
+        // Return the chatify view with the user and chat data
+        return view("tasco.chatify", compact('user', 'chat'));
+    }
 }

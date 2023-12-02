@@ -50,16 +50,17 @@
                             <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">Hire</a>
                         @else
-                            <span class="inline-block hover:bg-red-400 hover:text-white text-black font-bold py-2 px-4 rounded">You are not
+                            <span
+                                class="inline-block hover:bg-red-400 hover:text-white text-black font-bold py-2 px-4 rounded">You
+                                are not
                                 verified to Hire</span>
                         @endif
 
-
-                        <form action="" class="mr-4">
-                            @csrf
-                            <button type="submit"
-                                class="border hover:border-blue-700 hover:text-blue-500 text-gray font-bold py-2 px-4 rounded w-36">Message</button>
-                        </form>
+                        <a href="{{ route('user.chatify', ['user_id' => $user->id]) }}" target="_new"
+                            class="border hover:border-blue-700 hover:text-blue-500 text-gray font-bold py-2 px-4 rounded w-36">
+                            Message
+                        </a>
+                        
                     </div>
 
 

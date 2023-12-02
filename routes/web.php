@@ -92,7 +92,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/activity-logs', [AppController::class, 'ActivityLog'])->name('app.activitylog');
     Route::get('/terms', [AppController::class, 'Terms'])->name('app.terms');
     Route::get('/guidelines', [AppController::class, 'Guidelines'])->name('app.guidelines');
-    Route::get('/messenger', [AppController::class, 'Chatify'])->name('app.chatify');
+
+    Route::get('/chatify', [AppController::class, 'Chatify'])->name('app.chatify');
+    Route::get('/chatify/{user_id}', [AppController::class, 'UserChatify'])->name('user.chatify');
+    
     Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
 
     Route::post('/update-name', [UserController::class, 'updateName'])->name('update.name');
