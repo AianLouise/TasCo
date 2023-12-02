@@ -31,78 +31,79 @@
         <!-- End: Header -->
 
         <!-- Start: Application Details Content -->
-        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md">
+        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md ">
 
-            <div class="flex justify-between mb-4 items-start">
+            <div class="">
                 <!-- Heading for Application Section -->
-                <div class="font-medium2">Application Details</div>
+                <div class="text-2xl font-semibold text-blue-400 border-b pb-4">Application(s) Details</div>
             </div>
 
             <!-- Display user details and document information here -->
             @foreach ($jobseekerApplications as $application)
                 <div>
                     <!-- User Details -->
-                    <div class="mb-4">
-                        <h3 class="text-lg font-medium mb-2">User Details</h3>
-                        <p><strong>User Name:</strong> {{ $application->user->name }}</p>
-                        <p><strong>Email:</strong> {{ $application->user->email }}</p>
+                    <div class="mb-4 mt-4">
+                        <h3 class="text-lg font-semibold text-blue-400 mb-2">User Details</h3>
+                        <p class="pt-2"><strong class="text-gray-700">User Name:</strong> {{ $application->user->name }}</p>
+                        <p class="pt-2"><strong class="text-gray-700">Email:</strong> {{ $application->user->email }}</p>
+                        <p class="pt-2"><strong class="text-gray-700">Applying for:</strong> <span class="text-blue-500 font-bold">Job Seeker</span></p>
                         <!-- Add more user details as needed -->
                     </div>
 
                     <!-- Document Information -->
                     <div>
-                        <h3 class="text-lg font-medium mb-2">Document Information</h3>
+                        <h3 class="text-lg font-semibold mb-2 text-center border-b pb-4 pt-4">User's Attachments</h3>
 
                         <!-- Display document information based on your application structure -->
 
-                        <div class="flex flex-col gap-4">
+                        <div class="grid grid-cols-5 gap-4 pt-4 pb-4">
                             <!-- Resume Image -->
-                            <div class="flex flex-col items-center">
-                                <p><strong>Resume:</strong></p>
+                            <div class="">
+                                <p><strong><i class="ri-article-line text-lg font-bold"></i>  Resume:</strong></p>
                                 <a href="{{ asset('storage/application_documents/' . basename($application->resume)) }}"
                                     data-lightbox="resume">
                                     <img src="{{ asset('storage/application_documents/' . basename($application->resume)) }}"
-                                        alt="Resume Image" class="max-w-full mb-2 h-auto">
+                                        alt="Resume Image" class="max-w-full mb-2 h-auto border-2 border-blue-400 rounded-lg p-4 hover:p-1 transition-all">
                                 </a>
                             </div>
 
                             <!-- Valid ID Image -->
-                            <div class="flex flex-col items-center">
-                                <p><strong>Valid ID:</strong></p>
+                            <div class="">
+                                <p class="text-gray-700"><strong><i class="ri-bank-card-2-line text-lg font-bold"></i>  Valid ID:</strong></p>
                                 <a href="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
                                     data-lightbox="valid-id">
                                     <img src="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
-                                        alt="Valid ID Image" class="max-w-full mb-2 h-auto">
+                                        alt="Valid ID Image" class="max-w-full mb-2 h-auto border-2 border-blue-400 rounded-lg p-4 hover:p-1 transition-all">
                                 </a>
                             </div>
 
                             <!-- Barangay Clearance Image -->
-                            <div class="flex flex-col items-center">
-                                <p><strong>Barangay Clearance:</strong></p>
+                            <div class="">
+                                <p><strong><i class="ri-bill-line text-lg font-bold"></i>  Barangay Clearance:</strong></p>
                                 <a href="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
                                     data-lightbox="barangay-clearance">
                                     <img src="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
-                                        alt="Barangay Clearance Image" class="max-w-full mb-2 h-auto">
+                                        alt="Barangay Clearance Image" class="w-full max-w-full mb-2 h-auto border-2 border-blue-400 rounded-lg p-4 hover:p-1 transition-all">
                                 </a>
                             </div>
 
                             <!-- Police Clearance Image -->
-                            <div class="flex flex-col items-center">
-                                <p><strong>Police Clearance:</strong></p>
+                            <div class="">
+                                <p><strong><i class="ri-file-lock-line text-lg font-bold"></i>  Police Clearance:</strong></p>
                                 <a href="{{ asset('storage/application_documents/' . basename($application->police_clearance)) }}"
                                     data-lightbox="police-clearance">
                                     <img src="{{ asset('storage/application_documents/' . basename($application->police_clearance)) }}"
-                                        alt="Police Clearance Image" class="max-w-full mb-2 h-auto">
+                                        alt="Police Clearance Image" class="max-w-full mb-2 h-auto border-2 border-blue-400 rounded-lg p-4 hover:p-1 transition-all">
                                 </a>
                             </div>
 
                             <!-- Latest Picture Image -->
-                            <div class="flex flex-col items-center">
-                                <p><strong>Latest Picture:</strong></p>
+                            <div class="">
+                                <p><strong><i class="ri-account-box-line text-lg font-bold"></i> Latest Picture:</strong></p>
                                 <a href="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
                                     data-lightbox="latest_picture">
                                     <img src="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
-                                    alt="Latest Picture Image" class="max-w-full h-auto">
+                                    alt="Latest Picture Image" class="max-w-full h-auto border-2 border-blue-400 rounded-lg p-4 hover:p-1 transition-all">
                                 </a>
                             </div>
                         </div>
@@ -118,13 +119,13 @@
                 <!-- Include this in your blade file where you have the Accept button -->
 
                 @if ($application->status != 'Accepted' && $application->status != 'Rejected')
-                    <div class="flex justify-center space-x-4 mt-4 mb-4">
+                    <div class="flex justify-center space-x-4 mt-4 mb-4 border-b-2 border-dashed border-blue-400 pb-6">
                         <a href="{{ route('updateIsVerifiedJobSeeker', ['user_id' => $application->user_id]) }}"
-                            class="text-white mt-2 bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+                            class="text-white mt-2 bg-blue-400 hover:bg-green-400 hover:px-10   focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all">
                             Accept
                         </a>
                         <a href="{{ route('updateIsRejected', ['user_id' => $application->user_id]) }}"
-                            class="text-white mt-2 bg-red-400 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+                            class="text-white mt-2  bg-blue-400 hover:bg-red-800 hover:px-10 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all">
                             Reject
                         </a>
                     </div>

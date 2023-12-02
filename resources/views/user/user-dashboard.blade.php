@@ -2,7 +2,7 @@
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
 
 
-    <div class="flex flex-col p-4 md:flex-row">
+    <div class="flex flex-row p-4">
         <!-- Left Column (Calendar) -->
         <div class="flex-1 pr-4 mb-4 md:mb-0">
             <div id='full-calendar' class="bg-white p-2 shadow-md rounded-md"></div>
