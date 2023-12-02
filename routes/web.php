@@ -63,6 +63,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/update-profile/{id}', [AdminController::class, 'updateProfile'])->name('update.profile');
     Route::delete('/admin/deleteProfile/{id}', [AdminController::class, 'deleteProfile'])->name('admin.deleteProfile');
     Route::get('/admin/services', [AdminController::class, 'AdminServices'])->name('admin.services');
+    Route::get('/admin/hiring-application', [AdminController::class, 'AdminHiringApplication'])->name('admin.hiringApplication');
     Route::get('/admin/application', [AdminController::class, 'AdminApplication'])->name('admin.application');
     Route::get('/admin/application/{id}', [AdminController::class, 'AdminApplicationEmployerDetails'])->name('admin.employerapplication');
     Route::get('/admin/jobseeker-application/{id}', [AdminController::class, 'AdminApplicationJobseekerDetails'])->name('admin.jobseekerapplication');
@@ -95,7 +96,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/chatify', [AppController::class, 'Chatify'])->name('app.chatify');
     Route::get('/chatify/{user_id}', [AppController::class, 'UserChatify'])->name('user.chatify');
-    
+
     Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
 
     Route::post('/update-name', [UserController::class, 'updateName'])->name('update.name');
