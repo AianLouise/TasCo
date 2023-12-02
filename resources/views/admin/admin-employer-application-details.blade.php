@@ -31,12 +31,20 @@
         <!-- End: Header -->
 
         <!-- Start: Application Details Content -->
-        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md">
-
-            <div class="mb-4">
+        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md text-center sm:text-start">
+                
+            <div class="grid">
                 <!-- Heading for Application Section -->
+                <div class="grid justify-end">
+                    <input type="text" placeholder="Find Application" class="rounded-md border-blue-400">
+                </div>    
+                
                 <div class="text-2xl font-semibold text-blue-400 border-b pb-4">Application Details</div>
+            
             </div>
+            
+
+           
 
             <!-- Display user details and document information here -->
             @foreach ($employerApplications as $application)
@@ -56,7 +64,7 @@
 
                         <!-- Display document information based on your application structure -->
 
-                        <div class="grid grid-cols-3 gap-6 pt-4 pb-4">
+                        <div class="grid gap-4 py-4 grid-rows-1 sm:grid-cols-3 sm:text-start">
                             <!-- Valid ID Image -->
                             <div class="" >
                                 <p class="text-xl pb-1 text-gray-700"><i class="ri-bank-card-2-line font-bold text-2xl"></i>  Valid ID:</p>
@@ -106,7 +114,7 @@
                 <!-- Include this in your blade file where you have the Accept button -->
 
                 @if ($application->status != 'Accepted' && $application->status != 'Rejected')
-                    <div class="flex justify-center mt-4 mb-4 space-x-2">
+                    <div class="flex justify-center mt-4 mb-4 space-x-2 border-b-2 border-dashed border-blue-400 pb-6">
                         <a href="{{ route('updateIsVerified', ['user_id' => $application->user_id]) }}"
                             class="text-white mt-2 bg-blue-400 hover:bg-green-400 hover:px-10   focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all">
                             Accept
