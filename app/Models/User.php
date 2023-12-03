@@ -15,11 +15,13 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function sendPasswordResetNotification($token){
+    public function sendPasswordResetNotification($token)
+    {
         $this->notify(new NewResetPasswordNotification($token));
     }
-    
-    public function sendEmailVerificationNotification(){
+
+    public function sendEmailVerificationNotification()
+    {
         $this->notify(new NewEmailVerificationNotification);
     }
 
@@ -78,5 +80,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function jobseekerApplication()
     {
         return $this->hasOne(JobSeekerApplication::class);
+    }
+
+    public function hiringForms()
+    {
+        return $this->hasMany(HiringForm::class, 'employer_id');
     }
 }

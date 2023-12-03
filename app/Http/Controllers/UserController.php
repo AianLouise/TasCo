@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\HiringForm;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
@@ -20,14 +21,20 @@ class UserController extends Controller
 
         return view("user.user-profile", compact('user', 'pageTitle'));
     }
+    
     public function UserDashboard()
     {
+        // Get the authenticated user
+        $employer = auth()->user();
+    
+        // Retrieve hiring forms where the employer_id matches the authenticated user's ID
+        $hiringForms = HiringForm::where('employer_id', $employer->id)->get();
+    
         $workerUsers = User::where('role', 'worker')->get();
-        // Retrieve categories
         $categories = Category::all();
         $pageTitle = 'Dashboard';
-
-        return view("user.user-dashboard", compact('workerUsers', 'categories', 'pageTitle'));
+    
+        return view("user.user-dashboard", compact('hiringForms', 'workerUsers', 'categories', 'pageTitle'));
     }
 
     public function sort(Request $request)

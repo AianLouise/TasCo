@@ -34,8 +34,19 @@
             </div>
 
             <script>
-                // Your togglePassword script remains unchanged
+                const passwordInput = document.getElementById('password');
+                const togglePasswordButton = document.getElementById('togglePassword');
+                const toggleIcon = document.getElementById('toggleIcon');
+
+                togglePasswordButton.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+
+                    // Change eye icon based on password visibility
+                    toggleIcon.className = type === 'password' ? 'ri-eye-line' : 'ri-eye-off-line';
+                });
             </script>
+
 
             @if (Route::has('password.request'))
                 <a class="text-sm text-gray-600 hover:text-gray-900 block text-left"
