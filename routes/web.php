@@ -123,6 +123,8 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/worker/dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
     Route::get('/worker/profile', [WorkerController::class, 'WorkerProfile'])->name('worker.profile');
     Route::get('/worker/chatify', [WorkerController::class, 'WorkerChatify'])->name('worker.chatify');
+    Route::get('/accept-status/{id}', [WorkerHiringController::class, 'updateStatus'])->name('acceptStatus');
+
     // Other Worker Routes...
 });
 

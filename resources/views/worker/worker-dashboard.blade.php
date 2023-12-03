@@ -57,10 +57,16 @@
                                     Event</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Employer</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                     Start Date</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                     End Date</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Action</th>
                             </tr>
                         </thead>
                         <tbody {{-- id="upcoming-schedule-table" --}}>
@@ -320,18 +326,19 @@
                                         <div class="flex mb-2 mt-3">
                                             @if ($hiringForm->status === 'Pending')
                                                 <div class="w-1/2">
-                                                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-xs">
+                                                    <a href="{{ route('acceptStatus', ['id' => $hiringForm->id]) }}"
+                                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-xs">
                                                         Accept
-                                                    </button>
+                                                    </a>
                                                 </div>
                                                 <div class="w-1/2">
-                                                    <button type="button" onclick="rejectApplicationForm()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs">
+                                                    <a href="#"
+                                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs">
                                                         Reject
-                                                    </button>
+                                                    </a>
                                                 </div>
                                             @endif
                                         </div>
-                                        
 
                                     </form>
                                 </div>
