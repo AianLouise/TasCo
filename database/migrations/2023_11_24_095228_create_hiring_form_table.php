@@ -17,13 +17,21 @@ return new class extends Migration
             $table->unsignedBigInteger('worker_id');
             $table->foreign('employer_id')->references('id')->on('users');
             $table->foreign('worker_id')->references('id')->on('users');
-            $table->date('date');
-            $table->string('time');
-            $table->string('subject');
-            $table->text('description');
-            $table->text('status');
+            $table->string('projectTitle')->nullable();
+            $table->text('projectDescription')->nullable();
+            $table->date('startDate')->nullable();
+            $table->date('endDate')->nullable();
+            $table->text('scopeOfWork')->nullable();
+            
+            // Add Payment Terms Columns
+            $table->decimal('totalPayment', 10, 2)->nullable();
+            $table->enum('paymentFrequency', ['hourly', 'perMilestone'])->default('hourly');
+            $table->enum('paymentMethod', ['bankTransfer', 'cash'])->default('bankTransfer');
+        
+            $table->text('status')->default('Pending');
             $table->timestamps();
         });
+        
     }
 
     /**

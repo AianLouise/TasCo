@@ -28,20 +28,28 @@ class WorkerHiringController extends Controller
     public function submitHiringForm(Request $request, User $worker)
     {
         $validatedData = $request->validate([
-            'date' => 'required|date',
-            'time' => 'required',
-            'subject' => 'required',
-            'description' => 'required',
+            'projectTitle' => 'required|string|max:255',
+            'projectDescription' => 'required|string',
+            'startDate' => 'required|date',
+            'endDate' => 'required|date|after:startDate',
+            'scopeOfWork' => 'required|string',
+            'totalPayment' => 'required|numeric',
+            'paymentFrequency' => 'required|in:hourly,perMilestone',
+            'paymentMethod' => 'required|in:bankTransfer,cash',
         ]);
 
-        $hiringForm = new HiringForm;
+        $hiringForm = new HiringForm($validatedData);
+        $hiringForm->employer_id = auth()->id();
         $hiringForm->worker_id = $worker->id;
-        $hiringForm->employer_id = Auth::user()->id;
-        $hiringForm->date = $validatedData['date'];
-        $hiringForm->time = $validatedData['time'];
-        $hiringForm->subject = $validatedData['subject'];
-        $hiringForm->description = $validatedData['description'];
-        $hiringForm->status = 'pending'; // Add this line
+        $hiringForm->projectTitle = $request->projectTitle;
+        $hiringForm->projectDescription = $request->projectDescription;
+        $hiringForm->startDate = $request->startDate;
+        $hiringForm->endDate = $request->endDate;
+        $hiringForm->scopeOfWork = $request->scopeOfWork;
+        $hiringForm->totalPayment = $request->totalPayment;
+        $hiringForm->paymentFrequency = $request->paymentFrequency;
+        $hiringForm->paymentMethod = $request->paymentMethod;
+        $hiringForm->status = 'Pending';
         $hiringForm->save();
 
         // Redirect back to the worker's profile

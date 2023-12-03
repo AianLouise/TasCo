@@ -17,7 +17,7 @@
                     <a href="#" class="text-gray-800 hover:text-gray-600 font-medium2">TasCo</a>
                 </li>
                 <li class="text-gray-600 mr-2 font-medium2">/</li>
-                <li class="text-gray-600 mr-2 font-medium2">Services</li>
+                <li class="text-gray-600 mr-2 font-medium2">Hiring Application</li>
             </ul>
 
             <!-- End: Logo / Active Menu -->
@@ -44,11 +44,11 @@
                         <tr class="border-b">
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Subject
+                                Project Title
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Description
+                                Project Description
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
@@ -67,7 +67,7 @@
                                 Status
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                class="px-6 py-3 text-center text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                 Action
                             </th>
                         </tr>
@@ -79,12 +79,12 @@
                             <tr>
                                 <!-- Subject Column -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    {{ Illuminate\Support\Str::limit($form->subject, $limit = 30, $end = '...') }}
+                                    {{ Illuminate\Support\Str::limit($form->projectTitle, $limit = 30, $end = '...') }}
                                 </td>
 
                                 <!-- Description Column -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    {{ Illuminate\Support\Str::limit($form->description, $limit = 30, $end = '...') }}
+                                    {{ Illuminate\Support\Str::limit($form->projectDescription, $limit = 30, $end = '...') }}
                                 </td>
 
                                 <!-- Category Column -->
@@ -123,12 +123,16 @@
                                 </td>
 
                                 <!-- Action Column -->
-                                <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium2 ">
-                                    <!-- Edit and Delete Links -->
-                                    {{-- <a href="{{ route('editUser', ['id' => $form->id]) }}" class="text-blue-400 hover:text-blue-600">Edit</a>
-                                    <span class="text-gray-600">/</span>
-                                    <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a> --}}
+
+                                <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium2">
+                                    <!-- View Link -->
+                                    
+                                        <a href="{{ route('admin.hiringApplicationView', ['id' => $form->id]) }}"
+                                            class="text-blue-400 hover:text-blue-600">View</a>
+                                    
                                 </td>
+
+
                             </tr>
                         @endforeach
                     </tbody>

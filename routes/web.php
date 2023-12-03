@@ -64,6 +64,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/admin/deleteProfile/{id}', [AdminController::class, 'deleteProfile'])->name('admin.deleteProfile');
     Route::get('/admin/services', [AdminController::class, 'AdminServices'])->name('admin.services');
     Route::get('/admin/hiring-application', [AdminController::class, 'AdminHiringApplication'])->name('admin.hiringApplication');
+    Route::get('/admin/hiring-application/{id}', [AdminController::class, 'AdminHiringApplicationView'])->name('admin.hiringApplicationView');
+
     Route::get('/admin/application', [AdminController::class, 'AdminApplication'])->name('admin.application');
     Route::get('/admin/application/{id}', [AdminController::class, 'AdminApplicationEmployerDetails'])->name('admin.employerapplication');
     Route::get('/admin/jobseeker-application/{id}', [AdminController::class, 'AdminApplicationJobseekerDetails'])->name('admin.jobseekerapplication');

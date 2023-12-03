@@ -259,6 +259,27 @@ class AdminController extends Controller
         return view('admin.admin-hiring-application', compact('hiringForm', 'pageTitle'));
     }
 
+    public function AdminHiringApplicationView($id)
+    {
+        $categories = Category::all();
+        // Use the $id parameter to find the specific HiringForm
+        $hiringForm = HiringForm::find($id);
+    
+        // Check if the HiringForm with the given id exists
+        if (!$hiringForm) {
+            // Handle the case where the HiringForm is not found, for example, redirect to an error page.
+            abort(404, 'HiringForm not found');
+        }
+    
+        $pageTitle = 'Hiring Application';
+    
+        return view('admin.admin-hiring-application-view', compact('hiringForm', 'pageTitle'));
+    }
+    
+
+
+
+
     // View for admin application
     public function AdminApplication()
     {

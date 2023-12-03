@@ -12,7 +12,25 @@ class HiringForm extends Model
     protected $table = 'hiring_forms';
 
     protected $fillable = [
-        'employer_id', 'worker_id', 'address', 'date', 'time', 'subject', 'description', 'status'
+        'employer_id',
+        'worker_id',
+        'address',
+        'date',
+        'time',
+        'subject',
+        'description',
+        'status'
     ];
-    
+
+    // HiringForm.php
+
+    public function employer()
+    {
+        return $this->belongsTo(User::class, 'employer_id');
+    }
+
+    public function worker()
+    {
+        return $this->belongsTo(User::class, 'worker_id');
+    }
 }
