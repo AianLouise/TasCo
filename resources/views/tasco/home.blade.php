@@ -361,7 +361,7 @@
                     <!-- See More Jobs Button -->
                     <div class="w-full flex justify-center">
                         <a href="#"
-                            class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">See
+                            class="w-64 sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">See
                             More Workers</a>
                     </div>
                 </div>

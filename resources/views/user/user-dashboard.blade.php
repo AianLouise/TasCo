@@ -2,17 +2,17 @@
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
 
 
-    <div class="flex flex-col p-4 md:flex-row">
+    <div class="grid grid-cols-2 p-4">
         <!-- Left Column (Calendar) -->
         <div class="flex-1 pr-4 mb-4 md:mb-0">
             <div id='full-calendar' class="bg-white p-2 shadow-md rounded-md"></div>
         </div>
 
         <!-- Right Column (Upcoming Schedule) -->
-        <div class="flex-1 bg-gray-100 p-4 rounded-md">
-            <h2 class="text-lg font-semibold mb-4">Upcoming Schedule</h2>
+        <div class="flex-1 bg-gray-100 p-4 rounded-md divide-y">
+            <h2 class="text-lg font-semibold mb-4 text-start">Upcoming Schedule</h2>
             <div class="overflow-x-auto">
-                <table class="min-w-full bg-white border border-gray-300 shadow-md rounded-md">
+                <table class="min-w-full bg-white border border-gray-300 shadow-md rounded-md text-start">
                     <thead>
                         <tr>
                             <th class="py-2 px-4 border-b">Event</th>
@@ -20,7 +20,7 @@
                             <th class="py-2 px-4 border-b">End Date</th>
                         </tr>
                     </thead>
-                    <tbody id="upcoming-schedule-table">
+                    <tbody {{--id="upcoming-schedule-table"--}}>
                         <!-- Placeholder for upcoming events -->
                         <tr>
                             <td class="py-2 px-4 border-b">Upcoming Event 1</td>
