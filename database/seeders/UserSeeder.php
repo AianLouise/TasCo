@@ -99,15 +99,6 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
 
-        // Create services associated with the worker user
-        Service::factory()
-            ->count(1)
-            ->create([
-                'provider_id' => $worker->id,
-                'category_id' => 1, // Replace with the actual category_id
-                // Add other fields as needed
-            ]);
-
         // Create a worker2
         $worker = User::factory()->create([
             'first_name' => 'Wayne',
@@ -123,14 +114,6 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
 
-        Service::factory()
-            ->count(1)
-            ->create([
-                'provider_id' => $worker->id,
-                'category_id' => 2, // Replace with the actual category_id
-                // Add other fields as needed
-            ]);
-
         // Create a worker3
         $worker = User::factory()->create([
             'first_name' => 'Astra',
@@ -145,14 +128,6 @@ class UserSeeder extends Seeder
             'address' => 'Ph',
             'password' => bcrypt('12345678'), // You can set a password here
         ]);
-
-        Service::factory()
-            ->count(1)
-            ->create([
-                'provider_id' => $worker->id,
-                'category_id' => 3, // Replace with the actual category_id
-                // Add other fields as needed
-            ]);
 
         // Create a regular user
         User::factory()->create([
