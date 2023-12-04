@@ -22,7 +22,8 @@
                             Welcome to <span class="text-blue-500">Tasco</span>
                         </h1>
 
-                        <p class="mb-6 tracking-wide text-xl text-gray-500 sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5">
+                        <p
+                            class="mb-6 tracking-wide text-xl text-gray-500 sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5">
                             Discover a new level of convenience and reliability with Tasco, your trusted local service
                             management partner. We take pride in offering a wide range of services to meet
                             your
@@ -62,77 +63,107 @@
                         offers
                     </p>
                 </div>
-                
+
                 <div class="flex flex-wrap flex-row -mx-12 pb-20">
-                <div
+                    <div
                         class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:px-10">
                         <a href="{{ route('app.Calendar') }}">
-                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
-                        <div class="relative z-10 mx-auto max-w-md">
-                            <span class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z" fill="rgba(255,255,255,1)"></path></svg>
-                                
-                            </span>
-                            <div
-                                class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
-                                <p>Elevate your schedule with TasCo's intuitive calendar feature, simplifying local management and optimizing your planning.</p>
+                            <span
+                                class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
+                            <div class="relative z-10 mx-auto max-w-md">
+                                <span
+                                    class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z"
+                                            fill="rgba(255,255,255,1)"></path>
+                                    </svg>
+
+                                </span>
+                                <div
+                                    class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                    <p>Elevate your schedule with TasCo's intuitive calendar feature, simplifying local
+                                        management and optimizing your planning.</p>
+                                </div>
+                                <div class="pt-5 text-base font-semibold ">
+                                    <p>
+                                        <a href="{{ route('app.Calendar') }}"
+                                            class="text-blue-500 transition-all duration-300 group-hover:text-white">View
+                                            Calendar
+                                            &rarr;
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="pt-5 text-base font-semibold ">
-                                <p>
-                                    <a href="{{ route('app.Calendar') }}" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Calendar
-                                        &rarr;
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
                     </div>
 
                     <div
                         class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:px-10">
                         <a href="{{ route('app.Services') }}">
-                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
-                        <div class="relative z-10 mx-auto max-w-md">
-                            <span class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M5.32894 3.27158C6.56203 2.8332 7.99181 3.10749 8.97878 4.09446C10.0997 5.21537 10.3014 6.90741 9.58382 8.23385L20.2925 18.9437L18.8783 20.3579L8.16933 9.64875C6.84277 10.3669 5.1502 10.1654 4.02903 9.04421C3.04178 8.05696 2.76761 6.62665 3.20652 5.39332L5.44325 7.63C6.02903 8.21578 6.97878 8.21578 7.56457 7.63C8.15035 7.04421 8.15035 6.09446 7.56457 5.50868L5.32894 3.27158ZM15.6963 5.15512L18.8783 3.38736L20.2925 4.80157L18.5247 7.98355L16.757 8.3371L14.6356 10.4584L13.2214 9.04421L15.3427 6.92289L15.6963 5.15512ZM8.97878 13.2868L10.393 14.7011L5.08969 20.0044C4.69917 20.3949 4.066 20.3949 3.67548 20.0044C3.31285 19.6417 3.28695 19.0699 3.59777 18.6774L3.67548 18.5902L8.97878 13.2868Z" fill="rgba(255,255,255,1)"></path></svg>
-                                
-                            </span>
-                            <div
-                                class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
-                                <p>TasCo provide a variety of local services to enhance your operations, ensuring smooth efficiency and customized solutions tailored to your needs.
-                                </p>
+                            <span
+                                class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
+                            <div class="relative z-10 mx-auto max-w-md">
+                                <span
+                                    class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M5.32894 3.27158C6.56203 2.8332 7.99181 3.10749 8.97878 4.09446C10.0997 5.21537 10.3014 6.90741 9.58382 8.23385L20.2925 18.9437L18.8783 20.3579L8.16933 9.64875C6.84277 10.3669 5.1502 10.1654 4.02903 9.04421C3.04178 8.05696 2.76761 6.62665 3.20652 5.39332L5.44325 7.63C6.02903 8.21578 6.97878 8.21578 7.56457 7.63C8.15035 7.04421 8.15035 6.09446 7.56457 5.50868L5.32894 3.27158ZM15.6963 5.15512L18.8783 3.38736L20.2925 4.80157L18.5247 7.98355L16.757 8.3371L14.6356 10.4584L13.2214 9.04421L15.3427 6.92289L15.6963 5.15512ZM8.97878 13.2868L10.393 14.7011L5.08969 20.0044C4.69917 20.3949 4.066 20.3949 3.67548 20.0044C3.31285 19.6417 3.28695 19.0699 3.59777 18.6774L3.67548 18.5902L8.97878 13.2868Z"
+                                            fill="rgba(255,255,255,1)"></path>
+                                    </svg>
+
+                                </span>
+                                <div
+                                    class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                    <p>TasCo provide a variety of local services to enhance your operations, ensuring
+                                        smooth efficiency and customized solutions tailored to your needs.
+                                    </p>
+                                </div>
+                                <div class="pt-5 text-base font-semibold ">
+                                    <p>
+                                        <a href="{{ route('app.Services') }}"
+                                            class="text-blue-500 transition-all duration-300 group-hover:text-white">View
+                                            Services
+                                            &rarr;
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="pt-5 text-base font-semibold ">
-                                <p>
-                                    <a href="{{ route('app.Services') }}" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Services
-                                        &rarr;
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
                     </div>
 
                     <div
                         class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:rounded-lg sm:px-10">
                         <a href="{{ route('app.customerService') }}">
-                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
-                        <div class="relative z-10 mx-auto max-w-md">
-                            <span class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M19.9381 8H21C22.1046 8 23 8.89543 23 10V14C23 15.1046 22.1046 16 21 16H19.9381C19.446 19.9463 16.0796 23 12 23V21C15.3137 21 18 18.3137 18 15V9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9V16H3C1.89543 16 1 15.1046 1 14V10C1 8.89543 1.89543 8 3 8H4.06189C4.55399 4.05369 7.92038 1 12 1C16.0796 1 19.446 4.05369 19.9381 8ZM3 10V14H4V10H3ZM20 10V14H21V10H20ZM7.75944 15.7849L8.81958 14.0887C9.74161 14.6662 10.8318 15 12 15C13.1682 15 14.2584 14.6662 15.1804 14.0887L16.2406 15.7849C15.0112 16.5549 13.5576 17 12 17C10.4424 17 8.98882 16.5549 7.75944 15.7849Z" fill="rgba(255,255,255,1)"></path></svg>
-                                
-                            </span>
-                            <div
-                                class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
-                                <p>If you have any questions, feedback, or partnership inquiries, TasCo's customer service is here to listen and assist—your satisfaction is our priority!</p>
+                            <span
+                                class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
+                            <div class="relative z-10 mx-auto max-w-md">
+                                <span
+                                    class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M19.9381 8H21C22.1046 8 23 8.89543 23 10V14C23 15.1046 22.1046 16 21 16H19.9381C19.446 19.9463 16.0796 23 12 23V21C15.3137 21 18 18.3137 18 15V9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9V16H3C1.89543 16 1 15.1046 1 14V10C1 8.89543 1.89543 8 3 8H4.06189C4.55399 4.05369 7.92038 1 12 1C16.0796 1 19.446 4.05369 19.9381 8ZM3 10V14H4V10H3ZM20 10V14H21V10H20ZM7.75944 15.7849L8.81958 14.0887C9.74161 14.6662 10.8318 15 12 15C13.1682 15 14.2584 14.6662 15.1804 14.0887L16.2406 15.7849C15.0112 16.5549 13.5576 17 12 17C10.4424 17 8.98882 16.5549 7.75944 15.7849Z"
+                                            fill="rgba(255,255,255,1)"></path>
+                                    </svg>
+
+                                </span>
+                                <div
+                                    class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                    <p>If you have any questions, feedback, or partnership inquiries, TasCo's customer
+                                        service is here to listen and assist—your satisfaction is our priority!</p>
+                                </div>
+                                <div class="pt-5 text-base font-semibold leading-7">
+                                    <p>
+
+                                        <a href="{{ route('app.customerService') }}"
+                                            class="text-blue-500 transition-all duration-300 group-hover:text-white">View
+                                            Customer Services
+                                            &rarr;
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="pt-5 text-base font-semibold leading-7">
-                                <p>
-                                    
-                                    <a href="{{ route('app.customerService') }}" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Customer Services
-                                        &rarr;
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </div>
         </section>
@@ -294,7 +325,7 @@
                                     <span class="text-sm text-gray-500">
                                         {{ optional($worker->category)->name }}
                                     </span>
-                                    
+
                                     <div class="flex mt-4 md:mt-6">
                                         <a href="{{ route('app.workerprofile', ['worker' => $worker->id]) }}"
                                             class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
@@ -367,7 +398,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold" >Approved Services</h3>
+                            <h3 class="text-lg leading-normal mb-2 font-semibold">Approved Services</h3>
                             <p>In our community, services are approved not only by the
                                 administration
                                 but also by the community!</p>
@@ -379,7 +410,7 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                             class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
+                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
                             hover:bg-transparent
                             hover:border-blue-500
                             hover:text-blue-500
@@ -387,8 +418,8 @@
                             ">
                             <div class="inline-block mb-4">
                                 <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M14 8V4H5V20H19V9H16V13.6195C16 14.4641 15.5544 15.2529 14.8125 15.7215L12 17.4978L9.18747 15.7215C8.4456 15.2529 8 14.4641 8 13.6195V8H14ZM21 8V20.9932C21 21.5501 20.5552 22 20.0066 22H3.9934C3.44495 22 3 21.556 3 21.0082V2.9918C3 2.45531 3.4487 2 4.00221 2H14.9968L21 8ZM10 13.6195C10 13.7698 10.0872 13.9242 10.2554 14.0305L12 15.1323L13.7446 14.0305C13.9128 13.9242 14 13.7698 14 13.6195V10H10V13.6195Z">
                                     </path>
@@ -414,8 +445,8 @@
                             ">
                             <div class="inline-block mb-4">
                                 <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M6.45455 19L2 22.5V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.45455ZM4 18.3851L5.76282 17H20V5H4V18.3851ZM11 13H13V15H11V13ZM11 7H13V12H11V7Z">
                                     </path>
@@ -441,8 +472,8 @@
                             ">
                             <div class="inline-block mb-4">
                                 <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M17 9.2L22.2133 5.55071C22.4395 5.39235 22.7513 5.44737 22.9096 5.6736C22.9684 5.75764 23 5.85774 23 5.96033V18.0397C23 18.3158 22.7761 18.5397 22.5 18.5397C22.3974 18.5397 22.2973 18.5081 22.2133 18.4493L17 14.8V19C17 19.5523 16.5523 20 16 20H2C1.44772 20 1 19.5523 1 19V5C1 4.44772 1.44772 4 2 4H16C16.5523 4 17 4.44772 17 5V9.2ZM17 12.3587L21 15.1587V8.84131L17 11.6413V12.3587ZM3 6V18H15V6H3ZM5 8H7V10H5V8Z">
                                     </path>
@@ -460,7 +491,7 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                             class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
+                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
                              hover:bg-transparent
                             hover:border-blue-500
                             hover:text-blue-500
@@ -468,8 +499,8 @@
                             ">
                             <div class="inline-block mb-4">
                                 <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M6 10V20H19V10H6ZM18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16ZM7 11H9V13H7V11ZM7 14H9V16H7V14ZM7 17H9V19H7V17Z">
                                     </path>
@@ -494,8 +525,8 @@
                             ">
                             <div class="inline-block mb-4">
                                 <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M5 3V19H21V21H3V3H5ZM20.2929 6.29289L21.7071 7.70711L16 13.4142L13 10.415L8.70711 14.7071L7.29289 13.2929L13 7.58579L16 10.585L20.2929 6.29289Z">
                                     </path>

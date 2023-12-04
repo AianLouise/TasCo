@@ -41,7 +41,7 @@ class UserController extends Controller
         return view("user.user-dashboard", compact('hiringForms', 'workerUsers', 'categories', 'pageTitle', 'events'));
     }
 
-    public function sort(Request $request)
+    public function Sort(Request $request)
     {
         $query = User::where('role', 'worker');
 
@@ -71,11 +71,10 @@ class UserController extends Controller
             }
         }
 
-        // Pagination without sorting
-        $workers = $query->paginate(6);
+        $workerUsers = $query->get();
         $categories = Category::all();
 
-        return view('tasco.home', ['workerUsers' => $workers, 'categories' => $categories]);
+        return view('tasco.home', compact('workerUsers', 'categories'));
     }
 
     public function updateName(Request $request)

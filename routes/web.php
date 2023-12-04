@@ -94,6 +94,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tasco-calendar', [AppController::class, 'Calendar'])->name('app.Calendar');
     Route::get('/tasco-services', [AppController::class, 'Services'])->name('app.Services');
     Route::get('/tasco-customer-service', [AppController::class, 'CustomerService'])->name('app.customerService');
+    Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
+
     Route::post('/email-sent', [AppController::class, 'storeCustomerServiceMessage'])->name('app.EmailSent');
     Route::get('/activity-logs', [AppController::class, 'ActivityLog'])->name('app.activitylog');
     Route::get('/terms', [AppController::class, 'Terms'])->name('app.terms');
@@ -138,7 +140,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // User Dashboard and Related Routes
     Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
-    Route::get('/home/sort', [UserController::class, 'Sort'])->name('workers.sort');
 });
 
 
