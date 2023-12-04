@@ -593,7 +593,9 @@
                                 title: title,
                                 start: start,
                                 end: end,
-                                type: 'add'
+                                type: 'add',
+                                user_id: {{ auth()->user()->id }}
+                                
                             },
                             type: "POST",
                             success: function(data) {
