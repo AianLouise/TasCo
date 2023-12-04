@@ -81,6 +81,7 @@ class WorkerHiringController extends Controller
                 'end' => $hiringForm->endDate,
                 'employer_id' => $hiringForm->employer_id,
                 'worker_id' => $hiringForm->worker_id,
+                'user_id' => Auth::user()->id,
             ]);
 
             return redirect()->back()->with('success', 'Status updated successfully');

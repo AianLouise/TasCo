@@ -20,16 +20,32 @@ class FullCalenderController extends Controller
         if ($request->ajax()) {
             $user_id = auth()->user()->id;
 
-            $data = Event::where('user_id', $user_id)
+            $userEvents = Event::where('user_id', $user_id)
                 ->whereDate('start', '>=', $request->start)
                 ->whereDate('end', '<=', $request->end)
                 ->get(['id', 'title', 'start', 'end']);
+
+            $worker_id = auth()->user()->id; // Replace with the actual worker_id you want to retrieve
+            $workerEvents = Event::where('worker_id', $worker_id)
+                ->whereDate('start', '>=', $request->start)
+                ->whereDate('end', '<=', $request->end)
+                ->get(['id', 'title', 'start', 'end']);
+
+            $employer_id = auth()->user()->id; // Replace with the actual employer_id you want to retrieve
+            $employerEvents = Event::where('employer_id', $employer_id)
+                ->whereDate('start', '>=', $request->start)
+                ->whereDate('end', '<=', $request->end)
+                ->get(['id', 'title', 'start', 'end']);
+
+            $data = $userEvents->union($workerEvents)->union($employerEvents);
 
             return response()->json($data);
         }
 
         return view('fullcalender');
     }
+
+
 
 
     /**

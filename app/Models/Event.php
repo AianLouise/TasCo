@@ -27,9 +27,9 @@ class Event extends Model
     }
 
     // User.php model
-public function events()
-{
-    return $this->hasMany(Event::class, 'user_id');
-}
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'user_id');
+    }
 
 }

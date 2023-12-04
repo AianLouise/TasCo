@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Event;
 use App\Models\Category;
 use App\Models\HiringForm;
 use Illuminate\Http\Request;
@@ -29,12 +30,15 @@ class UserController extends Controller
     
         // Retrieve hiring forms where the employer_id matches the authenticated user's ID
         $hiringForms = HiringForm::where('employer_id', $employer->id)->get();
+
+        // Retrieve events associated with the hiring forms, including the employer relationship
+        $events = Event::with('employer')->whereIn('hiring_form_id', $hiringForms->pluck('id'))->get();
     
         $workerUsers = User::where('role', 'worker')->get();
         $categories = Category::all();
         $pageTitle = 'Dashboard';
     
-        return view("user.user-dashboard", compact('hiringForms', 'workerUsers', 'categories', 'pageTitle'));
+        return view("user.user-dashboard", compact('hiringForms', 'workerUsers', 'categories', 'pageTitle', 'events'));
     }
 
     public function sort(Request $request)

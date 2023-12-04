@@ -57,40 +57,52 @@
                                     Event</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Employer</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                     Start Date</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                     End Date</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Action</th>
                             </tr>
                         </thead>
-                        <tbody {{-- id="upcoming-schedule-table" --}}>
-                            <!-- Placeholder for upcoming events -->
-                            <tr class="border-b">
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">Upcoming
-                                    Event 1</td>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">2023-12-10
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">2023-12-12
-                                </td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">Upcoming
-                                    Event 2</td>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">2023-12-15
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">2023-12-17
-                                </td>
-                            </tr>
-                            <!-- Add more placeholder events as needed -->
+                        <tbody>
+                            @foreach ($events as $event)
+                                <tr class="border-b">
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        {{ $event->title }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        {{ $event->employer->name }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        {{ $event->start }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        {{ $event->end }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        <!-- Add your action button here -->
+                                        <a href="{{ route('work.view', ['HiringForm_id' => $event->hiring_form_id]) }}"
+                                            class="bg-blue-500 text-white px-4 py-2 rounded">View</a>
+                                    </td>
+
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
+
                 </div>
             </div>
 
         </div>
 
+
+        <!-- Center Column (Accepted Job) -->
         <div>
-            <!-- Center Column (Accepted Job) -->
             <div class="flex-1 bg-white p-4 rounded-md md:mx-4 mb-4">
                 <div>
                     <h2 class="font-medium2 mb-4 text-start">Accepted Job</h2>
@@ -170,49 +182,42 @@
                                         <!-- Form heading -->
                                         <h1 class="text-lg font-semibold mb-1">Job Hiring Form</h1>
 
-                                        <!-- Worker Details section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5">
-                                            <h2 class="text-sm font-semibold mb-2">Worker Details</h2>
+                                        <!-- Employer Details section -->
+                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
+                                            <h2 class="text-sm font-semibold mb-2">Employer Details</h2>
 
+                                            <!-- Full Name -->
                                             <div class="w-full mb-2">
-                                                <label for="workerJobTitle"
-                                                    class="block text-xs font-medium text-gray-700">Job Title</label>
-                                                <input type="text" name="workerJobTitle" id="workerJobTitle"
-                                                    placeholder="Enter worker's job title"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                    value="{{ optional($hiringForm->worker->category)->name }}"
-                                                    disabled>
-                                            </div>
-
-                                            <div class="w-full mb-2">
-                                                <label for="workerFullName"
+                                                <label for="employerFullName"
                                                     class="block text-xs font-medium text-gray-700">Full Name</label>
-                                                <input type="text" name="workerFullName" id="workerFullName"
-                                                    placeholder="Enter worker's full name"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                    value="{{ isset($hiringForm->worker) ? $hiringForm->worker->name : '' }}"
-                                                    disabled>
+                                                <input type="text" name="employerFullName" id="employerFullName"
+                                                    placeholder="Enter employer's full name" disabled
+                                                    class="mt-1 p-2 w-full border rounded-md text-xs"
+                                                    value="{{ isset($hiringForm->employer) ? $hiringForm->employer->name : '' }}"
+                                                    required>
                                             </div>
 
+                                            <!-- Email -->
                                             <div class="flex mb-2">
                                                 <div class="w-1/2 mr-1">
-                                                    <label for="workerEmail"
+                                                    <label for="employerEmail"
                                                         class="block text-xs font-medium text-gray-700">Email</label>
-                                                    <input type="text" name="workerEmail" id="workerEmail"
-                                                        placeholder="Enter worker's email"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                        value="{{ isset($hiringForm->worker) ? $hiringForm->worker->email : '' }}"
-                                                        disabled>
+                                                    <input type="text" name="employerEmail" id="employerEmail"
+                                                        placeholder="Enter employer's email" disabled
+                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
+                                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->email : '' }}"
+                                                        required>
                                                 </div>
 
+                                                <!-- Phone -->
                                                 <div class="w-1/2 ml-1">
-                                                    <label for="workerPhone"
+                                                    <label for="employerPhone"
                                                         class="block text-xs font-medium text-gray-700">Phone</label>
-                                                    <input type="text" name="workerPhone" id="workerPhone"
-                                                        placeholder="Enter worker's phone number"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                        value="{{ isset($hiringForm->worker) ? $hiringForm->worker->phone : '' }}"
-                                                        disabled>
+                                                    <input type="text" name="employerPhone" id="employerPhone"
+                                                        placeholder="Enter employer's phone number" disabled
+                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
+                                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->phone : '' }}"
+                                                        required>
                                                 </div>
                                             </div>
                                         </div>
@@ -225,7 +230,7 @@
                                                     class="block text-xs font-medium text-gray-700">Project
                                                     Title</label>
                                                 <input type="text" name="projectTitle" id="projectTitle"
-                                                    placeholder="Enter project title"
+                                                    placeholder="Enter project title" disabled
                                                     class="mt-1 p-2 w-full border rounded-md text-xs" required
                                                     value="{{ isset($hiringForm) ? $hiringForm->projectTitle : '' }}">
                                             </div>
@@ -234,7 +239,7 @@
                                                 <label for="projectDescription"
                                                     class="block text-xs font-medium text-gray-700">Project
                                                     Description</label>
-                                                <textarea name="projectDescription" id="projectDescription" placeholder="Enter project description"
+                                                <textarea name="projectDescription" id="projectDescription" placeholder="Enter project description" disabled
                                                     class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required>{{ isset($hiringForm) ? $hiringForm->projectDescription : '' }}</textarea>
                                             </div>
 
@@ -244,7 +249,7 @@
                                                         class="block text-xs font-medium text-gray-700">Start
                                                         Date</label>
                                                     <input type="text" name="startDate" id="startDate"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
+                                                        class="mt-1 p-2 w-full border rounded-md text-xs" disabled
                                                         placeholder="Select start date" required
                                                         value="{{ isset($hiringForm) ? $hiringForm->startDate : '' }}">
                                                 </div>
@@ -253,55 +258,12 @@
                                                         class="block text-xs font-medium text-gray-700">End
                                                         Date</label>
                                                     <input type="text" name="endDate" id="endDate"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
+                                                        class="mt-1 p-2 w-full border rounded-md text-xs" disabled
                                                         placeholder="Select end date" required
                                                         value="{{ isset($hiringForm) ? $hiringForm->endDate : '' }}">
                                                 </div>
                                             </div>
                                         </div>
-
-
-                                        <!-- Employer Details section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Employer Details</h2>
-
-                                            <!-- Full Name -->
-                                            <div class="w-full mb-2">
-                                                <label for="employerFullName"
-                                                    class="block text-xs font-medium text-gray-700">Full Name</label>
-                                                <input type="text" name="employerFullName" id="employerFullName"
-                                                    placeholder="Enter employer's full name"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                    value="{{ isset($hiringForm->employer) ? $hiringForm->employer->name : '' }}"
-                                                    required>
-                                            </div>
-
-                                            <!-- Email -->
-                                            <div class="flex mb-2">
-                                                <div class="w-1/2 mr-1">
-                                                    <label for="employerEmail"
-                                                        class="block text-xs font-medium text-gray-700">Email</label>
-                                                    <input type="text" name="employerEmail" id="employerEmail"
-                                                        placeholder="Enter employer's email"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->email : '' }}"
-                                                        required>
-                                                </div>
-
-                                                <!-- Phone -->
-                                                <div class="w-1/2 ml-1">
-                                                    <label for="employerPhone"
-                                                        class="block text-xs font-medium text-gray-700">Phone</label>
-                                                    <input type="text" name="employerPhone" id="employerPhone"
-                                                        placeholder="Enter employer's phone number"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->phone : '' }}"
-                                                        required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
 
                                         <!-- Scope of Work section -->
                                         <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
@@ -311,7 +273,7 @@
                                                     class="block text-xs font-medium text-gray-700">Briefly describe
                                                     the
                                                     tasks and responsibilities of the worker.</label>
-                                                <textarea name="scopeOfWork" id="scopeOfWork" placeholder="Enter scope of work"
+                                                <textarea name="scopeOfWork" id="scopeOfWork" placeholder="Enter scope of work" disabled
                                                     class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required>{{ isset($hiringForm) ? $hiringForm->scopeOfWork : '' }}</textarea>
                                             </div>
                                         </div>
@@ -326,7 +288,7 @@
                                                     class="block text-xs font-medium text-gray-700">Total
                                                     Payment</label>
                                                 <input type="text" name="totalPayment" id="totalPayment"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs"
+                                                    class="mt-1 p-2 w-full border rounded-md text-xs" disabled
                                                     placeholder="Enter total payment" required
                                                     value="{{ isset($hiringForm) ? $hiringForm->totalPayment : '' }}">
                                             </div>
@@ -336,7 +298,7 @@
                                                 <label for="paymentFrequency"
                                                     class="block text-xs font-medium text-gray-700">Payment
                                                     Frequency</label>
-                                                <select name="paymentFrequency" id="paymentFrequency"
+                                                <select name="paymentFrequency" id="paymentFrequency" disabled
                                                     class="mt-1 p-2 w-full border rounded-md text-xs" required>
                                                     <option value="hourly"
                                                         {{ isset($hiringForm) && $hiringForm->paymentFrequency === 'hourly' ? 'selected' : '' }}>
@@ -353,7 +315,7 @@
                                                 <label for="paymentMethod"
                                                     class="block text-xs font-medium text-gray-700">Payment
                                                     Method</label>
-                                                <select name="paymentMethod" id="paymentMethod"
+                                                <select name="paymentMethod" id="paymentMethod" disabled
                                                     class="mt-1 p-2 w-full border rounded-md text-xs" required>
                                                     <option value="bankTransfer"
                                                         {{ isset($hiringForm) && $hiringForm->paymentMethod === 'bankTransfer' ? 'selected' : '' }}>
@@ -367,20 +329,22 @@
                                         </div>
 
                                         <!-- Submit button -->
-                                        <div class="mt-2">
-                                            <button type="button" onclick="rejectApplicationForm()"
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs">
-                                                Cancel
-                                            </button>
+                                        <div class="flex mb-2 mt-3">
+                                            @if ($hiringForm->status === 'Pending')
+                                                <div class="w-1/2">
+                                                    <a href="{{ route('acceptStatus', ['id' => $hiringForm->id]) }}"
+                                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-xs">
+                                                        Accept
+                                                    </a>
+                                                </div>
+                                                <div class="w-1/2">
+                                                    <a href="#"
+                                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs">
+                                                        Reject
+                                                    </a>
+                                                </div>
+                                            @endif
                                         </div>
-
-                                        <script>
-                                            function rejectApplicationForm() {
-                                                // Add your logic for rejecting the application
-                                                console.log('Rejecting application');
-                                                // You can also perform additional actions as needed
-                                            }
-                                        </script>
 
                                     </form>
                                 </div>
@@ -427,8 +391,9 @@
             });
         </script>
 
+
+        <!-- Center Column (Hiring Applicationa) -->
         <div>
-            <!-- Center Column (Hiring Application) -->
             <div class="flex-1 bg-white p-4 rounded-md md:mx-4">
                 <div>
                     <h2 class="font-medium2 mb-4 text-start">Hiring Applications</h2>
@@ -466,307 +431,42 @@
                         </thead>
                         <tbody id="hiring-application-table">
                             @foreach ($hiringForms as $hiringForm)
-                                <tr class="border-b">
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $hiringForm->projectTitle }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $hiringForm->projectDescription }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        @php
-                                            $workerCategory = $hiringForm->worker ? $hiringForm->worker->category->name : 'N/A';
-                                            echo $workerCategory;
-                                        @endphp
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $hiringForm->employer->name ?? 'N/A' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $hiringForm->startDate }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $hiringForm->endDate }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $hiringForm->status }}</td>
-                                    <!-- Action Column -->
-                                    <td
-                                        class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800 text-center">
-                                        <a class="open-button text-blue-500" data-id="{{ $hiringForm->id }}"
-                                            style="cursor: pointer;">View</a>
-                                    </td>
-
-
-                                </tr>
+                                @if ($hiringForm->status === 'Pending')
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ $hiringForm->projectTitle }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ $hiringForm->projectDescription }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            @php
+                                                $workerCategory = $hiringForm->worker ? $hiringForm->worker->category->name : 'N/A';
+                                                echo $workerCategory;
+                                            @endphp
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ $hiringForm->employer->name ?? 'N/A' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ $hiringForm->startDate }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ $hiringForm->endDate }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ $hiringForm->status }}</td>
+                                        <!-- Action Column -->
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800 text-center">
+                                            <a class="open-button text-blue-500" data-id="{{ $hiringForm->id }}"
+                                                style="cursor: pointer;">View</a>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
 
-                    @foreach ($hiringForms as $hiringForm)
-                        <dialog class="content-center shadow-lg rounded-lg m-auto"
-                            id="nameModal-{{ $hiringForm->id }}"
-                            style="width: 80vw; max-width: 800px; overflow-y: auto;">
-                            <div class="text-center grid divide-gray-200 w-full">
-                                <div class="bg-white shadow-md p-8 w-full text-center rounded-lg">
-                                    <form method="POST" action="" class="overflow-hidden">
-                                        @csrf
-                                        <!-- Form heading -->
-                                        <h1 class="text-lg font-semibold mb-1">Job Hiring Form</h1>
 
-                                        <!-- Worker Details section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5">
-                                            <h2 class="text-sm font-semibold mb-2">Worker Details</h2>
-
-                                            <div class="w-full mb-2">
-                                                <label for="workerJobTitle"
-                                                    class="block text-xs font-medium text-gray-700">Job Title</label>
-                                                <input type="text" name="workerJobTitle" id="workerJobTitle"
-                                                    placeholder="Enter worker's job title"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                    value="{{ optional($hiringForm->worker->category)->name }}"
-                                                    disabled>
-                                            </div>
-
-                                            <div class="w-full mb-2">
-                                                <label for="workerFullName"
-                                                    class="block text-xs font-medium text-gray-700">Full Name</label>
-                                                <input type="text" name="workerFullName" id="workerFullName"
-                                                    placeholder="Enter worker's full name"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                    value="{{ isset($hiringForm->worker) ? $hiringForm->worker->name : '' }}"
-                                                    disabled>
-                                            </div>
-
-                                            <div class="flex mb-2">
-                                                <div class="w-1/2 mr-1">
-                                                    <label for="workerEmail"
-                                                        class="block text-xs font-medium text-gray-700">Email</label>
-                                                    <input type="text" name="workerEmail" id="workerEmail"
-                                                        placeholder="Enter worker's email"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                        value="{{ isset($hiringForm->worker) ? $hiringForm->worker->email : '' }}"
-                                                        disabled>
-                                                </div>
-
-                                                <div class="w-1/2 ml-1">
-                                                    <label for="workerPhone"
-                                                        class="block text-xs font-medium text-gray-700">Phone</label>
-                                                    <input type="text" name="workerPhone" id="workerPhone"
-                                                        placeholder="Enter worker's phone number"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                        value="{{ isset($hiringForm->worker) ? $hiringForm->worker->phone : '' }}"
-                                                        disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Project Details section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Project Details</h2>
-                                            <div class="w-full mb-2">
-                                                <label for="projectTitle"
-                                                    class="block text-xs font-medium text-gray-700">Project
-                                                    Title</label>
-                                                <input type="text" name="projectTitle" id="projectTitle"
-                                                    placeholder="Enter project title"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" required
-                                                    value="{{ isset($hiringForm) ? $hiringForm->projectTitle : '' }}">
-                                            </div>
-
-                                            <div class="w-full mb-2">
-                                                <label for="projectDescription"
-                                                    class="block text-xs font-medium text-gray-700">Project
-                                                    Description</label>
-                                                <textarea name="projectDescription" id="projectDescription" placeholder="Enter project description"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required>{{ isset($hiringForm) ? $hiringForm->projectDescription : '' }}</textarea>
-                                            </div>
-
-                                            <div class="flex mb-2">
-                                                <div class="w-1/2 mr-1">
-                                                    <label for="startDate"
-                                                        class="block text-xs font-medium text-gray-700">Start
-                                                        Date</label>
-                                                    <input type="text" name="startDate" id="startDate"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        placeholder="Select start date" required
-                                                        value="{{ isset($hiringForm) ? $hiringForm->startDate : '' }}">
-                                                </div>
-                                                <div class="w-1/2 ml-1">
-                                                    <label for="endDate"
-                                                        class="block text-xs font-medium text-gray-700">End
-                                                        Date</label>
-                                                    <input type="text" name="endDate" id="endDate"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        placeholder="Select end date" required
-                                                        value="{{ isset($hiringForm) ? $hiringForm->endDate : '' }}">
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- Employer Details section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Employer Details</h2>
-
-                                            <!-- Full Name -->
-                                            <div class="w-full mb-2">
-                                                <label for="employerFullName"
-                                                    class="block text-xs font-medium text-gray-700">Full Name</label>
-                                                <input type="text" name="employerFullName" id="employerFullName"
-                                                    placeholder="Enter employer's full name"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                    value="{{ isset($hiringForm->employer) ? $hiringForm->employer->name : '' }}"
-                                                    required>
-                                            </div>
-
-                                            <!-- Email -->
-                                            <div class="flex mb-2">
-                                                <div class="w-1/2 mr-1">
-                                                    <label for="employerEmail"
-                                                        class="block text-xs font-medium text-gray-700">Email</label>
-                                                    <input type="text" name="employerEmail" id="employerEmail"
-                                                        placeholder="Enter employer's email"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->email : '' }}"
-                                                        required>
-                                                </div>
-
-                                                <!-- Phone -->
-                                                <div class="w-1/2 ml-1">
-                                                    <label for="employerPhone"
-                                                        class="block text-xs font-medium text-gray-700">Phone</label>
-                                                    <input type="text" name="employerPhone" id="employerPhone"
-                                                        placeholder="Enter employer's phone number"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->phone : '' }}"
-                                                        required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <!-- Scope of Work section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Scope of Work</h2>
-                                            <div class="w-full mb-2">
-                                                <label for="scopeOfWork"
-                                                    class="block text-xs font-medium text-gray-700">Briefly describe
-                                                    the
-                                                    tasks and responsibilities of the worker.</label>
-                                                <textarea name="scopeOfWork" id="scopeOfWork" placeholder="Enter scope of work"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required>{{ isset($hiringForm) ? $hiringForm->scopeOfWork : '' }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <!-- Payment Terms section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Payment Terms</h2>
-
-                                            <!-- Total Payment -->
-                                            <div class="w-full mb-2">
-                                                <label for="totalPayment"
-                                                    class="block text-xs font-medium text-gray-700">Total
-                                                    Payment</label>
-                                                <input type="text" name="totalPayment" id="totalPayment"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                    placeholder="Enter total payment" required
-                                                    value="{{ isset($hiringForm) ? $hiringForm->totalPayment : '' }}">
-                                            </div>
-
-                                            <!-- Payment Frequency -->
-                                            <div class="w-full mb-2">
-                                                <label for="paymentFrequency"
-                                                    class="block text-xs font-medium text-gray-700">Payment
-                                                    Frequency</label>
-                                                <select name="paymentFrequency" id="paymentFrequency"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" required>
-                                                    <option value="hourly"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentFrequency === 'hourly' ? 'selected' : '' }}>
-                                                        Hourly</option>
-                                                    <option value="perMilestone"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentFrequency === 'perMilestone' ? 'selected' : '' }}>
-                                                        Per Milestone</option>
-                                                    <!-- Add more options as needed -->
-                                                </select>
-                                            </div>
-
-                                            <!-- Payment Method -->
-                                            <div class="w-full mb-2">
-                                                <label for="paymentMethod"
-                                                    class="block text-xs font-medium text-gray-700">Payment
-                                                    Method</label>
-                                                <select name="paymentMethod" id="paymentMethod"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" required>
-                                                    <option value="bankTransfer"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentMethod === 'bankTransfer' ? 'selected' : '' }}>
-                                                        Bank Transfer</option>
-                                                    <option value="cash"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentMethod === 'cash' ? 'selected' : '' }}>
-                                                        Cash</option>
-                                                    <!-- Add more options as needed -->
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <!-- Submit button -->
-                                        <div class="mt-2">
-                                            <button type="button" onclick="rejectApplicationForm()"
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs">
-                                                Cancel
-                                            </button>
-                                        </div>
-
-                                        <script>
-                                            function rejectApplicationForm() {
-                                                // Add your logic for rejecting the application
-                                                console.log('Rejecting application');
-                                                // You can also perform additional actions as needed
-                                            }
-                                        </script>
-
-                                    </form>
-                                </div>
-
-                                <!-- Load flatpickr script after the form -->
-                                <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-                                <script>
-                                    flatpickr('#startDate, #endDate', {
-                                        dateFormat: 'Y-m-d', // Store the date in Y-m-d format
-                                        altInput: true, // Create an alternate input field
-                                        altFormat: 'F j, Y', // Format for the alternate input field (displayed in the textbox)
-                                        // Add other Flatpickr options as needed
-                                    });
-                                </script>
-                            </div>
-                        </dialog>
-                    @endforeach
                 </div>
             </div>
         </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Add click event listener to open-button
-                const openButtons = document.querySelectorAll('.open-button');
-                openButtons.forEach((openButton) => {
-                    openButton.addEventListener('click', () => {
-                        const hiringFormId = openButton.getAttribute('data-id');
-                        const modalId = `nameModal-${hiringFormId}`;
-                        const modal = document.getElementById(modalId);
-                        modal.showModal();
-                    });
-                });
-
-                // Add click event listener to close the dialog when clicking outside
-                const modals = document.querySelectorAll('dialog');
-                modals.forEach((modal) => {
-                    modal.addEventListener('click', (e) => {
-                        if (e.target === modal) {
-                            modal.close();
-                        }
-                    });
-                });
-            });
-        </script>
-
-
 
         <div>
             <!-- Center Column (Accepted Job) -->
@@ -838,276 +538,9 @@
                             @endforeach
                         </tbody>
                     </table>
-
-                    @foreach ($hiringForms as $hiringForm)
-                        <dialog class="content-center shadow-lg rounded-lg m-auto"
-                            id="nameModal-{{ $hiringForm->id }}"
-                            style="width: 80vw; max-width: 800px; overflow-y: auto;">
-                            <div class="text-center grid divide-gray-200 w-full">
-                                <div class="bg-white shadow-md p-8 w-full text-center rounded-lg">
-                                    <form method="POST" action="" class="overflow-hidden">
-                                        @csrf
-                                        <!-- Form heading -->
-                                        <h1 class="text-lg font-semibold mb-1">Job Hiring Form</h1>
-
-                                        <!-- Worker Details section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5">
-                                            <h2 class="text-sm font-semibold mb-2">Worker Details</h2>
-
-                                            <div class="w-full mb-2">
-                                                <label for="workerJobTitle"
-                                                    class="block text-xs font-medium text-gray-700">Job Title</label>
-                                                <input type="text" name="workerJobTitle" id="workerJobTitle"
-                                                    placeholder="Enter worker's job title"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                    value="{{ optional($hiringForm->worker->category)->name }}"
-                                                    disabled>
-                                            </div>
-
-                                            <div class="w-full mb-2">
-                                                <label for="workerFullName"
-                                                    class="block text-xs font-medium text-gray-700">Full Name</label>
-                                                <input type="text" name="workerFullName" id="workerFullName"
-                                                    placeholder="Enter worker's full name"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                    value="{{ isset($hiringForm->worker) ? $hiringForm->worker->name : '' }}"
-                                                    disabled>
-                                            </div>
-
-                                            <div class="flex mb-2">
-                                                <div class="w-1/2 mr-1">
-                                                    <label for="workerEmail"
-                                                        class="block text-xs font-medium text-gray-700">Email</label>
-                                                    <input type="text" name="workerEmail" id="workerEmail"
-                                                        placeholder="Enter worker's email"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                        value="{{ isset($hiringForm->worker) ? $hiringForm->worker->email : '' }}"
-                                                        disabled>
-                                                </div>
-
-                                                <div class="w-1/2 ml-1">
-                                                    <label for="workerPhone"
-                                                        class="block text-xs font-medium text-gray-700">Phone</label>
-                                                    <input type="text" name="workerPhone" id="workerPhone"
-                                                        placeholder="Enter worker's phone number"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                                        value="{{ isset($hiringForm->worker) ? $hiringForm->worker->phone : '' }}"
-                                                        disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Project Details section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Project Details</h2>
-                                            <div class="w-full mb-2">
-                                                <label for="projectTitle"
-                                                    class="block text-xs font-medium text-gray-700">Project
-                                                    Title</label>
-                                                <input type="text" name="projectTitle" id="projectTitle"
-                                                    placeholder="Enter project title"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" required
-                                                    value="{{ isset($hiringForm) ? $hiringForm->projectTitle : '' }}">
-                                            </div>
-
-                                            <div class="w-full mb-2">
-                                                <label for="projectDescription"
-                                                    class="block text-xs font-medium text-gray-700">Project
-                                                    Description</label>
-                                                <textarea name="projectDescription" id="projectDescription" placeholder="Enter project description"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required>{{ isset($hiringForm) ? $hiringForm->projectDescription : '' }}</textarea>
-                                            </div>
-
-                                            <div class="flex mb-2">
-                                                <div class="w-1/2 mr-1">
-                                                    <label for="startDate"
-                                                        class="block text-xs font-medium text-gray-700">Start
-                                                        Date</label>
-                                                    <input type="text" name="startDate" id="startDate"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        placeholder="Select start date" required
-                                                        value="{{ isset($hiringForm) ? $hiringForm->startDate : '' }}">
-                                                </div>
-                                                <div class="w-1/2 ml-1">
-                                                    <label for="endDate"
-                                                        class="block text-xs font-medium text-gray-700">End
-                                                        Date</label>
-                                                    <input type="text" name="endDate" id="endDate"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        placeholder="Select end date" required
-                                                        value="{{ isset($hiringForm) ? $hiringForm->endDate : '' }}">
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- Employer Details section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Employer Details</h2>
-
-                                            <!-- Full Name -->
-                                            <div class="w-full mb-2">
-                                                <label for="employerFullName"
-                                                    class="block text-xs font-medium text-gray-700">Full Name</label>
-                                                <input type="text" name="employerFullName" id="employerFullName"
-                                                    placeholder="Enter employer's full name"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                    value="{{ isset($hiringForm->employer) ? $hiringForm->employer->name : '' }}"
-                                                    required>
-                                            </div>
-
-                                            <!-- Email -->
-                                            <div class="flex mb-2">
-                                                <div class="w-1/2 mr-1">
-                                                    <label for="employerEmail"
-                                                        class="block text-xs font-medium text-gray-700">Email</label>
-                                                    <input type="text" name="employerEmail" id="employerEmail"
-                                                        placeholder="Enter employer's email"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->email : '' }}"
-                                                        required>
-                                                </div>
-
-                                                <!-- Phone -->
-                                                <div class="w-1/2 ml-1">
-                                                    <label for="employerPhone"
-                                                        class="block text-xs font-medium text-gray-700">Phone</label>
-                                                    <input type="text" name="employerPhone" id="employerPhone"
-                                                        placeholder="Enter employer's phone number"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->phone : '' }}"
-                                                        required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <!-- Scope of Work section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Scope of Work</h2>
-                                            <div class="w-full mb-2">
-                                                <label for="scopeOfWork"
-                                                    class="block text-xs font-medium text-gray-700">Briefly describe
-                                                    the
-                                                    tasks and responsibilities of the worker.</label>
-                                                <textarea name="scopeOfWork" id="scopeOfWork" placeholder="Enter scope of work"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required>{{ isset($hiringForm) ? $hiringForm->scopeOfWork : '' }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <!-- Payment Terms section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Payment Terms</h2>
-
-                                            <!-- Total Payment -->
-                                            <div class="w-full mb-2">
-                                                <label for="totalPayment"
-                                                    class="block text-xs font-medium text-gray-700">Total
-                                                    Payment</label>
-                                                <input type="text" name="totalPayment" id="totalPayment"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                    placeholder="Enter total payment" required
-                                                    value="{{ isset($hiringForm) ? $hiringForm->totalPayment : '' }}">
-                                            </div>
-
-                                            <!-- Payment Frequency -->
-                                            <div class="w-full mb-2">
-                                                <label for="paymentFrequency"
-                                                    class="block text-xs font-medium text-gray-700">Payment
-                                                    Frequency</label>
-                                                <select name="paymentFrequency" id="paymentFrequency"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" required>
-                                                    <option value="hourly"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentFrequency === 'hourly' ? 'selected' : '' }}>
-                                                        Hourly</option>
-                                                    <option value="perMilestone"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentFrequency === 'perMilestone' ? 'selected' : '' }}>
-                                                        Per Milestone</option>
-                                                    <!-- Add more options as needed -->
-                                                </select>
-                                            </div>
-
-                                            <!-- Payment Method -->
-                                            <div class="w-full mb-2">
-                                                <label for="paymentMethod"
-                                                    class="block text-xs font-medium text-gray-700">Payment
-                                                    Method</label>
-                                                <select name="paymentMethod" id="paymentMethod"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" required>
-                                                    <option value="bankTransfer"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentMethod === 'bankTransfer' ? 'selected' : '' }}>
-                                                        Bank Transfer</option>
-                                                    <option value="cash"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentMethod === 'cash' ? 'selected' : '' }}>
-                                                        Cash</option>
-                                                    <!-- Add more options as needed -->
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <!-- Submit button -->
-                                        <div class="mt-2">
-
-                                            <button type="button" onclick="rejectApplicationForm()"
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs">
-                                                Cancel
-                                            </button>
-                                        </div>
-
-                                        <script>
-                                            function rejectApplicationForm() {
-                                                // Add your logic for rejecting the application
-                                                console.log('Rejecting application');
-                                                // You can also perform additional actions as needed
-                                            }
-                                        </script>
-
-                                    </form>
-                                </div>
-
-                                <!-- Load flatpickr script after the form -->
-                                <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-                                <script>
-                                    flatpickr('#startDate, #endDate', {
-                                        dateFormat: 'Y-m-d', // Store the date in Y-m-d format
-                                        altInput: true, // Create an alternate input field
-                                        altFormat: 'F j, Y', // Format for the alternate input field (displayed in the textbox)
-                                        // Add other Flatpickr options as needed
-                                    });
-                                </script>
-                            </div>
-                        </dialog>
-                    @endforeach
                 </div>
             </div>
         </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Add click event listener to open-button
-                const openButtons = document.querySelectorAll('.open-button');
-                openButtons.forEach((openButton) => {
-                    openButton.addEventListener('click', () => {
-                        const hiringFormId = openButton.getAttribute('data-id');
-                        const modalId = `nameModal-${hiringFormId}`;
-                        const modal = document.getElementById(modalId);
-                        modal.showModal();
-                    });
-                });
-
-                // Add click event listener to close the dialog when clicking outside
-                const modals = document.querySelectorAll('dialog');
-                modals.forEach((modal) => {
-                    modal.addEventListener('click', (e) => {
-                        if (e.target === modal) {
-                            modal.close();
-                        }
-                    });
-                });
-            });
-        </script>
-
 
     </main>
 
@@ -1163,7 +596,9 @@
                                 title: title,
                                 start: start,
                                 end: end,
-                                type: 'add'
+                                type: 'add',
+                                user_id: {{ auth()->user()->id }}
+
                             },
                             type: "POST",
                             success: function(data) {
