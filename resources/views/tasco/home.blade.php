@@ -2,7 +2,7 @@
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
     <main>
 
-        <section class="shadow-sm">
+        <section class="">
             <!-- Start: Hero Section-->
 
             <!-- Start: Hero Background Image -->
@@ -22,9 +22,9 @@
                             Welcome to <span class="text-blue-500">Tasco</span>
                         </h1>
 
-                        <p class="mb-6 tracking-wide text-gray-500 sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5">
+                        <p class="mb-6 tracking-wide text-xl text-gray-500 sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5">
                             Discover a new level of convenience and reliability with Tasco, your trusted local service
-                            management partner. At Tasco, we take pride in offering a wide range of services to meet
+                            management partner. We take pride in offering a wide range of services to meet
                             your
                             needs.
                         </p>
@@ -32,12 +32,12 @@
                         <div class="justify-center sm:flex">
                             <div class="">
                                 <a href="{{ route('app.home') }}#browse"
-                                    class="flex items-center justify-center w-full px-8 py-3 text-gray-100 bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
+                                    class="flex items-center justify-center w-full font-medium px-8 py-3 text-white bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
                                     Get started</a>
                             </div>
                             <div class="mt-3 sm:mt-0 sm:ml-3">
                                 <a href="#"
-                                    class="flex items-center justify-center w-full px-8 py-3 text-blue-600 rounded-md shadow hover:text-gray-100 hover:bg-blue-500 ">
+                                    class="flex items-center justify-center w-full font-medium px-8 py-3 text-blue-600 rounded-md shadow border border-blue-500">
                                     Learn More</a>
                             </div>
                         </div>
@@ -56,111 +56,82 @@
             <div class="container xl:max-w-6xl mx-auto px-4">
 
                 <!-- Start: Heading-->
-                <div class="text-center mx-auto mb-12 lg:px-20">
-                    <h2 class=" leading-normal mb-2 text-4xl font-bold text-black" id="browse">Browse</h2>
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
-                        <circle cx="50.1" cy="30.4" r="5" class="stroke-primary"
-                            style="fill: transparent;stroke-width: 2;stroke-miterlimit: 10;"></circle>
-                        <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary"
-                            style="stroke-width: 2;stroke-miterlimit: 10;"></line>
-                        <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary"
-                            style="stroke-width: 2;stroke-miterlimit: 10;"></line>
-                    </svg>
+                <div class="text-center mx-auto mb-5 lg:px-20">
+                    <h2 class=" leading-normal mb-4 text-4xl font-bold text-black" id="browse">Browse</h2>
                     <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">See what the community
                         offers
                     </p>
                 </div>
-
-                <div class="flex flex-wrap flex-row -mx-4 text-center">
-
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s"
-                        style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-
-                        <!-- Browse Box-->
-
-                        <div
-                            class="py-8 px-12 mb-12 bg-blue-100 border rounded-md border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
-
-                            <div class="flex flex-col items-center">
-                                <div class="inline-block text-gray-900 mb-4">
-
-                                    <!-- Browse Icon -->
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" 
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
-                                        </path>
-                                    </svg>
-
-                                </div>
-                                <h5 class="mb-1 text-xl font-medium text-gray-900">Calendar</h5>
-                            </div>
-                        </div>
-                        <!-- End: Browse -->
-                    </div>
-
-
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s"
-                        style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-
-                        <!-- Browse Box-->
-
-                        <div
-                            class="py-8 px-12 mb-12 bg-blue-100 border rounded-md border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
-
-                            <div class="flex flex-col items-center">
-                                <div class="inline-block text-gray-900 mb-4">
-
-                                    <!-- Browse Icon -->
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 11C14.7614 11 17 13.2386 17 16V22H15V16C15 14.4023 13.7511 13.0963 12.1763 13.0051L12 13C10.4023 13 9.09634 14.2489 9.00509 15.8237L9 16V22H7V16C7 13.2386 9.23858 11 12 11ZM5.5 14C5.77885 14 6.05009 14.0326 6.3101 14.0942C6.14202 14.594 6.03873 15.122 6.00896 15.6693L6 16L6.0007 16.0856C5.88757 16.0456 5.76821 16.0187 5.64446 16.0069L5.5 16C4.7203 16 4.07955 16.5949 4.00687 17.3555L4 17.5V22H2V17.5C2 15.567 3.567 14 5.5 14ZM18.5 14C20.433 14 22 15.567 22 17.5V22H20V17.5C20 16.7203 19.4051 16.0796 18.6445 16.0069L18.5 16C18.3248 16 18.1566 16.03 18.0003 16.0852L18 16C18 15.3343 17.8916 14.694 17.6915 14.0956C17.9499 14.0326 18.2211 14 18.5 14ZM5.5 8C6.88071 8 8 9.11929 8 10.5C8 11.8807 6.88071 13 5.5 13C4.11929 13 3 11.8807 3 10.5C3 9.11929 4.11929 8 5.5 8ZM18.5 8C19.8807 8 21 9.11929 21 10.5C21 11.8807 19.8807 13 18.5 13C17.1193 13 16 11.8807 16 10.5C16 9.11929 17.1193 8 18.5 8ZM5.5 10C5.22386 10 5 10.2239 5 10.5C5 10.7761 5.22386 11 5.5 11C5.77614 11 6 10.7761 6 10.5C6 10.2239 5.77614 10 5.5 10ZM18.5 10C18.2239 10 18 10.2239 18 10.5C18 10.7761 18.2239 11 18.5 11C18.7761 11 19 10.7761 19 10.5C19 10.2239 18.7761 10 18.5 10ZM12 2C14.2091 2 16 3.79086 16 6C16 8.20914 14.2091 10 12 10C9.79086 10 8 8.20914 8 6C8 3.79086 9.79086 2 12 2ZM12 4C10.8954 4 10 4.89543 10 6C10 7.10457 10.8954 8 12 8C13.1046 8 14 7.10457 14 6C14 4.89543 13.1046 4 12 4Z">
-                                        </path>
-                                    </svg>
-
-                                </div>
-                                <h5 class="mb-1 text-xl font-medium text-gray-900">Service</h5>
-                            </div>
-                        </div>
-                        <!-- End: Browse Box -->
-                    </div>
-
-
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s"
-                        style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-
-                        <!-- Browse Box-->
-                        <a href="{{ route('app.customerService') }}">
+                
+                <div class="flex flex-wrap flex-row -mx-12 pb-20">
+                <div
+                        class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:px-10">
+                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <span class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z" fill="rgba(255,255,255,1)"></path></svg>
+                                
+                            </span>
                             <div
-                                class="py-8 px-12 mb-12 bg-blue-100 border rounded-md border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
-
-                                <div class="flex flex-col items-center">
-                                    <div class="inline-block text-gray-900 mb-4">
-
-                                        <!-- Browse Icon -->
-
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M19.9381 8H21C22.1046 8 23 8.89543 23 10V14C23 15.1046 22.1046 16 21 16H19.9381C19.446 19.9463 16.0796 23 12 23V21C15.3137 21 18 18.3137 18 15V9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9V16H3C1.89543 16 1 15.1046 1 14V10C1 8.89543 1.89543 8 3 8H4.06189C4.55399 4.05369 7.92038 1 12 1C16.0796 1 19.446 4.05369 19.9381 8ZM3 10V14H4V10H3ZM20 10V14H21V10H20ZM7.75944 15.7849L8.81958 14.0887C9.74161 14.6662 10.8318 15 12 15C13.1682 15 14.2584 14.6662 15.1804 14.0887L16.2406 15.7849C15.0112 16.5549 13.5576 17 12 17C10.4424 17 8.98882 16.5549 7.75944 15.7849Z">
-                                            </path>
-                                        </svg>
-
-                                    </div>
-                                    <h5 class="mb-1 text-xl font-medium text-gray-900">Customer Service</h5>
-                                </div>
+                                class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                <p>Elevate your schedule with TasCo's intuitive calendar feature, simplifying local management and optimizing your planning.</p>
                             </div>
-                        </a>
-                        <!-- End: Browse -->
+                            <div class="pt-5 text-base font-semibold ">
+                                <p>
+                                    <a href="#" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Calendar
+                                        &rarr;
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
+                    <div
+                        class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:px-10">
+                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <span class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M5.32894 3.27158C6.56203 2.8332 7.99181 3.10749 8.97878 4.09446C10.0997 5.21537 10.3014 6.90741 9.58382 8.23385L20.2925 18.9437L18.8783 20.3579L8.16933 9.64875C6.84277 10.3669 5.1502 10.1654 4.02903 9.04421C3.04178 8.05696 2.76761 6.62665 3.20652 5.39332L5.44325 7.63C6.02903 8.21578 6.97878 8.21578 7.56457 7.63C8.15035 7.04421 8.15035 6.09446 7.56457 5.50868L5.32894 3.27158ZM15.6963 5.15512L18.8783 3.38736L20.2925 4.80157L18.5247 7.98355L16.757 8.3371L14.6356 10.4584L13.2214 9.04421L15.3427 6.92289L15.6963 5.15512ZM8.97878 13.2868L10.393 14.7011L5.08969 20.0044C4.69917 20.3949 4.066 20.3949 3.67548 20.0044C3.31285 19.6417 3.28695 19.0699 3.59777 18.6774L3.67548 18.5902L8.97878 13.2868Z" fill="rgba(255,255,255,1)"></path></svg>
+                                
+                            </span>
+                            <div
+                                class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                <p>TasCo provide a variety of local services to enhance your operations, ensuring smooth efficiency and customized solutions tailored to your needs.
+                                </p>
+                            </div>
+                            <div class="pt-5 text-base font-semibold ">
+                                <p>
+                                    <a href="#" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Services
+                                        &rarr;
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:rounded-lg sm:px-10">
+                        <a href="{{ route('app.customerService') }}">
+                        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <span class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24"><path d="M19.9381 8H21C22.1046 8 23 8.89543 23 10V14C23 15.1046 22.1046 16 21 16H19.9381C19.446 19.9463 16.0796 23 12 23V21C15.3137 21 18 18.3137 18 15V9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9V16H3C1.89543 16 1 15.1046 1 14V10C1 8.89543 1.89543 8 3 8H4.06189C4.55399 4.05369 7.92038 1 12 1C16.0796 1 19.446 4.05369 19.9381 8ZM3 10V14H4V10H3ZM20 10V14H21V10H20ZM7.75944 15.7849L8.81958 14.0887C9.74161 14.6662 10.8318 15 12 15C13.1682 15 14.2584 14.6662 15.1804 14.0887L16.2406 15.7849C15.0112 16.5549 13.5576 17 12 17C10.4424 17 8.98882 16.5549 7.75944 15.7849Z" fill="rgba(255,255,255,1)"></path></svg>
+                                
+                            </span>
+                            <div
+                                class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                <p>If you have any questions, feedback, or partnership inquiries, TasCo's customer service is here to listen and assist—your satisfaction is our priority!</p>
+                            </div>
+                            <div class="pt-5 text-base font-semibold leading-7">
+                                <p>
+                                    
+                                    <a href="#" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Customer Services
+                                        &rarr;
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
         </section>
         <!-- End: Browse Section -->
@@ -173,16 +144,7 @@
                 <!-- Start: Heading-->
 
                 <div class="text-center mx-auto mb-12 lg:px-20">
-                    <h2 class=" leading-normal mb-2 text-4xl font-bold text-black">The Roles</h2>
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
-                        <circle cx="50.1" cy="30.4" r="5" class="stroke-primary"
-                            style="fill: transparent;stroke-width: 2;stroke-miterlimit: 10;"></circle>
-                        <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary"
-                            style="stroke-width: 2;stroke-miterlimit: 10;"></line>
-                        <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary"
-                            style="stroke-width: 2;stroke-miterlimit: 10;"></line>
-                    </svg>
+                    <h2 class=" leading-normal mb-4 text-4xl font-bold text-black">The Roles</h2>
                     <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">in our community</p>
                 </div>
                 <!-- End: Heading -->
@@ -230,17 +192,7 @@
 
                 <!-- Start: Heading-->
                 <div class="text-center mx-auto mb-12 lg:px-20">
-                    <h2 class=" leading-normal mb-2 text-4xl font-bold text-black">Available Worker</h2>
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;"
-                        xml:space="preserve">
-                        <circle cx="50.1" cy="30.4" r="5" class="stroke-primary"
-                            style="fill: transparent;stroke-width: 2;stroke-miterlimit: 10;"></circle>
-                        <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary"
-                            style="stroke-width: 2;stroke-miterlimit: 10;"></line>
-                        <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary"
-                            style="stroke-width: 2;stroke-miterlimit: 10;"></line>
-                    </svg>
+                    <h2 class=" leading-normal mb-4 text-4xl font-bold text-black">Available Worker</h2>
                     <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">With their services</p>
                 </div>
                 <!-- End: Heading -->
@@ -361,7 +313,7 @@
                     <!-- See More Jobs Button -->
                     <div class="w-full flex justify-center">
                         <a href="{{ route('app.jobListing') }}"
-                            class="w-64 sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">See
+                            class="w-64 sm:w-auto bg-blue-500 font-medium text-white hover:border hover:border-blue-500 hover:bg-transparent hover:text-blue-500 rounded-lg inline-flex items-center justify-center px-4 py-2.5">See
                             More Workers</a>
                     </div>
                 </div>
@@ -387,16 +339,6 @@
                 <!-- Start: Services Section Title -->
                 <header class="text-center mx-auto mb-12 lg:px-20">
                     <h2 class="text-4xl leading-normal mb-2 font-bold text-black">Services</h2>
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;"
-                        xml:space="preserve">
-                        <circle cx="50.1" cy="30.4" r="5" class="stroke-primary"
-                            style="fill: transparent;stroke-width: 2;stroke-miterlimit: 10;"></circle>
-                        <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary"
-                            style="stroke-width: 2;stroke-miterlimit: 10;"></line>
-                        <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary"
-                            style="stroke-width: 2;stroke-miterlimit: 10;"></line>
-                    </svg>
                 </header>
                 <!-- Start: Services Section Title -->
 
@@ -408,9 +350,10 @@
                         style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
-                            hover:bg-blue-400
-                            hover:text-white
+                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
+                            hover:bg-transparent
+                            hover:border-blue-500
+                            hover:text-blue-500
                             hover:rounded-xl
                             ">
                             <div class="inline-block mb-4">
@@ -423,7 +366,7 @@
                                 </svg>
                             </div>
                             <h3 class="text-lg leading-normal mb-2 font-semibold" >Approved Services</h3>
-                            <p class="">In our community, services are approved not only by the
+                            <p>In our community, services are approved not only by the
                                 administration
                                 but also by the community!</p>
                         </div>
@@ -434,9 +377,10 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                             class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
-                            hover:bg-blue-400
-                            hover:text-white
+                             class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
+                            hover:bg-transparent
+                            hover:border-blue-500
+                            hover:text-blue-500
                             hover:rounded-xl
                             ">
                             <div class="inline-block mb-4">
@@ -450,8 +394,8 @@
 
                             </div>
                             <h3 class="text-lg leading-normal mb-2 font-semibold">Verified Documents</h3>
-                            <p class="">In our community, documents are verified before any transactions
-                                happen in the community to keep a safe and secure local area!</p>
+                            <p>In our community, documents are verified before any transactions
+                                happen to keep a safe and secure local area!</p>
                         </div>
                         <!-- end service block -->
                     </div>
@@ -460,9 +404,10 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
-                            hover:bg-blue-400
-                            hover:text-white
+                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
+                            hover:bg-transparent
+                            hover:border-blue-500
+                            hover:text-blue-500
                             hover:rounded-xl
                             ">
                             <div class="inline-block mb-4">
@@ -475,7 +420,7 @@
                                 </svg>
                             </div>
                             <h3 class="text-lg leading-normal mb-2 font-semibold">Feedbacks</h3>
-                            <p class="">In our community, your feedbacks matters to us and we'll always
+                            <p>In our community, your feedbacks matters to us and we'll always
                                 hear
                                 you out if you have concerns or request!</p>
                         </div>
@@ -486,9 +431,9 @@
                         style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
-                            hover:bg-blue-400
-                            hover:text-white
+                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
+                            hover:border-blue-500
+                            hover:text-blue-500
                             hover:rounded-xl
                             ">
                             <div class="inline-block mb-4">
@@ -501,7 +446,7 @@
                                 </svg>
                             </div>
                             <h3 class="text-lg leading-normal mb-2 font-semibold">Monitoring</h3>
-                            <p class="">Not only do we monitor your documents, feedbacks, services, we
+                            <p>Not only do we monitor your documents, feedbacks, services, we
                                 also
                                 monitor on how well the community interact with each other</p>
                         </div>
@@ -512,9 +457,10 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                             class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
-                            hover:bg-blue-400
-                            hover:text-white
+                             class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
+                             hover:bg-transparent
+                            hover:border-blue-500
+                            hover:text-blue-500
                             hover:rounded-xl
                             ">
                             <div class="inline-block mb-4">
@@ -527,7 +473,7 @@
                                 </svg>
                             </div>
                             <h3 class="text-lg leading-normal mb-2 font-semibold ">Secure</h3>
-                            <p class="">We secure the safety of every individual that will be working or
+                            <p>We secure the safety of every individual that will be working or
                                 employing each other. We prioritize security overall along with monitoring.</p>
                         </div>
                         <!-- end service block -->
@@ -537,9 +483,10 @@
                         style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
-                            class="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition-all duration-300 ease-in-out hover:-translate-y-2 
-                            hover:bg-blue-400
-                            hover:text-white
+                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
+                            hover:bg-transparent
+                            hover:border-blue-500
+                            hover:text-blue-500
                             hover:rounded-xl
                             ">
                             <div class="inline-block mb-4">
@@ -553,7 +500,7 @@
 
                             </div>
                             <h3 class="text-lg leading-normal mb-2 font-semibold">Growth</h3>
-                            <p class="">In our community, every individual matters, we secure, hear, and
+                            <p>In our community, every individual matters, we secure, hear, and
                                 talk
                                 to one another in order to have an efficient growth of the community!
                             </p>
