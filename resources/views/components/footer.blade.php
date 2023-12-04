@@ -87,8 +87,8 @@
         </div>
 
         <!-- Start: Footer Copyright -->
-        <div class="px-4 py-6 bg-blue-500">
-            <div class="flex flex-wrap items-center justify-center max-w-6xl gap-4 mx-auto">
+        <div class="px-4 py-6 bg-blue-400">
+            <div class="flex flex-wrap items-center font-medium justify-center max-w-6xl gap-4 mx-auto">
                 <span>Copyright © 2023 TasCo. All Rights Reserved</span>
             </div>
         </div>
