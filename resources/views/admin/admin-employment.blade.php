@@ -65,31 +65,31 @@
 
                     <tbody class="bg-white divide-y divide-gray-200 ">
                         <!-- Loop through each service to populate table rows -->
-                        @foreach ($services as $serv)
+                        
                             <tr>
                                 <!-- Title Column -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    {{ Illuminate\Support\Str::limit($serv->title, $limit = 30, $end = '...') }}
+                               
                                 </td>
 
                                 <!-- Description Column -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    {{ Illuminate\Support\Str::limit($serv->description, $limit = 30, $end = '...') }}
+                                  
                                 </td>
 
                                 <!-- Category Column -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    {{ $serv->category->name }}
+                                  
                                 </td>
 
                                 <!-- Employer Column -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    {{ $serv->provider->name }}
+                                    
                                 </td>
 
                                 <!-- Price Column -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    {{ $serv->price }}
+                                    
                                 </td>
 
                                 <!-- Action Column -->
@@ -100,7 +100,7 @@
                                     <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
                                 </td>
                             </tr>
-                        @endforeach
+                        
                     </tbody>
                 </table>
             </div>

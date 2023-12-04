@@ -60,15 +60,15 @@
                 </a>
             </li>
 
-            <!-- Services Link -->
-            <li class="mb-1 group {{ request()->routeIs('admin.services') ? 'active' : '' }}">
-                <a href="{{ route('admin.services') }}"
+            <!-- Employment Link -->
+            <li class="mb-1 group {{ request()->routeIs('admin.employment') ? 'active' : '' }}">
+                <a href="{{ route('admin.employment') }}"
                     class="flex items-center py-2 px-4 text-gray-800 
                 hover:bg-blue-400 hover:text-gray-100 rounded-md 
                 group-[.active]:bg-blue-500 group-[.active]:text-white 
                 group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
                     <i class="ri-shake-hands-line mr-3 text-lg"></i>
-                    <span class="text-sm">Services</span>
+                    <span class="text-sm">Employemnt</span>
                     <i class="ri-arrow-right-s-line ml-auto"></i>
                 </a>
             </li>

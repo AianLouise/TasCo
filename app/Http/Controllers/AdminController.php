@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EmployerApplication;
+use App\Models\Employment;
 use App\Models\HiringForm;
 use App\Models\JobSeekerApplication;
 use App\Models\User;
@@ -242,12 +243,12 @@ class AdminController extends Controller
     }
 
     // View to display all services for the admin
-    public function AdminServices()
+    public function AdminEmployment()
     {
-        $services = Service::with('category')->get();
-        $pageTitle = 'Services';
+        // $employment = Employment::with('category')->get();
+        $pageTitle = 'Employment';
 
-        return view('admin.admin-services', compact('services', 'pageTitle'));
+        return view('admin.admin-employment', compact( 'pageTitle'));
     }
 
     public function AdminHiringApplication()
