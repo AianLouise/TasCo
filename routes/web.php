@@ -90,6 +90,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/apply-as-employer', [AppController::class, 'applyEmployer'])->name('app.applyEmployer');    
     Route::get('/job-listing', [AppController::class, 'JobListing'])->name('app.jobListing');
     Route::get('/settings', [AppController::class, 'Settings'])->name('app.settings');
+    Route::get('/learn-more', [AppController::class, 'LearnMore'])->name('app.learnMore');
     Route::get('/tasco-calendar', [AppController::class, 'Calendar'])->name('app.Calendar');
     Route::get('/tasco-services', [AppController::class, 'Services'])->name('app.Services');
     Route::get('/tasco-customer-service', [AppController::class, 'CustomerService'])->name('app.customerService');

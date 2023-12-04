@@ -1,4 +1,4 @@
 <x-app-layout>
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
-    calendar
+    learn more
 </x-app-layout>

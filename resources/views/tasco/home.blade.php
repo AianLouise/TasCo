@@ -36,7 +36,7 @@
                                     Get started</a>
                             </div>
                             <div class="mt-3 sm:mt-0 sm:ml-3">
-                                <a href="#"
+                                <a href="{{ route('app.learnMore') }}"
                                     class="flex items-center justify-center w-full font-medium px-8 py-3 text-blue-600 rounded-md shadow border border-blue-500">
                                     Learn More</a>
                             </div>
@@ -79,7 +79,7 @@
                             </div>
                             <div class="pt-5 text-base font-semibold ">
                                 <p>
-                                    <a href="#" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Calendar
+                                    <a href="{{ route('app.Calendar') }}" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Calendar
                                         &rarr;
                                     </a>
                                 </p>
@@ -103,7 +103,7 @@
                             </div>
                             <div class="pt-5 text-base font-semibold ">
                                 <p>
-                                    <a href="#" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Services
+                                    <a href="{{ route('app.Services') }}" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Services
                                         &rarr;
                                     </a>
                                 </p>
@@ -127,7 +127,7 @@
                             <div class="pt-5 text-base font-semibold leading-7">
                                 <p>
                                     
-                                    <a href="#" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Customer Services
+                                    <a href="{{ route('app.customerService') }}" class="text-blue-500 transition-all duration-300 group-hover:text-white">View Customer Services
                                         &rarr;
                                     </a>
                                 </p>
@@ -429,11 +429,12 @@
                         <!-- end service block -->
                     </div>
                     <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s" data-wow-delay=".1s"
-                        style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+                        data-wow-duration="1s" data-wow-delay=".3s"
+                        style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div
                             class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
+                            hover:bg-transparent
                             hover:border-blue-500
                             hover:text-blue-500
                             hover:rounded-xl

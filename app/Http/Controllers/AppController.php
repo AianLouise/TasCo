@@ -142,6 +142,18 @@ class AppController extends Controller
     }
 
     /**
+     * Display the Learn More page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function LearnMore()
+    {
+        $pageTitle = 'Learn More';
+
+        return view("tasco.learn-more", compact('pageTitle'));
+    }
+
+    /**
      * Display the Calendar page.
      *
      * @return \Illuminate\View\View
