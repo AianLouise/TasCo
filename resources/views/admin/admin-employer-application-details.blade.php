@@ -29,18 +29,15 @@
 
         </div>
         <!-- End: Header -->
-
+<section class="flex justify-center">
         <!-- Start: Application Details Content -->
-        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md text-center sm:text-start">
+        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md text-center sm:text-start w-full sm:w-1/2">
                 
-            <div class="grid">
+            <div class="grid grid-rows-1 sm:grid-cols-2 border-b pb-4">
                 <!-- Heading for Application Section -->
-                <div class="grid justify-end">
-                    <input type="text" placeholder="Find Application" class="rounded-md border-blue-400">
-                </div>    
                 
-                <div class="text-2xl font-semibold text-blue-400 border-b pb-4">Application Details</div>
-            
+                <div class="text-2xl font-semibold text-blue-400">Application Details</div>
+                <input type="text" placeholder="Find Application" class="rounded-md border-blue-400 mt-4 sm:m-0 ">
             </div>
             
 
@@ -50,28 +47,47 @@
             @foreach ($employerApplications as $application)
                 <div>
                     <!-- User Details -->
-                    <div class="text-md">
-                        <h3 class="text-lg font-medium mb-2 mt-2 text-blue-400">User Details</h3>
-                        <p class="pt-2"><strong class="text-gray-700">User Name:</strong> {{ $application->user->name }}</p>
-                        <p class="pt-2"><strong class="text-gray-700">Email:</strong> {{ $application->user->email }}</p>
-                        <p class="pt-2"><strong class="text-gray-700">Applying for:</strong> <span class="text-blue-500 font-bold">Employer</span></p>
+                    {{-- <h3 class="text-lg font-medium mb-2 mt-2 text-blue-400 text-center">User Details</h3> --}}
+                    <div class="text-md bg-blue-100 p-4 rounded-md mt-4">
+                        <div class="w-full mb-2">
+                            <label for="Username" class="block text-xs font-medium text-gray-700">User Name</label>
+                            <input type="text" name="Username" id="Username"
+                                placeholder="Enter UserName"
+                                class="mt-1 p-2 w-full border rounded-md text-xs text-center"
+                                value="{{ $application->user->name }}" disabled>
+                        </div>    
+                        <div class="w-full mb-2">
+                            <label for="Email" class="block text-xs font-medium text-gray-700">Email</label>
+                            <input type="text" name="Email" id="Email"
+                                placeholder="Enter UserName"
+                                class="mt-1 p-2 w-full border rounded-md text-xs text-center"
+                                value=" {{ $application->user->email }}" disabled>
+                        </div> 
+                        <div class="w-full mb-2">
+                            <label for="role" class="block text-xs font-medium text-gray-700">Applying for Role:</label>
+                            <input type="text" name="role" id="role"
+                                placeholder="Enter UserName"
+                                class="mt-1 p-2 w-full border rounded-md text-xs text-center text-blue-500 font-bold"
+                                value="Employer" disabled>
+                        </div> 
+                    
                         <!-- Add more user details as needed -->
                     </div>
 
                     <!-- Document Information -->
                     <div class="mb-6">
-                        <h3 class="text-lg font-semibold mb-2 text-center border-b pb-4 pt-4">User's Attachments</h3>
+                        <h3 class="text-xl font-semibold mb-2 border-b pb-4 pt-4 text-blue-400">User's Attachments</h3>
 
                         <!-- Display document information based on your application structure -->
 
-                        <div class="grid gap-4 py-4 grid-rows-1 sm:grid-cols-3 sm:text-start">
+                        <div class="grid gap-4 py-4 grid-rows-1 mt-6 sm:grid-cols-3 sm:text-start bg-blue-100 p-4 rounded-md">
                             <!-- Valid ID Image -->
                             <div class="" >
                                 <p class="text-xl pb-1 text-gray-700"><i class="ri-bank-card-2-line font-bold text-2xl"></i>  Valid ID:</p>
                                 <a href="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
                                     data-lightbox="valid_id">
                                     <img src="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
-                                    alt="Valid ID Image" class="max-w-full mb-2 h-auto border-2 border-blue-400 rounded-lg p-4 hover:p-1 transition-all">
+                                    alt="Valid ID Image" class="max-w-full mb-2 h-auto border-2  border-gray-500  rounded-lg p-4 hover:p-1 transition-all">
                                 </a>
                               
                                
@@ -84,7 +100,7 @@
                                 <a href="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
                                     data-lightbox="barangay_clearance">
                                     <img src="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
-                                    alt="Barangay Clearance Image" class="max-w-full mb-2 h-auto border-2 border-blue-400 rounded-lg p-4 hover:p-1 transition-all">
+                                    alt="Barangay Clearance Image" class="max-w-full mb-2 h-auto border-2 border-gray-500 rounded-lg p-4 hover:p-1 transition-all">
                                 </a>
 
                                 
@@ -96,7 +112,7 @@
                                 <a href="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
                                     data-lightbox="latest_picture">
                                     <img src="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
-                                    alt="Latest Picture Image" class="max-w-full h-auto border-2 border-blue-400 rounded-lg p-4  hover:p-1 transition-all">
+                                    alt="Latest Picture Image" class="max-w-full h-auto border-2  border-gray-500  rounded-lg p-4  hover:p-1 transition-all">
                                 </a>
 
           
@@ -116,20 +132,20 @@
                 @if ($application->status != 'Accepted' && $application->status != 'Rejected')
                     <div class="flex justify-center mt-4 mb-4 space-x-2 border-b-2 border-dashed border-blue-400 pb-6">
                         <a href="{{ route('updateIsVerified', ['user_id' => $application->user_id]) }}"
-                            class="text-white mt-2 bg-blue-400 hover:bg-green-400 hover:px-10   focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all">
+                            class="text-blue-400 mt-2 bg-white border-blue-500 border hover:bg-green-400 hover:text-white hover:border-white  hover:px-10   focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all">
                             Accept
                         </a>
                         <a href="{{ route('updateIsRejected', ['user_id' => $application->user_id]) }}"
-                            class="text-white mt-2  bg-blue-400 hover:bg-red-800 hover:px-10 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all">
+                            class="text-blue-400 mt-2 bg-white border-blue-500 border hover:bg-red-800 hover:text-white hover:border-white hover:px-10 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all">
                             Reject
                         </a>
-                    </div>
+                    </div>  
                 @endif
             @endforeach
 
         </div>
         <!-- End: Application Details Content -->
 
-
+    </section>
     </main>
 </x-app-layout>

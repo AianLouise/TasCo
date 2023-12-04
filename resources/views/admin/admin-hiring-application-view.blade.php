@@ -28,8 +28,8 @@
 
         </div>
         <!-- End: Header -->
-
-        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md">
+<section class="flex justify-center">
+        <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md w-full sm:w-1/2">
             <form method="POST" action="">
                 @csrf
                 <!-- Form heading -->
@@ -212,7 +212,7 @@
                 <!-- ... (similar structure as Project Details) -->
 
                 <!-- Submit button -->
-                <div class="mt-2">
+                <div class="mt-2 flex justify-center">
 
                     <button type="submit"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs">Submit</button>
@@ -220,6 +220,7 @@
                 </div>
             </form>
         </div>
+    </section>
     </main>
     <!-- Load flatpickr script after the form -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
