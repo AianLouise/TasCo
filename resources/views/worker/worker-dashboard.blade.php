@@ -86,8 +86,9 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                         <!-- Add your action button here -->
-                                        <button class="bg-blue-500 text-white px-4 py-2 rounded">View</button>
+                                        <a href="{{ route('work.view', ['HiringForm_id' => $event->hiring_form_id]) }}" class="bg-blue-500 text-white px-4 py-2 rounded">View</a>
                                     </td>
+                                    
                                 </tr>
                             @endforeach
                         </tbody>

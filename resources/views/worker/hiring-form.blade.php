@@ -130,12 +130,11 @@
 
                     <!-- Total Payment -->
                     <div class="w-full mb-2">
-                        <label for="totalPayment" class="block text-xs font-medium text-gray-700">Total
-                            Payment</label>
-                        <input type="text" name="totalPayment" id="totalPayment"
-                            class="mt-1 p-2 w-full border rounded-md text-xs" placeholder="Enter total payment"
-                            required>
+                        <label for="totalPayment" class="block text-xs font-medium text-gray-700">Total Payment</label>
+                        <input type="number" name="totalPayment" id="totalPayment" class="mt-1 p-2 w-full border rounded-md text-xs" 
+                               placeholder="Enter total payment" required pattern="[0-9]+">
                     </div>
+                    
 
                     <!-- Payment Frequency -->
                     <div class="w-full mb-2">

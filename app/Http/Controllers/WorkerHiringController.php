@@ -90,6 +90,23 @@ class WorkerHiringController extends Controller
     }
 
 
+    public function WorkView($HiringForm_id)
+    {
+        // Assuming your hiring_forms table has an 'id' column and you want to find the row based on the ID.
+        $hiringForm = HiringForm::find($HiringForm_id);
 
+        // Check if the HiringForm record exists before trying to access its attributes.
+        if ($hiringForm) {
+            // Retrieve the employer_id from the HiringForm
+            $employer_id = $hiringForm->employer_id;
+            // dd($employer_id);
+            // Use the employer_id to find the corresponding user in the users table
+            $user = User::find($employer_id);
 
+            return view('worker.work-view', compact('hiringForm', 'user', 'employer_id'));
+        } else {
+            // Handle the case where the HiringForm record with the given ID doesn't exist.
+            return redirect()->route('some.redirect.route');
+        }
+    }
 }

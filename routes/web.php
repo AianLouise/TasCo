@@ -124,6 +124,8 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/worker/profile', [WorkerController::class, 'WorkerProfile'])->name('worker.profile');
     Route::get('/worker/chatify', [WorkerController::class, 'WorkerChatify'])->name('worker.chatify');
     Route::get('/accept-status/{id}', [WorkerHiringController::class, 'updateStatus'])->name('acceptStatus');
+    Route::get('/work/{HiringForm_id}', [WorkerHiringController::class, 'WorkView'])->name('work.view');
+
 
     // Other Worker Routes...
 });
