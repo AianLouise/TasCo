@@ -73,12 +73,14 @@ class WorkerHiringController extends Controller
                 // Other columns in the employment table
             ]);
 
-            // Create a new event record with the associated hiring_form_id, start date, and end date
+            // Create a new event record with the associated hiring_form_id, employer_id, and worker_id
             Event::create([
                 'hiring_form_id' => $hiringForm->id,
-                'title' => $hiringForm->projectTitle, // Set a suitable title for the event
-                'start' => $hiringForm->startDate, // Get the value from the form
-                'end' => $hiringForm->endDate, // Get the value from the form
+                'title' => $hiringForm->projectTitle,
+                'start' => $hiringForm->startDate,
+                'end' => $hiringForm->endDate,
+                'employer_id' => $hiringForm->employer_id,
+                'worker_id' => $hiringForm->worker_id,
             ]);
 
             return redirect()->back()->with('success', 'Status updated successfully');
@@ -86,6 +88,8 @@ class WorkerHiringController extends Controller
 
         return redirect()->back()->with('error', 'Hiring form not found');
     }
+
+
 
 
 }

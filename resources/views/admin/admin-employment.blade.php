@@ -42,65 +42,61 @@
                     <thead>
                         <!-- Table Header -->
                         <tr class="border-b">
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Title
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Description
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Category
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Employer
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Price
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Action
-                            </th>
+                            <th
+                                class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Project Title</th>
+                            <th
+                                class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Project Description</th>
+                            <th
+                                class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Category</th>
+                            <th
+                                class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Employer</th>
+                            <th
+                                class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Start Date</th>
+                            <th
+                                class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                End Date</th>
+                            <th
+                                class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Status</th>
+                            <th
+                                class="border-b px-6 py-3 text-center text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                Action</th>
                         </tr>
                     </thead>
 
                     <tbody class="bg-white divide-y divide-gray-200 ">
-                        <!-- Loop through each service to populate table rows -->
-                        
-                            <tr>
-                                <!-- Title Column -->
+                        @foreach ($hiringForms as $hiringForm)
+                            <tr class="border-b">
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                               
-                                </td>
-
-                                <!-- Description Column -->
+                                    {{ $hiringForm->projectTitle }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                  
-                                </td>
-
-                                <!-- Category Column -->
+                                    {{ $hiringForm->projectDescription }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                  
+                                    @php
+                                        $workerCategory = $hiringForm->worker ? $hiringForm->worker->category->name : 'N/A';
+                                        echo $workerCategory;
+                                    @endphp
                                 </td>
-
-                                <!-- Employer Column -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    
-                                </td>
-
-                                <!-- Price Column -->
+                                    {{ $hiringForm->employer->name ?? 'N/A' }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    
-                                </td>
-
+                                    {{ $hiringForm->startDate }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                    {{ $hiringForm->endDate }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                    {{ $hiringForm->status }}</td>
                                 <!-- Action Column -->
-                                <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium2 ">
-                                    <!-- Edit and Delete Links -->
-                                    <a href="editUser.html" class="text-blue-400 hover:text-blue-600">Edit</a>
-                                    <span class="text-gray-600">/</span>
-                                    <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800 text-center">
+                                    <a class="open-button text-blue-500" data-id="{{ $hiringForm->id }}"
+                                        style="cursor: pointer;">View</a>
                                 </td>
                             </tr>
-                        
+                        @endforeach
                     </tbody>
                 </table>
             </div>

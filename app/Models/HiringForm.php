@@ -33,4 +33,9 @@ class HiringForm extends Model
     {
         return $this->belongsTo(User::class, 'worker_id');
     }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'hiring_form_id');
+    }
 }

@@ -69,27 +69,30 @@
                                     Action</th>
                             </tr>
                         </thead>
-                        <tbody {{-- id="upcoming-schedule-table" --}}>
-                            <!-- Placeholder for upcoming events -->
-                            <tr class="border-b">
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">Upcoming
-                                    Event 1</td>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">2023-12-10
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">2023-12-12
-                                </td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">Upcoming
-                                    Event 2</td>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">2023-12-15
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">2023-12-17
-                                </td>
-                            </tr>
-                            <!-- Add more placeholder events as needed -->
+                        <tbody>
+                            @foreach ($events as $event)
+                                <tr class="border-b">
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        {{ $event->title }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        {{ $event->employer->name }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        {{ $event->start }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        {{ $event->end }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                        <!-- Add your action button here -->
+                                        <button class="bg-blue-500 text-white px-4 py-2 rounded">View</button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
+                    
                 </div>
             </div>
 

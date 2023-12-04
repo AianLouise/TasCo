@@ -247,8 +247,9 @@ class AdminController extends Controller
     {
         // $employment = Employment::with('category')->get();
         $pageTitle = 'Employment';
+        $hiringForms = HiringForm::get();
 
-        return view('admin.admin-employment', compact( 'pageTitle'));
+        return view('admin.admin-employment', compact( 'pageTitle', 'hiringForms'));
     }
 
     public function AdminHiringApplication()

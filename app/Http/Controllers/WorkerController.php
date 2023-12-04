@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Event;
 use App\Models\Worker;
 use App\Models\Category;
 use App\Models\HiringForm;
@@ -15,17 +16,22 @@ class WorkerController extends Controller
     {
         $pageTitle = 'Dashboard';
 
-         // Get the authenticated user
-         $worker = auth()->user();
-    
-         // Retrieve hiring forms where the employer_id matches the authenticated user's ID
-         $hiringForms = HiringForm::where('worker_id', $worker->id)->get();
-     
-         $employerUsers = User::where('role', 'user')->get();
-         $categories = Category::all();
+        // Get the authenticated user
+        $worker = auth()->user();
 
-        return view("worker.worker-dashboard", compact('pageTitle', 'hiringForms', 'employerUsers', 'categories'));
+        // Retrieve hiring forms where the worker_id matches the authenticated user's ID
+        $hiringForms = HiringForm::where('worker_id', $worker->id)->get();
+
+        // Retrieve events associated with the hiring forms, including the employer relationship
+        $events = Event::with('employer')->whereIn('hiring_form_id', $hiringForms->pluck('id'))->get();
+
+        $employerUsers = User::where('role', 'user')->get();
+        $categories = Category::all();
+
+        return view("worker.worker-dashboard", compact('pageTitle', 'hiringForms', 'employerUsers', 'categories', 'events'));
     }
+
+
 
     public function WorkerProfile()
     {

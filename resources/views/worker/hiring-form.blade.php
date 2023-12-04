@@ -76,7 +76,7 @@
                 </div>
 
                 <!-- Employer Details section -->
-                <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
+                {{-- <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
                     <h2 class="text-sm font-semibold mb-2">Employer Details</h2>
 
                     <!-- Full Name -->
@@ -105,7 +105,7 @@
                                 required>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
 
                 <!-- Scope of Work section -->
