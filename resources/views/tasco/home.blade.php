@@ -66,6 +66,7 @@
                 <div class="flex flex-wrap flex-row -mx-12 pb-20">
                 <div
                         class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:px-10">
+                        <a href="{{ route('app.Calendar') }}">
                         <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
                         <div class="relative z-10 mx-auto max-w-md">
                             <span class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
@@ -88,6 +89,7 @@
 
                     <div
                         class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:px-10">
+                        <a href="{{ route('app.Services') }}">
                         <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
                         <div class="relative z-10 mx-auto max-w-md">
                             <span class="grid h-20 w-20 place-items-center rounded-full bg-blue-500 transition-all duration-300 group-hover:bg-blue-400">
@@ -427,7 +429,7 @@
                         <!-- end service block -->
                     </div>
                     <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s"
+                        data-wow-duration="1s" data-wow-delay=".1s"
                         style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
                         <!-- service block -->
                         <div

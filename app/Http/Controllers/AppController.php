@@ -142,6 +142,30 @@ class AppController extends Controller
     }
 
     /**
+     * Display the Calendar page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function Calendar()
+    {
+        $pageTitle = 'TasCo Calendar';
+
+        return view("tasco.calendar", compact('pageTitle'));
+    }
+
+    /**
+     * Display the service page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function Services()
+    {
+        $pageTitle = 'TasCo Services';
+
+        return view("tasco.services", compact('pageTitle'));
+    }
+
+    /**
      * Display the customer service page.
      *
      * @return \Illuminate\View\View
