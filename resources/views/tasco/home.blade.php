@@ -2,24 +2,18 @@
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
     <main>
 
-        <section class="">
+        <section>
             <!-- Start: Hero Section-->
-
-            <!-- Start: Hero Background Image -->
-            <div class="relative flex items-center justify-center w-full h-screen text-center bg-center bg-cover">
-                <!-- style="background-image:url();" -->
-
-                <!-- Start: Hero Background Color -->
-                <div class="absolute top-0 bottom-0 left-0 right-0 bg-blue-50 opacity-80"></div>
+            <div class="relative flex items-center justify-center w-full h-full text-center bg-center bg-cover">
                 <div class="z-10 px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
 
-                        <div class="flex items-center justify-center">
-                            <img src="{{ asset('images/Logo3.png') }}" alt="Logo" width="300">
+                        <div class="flex items-center justify-center mb-6">
+                            <img src="{{ asset('images/people.png') }}" alt="Logo" width="800">
                         </div>
 
-                        <h1 class="mb-6 text-5xl font-bold tracking-tight md:text-6xl">
-                            Welcome to <span class="text-blue-500">Tasco</span>
+                        <h1 class="mb-6 text-5xl font-extrabold tracking-tight md:text-6xl">
+                            Welcome to <span class="mt-8 max-w-sm bg-gradient-to-br from-blue-500 via-sky-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-6xl">Tasco</span>
                         </h1>
 
                         <p
@@ -29,17 +23,15 @@
                             your
                             needs.
                         </p>
-
-                        <div class="justify-center sm:flex">
-                            <div class="">
+                        <div class="relative flex w-full flex-col items-center">
+                            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
                                 <a href="{{ route('app.home') }}#browse"
-                                    class="flex items-center justify-center w-full font-medium px-8 py-3 text-white bg-blue-500 rounded-md shadow hover:bg-blue-500 ">
-                                    Get started</a>
-                            </div>
-                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-3 bg-blue-500">
+                                Get Started
+                                </a>
                                 <a href="{{ route('app.learnMore') }}"
-                                    class="flex items-center justify-center w-full font-medium px-8 py-3 text-blue-600 rounded-md shadow border border-blue-500">
-                                    Learn More</a>
+                                class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg border border-blue-500 px-10 py-3 text-blue-500">Learn More →
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -50,6 +42,36 @@
         </section>
 
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <section>      
+            
+            <div class="relative my-12 flex w-full flex-col items-center sm:mt-24">
+            
+                <div class="flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-all hover:bg-blue-200">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5"><path d="M10.007 2.10377C8.60544 1.65006 7.08181 2.28116 6.41156 3.59306L5.60578 5.17023C5.51004 5.35763 5.35763 5.51004 5.17023 5.60578L3.59306 6.41156C2.28116 7.08181 1.65006 8.60544 2.10377 10.007L2.64923 11.692C2.71403 11.8922 2.71403 12.1078 2.64923 12.308L2.10377 13.993C1.65006 15.3946 2.28116 16.9182 3.59306 17.5885L5.17023 18.3942C5.35763 18.49 5.51004 18.6424 5.60578 18.8298L6.41156 20.407C7.08181 21.7189 8.60544 22.35 10.007 21.8963L11.692 21.3508C11.8922 21.286 12.1078 21.286 12.308 21.3508L13.993 21.8963C15.3946 22.35 16.9182 21.7189 17.5885 20.407L18.3942 18.8298C18.49 18.6424 18.6424 18.49 18.8298 18.3942L20.407 17.5885C21.7189 16.9182 22.35 15.3946 21.8963 13.993L21.3508 12.308C21.286 12.1078 21.286 11.8922 21.3508 11.692L21.8963 10.007C22.35 8.60544 21.7189 7.08181 20.407 6.41156L18.8298 5.60578C18.6424 5.51004 18.49 5.35763 18.3942 5.17023L17.5885 3.59306C16.9182 2.28116 15.3946 1.65006 13.993 2.10377L12.308 2.64923C12.1078 2.71403 11.8922 2.71404 11.692 2.64923L10.007 2.10377ZM8.19258 4.50299C8.416 4.06569 8.92388 3.85532 9.39107 4.00656L11.0761 4.55201C11.6767 4.74644 12.3233 4.74644 12.9239 4.55201L14.609 4.00656C15.0761 3.85532 15.584 4.06569 15.8074 4.50298L16.6132 6.08016C16.9004 6.64234 17.3577 7.09958 17.9199 7.3868L19.497 8.19258C19.9343 8.416 20.1447 8.92388 19.9935 9.39107L19.448 11.0761C19.2536 11.6767 19.2536 12.3233 19.448 12.9239L19.9935 14.609C20.1447 15.0761 19.9343 15.584 19.497 15.8074L17.9199 16.6132C17.3577 16.9004 16.9004 17.3577 16.6132 17.9199L15.8074 19.497C15.584 19.9343 15.0761 20.1447 14.609 19.9935L12.9239 19.448C12.3233 19.2536 11.6767 19.2536 11.0761 19.448L9.39107 19.9935C8.92388 20.1447 8.416 19.9343 8.19258 19.497L7.3868 17.9199C7.09958 17.3577 6.64234 16.9004 6.08016 16.6132L4.50299 15.8074C4.06569 15.584 3.85532 15.0761 4.00656 14.609L4.55201 12.9239C4.74644 12.3233 4.74644 11.6767 4.55201 11.0761L4.00656 9.39107C3.85532 8.92388 4.06569 8.416 4.50299 8.19258L6.08016 7.3868C6.64234 7.09958 7.09958 6.64234 7.3868 6.08016L8.19258 4.50299ZM6.7596 11.7574L11.0022 16L18.0733 8.92897L16.6591 7.51476L11.0022 13.1716L8.17382 10.3431L6.7596 11.7574Z" fill="rgba(70,146,221,1)"></path></svg>
+                    <p class="text-sm font-semibold text-[#1d9bf0]">Verified User</p>
+                    
+                </div>
+                <h1
+                    class="mt-8 max-w-sm bg-gradient-to-br from-blue-500 via-sky-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-6xl">
+                    Kickstart Your Journey with TasCo!
+                </h1>
+
+                <img src="{{ URL('images/verified.PNG') }}" width="500">
+                <span class="mt-8 max-w-lg text-center text-xl leading-relaxed text-gray-800">
+                    Our commitment to excellence shines through as we proudly provide a diverse array of services tailored to meet your specific needs. 
+                </span>
+                <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
+                    <a href=""
+                    class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-3 bg-blue-500">
+                    View Application Status
+                    </a>
+                    <a href=""
+                    class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg border border-blue-500 px-10 py-3 text-blue-500">Search for Jobs →
+                    </a>
+                </div>
+                </div>
+        </section>
 
         <a id="browse"></a>
         <!-- Start: Browse Section -->
@@ -182,9 +204,9 @@
                 </div>
                 <!-- End: Heading -->
 
-                <div class="lg:flex border rounded-md shadow-md border-blue-500 mb-12">
+                <div class="lg:flex border rounded-lg shadow-lg mb-12">
                     <div class="relative w-full mb-10 md:w-1/2 lg:mb-0 bg-blue-500">
-                        <img src="{{ URL('images/jobseeker.jpg') }}" alt=""
+                        <img src="{{ URL('images/Seeker.png') }}" alt=""
                             class="relative z-40 object-cover w-full md:h-96">
                     </div>
                     <div class="w-full py-6 px-6 mb-10 md:w-1/2 lg:mb-0">
@@ -199,7 +221,7 @@
 
                 <!-- Roles -->
 
-                <div class="lg:flex border rounded-md shadow-md border-blue-500">
+                <div class="lg:flex border rounded-lg shadow-lg">
                     <div class="w-full py-6 px-6 mb-10 md:w-1/2 lg:mb-0">
                         <h2 class="md:text-2xl text-3xl font-bold mb-4">The Employer</h2>
                         <div class="w-16 mb-4 border-b-2 border-blue-500"></div>
@@ -209,7 +231,7 @@
                             team that meets your specific needs.</p>
                     </div>
                     <div class="relative w-full h-full md:w-1/2 lg:mb-0 bg-blue-500">
-                        <img src="{{ URL('images/employer.jpg') }}" alt=""
+                        <img src="{{ URL('images/Employer.png') }}" alt=""
                             class="relative z-40 object-cover w-full md:h-96 ">
                     </div>
                 </div>
@@ -219,13 +241,13 @@
 
         <!-- Start: Workers Section -->
         <a id="top"></a>
-        <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
+        <section class="relative mt-20 pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
 
             <div class="container xl:max-w-6xl mx-auto px-4">
 
                 <!-- Start: Heading-->
                 <div class="text-center mx-auto mb-12 lg:px-20">
-                    <h2 class=" leading-normal mb-4 text-4xl font-bold text-black">Available Worker</h2>
+                    <h2 class="leading-normal mb-4 text-4xl font-bold text-black">Available Worker</h2>
                     <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">With their services</p>
                 </div>
                 <!-- End: Heading -->
@@ -309,7 +331,7 @@
 
                             <!-- Worker Profile -->
                             <div
-                                class="py-8 px-12 mb-12 border border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                                class="py-8 px-12 mb-12 border rounded-lg shadow-md transform transition duration-300 ease-in-out hover:-translate-y-2">
                                 <div class="flex flex-col items-center pb-10">
                                     @if ($worker->avatar == 'avatar.png')
                                         <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
@@ -346,18 +368,13 @@
                     <!-- See More Jobs Button -->
                     <div class="w-full flex justify-center">
                         <a href="{{ route('app.jobListing') }}"
-                            class="w-64 sm:w-auto bg-blue-500 font-medium text-white hover:border hover:border-blue-500 hover:bg-transparent hover:text-blue-500 rounded-lg inline-flex items-center justify-center px-4 py-2.5">See
+                            class="mb-20 w-64 sm:w-auto bg-blue-500 font-medium text-white hover:border hover:border-blue-500 hover:bg-transparent hover:text-blue-500 rounded-lg inline-flex items-center justify-center px-10 py-3">See
                             More Workers</a>
                     </div>
                 </div>
                 <!-- end row -->
-
-
-
             </div>
-
             </div>
-
             </div>
             <!-- End: Heading -->
             </div>
@@ -365,8 +382,7 @@
         <!-- End: Workers Section -->
 
         <!-- Start: Services Section -->
-        <!-- component -->
-        <div id="services" class="section relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
+        <section class="relative pt-20  md:pt-16 md:pb-0">
             <div class="container xl:max-w-6xl mx-auto px-4">
 
                 <!-- Start: Services Section Title -->
@@ -378,173 +394,100 @@
                 <!-- Start: Service Section Row -->
 
                 <div class="flex flex-wrap flex-row -mx-4 text-center">
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp "
-                        data-wow-duration="1s"
-                        style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
-                        <!-- service block -->
+    
+
+                <div class="pt-12 p-4">
+                    <div class="grid gap-14 md:grid-cols-3 md:gap-5">
+                        <div class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
                         <div
-                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
-                            hover:bg-transparent
-                            hover:border-blue-500
-                            hover:text-blue-500
-                            hover:rounded-xl
-                            ">
-                            <div class="inline-block mb-4">
-                                <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center border border-gray-200 justify-center rounded-full bg-yellow-300 shadow-yellow-200/40">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M3.16113 4.46924C5.58508 2.04529 9.44716 1.93599 12.0008 4.14133C14.5528 1.93599 18.4149 2.04529 20.8388 4.46924C23.2584 6.88884 23.3716 10.7414 21.1785 13.2952L13.4142 21.0862C12.6686 21.8318 11.4809 21.8657 10.6952 21.1879L10.5858 21.0862L2.82141 13.2952C0.628282 10.7414 0.741522 6.88884 3.16113 4.46924ZM4.57534 5.88345C2.86819 7.5906 2.81942 10.3281 4.42902 12.0942L4.57534 12.2474L12 19.672L17.3026 14.368L13.7677 10.8332L12.7071 11.8939C11.5355 13.0654 9.636 13.0654 8.46443 11.8939C7.29286 10.7223 7.29286 8.82279 8.46443 7.65122L10.5656 5.54872C8.85292 4.17762 6.37076 4.24042 4.7286 5.73712L4.57534 5.88345ZM13.0606 8.71188C13.4511 8.32135 14.0843 8.32135 14.4748 8.71188L18.7168 12.9538L19.4246 12.2474C21.1819 10.4901 21.1819 7.64081 19.4246 5.88345C17.7174 4.1763 14.9799 4.12752 13.2139 5.73712L13.0606 5.88345L9.87864 9.06543C9.51601 9.42806 9.49011 9.99991 9.80094 10.3924L9.87864 10.4796C10.2413 10.8423 10.8131 10.8682 11.2056 10.5573L11.2929 10.4796L13.0606 8.71188Z">
                                     </path>
                                 </svg>
-                            </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold">Approved Services</h3>
-                            <p>In our community, services are approved not only by the
-                                administration
-                                but also by the community!</p>
                         </div>
-                        <!-- end service block -->
-                    </div>
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s" data-wow-delay=".1s"
-                        style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
-                        <!-- service block -->
+                        <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Approved Services</h1>
+                        <p class="px-4 text-gray-500">In our community, services are approved not only by the administration but also by the community!</p>
+                        </div>
+                        <div data-aos-delay="150" class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
                         <div
-                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
-                            hover:bg-transparent
-                            hover:border-blue-500
-                            hover:text-blue-500
-                            hover:rounded-xl
-                            ">
-                            <div class="inline-block mb-4">
-                                <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border border-gray-200 rounded-full shadow-lg bg-blue-500 shadow-blue-500/40">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M14 8V4H5V20H19V9H16V13.6195C16 14.4641 15.5544 15.2529 14.8125 15.7215L12 17.4978L9.18747 15.7215C8.4456 15.2529 8 14.4641 8 13.6195V8H14ZM21 8V20.9932C21 21.5501 20.5552 22 20.0066 22H3.9934C3.44495 22 3 21.556 3 21.0082V2.9918C3 2.45531 3.4487 2 4.00221 2H14.9968L21 8ZM10 13.6195C10 13.7698 10.0872 13.9242 10.2554 14.0305L12 15.1323L13.7446 14.0305C13.9128 13.9242 14 13.7698 14 13.6195V10H10V13.6195Z">
                                     </path>
-                                </svg>
-
-                            </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold">Verified Documents</h3>
-                            <p>In our community, documents are verified before any transactions
-                                happen to keep a safe and secure local area!</p>
+                            </svg>
                         </div>
-                        <!-- end service block -->
-                    </div>
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s" data-wow-delay=".3s"
-                        style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-                        <!-- service block -->
+                        <h1 class="text-darken mb-3 text-xl font-medium lg:px-14 ">Verified Documents</h1>
+                        <p class="px-4 text-gray-500">In our community, documents are verified before any transactions happen to keep a safe and secure local area!!</p>
+                        </div>
+                        <div data-aos-delay="300" class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
                         <div
-                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
-                            hover:bg-transparent
-                            hover:border-blue-500
-                            hover:text-blue-500
-                            hover:rounded-xl
-                            ">
-                            <div class="inline-block mb-4">
-                                <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border border-gray-200 rounded-full shadow-lg bg-yellow-300 shadow-yellow-200/40">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M6.45455 19L2 22.5V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.45455ZM4 18.3851L5.76282 17H20V5H4V18.3851ZM11 13H13V15H11V13ZM11 7H13V12H11V7Z">
                                     </path>
                                 </svg>
-                            </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold">Feedbacks</h3>
-                            <p>In our community, your feedbacks matters to us and we'll always
-                                hear
-                                you out if you have concerns or request!</p>
                         </div>
-                        <!-- end service block -->
+                        <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Feedbacks</h1>
+                        <p class="px-4 text-gray-500">In our community, your feedbacks matters to us and we'll always hear you out if you have concerns or request!</p>
+                        </div>
                     </div>
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s" data-wow-delay=".3s"
-                        style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-                        <!-- service block -->
+
+                    </div>
+
+                    <div class="grid gap-14 mt-10 mb-20 md:grid-cols-3 md:gap-5">
+                        <div class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
                         <div
-                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
-                            hover:bg-transparent
-                            hover:border-blue-500
-                            hover:text-blue-500
-                            hover:rounded-xl
-                            ">
-                            <div class="inline-block mb-4">
-                                <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border border-gray-200 rounded-full bg-blue-400 shadow-lg shadow-blue-500/40">
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M17 9.2L22.2133 5.55071C22.4395 5.39235 22.7513 5.44737 22.9096 5.6736C22.9684 5.75764 23 5.85774 23 5.96033V18.0397C23 18.3158 22.7761 18.5397 22.5 18.5397C22.3974 18.5397 22.2973 18.5081 22.2133 18.4493L17 14.8V19C17 19.5523 16.5523 20 16 20H2C1.44772 20 1 19.5523 1 19V5C1 4.44772 1.44772 4 2 4H16C16.5523 4 17 4.44772 17 5V9.2ZM17 12.3587L21 15.1587V8.84131L17 11.6413V12.3587ZM3 6V18H15V6H3ZM5 8H7V10H5V8Z">
                                     </path>
                                 </svg>
-                            </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold">Monitoring</h3>
-                            <p>Not only do we monitor your documents, feedbacks, services, we
-                                also
-                                monitor on how well the community interact with each other</p>
                         </div>
-                        <!-- end service block -->
-                    </div>
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s" data-wow-delay=".1s"
-                        style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
-                        <!-- service block -->
+                        <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Monitoring</h1>
+                        <p class="px-4 text-gray-500">Not only do we monitor your documents, feedbacks, services, we also monitor on how well the community interact with each other</p>
+                        </div>
+                        <div data-aos-delay="150" class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
                         <div
-                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
-                             hover:bg-transparent
-                            hover:border-blue-500
-                            hover:text-blue-500
-                            hover:rounded-xl
-                            ">
-                            <div class="inline-block mb-4">
-                                <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full border border-gray-200 shadow-lg bg-yellow-300 shadow-yellow-200/40">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M6 10V20H19V10H6ZM18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16ZM7 11H9V13H7V11ZM7 14H9V16H7V14ZM7 17H9V19H7V17Z">
                                     </path>
                                 </svg>
-                            </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold ">Secure</h3>
-                            <p>We secure the safety of every individual that will be working or
-                                employing each other. We prioritize security overall along with monitoring.</p>
                         </div>
-                        <!-- end service block -->
-                    </div>
-                    <div class="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
-                        data-wow-duration="1s" data-wow-delay=".3s"
-                        style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-                        <!-- service block -->
+                        <h1 class="text-darken mb-3 text-xl font-medium lg:px-14 ">Secure</h1>
+                        <p class="px-4 text-gray-500">We secure the safety of every individual that will be working or employing each other. We prioritize security overall along with monitoring.</p>
+                        </div>
+                        
+                        <div data-aos-delay="300" class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
                         <div
-                            class="py-8 px-12 mb-12 bg-blue-50 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border
-                            hover:bg-transparent
-                            hover:border-blue-500
-                            hover:text-blue-500
-                            hover:rounded-xl
-                            ">
-                            <div class="inline-block mb-4">
-                                <!-- icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+                            class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border-gray-200 rounded-full shadow-lg bg-blue-500 shadow-blue-500/40">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M5 3V19H21V21H3V3H5ZM20.2929 6.29289L21.7071 7.70711L16 13.4142L13 10.415L8.70711 14.7071L7.29289 13.2929L13 7.58579L16 10.585L20.2929 6.29289Z">
                                     </path>
                                 </svg>
-
-                            </div>
-                            <h3 class="text-lg leading-normal mb-2 font-semibold">Growth</h3>
-                            <p>In our community, every individual matters, we secure, hear, and
-                                talk
-                                to one another in order to have an efficient growth of the community!
-                            </p>
                         </div>
-                        <!-- end service block -->
+                        <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Growth</h1>
+                        <p class="px-4 text-gray-500">In our community, every individual matters, we secure, hear, and talk to one another in order to have an efficient growth of the community!</p>
+                        </div>
                     </div>
                 </div>
                 <!-- end row -->
             </div>
-        </div>
+        </section>
         <!-- End: Services Section -->
 
         <!-- Start: Apply Now Section -->
