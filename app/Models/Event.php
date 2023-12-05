@@ -37,4 +37,17 @@ class Event extends Model
         return $this->belongsTo(HiringForm::class, 'hiring_form_id');
     }
 
+    public function getDayTextAttribute()
+    {
+        // Get the events for the same hiring form and order them by start date
+        $orderedEvents = $this->hiringForm->events()->orderBy('start')->get();
+
+        // Find the index of the current event in the ordered list
+        $index = $orderedEvents->search(function ($item) {
+            return $item->id == $this->id;
+        });
+
+        // If the index is found, add "Day" and the incremented number to the title
+        return $index !== false ? 'Day ' . ($index + 1) : '';
+    }
 }

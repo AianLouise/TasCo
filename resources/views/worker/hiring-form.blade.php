@@ -1,6 +1,6 @@
 <x-app-layout>
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
-    <main class="bg-gray-200 min-h-screen flex items-center justify-center">
+    <main class="bg-gray-100 min-h-screen flex items-center justify-center">
         <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-center rounded-lg mt-10">
             <form method="POST" action="{{ route('submit.hiring.form', ['worker' => $user->id]) }}">
                 @csrf
@@ -8,104 +8,120 @@
                 <h1 class="text-lg font-semibold mb-1">Job Hiring Form</h1>
 
                 <!-- Worker Details section -->
-                <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5">
+                <div class="border border-blue-200 shadow-lg p-10 rounded-lg pt-5 pb-5">
                     <h2 class="text-sm font-semibold mb-2">Worker Details</h2>
 
-                    <div class="w-full mb-2">
-                        <label for="workerJobTitle" class="block text-xs font-medium text-gray-700">Job Title</label>
-                        <input type="text" name="workerJobTitle" id="workerJobTitle"
-                            placeholder="Enter worker's job title"
-                            class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                            value="{{ $user->category->name }}" disabled>
-                    </div>
+                    <div class="flex items-center justify-center mb-2">
+                        <!-- Worker Avatar -->
+                        <div>
+                            @if ($user->avatar == 'avatar.png')
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&color=7F9CF5&background=EBF4FF"
+                                    alt="" class="w-28 h-auto rounded-full shadow-xl avatarimg mb-5">
+                            @else
+                                <img src="{{ asset('storage/users-avatar/' . basename($user->avatar)) }}" alt=""
+                                    class="w-16 h-16 rounded-full mr-4">
+                            @endif
 
-                    <div class="w-full mb-2">
-                        <label for="workerFullName" class="block text-xs font-medium text-gray-700">Full Name</label>
-                        <input type="text" name="workerFullName" id="workerFullName"
-                            placeholder="Enter worker's full name"
-                            class="mt-1 p-2 w-full border rounded-md text-xs text-center" value="{{ $user->name }}"
-                            disabled>
-                    </div>
-
-                    <div class="flex mb-2">
-                        <div class="w-1/2 mr-1">
-                            <label for="workerEmail" class="block text-xs font-medium text-gray-700">Email</label>
-                            <input type="text" name="workerEmail" id="workerEmail" placeholder="Enter worker's email"
-                                class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                value="{{ $user->email }}" disabled>
+                            <!-- Message Link -->
+                            <a href="{{ route('user.chatify', ['user_id' => $user->id]) }}" target="_new"
+                                class="border hover:border-blue-700 hover:text-blue-500 text-gray font-bold py-2 px-4 rounded w-36 text-sm">
+                                Message
+                            </a>
                         </div>
 
-                        <div class="w-1/2 ml-1">
-                            <label for="workerPhone" class="block text-xs font-medium text-gray-700">Phone</label>
-                            <input type="text" name="workerPhone" id="workerPhone"
-                                placeholder="Enter worker's phone number"
-                                class="mt-1 p-2 w-full border rounded-md text-xs text-center"
-                                value="{{ $user->phone }}" disabled>
+
+                        <!-- Worker Information -->
+                        <div class="ml-4">
+                            <div class="mb-2">
+                                <label for="workerFullName" class="block text-xs font-medium ">Full
+                                    Name</label>
+                                <p class="font-semibold">{{ $user->name }}</p>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="workerJobTitle" class="block text-xs font-medium ">Job
+                                    Title</label>
+                                <p class="font-semibold">{{ $user->category->name }}</p>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="workerEmail" class="block text-xs font-medium ">Email</label>
+                                <p class="font-semibold">{{ $user->email }}</p>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="workerPhone" class="block text-xs font-medium ">Phone</label>
+                                <p class="font-semibold">{{ $user->phone }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+
+
                 <!-- Project Details section -->
-                <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
+                <div class="border border-blue-200 bg-white shadow-md p-10 rounded-lg pt-5 pb-5 mt-2">
                     <h2 class="text-sm font-semibold mb-2">Project Details</h2>
                     <div class="w-full mb-2">
-                        <label for="projectTitle" class="block text-xs font-medium text-gray-700">Project Title</label>
+                        <label for="projectTitle" class="block text-xs font-medium  mb-2">Project Title</label>
                         <input type="text" name="projectTitle" id="projectTitle" placeholder="Enter project title"
-                            class="mt-1 p-2 w-full border rounded-md text-xs" required>
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full text-sm" required>
                     </div>
                     <div class="w-full mb-2">
-                        <label for="projectDescription" class="block text-xs font-medium text-gray-700">Project
+                        <label for="projectDescription" class="block text-xs font-medium  mb-2">Project
                             Description</label>
                         <textarea name="projectDescription" id="projectDescription" placeholder="Enter project description"
-                            class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required></textarea>
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full p-2 text-sm" rows="4" required></textarea>
                     </div>
                     <div class="flex mb-2">
                         <div class="w-1/2 mr-1">
-                            <label for="startDate" class="block text-xs font-medium text-gray-700">Start Date</label>
+                            <label for="startDate" class="block text-xs font-medium  mb-2">Start Date</label>
                             <input type="text" name="startDate" id="startDate"
-                                class="mt-1 p-2 w-full border rounded-md text-xs" placeholder="Select start date"
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full text-sm" placeholder="Select start date"
                                 required>
                         </div>
                         <div class="w-1/2 ml-1">
-                            <label for="endDate" class="block text-xs font-medium text-gray-700">End Date</label>
+                            <label for="endDate" class="block text-xs font-medium  mb-2">End Date</label>
                             <input type="text" name="endDate" id="endDate"
-                                class="mt-1 p-2 w-full border rounded-md text-xs" placeholder="Select end date"
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full text-sm" placeholder="Select end date"
                                 required>
                         </div>
                     </div>
                 </div>
 
                 <!-- Scope of Work section -->
-                <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
+                <div class="border border-blue-200 bg-white shadow-md p-10 rounded-lg pt-5 pb-5 mt-2">
                     <h2 class="text-sm font-semibold mb-2">Scope of Work</h2>
                     <div class="w-full mb-2">
-                        <label for="scopeOfWork" class="block text-xs font-medium text-gray-700">Briefly describe the
+                        <label for="scopeOfWork" class="block text-xs font-medium  mb-2">Briefly describe the
                             tasks
                             and
                             responsibilities of the worker.</label>
                         <textarea name="scopeOfWork" id="scopeOfWork" placeholder="Enter scope of work"
-                            class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required></textarea>
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full p-2 text-sm" rows="4" required></textarea>
                     </div>
                 </div>
 
                 <!-- Payment Terms section -->
-                <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
+                <div class="border border-blue-200 bg-white shadow-md p-10 rounded-lg pt-5 pb-5 mt-2">
                     <h2 class="text-sm font-semibold mb-2">Payment Terms</h2>
 
                     <!-- Total Payment -->
                     <div class="w-full mb-2">
-                        <label for="totalPayment" class="block text-xs font-medium text-gray-700">Total Payment</label>
-                        <input type="number" name="totalPayment" id="totalPayment" class="mt-1 p-2 w-full border rounded-md text-xs" 
-                               placeholder="Enter total payment" required pattern="[0-9]+">
+                        <label for="totalPayment" class="block text-xs font-medium  mb-2">Total
+                            Payment</label>
+                        <input type="number" name="totalPayment" id="totalPayment"
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-sm text-center" placeholder="Enter total payment" required
+                            pattern="[0-9]+">
                     </div>
-                    
+
 
                     <!-- Payment Frequency -->
                     <div class="w-full mb-2">
-                        <label for="paymentFrequency" class="block text-xs font-medium text-gray-700">Payment
+                        <label for="paymentFrequency" class="block text-xs font-medium  mb-2">Payment
                             Frequency</label>
                         <select name="paymentFrequency" id="paymentFrequency"
-                            class="mt-1 p-2 w-full border rounded-md text-xs" required>
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-center h-10 text-sm" required>
                             <option value="hourly">Hourly</option>
                             <option value="perDay">Per Day</option>
                             <!-- Add more options as needed -->
@@ -114,22 +130,22 @@
 
                     <!-- Payment Method -->
                     <div class="w-full mb-2">
-                        <label for="paymentMethod" class="block text-xs font-medium text-gray-700">Payment
+                        <label for="paymentMethod" class="block text-xs font-medium  mb-2">Payment
                             Method</label>
                         <select name="paymentMethod" id="paymentMethod"
-                            class="mt-1 p-2 w-full border rounded-md text-xs" required>
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-center h-10 text-sm" required>
                             <option value="bankTransfer">Bank Transfer</option>
                             <option value="cash">Cash</option>
                             <!-- Add more options as needed -->
                         </select>
                     </div>
                 </div>
-                
+
                 <!-- Submit button -->
                 <div class="mt-2">
 
                     <button type="submit"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs">Submit</button>
+                        class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-7 rounded text-sm">Submit</button>
 
                 </div>
             </form>

@@ -64,10 +64,14 @@
             <!-- Buttons Section -->
             <div class="flex justify-center mt-4 space-x-4 mb-9">
                 @if ($hiringForm->status === 'Accepted' || $event->status === 'Pending')
-                    <a href="{{ route('startWorking', ['hiringFormId' => $hiringForm->id, 'eventId' => $event->id]) }}"
-                        class="bg-blue-500 text-white px-4 py-2 rounded">
-                        Start Working
-                    </a>
+                    @if (\Carbon\Carbon::parse($event->start)->isToday())
+                        <a href="{{ route('startWorking', ['hiringFormId' => $hiringForm->id, 'eventId' => $event->id]) }}"
+                            class="bg-blue-500 text-white px-4 py-2 rounded">
+                            Start Working
+                        </a>
+                    @else
+                        <span class="text-red-500">You can only start working on the day of the work.</span>
+                    @endif
                 @elseif ($hiringForm->status === 'Ongoing' && $event->status === 'Ongoing')
                     <button id="helpBtn" class="bg-green-500 text-white px-4 py-2 rounded">
                         <i class="ri-question-fill mr-2"></i>Help
@@ -77,6 +81,7 @@
                     </button>
                 @endif
             </div>
+            
         </div>
     </div>
 
