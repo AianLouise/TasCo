@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('title');
             $table->date('start');
             $table->date('end');
+            $table->string('status')->default('Pending');
             $table->timestamps();
 
             // Adding the foreign key constraints

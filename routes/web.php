@@ -130,8 +130,9 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/worker/chatify', [WorkerController::class, 'WorkerChatify'])->name('worker.chatify');
     Route::get('/accept-status/{id}', [WorkerHiringController::class, 'updateStatus'])->name('acceptStatus');
     Route::get('/work/{HiringForm_id}', [WorkerHiringController::class, 'WorkView'])->name('work.view');
-    Route::get('/start-working/{id}', [WorkerHiringController::class, 'startWorking'])->name('startWorking');
-    Route::post('/upload-documentation/{id}', [WorkerHiringController::class, 'uploadDocumentation'])->name('uploadDocumentation');
+    Route::get('/start-working/{hiringFormId}/{eventId}', [WorkerHiringController::class, 'startWorking'])->name('startWorking');
+    Route::post('/upload-documentation/{id}/{eventId}', [WorkerHiringController::class, 'uploadDocumentation'])
+    ->name('uploadDocumentation');
 
 
 

@@ -15,21 +15,22 @@ class WorkerController extends Controller
     public function WorkerDashboard()
     {
         $pageTitle = 'Dashboard';
-
+    
         // Get the authenticated user
         $worker = auth()->user();
-
+    
         // Retrieve hiring forms where the worker_id matches the authenticated user's ID
         $hiringForms = HiringForm::where('worker_id', $worker->id)->get();
-
-        // Retrieve events associated with the hiring forms, including the employer relationship
-        $events = Event::with('employer')->whereIn('hiring_form_id', $hiringForms->pluck('id'))->get();
-
+    
+        // Retrieve all events with matching worker_id and hiring_form_id
+        $events = Event::with('employer')->whereIn('hiring_form_id', $hiringForms->pluck('id'))->where('worker_id', $worker->id)->get();
+    
         $employerUsers = User::where('role', 'user')->get();
         $categories = Category::all();
-
+    
         return view("worker.worker-dashboard", compact('pageTitle', 'hiringForms', 'employerUsers', 'categories', 'events'));
     }
+    
 
 
 

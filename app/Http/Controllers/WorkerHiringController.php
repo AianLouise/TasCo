@@ -68,22 +68,30 @@ class WorkerHiringController extends Controller
             $hiringForm->status = 'Accepted'; // You might want to set a default status here
             $hiringForm->save();
 
-            // Create a new employment record with the associated hiring_form_id
-            Employment::create([
-                'hiring_form_id' => $hiringForm->id,
-                // Other columns in the employment table
-            ]);
+            // Calculate the number of days between start and end dates
+            $startDate = Carbon::parse($hiringForm->startDate);
+            $endDate = Carbon::parse($hiringForm->endDate);
+            $daysDifference = $endDate->diffInDays($startDate);
 
-            // Create a new event record with the associated hiring_form_id, employer_id, and worker_id
-            Event::create([
-                'hiring_form_id' => $hiringForm->id,
-                'title' => $hiringForm->projectTitle,
-                'start' => $hiringForm->startDate,
-                'end' => $hiringForm->endDate,
-                'employer_id' => $hiringForm->employer_id,
-                'worker_id' => $hiringForm->worker_id,
-                'user_id' => Auth::user()->id,
-            ]);
+            // Create multiple events based on the days between start and end dates
+            for ($i = 0; $i <= $daysDifference; $i++) {
+                $eventDate = $startDate->copy()->addDays($i);
+
+                Employment::create([
+                    'hiring_form_id' => $hiringForm->id,
+                    // Other columns in the employment table
+                ]);
+
+                Event::create([
+                    'hiring_form_id' => $hiringForm->id,
+                    'title' => $hiringForm->projectTitle,
+                    'start' => $eventDate,
+                    'end' => $eventDate, // Assuming each event is for a single day
+                    'employer_id' => $hiringForm->employer_id,
+                    'worker_id' => $hiringForm->worker_id,
+                    'user_id' => Auth::user()->id,
+                ]);
+            }
 
             return redirect()->back()->with('success', 'Status updated successfully');
         }
@@ -92,44 +100,56 @@ class WorkerHiringController extends Controller
     }
 
 
-    public function WorkView($HiringForm_id)
+    public function WorkView($eventId)
     {
-        // Assuming your hiring_forms table has an 'id' column and you want to find the row based on the ID.
-        $hiringForm = HiringForm::find($HiringForm_id);
+        // Find the event by ID
+        $event = Event::find($eventId);
 
-        // Check if the HiringForm record exists before trying to access its attributes.
-        if ($hiringForm) {
-            // Retrieve the employer_id from the HiringForm
-            $employer_id = $hiringForm->employer_id;
-            // dd($employer_id);
-            // Use the employer_id to find the corresponding user in the users table
-            $user = User::find($employer_id);
+        // Check if the event record exists before trying to access its attributes
+        if ($event) {
+            // Retrieve the hiringForm associated with the event
+            $hiringForm = $event->hiringForm;
 
-            return view('worker.work-view', compact('hiringForm', 'user', 'employer_id'));
+            // Retrieve the employer user associated with the hiringForm
+            $user = User::find($hiringForm->employer_id);
+
+            return view('worker.work-view', compact('event', 'hiringForm', 'user'));
         } else {
-            // Handle the case where the HiringForm record with the given ID doesn't exist.
-            return redirect()->route('worker.dashboard')->with('error', 'HiringForm not found.');
+            // Handle the case where the event record with the given ID doesn't exist.
+            return redirect()->route('worker.dashboard')->with('error', 'Event not found.');
         }
     }
 
-    public function startWorking($id)
+
+    public function startWorking($hiringFormId, $eventId)
     {
         // Find the HiringForm by ID
-        $hiringForm = HiringForm::find($id);
+        $hiringForm = HiringForm::find($hiringFormId);
 
         if ($hiringForm) {
-            // Update the status to 'Ongoing'
+            // Update the status of the HiringForm to 'Ongoing'
             $hiringForm->update(['status' => 'Ongoing']);
 
-            // Redirect back or to another page as needed
-            return redirect()->back()->with('success', 'Started working successfully!');
+            // Find the specific event by ID and update its status to 'Ongoing'
+            $event = $hiringForm->events()->find($eventId);
+
+            if ($event) {
+                $event->update(['status' => 'Ongoing']);
+                // Redirect back or to another page as needed
+                return redirect()->back()->with('success', 'Started working successfully!');
+            } else {
+                // Handle the case where the event with the given ID doesn't exist for the specified HiringForm
+                return redirect()->route('worker.dashboard')->with('error', 'Event not found for the specified HiringForm.');
+            }
         }
 
         // Handle the case where the HiringForm record with the given ID doesn't exist.
         return redirect()->route('worker.dashboard')->with('error', 'HiringForm not found.');
     }
 
-    public function uploadDocumentation(Request $request, $id)
+
+
+    public function uploadDocumentation(Request $request, $id, $eventId)
     {
         // Validate the form data, including the job description and images
         $request->validate([
@@ -138,45 +158,63 @@ class WorkerHiringController extends Controller
             'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
+    
         // Handle Image 1
         $path1 = $request->file('image1')->store('documentation');
         $path2 = $request->file('image2')->store('documentation');
         $path3 = $request->file('image3')->store('documentation');
-
+    
         // Find the HiringForm by ID
         $hiringForm = HiringForm::find($id);
-
+    
         if ($hiringForm) {
-            // Update the status to 'Finished' or another appropriate status
-            $hiringForm->update(['status' => 'Finished']);
-
             // Find the Employment record with the same hiring_form_id
             $employment = Employment::where('hiring_form_id', $hiringForm->id)->first();
-
+    
             if ($employment) {
-                // Update the existing Employment record with job description, current dates, and image paths
-                $employment->update([
-                    'job_description' => $request->input('jobDescription'),
-                    'start_date' => Carbon::now(),
-                    'end_date' => Carbon::now(),
-                    'image1' => $path1,
-                    'image2' => $path2,
-                    'image3' => $path3,
-                    // Repeat the process for Image 2 and Image 3
-                ]);
+                // Find the specific event by ID and update its status to 'Done'
+                $event = Event::find($eventId);
+    
+                if ($event) {
+                    // Update the existing Employment record with job description, current dates, and image paths
+                    $employment->update([
+                        'job_description' => $request->input('jobDescription'),
+                        'start_date' => Carbon::now(),
+                        'end_date' => Carbon::now(),
+                        'image1' => $path1,
+                        'image2' => $path2,
+                        'image3' => $path3,
+                        // Repeat the process for Image 2 and Image 3
+                    ]);
+    
+                    // Check if the current date is within the range of start and end dates and update the status to 'Finished'
+                    $startDate = Carbon::parse($hiringForm->startDate);
+                    $endDate = Carbon::parse($hiringForm->endDate);
+                    $currentDate = Carbon::now();
+    
+                    if ($currentDate->between($startDate, $endDate)) {
+                        $employment->update(['status' => 'Finished']);
+                    }
+    
+                    // Update the status of the specific event to 'Done'
+                    $event->update(['status' => 'Done']);
+    
+                    // Redirect back or to another page as needed
+                    return redirect()->back()->with('success', 'Finished working successfully!');
+                } else {
+                    // Handle the case where the event with the given ID doesn't exist
+                    return redirect()->route('some.redirect.route')->with('error', 'Event not found.');
+                }
             } else {
                 // Handle the case where the Employment record with the given hiring_form_id doesn't exist.
                 return redirect()->route('some.redirect.route')->with('error', 'Employment record not found.');
             }
-
-            // Redirect back or to another page as needed
-            return redirect()->back()->with('success', 'Finished working successfully!');
         }
-
+    
         // Handle the case where the HiringForm record with the given ID doesn't exist.
         return redirect()->route('some.redirect.route')->with('error', 'HiringForm not found.');
     }
+    
 
 
 }

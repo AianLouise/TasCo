@@ -9,7 +9,7 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['hiring_form_id', 'title', 'start', 'end', 'employer_id', 'worker_id', 'user_id'];
+    protected $fillable = ['hiring_form_id', 'title', 'start', 'end', 'employer_id', 'worker_id', 'user_id', 'status'];
 
     public function employer()
     {
@@ -30,6 +30,11 @@ class Event extends Model
     public function events()
     {
         return $this->hasMany(Event::class, 'user_id');
+    }
+
+    public function hiringForm()
+    {
+        return $this->belongsTo(HiringForm::class, 'hiring_form_id');
     }
 
 }

@@ -63,12 +63,12 @@
 
             <!-- Buttons Section -->
             <div class="flex justify-center mt-4 space-x-4 mb-9">
-                @if ($hiringForm->status === 'Accepted')
-                    <a href="{{ route('startWorking', ['id' => $hiringForm->id]) }}"
+                @if ($hiringForm->status === 'Accepted' || $event->status === 'Pending')
+                    <a href="{{ route('startWorking', ['hiringFormId' => $hiringForm->id, 'eventId' => $event->id]) }}"
                         class="bg-blue-500 text-white px-4 py-2 rounded">
                         Start Working
                     </a>
-                @elseif($hiringForm->status === 'Ongoing')
+                @elseif ($hiringForm->status === 'Ongoing' && $event->status === 'Ongoing')
                     <button id="helpBtn" class="bg-green-500 text-white px-4 py-2 rounded">
                         <i class="ri-question-fill mr-2"></i>Help
                     </button>
@@ -93,37 +93,41 @@
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Upload Documentation</h2>
                 <div class="max-h-60 overflow-y-auto mb-4">
                     <!-- Add your form elements for uploading requirements here -->
-                    <form id="uploadRequirementsForm" method="POST" action="{{ route('uploadDocumentation', ['id' => $hiringForm->id]) }}" enctype="multipart/form-data">
+                    <form id="uploadRequirementsForm" method="POST"
+                        action="{{ route('uploadDocumentation', ['id' => $hiringForm->id, 'eventId' => $event->id]) }}"
+                        enctype="multipart/form-data">
                         @csrf
-                        
+
                         <!-- Update the label and name for Image 1 -->
                         <label for="image1">Image 1:</label>
                         <input type="file" id="image1" name="image1" accept="image/*">
-                    
+
                         <!-- Update the label and name for Image 2 -->
                         <label for="image2">Image 2:</label>
                         <input type="file" id="image2" name="image2" accept="image/*">
-                    
+
                         <!-- Update the label and name for Image 3 -->
                         <label for="image3">Image 3:</label>
                         <input type="file" id="image3" name="image3" accept="image/*">
-                    
+
                         <!-- Add some spacing for the job description -->
                         <div class="mt-4"></div>
-                    
+
                         <!-- Add the job description textbox -->
                         <label for="jobDescription">Job Description:</label>
-                        <textarea id="jobDescription" name="jobDescription" class="w-full p-2 border rounded" placeholder="Enter job description here"></textarea>
-                    
+                        <textarea id="jobDescription" name="jobDescription" class="w-full p-2 border rounded"
+                            placeholder="Enter job description here"></textarea>
+
                         <!-- Update the button type to "submit" -->
-                        <button type="submit" id="submitBtn" class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
+                        <button type="submit" id="submitBtn"
+                            class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
-    
+
+
 
 
 
