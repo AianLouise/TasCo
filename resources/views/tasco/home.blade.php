@@ -12,7 +12,7 @@
                             <img src="{{ asset('images/people.png') }}" alt="Logo" width="800">
                         </div>
 
-                        <h1 class="mb-6 text-5xl font-extrabold tracking-tight md:text-6xl">
+                        <h1 class=" text-5xl font-extrabold tracking-tight md:text-6xl">
                             Welcome to <span class="mt-8 max-w-sm bg-gradient-to-br from-blue-500 via-sky-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-6xl">Tasco</span>
                         </h1>
 
@@ -58,7 +58,7 @@
                 </h1>
 
                 <img src="{{ URL('images/verified.PNG') }}" width="500">
-                <span class="mt-8 max-w-lg text-center text-xl leading-relaxed text-gray-800">
+                <span class="mt-8 max-w-lg  text-xl leading-relaxed text-gray-800">
                     Our commitment to excellence shines through as we proudly provide a diverse array of services tailored to meet your specific needs. 
                 </span>
                 <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
