@@ -13,7 +13,8 @@
     </style>
 
     <!-- Welcome Page -->
-    <div id="welcomePage" class="flex items-center justify-center h-screen">
+ <section class="flex items-center justify-center">
+    <div id="welcomePage" class="flex items-center justify-center h-screen  sm:w-1/2">
         <div class="container mx-auto p-4">
             <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                 <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to TasCo Employer Application</h1>
@@ -30,15 +31,17 @@
         </div>
     </div>
 
+        <!-- Terms and Conditions Page -->
     <div id="termsAndConditionsPage" class="hidden items-center justify-center h-screen">
         <div class="container mx-auto p-4">
             <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Terms and Conditions</h2>
-                <div class="max-h-60 overflow-y-auto mb-4">
-                    <p class="text-gray-600 mb-4">
-                        By proceeding with the application, you agree to the following terms and conditions:
-                    </p>
-                    <ol class="ml-6">
+                <p class="text-gray-600 mb-4">
+                    By proceeding with the application, you agree to the following terms and conditions:
+                </p>
+                <div class="overflow-y-auto mb-4 text-justify bg-blue-100 rounded-lg p-6">
+
+                    <ol class="ml-6 list-decimal">
                         <li class="mb-2">You must provide accurate and truthful information in your application.</li>
                         <li class="mb-2">You are responsible for maintaining the confidentiality of your account and
                             password.</li>
@@ -70,31 +73,38 @@
         </div>
     </div>
 
-    <div id="uploadRequirementsPage" class="hidden items-center justify-center h-screen">
+    <div id="uploadRequirementsPage" class="hidden mt-0 sm:mt-44">
         <div class="container mx-auto p-4">
-            <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
+            <div class="text-center bg-white p-8 rounded-md">
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Upload Requirements</h2>
-                <div class="max-h-60 overflow-y-auto mb-4">
+                <p class="text-gray-600">
+                    Please upload the following documents that are specified below:
+                </p>
+                <div class="mb-4">
                     <!-- Add your form elements for uploading requirements here -->
-                    <form id="uploadRequirementsForm" method="POST" action="{{ route('submit.application') }}" enctype="multipart/form-data">
+                    <form id="uploadRequirementsForm" method="POST" class="grid grid-rows-1 sm:grid-cols-3 gap-4 bg-blue-100 p-10 rounded-xl" action="{{ route('submit.application') }}" enctype="multipart/form-data">
                         @csrf
-                        <label for="validId">Upload Valid ID:</label>
-                        <input type="file" id="validId" name="validId" accept="image/*">
-    
-                        <label for="barangayClearance">Upload Barangay Clearance:</label>
-                        <input type="file" id="barangayClearance" name="barangayClearance" accept="image/*">
-    
-                        <label for="latestPicture">Upload Latest Picture:</label>
-                        <input type="file" id="latestPicture" name="latestPicture" accept="image/*">
-    
+                        <div class="grid grid-rows-1">
+                        <label for="validId"><i class="ri-bank-card-2-line font-bold text-2xl"></i>  Upload Valid ID:</label>
+                        <input type="file" id="validId" name="validId" class="border border-gray-600 rounded-lg p-16" accept="image/*">
+                        </div>
+                        <div class="grid grid-rows-1">
+                        <label for="barangayClearance"><i class="ri-bill-line font-bold text-2xl"></i>  Upload Barangay Clearance:</label>
+                        <input type="file" id="barangayClearance" name="barangayClearance" class="border border-gray-600 rounded-lg p-16" accept="image/*">
+                        </div>
+                        <div class="grid grid-rows-1">
+                        <label for="latestPicture"><i class="ri-account-box-line text-2xl"></i>  Upload Latest Picture:</label>
+                        <input type="file" id="latestPicture" name="latestPicture" class="border border-gray-600 rounded-lg p-16" accept="image/*">
+                        </div>
                         <!-- Update the button type to "submit" -->
-                        <button type="submit" id="submitBtn" class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
+
                     </form>
+                    <button type="submit" id="submitBtn" class="bg-blue-500 mt-4 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
                 </div>
             </div>
         </div>
     </div>
-
+ </section>
     <script>
         // Add this script at the end of your blade file or in a separate JS file
 
