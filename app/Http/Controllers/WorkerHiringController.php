@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Category;
@@ -107,7 +108,75 @@ class WorkerHiringController extends Controller
             return view('worker.work-view', compact('hiringForm', 'user', 'employer_id'));
         } else {
             // Handle the case where the HiringForm record with the given ID doesn't exist.
-            return redirect()->route('some.redirect.route');
+            return redirect()->route('worker.dashboard')->with('error', 'HiringForm not found.');
         }
     }
+
+    public function startWorking($id)
+    {
+        // Find the HiringForm by ID
+        $hiringForm = HiringForm::find($id);
+
+        if ($hiringForm) {
+            // Update the status to 'Ongoing'
+            $hiringForm->update(['status' => 'Ongoing']);
+
+            // Redirect back or to another page as needed
+            return redirect()->back()->with('success', 'Started working successfully!');
+        }
+
+        // Handle the case where the HiringForm record with the given ID doesn't exist.
+        return redirect()->route('worker.dashboard')->with('error', 'HiringForm not found.');
+    }
+
+    public function uploadDocumentation(Request $request, $id)
+    {
+        // Validate the form data, including the job description and images
+        $request->validate([
+            'jobDescription' => 'required|string|max:255',
+            'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // Handle Image 1
+        $path1 = $request->file('image1')->store('documentation');
+        $path2 = $request->file('image2')->store('documentation');
+        $path3 = $request->file('image3')->store('documentation');
+
+        // Find the HiringForm by ID
+        $hiringForm = HiringForm::find($id);
+
+        if ($hiringForm) {
+            // Update the status to 'Finished' or another appropriate status
+            $hiringForm->update(['status' => 'Finished']);
+
+            // Find the Employment record with the same hiring_form_id
+            $employment = Employment::where('hiring_form_id', $hiringForm->id)->first();
+
+            if ($employment) {
+                // Update the existing Employment record with job description, current dates, and image paths
+                $employment->update([
+                    'job_description' => $request->input('jobDescription'),
+                    'start_date' => Carbon::now(),
+                    'end_date' => Carbon::now(),
+                    'image1' => $path1,
+                    'image2' => $path2,
+                    'image3' => $path3,
+                    // Repeat the process for Image 2 and Image 3
+                ]);
+            } else {
+                // Handle the case where the Employment record with the given hiring_form_id doesn't exist.
+                return redirect()->route('some.redirect.route')->with('error', 'Employment record not found.');
+            }
+
+            // Redirect back or to another page as needed
+            return redirect()->back()->with('success', 'Finished working successfully!');
+        }
+
+        // Handle the case where the HiringForm record with the given ID doesn't exist.
+        return redirect()->route('some.redirect.route')->with('error', 'HiringForm not found.');
+    }
+
+
 }

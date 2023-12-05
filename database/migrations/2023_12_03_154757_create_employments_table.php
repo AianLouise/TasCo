@@ -12,7 +12,16 @@ return new class extends Migration {
     {
         Schema::create('employments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('hiring_form_id'); // Assuming 'id' in 'hiring_forms' is of type unsignedBigInteger
+            $table->unsignedBigInteger('hiring_form_id');
+            $table->text('job_description')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+
+            // Add columns for Image 1, Image 2, and Image 3
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+
             $table->timestamps();
 
             // Adding the foreign key constraint

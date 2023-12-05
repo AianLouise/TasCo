@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Authentication Routes
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // Admin Routes (Requires Authentication and Admin Role)
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -87,7 +87,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [AppController::class, 'Home'])->name('app.home');
     Route::get('/about-us', [AppController::class, 'AboutUs'])->name('app.aboutUs');
     Route::get('/apply-as-jobseeker', [AppController::class, 'applyJobseeker'])->name('app.applyJobseeker');
-    Route::get('/apply-as-employer', [AppController::class, 'applyEmployer'])->name('app.applyEmployer');    
+    Route::get('/apply-as-employer', [AppController::class, 'applyEmployer'])->name('app.applyEmployer');
     Route::get('/job-listing', [AppController::class, 'JobListing'])->name('app.jobListing');
     Route::get('/settings', [AppController::class, 'Settings'])->name('app.settings');
     Route::get('/learn-more', [AppController::class, 'LearnMore'])->name('app.learnMore');
@@ -119,7 +119,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/employer-submit-application', [ApplicationController::class, 'submitApplication'])->name('submit.application');
     Route::post('/jobseeker-submit-application', [ApplicationController::class, 'submitJobSeekerApplication'])->name('submit.jobseekerapplication');
     Route::get('/submission-confirmation', [ApplicationController::class, 'showSubmissionConfirmationPage'])
-    ->name('tasco.submissionConfirmationPage');
+        ->name('tasco.submissionConfirmationPage');
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
@@ -130,6 +130,9 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/worker/chatify', [WorkerController::class, 'WorkerChatify'])->name('worker.chatify');
     Route::get('/accept-status/{id}', [WorkerHiringController::class, 'updateStatus'])->name('acceptStatus');
     Route::get('/work/{HiringForm_id}', [WorkerHiringController::class, 'WorkView'])->name('work.view');
+    Route::get('/start-working/{id}', [WorkerHiringController::class, 'startWorking'])->name('startWorking');
+    Route::post('/upload-documentation/{id}', [WorkerHiringController::class, 'uploadDocumentation'])->name('uploadDocumentation');
+
 
 
     // Other Worker Routes...
@@ -143,7 +146,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 });
 
 
-Route::controller(FullCalenderController::class)->group(function(){
+Route::controller(FullCalenderController::class)->group(function () {
     Route::get('fullcalender', 'index');
     Route::post('fullcalenderAjax', 'ajax');
 });
