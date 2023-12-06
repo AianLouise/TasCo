@@ -68,7 +68,7 @@
                 group-[.active]:bg-blue-500 group-[.active]:text-white 
                 group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
                     <i class="ri-shake-hands-line mr-3 text-lg"></i>
-                    <span class="text-sm">Employemnt</span>
+                    <span class="text-sm">Employment</span>
                     <i class="ri-arrow-right-s-line ml-auto"></i>
                 </a>
             </li>

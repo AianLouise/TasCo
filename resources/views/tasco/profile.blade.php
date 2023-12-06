@@ -28,15 +28,15 @@
 
 
             <div class="text-center"> <!-- Modified: Changed text-left to text-center -->
-                <h2 class="text-xl font-semibold mb-2">Name: {{ $user->name }}</h2>
-                <p class="text-gray-700">Address: {{ $user->address }}</p>
+                <h2 class="text-xl font-semibold mb-2">{{ $user->name }}</h2>
+                <p class="text-gray-700 mb-2">{{ $user->address }}</p>
                 @if (Auth::user()->category_id)
                     @php
                         $category = App\Models\Category::find($user->category_id);
                     @endphp
 
                     @if ($category)
-                        <p class="text-gray-700">Category: {{ $category->name }}</p>
+                        <p class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-medium text-xs py-2 px-4 rounded-lg w-32 mx-auto">{{ $category->name }}</p>
                         <!-- Display other category information as needed -->
                     @else
                         <p class="text-red-500">Category not found</p>
@@ -60,15 +60,8 @@
                             class="border hover:border-blue-700 hover:text-blue-500 text-gray font-bold py-2 px-4 rounded w-36">
                             Message
                         </a>
-                        
+
                     </div>
-
-
-                    <div class="mt-4">
-                        <button
-                            class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-4 rounded w-36">Employments</button>
-                    </div>
-
                 </div>
                 <div class="mt-4">
                     <div class="grid grid-cols-2 gap-4">
@@ -82,14 +75,22 @@
                                     class="text-gray-700 text-4xl hover:text-blue-400 hover:font-semibold hover:text-5xl hover:p-2 transition-all">
                                     20</p> <!-- Increased font size to text-xl -->
                             </div>
+                            <div class="mt-2">
+                                <button
+                                    class="text-sm font-medium bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36">Employments</button>
+                            </div>
                         </div>
                         <div
-                            class="text-lg border p-2 rounded bg-blue-400 text-white hover:text-black hover:bg-white hover:text-xl hover:font-semibold transition-all">
-                            <h3 class="text-2xl font-semibold mb-2">Contacts</h3>
-                            <!-- Increased font size to text-2xl -->
-                            <!-- Add contacts details here -->
-                            <p class="">Email: {{ $user->email }}</p>
-                            <p class="">Phone: {{ $user->phone }}</p>
+                            class="text-base p-2 rounded hover:text-black hover:bg-white hover:text-xl hover:font-semibold transition-all">
+                            <div class="flex items-center mb-2 bg-blue-300 px-5 py-1 text-gray-700 rounded">
+                                <div class="border-t border-black flex-grow mr-4"></div>
+                                <!-- Line above Contact Information -->
+                                <h3 class="text-sm font-semibold ">Contact Information</h3>
+                                <div class="border-t border-black flex-grow ml-4"></div>
+                                <!-- Line above Contact Information -->
+                            </div>
+                            <p class="">{{ $user->email }}</p>
+                            <p class="">{{ $user->phone }}</p>
                         </div>
                     </div>
                 </div>
