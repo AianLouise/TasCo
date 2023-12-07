@@ -11,8 +11,9 @@
     </style>
 
     <!-- Project Page -->
-    <div id="ProjectPage" class="flex items-center justify-center h-screen mx-10">
-        <div class="container mx-auto p-4 bg-white ">
+    <section class="flex justify-center h-screen w-full">
+    <div id="ProjectPage" class="flex items-center justify-center mx-10 sm:w-1/2">
+        <div class="container mx-auto p-4 bg-white rounded-xl shadow-xl">
             <div class="p-8 rounded-md flex items-start justify-center pt-10">
                 <div class="mr-10 ml-20 flex flex-col items-center">
                     @if ($user->avatar == 'avatar.png')
@@ -35,26 +36,38 @@
             </div>
 
             <!-- New Section for Project Information with Styled Design -->
-            <div class="bg-white p-8 rounded-md mt-2 text-center">
+            <div class="bg-white p-8 rounded-md mt-2 text-center divide-y">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Project Information</h2>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="">
                     @if ($hiringForm)
-                        <div class="text-center">
-                            <p class="text-lg font-medium text-gray-800 mb-2">Project Title:</p>
-                            <p class="text-lg text-gray-600 mb-4">{{ $hiringForm->projectTitle }}</p>
+                        <div>
+                            <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3 mt-5">
+                                <p class="block text-xl text-left font-medium text-gray-700">Title:</p>
+                                <input type="text" name="Username" id="Username" placeholder="Enter UserName"
+                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                    value="{{ $hiringForm->projectTitle }}" disabled>
+                            </div>
+                            <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                <p class="block text-xl text-left font-medium text-gray-700">Description:</p>
+                                <input type="text" name="Username" id="Username" placeholder="Enter UserName"
+                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                    value="{{ $hiringForm->projectDescription }}" disabled>
+                            </div>
+                            <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                <p class="block text-xl text-left font-medium text-gray-700">Start Date::</p>
+                                <input type="text" name="Username" id="Username" placeholder="Enter UserName"
+                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                    value="{{ $hiringForm->startDate }}" disabled>
+                            </div>
+                            <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                <p class="block text-xl text-left font-medium text-gray-700">End Date::</p>
+                                <input type="text" name="Username" id="Username" placeholder="Enter UserName"
+                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                    value="{{ $hiringForm->endDate }}" disabled>
+                    
                         </div>
-                        <div class="text-center">
-                            <p class="text-lg font-medium text-gray-800 mb-2">Project Description:</p>
-                            <p class="text-lg text-gray-600 mb-4">{{ $hiringForm->projectDescription }}</p>
-                        </div>
-                        <div class="text-right mr-2">
-                            <p class="text-lg font-medium text-gray-800 mb-2">Start Date:</p>
-                            <p class="text-lg text-gray-600 mb-2">{{ $hiringForm->startDate }}</p>
-                        </div>
-                        <div class="text-left ml-2">
-                            <p class="text-lg font-medium text-gray-800 mb-2">End Date:</p>
-                            <p class="text-lg text-gray-600 mb-2">{{ $hiringForm->endDate }}</p>
-                        </div>
+                    
+                         </div>
                     @else
                         <p>No project information available.</p>
                     @endif
@@ -84,7 +97,7 @@
             
         </div>
     </div>
-
+    </section>
     <div id="HelpPage" class="hidden items-center justify-center h-screen mx-10">
         <div class="container mx-auto p-4 bg-white ">
             Help Page

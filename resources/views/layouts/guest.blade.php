@@ -202,13 +202,15 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    background-color: rgb(219 234 254);
                 }
 
                 .side {
                     display: none;
                 }
                 .slot{
-                    margin-left: 0rem
+                    margin-left: 0rem;
+                    border-radius: 2rem;
                 }
             }
 
