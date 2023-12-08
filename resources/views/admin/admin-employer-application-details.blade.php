@@ -85,8 +85,8 @@
                                 class="grid gap-4 py-4 grid-rows-1 mt-6 sm:grid-cols-3 sm:text-start bg-blue-100 p-4 rounded-md">
                                 <!-- Valid ID Image -->
                                 <div class="">
-                                    <p class="text-xl pb-1 text-gray-700"><i
-                                            class="ri-bank-card-2-line font-bold text-2xl"></i> Valid ID:</p>
+                                    <p class="text-lg pb-1 text-gray-700"><i
+                                            class="ri-bank-card-2-line font-bold text-lg"></i> Valid ID:</p>
                                     <a href="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
                                         data-lightbox="valid_id">
                                         <img src="{{ asset('storage/application_documents/' . basename($application->valid_id)) }}"
@@ -100,8 +100,8 @@
 
                                 <!-- Barangay Clearance Image -->
                                 <div class="">
-                                    <p class="text-xl pb-1 text-gray-700"><i
-                                            class="ri-bill-line font-bold text-2xl"></i> Barangay Clearance:</p>
+                                    <p class="text-base pb-1 text-gray-700"><i
+                                            class="ri-bill-line font-bold text-lg"></i> Barangay Clearance:</p>
                                     <a href="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
                                         data-lightbox="barangay_clearance">
                                         <img src="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
@@ -114,7 +114,7 @@
 
                                 <!-- Latest Picture Image -->
                                 <div class="">
-                                    <p class="text-xl pb-1  text-gray-700"><i class="ri-account-box-line text-2xl"></i>
+                                    <p class="text-lg pb-1  text-gray-700"><i class="ri-account-box-line text-lg"></i>
                                         Latest Picture:</p>
                                     <a href="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
                                         data-lightbox="latest_picture">

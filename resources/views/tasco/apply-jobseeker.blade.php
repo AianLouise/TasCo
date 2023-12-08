@@ -115,7 +115,7 @@
             </div>
         </div>
 
-        <div id="uploadRequirementsPage" class="hidden flex items-center h-screen justify-center mt-60 md:mt-9">
+        <div id="uploadRequirementsPage" class="hidden flex items-center h-screen justify-center mt-[20rem] md:mt-9">
             <div class="container mx-auto p-4">
                 <div class="text-center bg-white p-8 rounded-md flex flex-col justify-center">
                     <h2 class="font-bold text-2xl sm:text-4xl text-gray-800 p-2">Required Documents</h2>
@@ -127,35 +127,169 @@
                         @csrf
                         <div class="grid grid-rows-1 sm:grid-cols-5 gap-4 bg-blue-100 p-10 rounded-xl mx-auto">
                             <div class="grid grid-rows-1">
-                                <label for="resume" class="font-semibold"><i
-                                        class="ri-article-line text-lg font-bold"></i> Resume:</label>
-                                <input type="file" id="resume" name="resume"
-                                    class="border border-gray-600 rounded-lg p-16" accept="application/pdf,image/*">
+                                <label for="resume" class="font-semibold">
+                                    <i class="ri-article-line text-lg font-bold"></i> Resume:
+                                </label>
+                                <div id="resumePreview" class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                    <input type="file" id="resume" name="resume" class="hidden"
+                                        accept="application/pdf,image/*"
+                                        onchange="previewImage('resume', 'resumePreview')">
+                                    <label for="resume" class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                        <!-- Display the current image or a placeholder -->
+                                        @if (isset($uploadedImages['resume']))
+                                            <img src="{{ $uploadedImages['resume'] }}"
+                                                class="w-full h-full object-cover rounded-lg" alt="Resume">
+                                        @else
+                                            <img src="{{ asset('images/placeholder.jpg') }}"
+                                                class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                        @endif
+                                        <div
+                                            class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                            <span class="text-black">
+                                                @if (isset($uploadedImages['resume']))
+                                                    Change
+                                                @else
+                                                    Upload
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
+
                             <div class="grid grid-rows-1">
-                                <label for="validId" class="font-semibold"><i
-                                        class="ri-bank-card-2-line text-lg font-bold"></i> Valid Id:</label>
-                                <input type="file" id="validId" name="validId"
-                                    class="border border-gray-600 rounded-lg p-16" accept="image/*">
+                                <label for="validId" class="font-semibold">
+                                    <i class="ri-bank-card-2-line text-lg font-bold"></i> Valid Id:
+                                </label>
+                                <div id="validIdPreview" class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                    <input type="file" id="validId" name="validId" class="hidden" accept="image/*"
+                                        onchange="previewImage('validId', 'validIdPreview')">
+                                    <label for="validId" class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                        <!-- Display the current image or a placeholder -->
+                                        @if (isset($uploadedImages['validId']))
+                                            <img src="{{ $uploadedImages['validId'] }}"
+                                                class="w-full h-full object-cover rounded-lg" alt="Valid ID">
+                                        @else
+                                            <img src="{{ asset('images/placeholder.jpg') }}"
+                                                class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                        @endif
+                                        <div
+                                            class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                            <span class="text-black">
+                                                @if (isset($uploadedImages['validId']))
+                                                    Change
+                                                @else
+                                                    Upload
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
+
+                            <!-- Barangay Clearance -->
                             <div class="grid grid-rows-1">
-                                <label for="barangayClearance" class="font-semibold"><i
-                                        class="ri-bill-line text-lg font-bold"></i> Barangay Clearance:</label>
-                                <input type="file" id="barangayClearance" name="barangayClearance"
-                                    class="border border-gray-600 rounded-lg p-16" accept="image/*">
+                                <label for="barangayClearance" class="font-semibold">
+                                    <i class="ri-bill-line text-lg font-bold"></i> Barangay Clearance:
+                                </label>
+                                <div id="barangayClearancePreview"
+                                    class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                    <input type="file" id="barangayClearance" name="barangayClearance"
+                                        class="hidden" accept="image/*"
+                                        onchange="previewImage('barangayClearance', 'barangayClearancePreview')">
+                                    <label for="barangayClearance"
+                                        class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                        <!-- Display the current image or a placeholder -->
+                                        @if (isset($uploadedImages['barangayClearance']))
+                                            <img src="{{ $uploadedImages['barangayClearance'] }}"
+                                                class="w-full h-full object-cover rounded-lg"
+                                                alt="Barangay Clearance">
+                                        @else
+                                            <img src="{{ asset('images/placeholder.jpg') }}"
+                                                class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                        @endif
+                                        <div
+                                            class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                            <span class="text-black">
+                                                @if (isset($uploadedImages['barangayClearance']))
+                                                    Change
+                                                @else
+                                                    Upload
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
+
+                            <!-- Police Clearance -->
                             <div class="grid grid-rows-1">
-                                <label for="policeClearance" class="font-semibold"><i
-                                        class="ri-file-lock-line text-lg font-bold"></i> Police Clearance:</label>
-                                <input type="file" id="policeClearance" name="policeClearance"
-                                    class="border border-gray-600 rounded-lg p-16" accept="image/*">
+                                <label for="policeClearance" class="font-semibold">
+                                    <i class="ri-file-lock-line text-lg font-bold"></i> Police Clearance:
+                                </label>
+                                <div id="policeClearancePreview"
+                                    class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                    <input type="file" id="policeClearance" name="policeClearance" class="hidden"
+                                        accept="image/*"
+                                        onchange="previewImage('policeClearance', 'policeClearancePreview')">
+                                    <label for="policeClearance"
+                                        class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                        <!-- Display the current image or a placeholder -->
+                                        @if (isset($uploadedImages['policeClearance']))
+                                            <img src="{{ $uploadedImages['policeClearance'] }}"
+                                                class="w-full h-full object-cover rounded-lg" alt="Police Clearance">
+                                        @else
+                                            <img src="{{ asset('images/placeholder.jpg') }}"
+                                                class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                        @endif
+                                        <div
+                                            class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                            <span class="text-black">
+                                                @if (isset($uploadedImages['policeClearance']))
+                                                    Change
+                                                @else
+                                                    Upload
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
+
+                            <!-- Latest Picture -->
                             <div class="grid grid-rows-1">
-                                <label for="latestPicture" class="font-semibold"><i
-                                        class="ri-account-box-line text-lg font-bold"></i> Latest Picture:</label>
-                                <input type="file" id="latestPicture" name="latestPicture"
-                                    class="border border-gray-600  rounded-lg p-16" accept="image/*">
+                                <label for="latestPicture" class="font-semibold">
+                                    <i class="ri-account-box-line text-lg font-bold"></i> Latest Picture:
+                                </label>
+                                <div id="latestPicturePreview"
+                                    class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                    <input type="file" id="latestPicture" name="latestPicture" class="hidden"
+                                        accept="image/*"
+                                        onchange="previewImage('latestPicture', 'latestPicturePreview')">
+                                    <label for="latestPicture"
+                                        class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                        <!-- Display the current image or a placeholder -->
+                                        @if (isset($uploadedImages['latestPicture']))
+                                            <img src="{{ $uploadedImages['latestPicture'] }}"
+                                                class="w-full h-full object-cover rounded-lg" alt="Latest Picture">
+                                        @else
+                                            <img src="{{ asset('images/placeholder.jpg') }}"
+                                                class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                        @endif
+                                        <div
+                                            class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                            <span class="text-black">
+                                                @if (isset($uploadedImages['latestPicture']))
+                                                    Change
+                                                @else
+                                                    Upload
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
+
 
                             <!-- Hidden input for job category -->
                             <input type="hidden" id="selectedCategoryId" name="selectedCategoryId" value="">
@@ -167,6 +301,22 @@
 
                                     // Update the hidden input value with the selected option value
                                     hiddenInput.value = selectElement.value;
+                                }
+                            </script>
+                            <script>
+                                function previewImage(inputId, previewId) {
+                                    const input = document.getElementById(inputId);
+                                    const preview = document.getElementById(previewId);
+
+                                    if (input.files && input.files[0]) {
+                                        const reader = new FileReader();
+
+                                        reader.onload = function(e) {
+                                            preview.querySelector('img').src = e.target.result;
+                                        };
+
+                                        reader.readAsDataURL(input.files[0]);
+                                    }
                                 }
                             </script>
                         </div>

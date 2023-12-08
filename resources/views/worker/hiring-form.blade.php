@@ -19,7 +19,7 @@
                                     alt="" class="w-28 h-auto rounded-full shadow-xl avatarimg mb-5">
                             @else
                                 <img src="{{ asset('storage/users-avatar/' . basename($user->avatar)) }}" alt=""
-                                    class="w-16 h-16 rounded-full mr-4">
+                                    class="w-28 h-auto rounded-full shadow-xl avatarimg mb-5">
                             @endif
 
                             <!-- Message Link -->

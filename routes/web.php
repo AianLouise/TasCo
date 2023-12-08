@@ -144,6 +144,10 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
 Route::middleware(['auth', 'role:user'])->group(function () {
     // User Dashboard and Related Routes
     Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+});
+
+Route::middleware(['auth', 'role:user', 'is_verified:1'])->group(function () {
+    // User Dashboard and Related Routes
     Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
 });
 

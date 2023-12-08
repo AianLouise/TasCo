@@ -126,7 +126,7 @@
             </li>
 
             <!-- Settings Link -->
-            <li class="mb-1 group {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
+            {{-- <li class="mb-1 group {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
                 <a href="{{ route('admin.settings') }}"
                     class="flex items-center py-2 px-4 text-gray-800 
                 hover:bg-blue-400 hover:text-gray-100 rounded-md 
@@ -136,7 +136,7 @@
                     <span class="text-sm">Settings</span>
                     <i class="ri-arrow-right-s-line ml-auto"></i>
                 </a>
-            </li>
+            </li> --}}
 
         </ul>
         <!-- End: Menu -->
