@@ -5,7 +5,7 @@
         @if (auth()->user()->is_verified === 1 && auth()->user()->role === 'user')
             <!-- Start: Hero Section-->
             <section>
-                <div class="relative my-12 flex w-full flex-col items-center sm:mt-24">
+                <div class="relative my-12 flex w-full flex-col items-center sm:mt-24 md:mt-10">
 
                     <div
                         class="flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-all hover:bg-blue-200">
@@ -42,7 +42,7 @@
             <!-- End: Hero Section-->
         @elseif (auth()->user()->is_verified === 1 && auth()->user()->role === 'worker')
             <section>
-                <div class="relative my-12 flex w-full flex-col items-center sm:mt-24">
+                <div class="relative my-12 flex w-full flex-col items-center sm:mt-24 md:mt-10">
 
                     <div
                         class="flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-all hover:bg-blue-200">
@@ -60,18 +60,18 @@
                     </h1>
 
                     <img src="{{ URL('images/verified.PNG') }}" width="500">
-                    <span class="mt-8 max-w-lg text-center text-xl leading-relaxed text-gray-800">
-                        Our commitment to excellence shines through as we proudly provide a diverse array of services
-                        tailored to meet your specific needs.
+                    <span class="mt-8 max-w-lg text-center text-xl leading-relaxed text-gray-800 md:mt-4">
+                        Embark on a journey of professional growth and opportunities with TasCo. We are dedicated to
+                        offering a wide range of services crafted to align with your unique skills and aspirations.
                     </span>
                     <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
                         <a href=""
                             class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-3 bg-blue-500">
-                            View Application Status
+                            Check Application Status
                         </a>
                         <a href=""
-                            class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg border border-blue-500 px-10 py-3 text-blue-500">Search
-                            for Jobs →
+                            class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg border border-blue-500 px-10 py-3 text-blue-500">Explore
+                            Job Opportunities →
                         </a>
                     </div>
                 </div>
@@ -87,18 +87,18 @@
                                 <img src="{{ asset('images/people.png') }}" alt="Logo" width="800">
                             </div>
 
-                            <h1 class="mb-6 text-5xl font-extrabold tracking-tight md:text-6xl">
+                            <h1 class="mb-6 text-4xl font-extrabold tracking-tight md:text-6xl">
                                 Welcome to <span
                                     class="mt-8 max-w-sm bg-gradient-to-br from-blue-500 via-sky-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-6xl">Tasco</span>
                             </h1>
 
                             <p
-                                class="mb-6 tracking-wide text-lg text-gray-500 sm:mt-5 sm:text- sm:max-w-xl sm:mx-auto md:mt-5">
+                                class="mb-6 tracking-wide text-lg text-gray-500 sm:mt-5 md:text-lg sm:max-w-xl sm:mx-auto md:mt-5">
                                 Discover a new level of convenience and reliability with Tasco, your trusted local
                                 service management partner. We take pride in offering a wide range of services to meet
                                 your needs.
                             </p>
-                            <div class="relative flex w-full flex-col items-center md:mb-10">
+                            <div class="relative flex w-full flex-col items-center md:mb-10 mb-10">
                                 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
                                     <a href="{{ route('app.home') }}#browse"
                                         class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-3 bg-blue-500">
@@ -402,7 +402,7 @@
                                             class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                                             View Profile
                                         </a>
-                                        <a href=""
+                                        <a href="{{ route('app.chatify') }}" target="_new"
                                             class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 ms-3">
                                             Message
                                         </a>

@@ -94,28 +94,114 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-rows-1 sm:grid-cols-3 gap-4 bg-blue-100 p-10 rounded-xl">
+                                <!-- Valid ID -->
                                 <div class="grid grid-rows-1">
-                                    <label for="validId"><i class="ri-bank-card-2-line font-bold text-2xl"></i> Upload
-                                        Valid ID:</label>
-                                    <input type="file" id="validId" name="validId"
-                                        class="border border-gray-600 rounded-lg p-16" accept="image/*">
+                                    <label for="validId">
+                                        <i class="ri-bank-card-2-line font-bold text-2xl"></i> Upload Valid ID:
+                                    </label>
+                                    <div id="validIdPreview"
+                                        class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                        <input type="file" id="validId" name="validId" class="hidden"
+                                            accept="image/*" onchange="previewImage('validId', 'validIdPreview')">
+                                        <label for="validId"
+                                            class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                            <!-- Display the current image or a placeholder -->
+                                            @if (isset($uploadedImages['validId']))
+                                                <img src="{{ $uploadedImages['validId'] }}"
+                                                    class="w-full h-full object-cover rounded-lg" alt="Valid ID">
+                                            @else
+                                                <img src="{{ asset('images/placeholder.jpg') }}"
+                                                    class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                            @endif
+                                            <div
+                                                class=" opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                                <span class="text-black">Upload</span>
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
+
+                                <!-- Barangay Clearance -->
                                 <div class="grid grid-rows-1">
-                                    <label for="barangayClearance"><i class="ri-bill-line font-bold text-2xl"></i>
-                                        Upload Barangay Clearance:</label>
-                                    <input type="file" id="barangayClearance" name="barangayClearance"
-                                        class="border border-gray-600 rounded-lg p-16" accept="image/*">
+                                    <label for="barangayClearance">
+                                        <i class="ri-bill-line font-bold text-2xl"></i> Upload Barangay Clearance:
+                                    </label>
+                                    <div id="barangayClearancePreview"
+                                        class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                        <input type="file" id="barangayClearance" name="barangayClearance"
+                                            class="hidden" accept="image/*"
+                                            onchange="previewImage('barangayClearance', 'barangayClearancePreview')">
+                                        <label for="barangayClearance"
+                                            class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                            <!-- Display the current image or a placeholder -->
+                                            @if (isset($uploadedImages['barangayClearance']))
+                                                <img src="{{ $uploadedImages['barangayClearance'] }}"
+                                                    class="w-full h-full object-cover rounded-lg"
+                                                    alt="Barangay Clearance">
+                                            @else
+                                                <img src="{{ asset('images/placeholder.jpg') }}"
+                                                    class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                            @endif
+                                            <div
+                                                class=" opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                                <span class="text-black">Upload</span>
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
+
+                                <!-- Latest Picture -->
                                 <div class="grid grid-rows-1">
-                                    <label for="latestPicture"><i class="ri-account-box-line text-2xl"></i> Upload
-                                        Latest Picture:</label>
-                                    <input type="file" id="latestPicture" name="latestPicture"
-                                        class="border border-gray-600 rounded-lg p-16" accept="image/*">
+                                    <label for="latestPicture">
+                                        <i class="ri-account-box-line text-2xl"></i> Upload Latest Picture:
+                                    </label>
+                                    <div id="latestPicturePreview"
+                                        class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                        <input type="file" id="latestPicture" name="latestPicture" class="hidden"
+                                            accept="image/*"
+                                            onchange="previewImage('latestPicture', 'latestPicturePreview')">
+                                        <label for="latestPicture"
+                                            class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                            <!-- Display the current image or a placeholder -->
+                                            @if (isset($uploadedImages['latestPicture']))
+                                                <img src="{{ $uploadedImages['latestPicture'] }}"
+                                                    class="w-full h-full object-cover rounded-lg"
+                                                    alt="Latest Picture">
+                                            @else
+                                                <img src="{{ asset('images/placeholder.jpg') }}"
+                                                    class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                            @endif
+                                            <div
+                                                class=" opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                                <span class="text-black">Upload</span>
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
+
                             <button type="submit" id="submitBtn"
                                 class="bg-blue-500 mt-4 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
                         </form>
+
+                        <script>
+                            function previewImage(inputId, previewId) {
+                                const input = document.getElementById(inputId);
+                                const preview = document.getElementById(previewId);
+
+                                if (input.files && input.files[0]) {
+                                    const reader = new FileReader();
+
+                                    reader.onload = function(e) {
+                                        preview.querySelector('img').src = e.target.result;
+                                    };
+
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
+                        </script>
+
+
                     </div>
                 </div>
             </div>

@@ -21,11 +21,12 @@
             @endif
             <!-- Modified: Increased width and height to w-48 and h-48 -->
             <div class="text-center"> <!-- Modified: Changed text-left to text-center -->
-                <h2 class="text-xl font-semibold mb-2">Name: {{ Auth::user()->name }}</h2>
-                <p class="text-gray-700">Address: {{ Auth::user()->address }}</p>
+                <h2 class="text-xl font-semibold mb-2">{{ Auth::user()->name }}</h2>
+                <p class="text-gray-700">{{ Auth::user()->address }}</p>
                 <!-- Add more profile details as needed -->
                 <div class="mt-4">
-                    <a href="{{ route('app.settings') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit
+                    <a href="{{ route('app.settings') }}"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded">Edit
                         Profile</a>
                     @php
                         $isVerified = Auth::user()->is_verified;
@@ -33,7 +34,6 @@
                     @endphp
 
                     <button class="{{ $buttonClass }}">Employments</button>
-
                 </div>
                 <div class="mt-4">
                     @php
@@ -56,8 +56,14 @@
                         @endif
 
                         <div
-                            class="text-lg border p-2 rounded bg-blue-400 text-white hover:text-black hover:bg-white hover:text-xl hover:font-semibold transition-all">
-                            <h3 class="text-2xl font-semibold mb-2">Contacts</h3>
+                            class="text-base p-2 rounded hover:text-black hover:bg-white hover:text-xl hover:font-semibold transition-all">
+                            <div class="flex items-center mb-2 bg-blue-400 px-5 py-1 text-gray-700 rounded">
+                                <div class="border-t border-black flex-grow mr-4"></div>
+                                <!-- Line above Contact Information -->
+                                <h3 class="text-lg font-semibold text-white">Contact Information</h3>
+                                <div class="border-t border-black flex-grow ml-4"></div>
+                                <!-- Line above Contact Information -->
+                            </div>
                             <p class="">Email: {{ Auth::user()->email }}</p>
                             <p class="">Phone: {{ Auth::user()->phone }}</p>
                         </div>
