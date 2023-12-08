@@ -87,12 +87,14 @@
                         <span class="text-red-600 bg-gray-200 p-4 rounded-lg">You can only start working on the day of the work.</span>
                     @endif
                 @elseif ($hiringForm->status === 'Ongoing' && $event->status === 'Ongoing')
-                    <button id="helpBtn" class="bg-green-500 text-white px-4 py-2 rounded">
-                        <i class="ri-question-fill mr-2"></i>Help
+                <div class="grid grid-rows-1 sm:grid-cols-2 gap-4">
+                    <button id="helpBtn" class="bg-red-500 text-white px-10 py-2 rounded hover:bg-red-900 transition-colors">
+                       Help
                     </button>
-                    <button id="finishBtn" class="bg-blue-500 text-white px-4 py-2 rounded">
+                    <button id="finishBtn" class="bg-blue-500 text-white px-10 py-2 rounded hover:bg-blue-800 transition-colors">
                         <i class="ri-check-fill mr-2"></i>Finish
                     </button>
+                </div>
                 @endif
             </div>
             
