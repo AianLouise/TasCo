@@ -9,58 +9,59 @@
             width: 80vw;
         }
     </style>
+<body>
 
     <!-- Project Page -->
     <section class="flex justify-center h-screen w-full">
-    <div id="ProjectPage" class="flex items-center justify-center mx-10 sm:w-1/2">
-        <div class="container mx-auto p-4 bg-white rounded-xl shadow-xl">
-            <div class="p-8 rounded-md flex items-start justify-center pt-10">
-                <div class="mr-10 ml-20 flex flex-col items-center">
+    <div id="ProjectPage" class="m-2 mt-10 sm:m-10 w-full sm:w-1/3">
+        <div class="container px-4 sm:px-16 sm:py-2.5 bg-white rounded-xl shadow-xl mt-32 sm:mt-0">
+            <div class="rounded-md sm:flex sm:items-start justify-center pt-10 pb-4 sm:pb-2">
+                <div class="grid sm:flex sm:flex-col justify-center items-center">
                     @if ($user->avatar == 'avatar.png')
                         <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&color=7F9CF5&background=EBF4FF"
-                            alt="" class="w-40 h-auto transition-all rounded-full shadow-xl avatarimg mb-4">
+                            alt="" class="sm:w-40 hover:w-48 w-52 h-auto transition-all rounded-full shadow-md avatarimg -mt-40 sm:mt-4 sm:mb-4">
                     @else
                         <img src="{{ asset('storage/users-avatar/' . basename($user->avatar)) }}" alt=""
-                            class="w-40 h-auto transition-all rounded-full shadow-xl avatarimg mb-4">
+                            class="sm:w-40 w-52 h-auto transition-all rounded-full shadow-md avatarimg mb-4">
                     @endif
                     <!-- Message Button -->
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Message</button>
+                    <button class="bg-blue-500 text-white px-4 sm:px-12 py-2 rounded mt-4 sm:mt-4 mb-2 sm:mb-0 hover:bg-blue-800 transition-colors">Message</button>
                 </div>
 
-                <div class="ml-10 pt-4">
-                    <h2 class="text-xl font-medium text-gray-800 mb-2">Employer Name: {{ $user->name }}</h2>
-                    <h2 class="text-xl font-medium text-gray-800 mb-2">Email: {{ $user->email }}</h2>
-                    <h2 class="text-xl font-medium text-gray-800 mb-2">Address: {{ $user->address }}</h2>
-                    <h2 class="text-xl font-medium text-gray-800 mb-2">Phone: {{ $user->phone }}</h2>
+                <div class="sm:ml-10 mt-4 bg-blue-100 p-4 sm:p-6 divide-y-2 divide-gray-500 rounded-xl shadow-md">
+                    <h2 class="text-xl font-medium text-gray-800 mb-2">Employer Name: <span class="text-blue-600 text-lg"> {{ $user->name }}</span></h2>
+                    <h2 class="text-xl font-medium text-gray-800 mb-2">Email: <span class="text-blue-600 text-lg">{{ $user->email }}</h2>
+                    <h2 class="text-xl font-medium text-gray-800 mb-2">Address: <span class="text-blue-600 text-lg">{{ $user->address }}</h2>
+                    <h2 class="text-xl font-medium text-gray-800 mb-2">Phone: <span class="text-blue-600 text-lg">{{ $user->phone }}</h2>
                 </div>
             </div>
 
             <!-- New Section for Project Information with Styled Design -->
-            <div class="bg-white p-8 rounded-md mt-2 text-center divide-y">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Project Information</h2>
+            <div class="bg-white rounded-md mt-2 text-center">
+                <h2 class="text-2xl font-bold text-gray-800 pb-4">Project Information</h2>
                 <div class="">
                     @if ($hiringForm)
-                        <div>
-                            <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3 mt-5">
-                                <p class="block text-xl text-left font-medium text-gray-700">Title:</p>
+                        <div class="p-2 sm:p-10 rounded-lg bg-gray-100">
+                            <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                <p class="block text-md sm:text-xl text-left font-medium text-gray-700 pt-2">Title:</p>
                                 <input type="text" name="Username" id="Username" placeholder="Enter UserName"
                                     class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
                                     value="{{ $hiringForm->projectTitle }}" disabled>
                             </div>
                             <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
-                                <p class="block text-xl text-left font-medium text-gray-700">Description:</p>
+                                <p class="block text-md sm:text-xl text-left font-medium text-gray-700 pt-2">Description:</p>
                                 <input type="text" name="Username" id="Username" placeholder="Enter UserName"
                                     class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
                                     value="{{ $hiringForm->projectDescription }}" disabled>
                             </div>
                             <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
-                                <p class="block text-xl text-left font-medium text-gray-700">Start Date::</p>
+                                <p class="block  text-md sm:text-xl text-left font-medium text-gray-700 pt-2">Start Date:</p>
                                 <input type="text" name="Username" id="Username" placeholder="Enter UserName"
                                     class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
                                     value="{{ $hiringForm->startDate }}" disabled>
                             </div>
                             <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
-                                <p class="block text-xl text-left font-medium text-gray-700">End Date::</p>
+                                <p class="block  text-md sm:text-xl text-left font-medium text-gray-700 pt-2">End Date:</p>
                                 <input type="text" name="Username" id="Username" placeholder="Enter UserName"
                                     class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
                                     value="{{ $hiringForm->endDate }}" disabled>
@@ -75,7 +76,7 @@
             </div>
 
             <!-- Buttons Section -->
-            <div class="flex justify-center mt-4 space-x-4 mb-9">
+            <div class="flex justify-center mt-4 sm:mt-10 space-x-4 mb-9">
                 @if ($hiringForm->status === 'Accepted' || $event->status === 'Pending')
                     @if (\Carbon\Carbon::parse($event->start)->isToday())
                         <a href="{{ route('startWorking', ['hiringFormId' => $hiringForm->id, 'eventId' => $event->id]) }}"
@@ -83,7 +84,7 @@
                             Start Working
                         </a>
                     @else
-                        <span class="text-red-500">You can only start working on the day of the work.</span>
+                        <span class="text-red-600 bg-gray-200 p-4 rounded-lg">You can only start working on the day of the work.</span>
                     @endif
                 @elseif ($hiringForm->status === 'Ongoing' && $event->status === 'Ongoing')
                     <button id="helpBtn" class="bg-green-500 text-white px-4 py-2 rounded">

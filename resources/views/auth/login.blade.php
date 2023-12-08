@@ -20,7 +20,6 @@
             </div>
 
 
-
             <!-- Password -->
             <div class="relative mb-5">
                 <x-text-input id="password" placeholder="Password" class="pl-12 py-2 w-full" type="password"
