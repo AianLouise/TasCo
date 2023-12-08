@@ -55,7 +55,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard/view-all-users', [AdminController::class, 'AdminViewAllUsers'])->name('admin.viewAllUsers');
     Route::get('/admin/chatify', [AdminController::class, 'AdminChatify'])->name('admin.chatify');
     Route::get('/admin/jobSeeker', [AdminController::class, 'AdminJobSeeker'])->name('admin.jobSeeker');
-    Route::get('/admin/chatify', [AdminController::class, 'AdminChatify'])->name('admin.chatify');
     Route::get('/admin/employer', [AdminController::class, 'AdminEmployer'])->name('admin.employer');
     Route::get('/admin/add-profile', [AdminController::class, 'AdminAddProfile'])->name('admin.addProfile');
     Route::post('/create-user', [AdminController::class, 'createUser'])->name('admin.createUser');
@@ -83,7 +82,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/home', [AppController::class, 'Home'])->name('app.home');
     Route::get('/about-us', [AppController::class, 'AboutUs'])->name('app.aboutUs');
     Route::get('/apply-as-jobseeker', [AppController::class, 'applyJobseeker'])->name('app.applyJobseeker');

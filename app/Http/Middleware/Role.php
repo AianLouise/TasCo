@@ -22,7 +22,6 @@ class Role
             } elseif ($request->user()->role === 'worker') {
                 return redirect('home');
             } elseif ($request->user()->role === 'user') {
-                // Handle the user role here
                 return redirect('home');
             }
         }
