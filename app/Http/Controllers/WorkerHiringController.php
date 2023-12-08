@@ -59,7 +59,7 @@ class WorkerHiringController extends Controller
         return redirect()->route('app.workerprofile', ['worker' => $worker->id])->with('success', 'Form submitted successfully');
     }
 
-    public function updateStatus(Request $request, $id)
+    public function acceptStatus(Request $request, $id)
     {
         $hiringForm = HiringForm::find($id);
 
@@ -92,6 +92,21 @@ class WorkerHiringController extends Controller
                     'user_id' => Auth::user()->id,
                 ]);
             }
+
+            return redirect()->back()->with('success', 'Status updated successfully');
+        }
+
+        return redirect()->back()->with('error', 'Hiring form not found');
+    }
+
+    public function rejectStatus(Request $request, $id)
+    {
+        $hiringForm = HiringForm::find($id);
+
+        if ($hiringForm) {
+            // Update the hiring form status
+            $hiringForm->status = 'Rejected'; // You might want to set a default status here
+            $hiringForm->save();
 
             return redirect()->back()->with('success', 'Status updated successfully');
         }
@@ -158,23 +173,23 @@ class WorkerHiringController extends Controller
             'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    
+
         // Handle Image 1
         $path1 = $request->file('image1')->store('documentation');
         $path2 = $request->file('image2')->store('documentation');
         $path3 = $request->file('image3')->store('documentation');
-    
+
         // Find the HiringForm by ID
         $hiringForm = HiringForm::find($id);
-    
+
         if ($hiringForm) {
             // Find the Employment record with the same hiring_form_id
             $employment = Employment::where('hiring_form_id', $hiringForm->id)->first();
-    
+
             if ($employment) {
                 // Find the specific event by ID and update its status to 'Done'
                 $event = Event::find($eventId);
-    
+
                 if ($event) {
                     // Update the existing Employment record with job description, current dates, and image paths
                     $employment->update([
@@ -186,19 +201,22 @@ class WorkerHiringController extends Controller
                         'image3' => $path3,
                         // Repeat the process for Image 2 and Image 3
                     ]);
-    
-                    // Check if the current date is within the range of start and end dates and update the status to 'Finished'
-                    $startDate = Carbon::parse($hiringForm->startDate);
-                    $endDate = Carbon::parse($hiringForm->endDate);
-                    $currentDate = Carbon::now();
-    
-                    if ($currentDate->between($startDate, $endDate)) {
-                        $employment->update(['status' => 'Finished']);
-                    }
-    
+
                     // Update the status of the specific event to 'Done'
                     $event->update(['status' => 'Done']);
-    
+
+                    // Check if all events associated with the hiring form are done
+                    $allEventsDone = $hiringForm->events()->where('status', '<>', 'Done')->count() === 0;
+
+                    // Check if all events are done and update the status of the employment and hiring form to 'Finished'
+                    if ($allEventsDone) {
+                        // Update the status of the employment to 'Finished'
+                        $employment->update(['status' => 'Finished']);
+
+                        // Update the status of the hiring form to 'Finished'
+                        $hiringForm->update(['status' => 'Finished']);
+                    }
+
                     // Redirect back or to another page as needed
                     return redirect()->back()->with('success', 'Finished working successfully!');
                 } else {
@@ -210,11 +228,8 @@ class WorkerHiringController extends Controller
                 return redirect()->route('some.redirect.route')->with('error', 'Employment record not found.');
             }
         }
-    
+
         // Handle the case where the HiringForm record with the given ID doesn't exist.
         return redirect()->route('some.redirect.route')->with('error', 'HiringForm not found.');
     }
-    
-
-
 }

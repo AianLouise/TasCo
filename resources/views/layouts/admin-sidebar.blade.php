@@ -68,7 +68,7 @@
                 group-[.active]:bg-blue-500 group-[.active]:text-white 
                 group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
                     <i class="ri-shake-hands-line mr-3 text-lg"></i>
-                    <span class="text-sm">Employemnt</span>
+                    <span class="text-sm">Employment</span>
                     <i class="ri-arrow-right-s-line ml-auto"></i>
                 </a>
             </li>
@@ -126,7 +126,7 @@
             </li>
 
             <!-- Settings Link -->
-            <li class="mb-1 group {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
+            {{-- <li class="mb-1 group {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
                 <a href="{{ route('admin.settings') }}"
                     class="flex items-center py-2 px-4 text-gray-800 
                 hover:bg-blue-400 hover:text-gray-100 rounded-md 
@@ -136,7 +136,7 @@
                     <span class="text-sm">Settings</span>
                     <i class="ri-arrow-right-s-line ml-auto"></i>
                 </a>
-            </li>
+            </li> --}}
 
         </ul>
         <!-- End: Menu -->

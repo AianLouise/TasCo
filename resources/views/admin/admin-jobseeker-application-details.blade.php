@@ -101,7 +101,7 @@
 
                             <!-- Barangay Clearance Image -->
                             <div class="">
-                                <p><strong><i class="ri-bill-line text-lg font-bold"></i>  Barangay Clearance:</strong></p>
+                                <p class="text-sm"><strong><i class="ri-bill-line text-lg font-bold"></i>  Barangay Clearance:</strong></p>
                                 <a href="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"
                                     data-lightbox="barangay-clearance">
                                     <img src="{{ asset('storage/application_documents/' . basename($application->barangay_clearance)) }}"

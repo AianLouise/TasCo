@@ -4,7 +4,7 @@
 
     <link rel="stylesheet" href="guest.blade.php">
 
-    <div class="p-4 sm:p-8"> <!-- Padding adjustments for small screens -->
+    <div class="p-4 sm:p-4"> <!-- Padding adjustments for small screens -->
         <form method="POST" action="{{ route('login') }}">
             @csrf
 

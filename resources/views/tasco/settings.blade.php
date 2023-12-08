@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
 
     <style>
@@ -143,6 +142,96 @@
         <div class="pl-4 grid grid-cols-1">
             <span class="titleinfo text-2xl pb-2 pt-2">Personal Information</span>
         </div>
+
+        {{-- Profile --}}
+        <div>
+            <div
+                class="open-button flex items-center py-2 text-gray-800 rounded-lg
+                hover:bg-blue-400 hover:text-white
+                group-[.active]:bg-blue-600 group-[.active]:text-white
+                group-[.selected]:bg-blue-600 group-[.selected]:text-white
+                cursor-pointer
+                ">
+                <i class="ri-price-tag-3-line text-2xl p-1 ml-3"></i>
+                <div class="grid grid-cols-1 pl-4">
+                    <span>Change Profile Picture:</span>
+                    <span>
+                        @if (Auth::user()->avatar == 'avatar.png')
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF"
+                                alt="" class="w-20 h-20 rounded block object-cover align-middle">
+                        @else
+                            <img src="{{ asset('storage/users-avatar/' . basename(Auth::user()->avatar)) }}"
+                                alt="" class="w-20 h-20 rounded block object-cover align-middle">
+                        @endif
+                    </span>
+                </div>
+                <div class="flex items-end">
+                    {{-- <i class="ri-arrow-right-s-line text-4xl ml-auto"></i> --}}
+                </div>
+
+            </div>
+
+            <!-- Updated HTML Structure for First Name and Last Name -->
+            <dialog class="content-center shadow-lg rounded-lg w-96" id="profileModal" style="margin: auto;">
+                <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-48 mt-4">
+                    <div>
+                        <i class="ri-user-line text-blue-400 text-base"></i>
+                        <span class="tracking-wider font-semibold text-base">Change Profile Picture</span>
+                        <button class="text-3xl close-button">
+                            <i class="ri-close-line absolute top-2 right-2 close-button hover:text-blue-400"></i>
+                        </button>
+                    </div>
+                    <div>
+                        <form class="mt-2 p-4" id="updateNameForm" action="{{ route('update.name') }}" method="POST">
+                            @csrf
+                            <div class="flex ">
+                                @if (Auth::user()->avatar == 'avatar.png')
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF"
+                                        alt="" class="w-20 h-20 rounded block object-cover mx-auto">
+                                @else
+                                    <img src="{{ asset('storage/users-avatar/' . basename(Auth::user()->avatar)) }}"
+                                        alt="" class="w-20 h-20 rounded block object-cover mx-auto">
+                                @endif
+                            </div>
+                            <input type="file" name="avatar" id="avatar" class="mt-2">
+
+                            <button type="submit"
+                                class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
+                                hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
+                                group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
+                                <span class="rounded-lg w-full text-base tracking-wide">
+                                    <i class="ri-save-line font-bold mr-2 saveButton"></i>Save
+                                </span>
+                            </button>
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+
+
+            <script>
+                // Add click event listener to open-button
+                const openProfileButton = document.querySelector('.open-button');
+                openProfileButton.addEventListener('click', () => {
+                    const modal = document.getElementById('profileModal');
+                    modal.showModal();
+                });
+
+                // Add click event listener to close-button in View Dialog
+                const closeProfileButton = document.querySelector('.close-button');
+                closeProfileButton.addEventListener('click', () => {
+                    const modal = document.getElementById('profileModal');
+                    modal.close();
+                });
+            </script>
+
+        </div>
+
         {{-- Name --}}
         <div>
             <div
@@ -207,18 +296,19 @@
 
             <script>
                 // Add click event listener to open-button
-                const openButton = document.querySelector('.open-button');
+                const openButton = document.querySelectorAll('.open-button')[1];
                 openButton.addEventListener('click', () => {
                     const modal = document.getElementById('nameModal');
                     modal.showModal();
                 });
 
                 // Add click event listener to close-button in View Dialog
-                const closeButton = document.querySelector('.close-button');
+                const closeButton = document.querySelector('#nameModal .close-button');
                 closeButton.addEventListener('click', () => {
                     const modal = document.getElementById('nameModal');
                     modal.close();
                 });
+
 
                 // Add click event listener to saveButton in Edit Dialog
                 const saveButton = document.querySelector('.saveButton');
@@ -288,7 +378,7 @@
 
             <script>
                 // Add click event listener to open-button for Address
-                const openAddressButton = document.querySelectorAll('.open-button')[1]; // Selecting the second open-button
+                const openAddressButton = document.querySelectorAll('.open-button')[2]; // Selecting the second open-button
                 openAddressButton.addEventListener('click', () => {
                     const modal = document.getElementById('addressModal');
                     modal.showModal();
@@ -353,7 +443,7 @@
 
             <script>
                 // Add click event listener to open-button for Email
-                const openEmailButton = document.querySelectorAll('.open-button')[2]; // Selecting the third open-button
+                const openEmailButton = document.querySelectorAll('.open-button')[3]; // Selecting the third open-button
                 openEmailButton.addEventListener('click', () => {
                     const modal = document.getElementById('emailModal');
                     modal.showModal();
@@ -420,7 +510,7 @@
 
             <script>
                 // Add click event listener to open-button for Phone
-                const openPhoneButton = document.querySelectorAll('.open-button')[3]; // Selecting the third open-button
+                const openPhoneButton = document.querySelectorAll('.open-button')[4]; // Selecting the third open-button
                 openPhoneButton.addEventListener('click', () => {
                     const modal = document.getElementById('phoneModal');
                     modal.showModal();
@@ -511,7 +601,7 @@
 
     <script>
         // Add click event listener to open-button for Change Password
-        const openPasswordButton = document.querySelectorAll('.open-button')[4]; // Selecting the fourth open-button
+        const openPasswordButton = document.querySelectorAll('.open-button')[5]; // Selecting the fourth open-button
         openPasswordButton.addEventListener('click', () => {
             const modal = document.getElementById('passwordModal');
             modal.showModal();
