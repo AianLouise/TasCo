@@ -3,7 +3,7 @@
 
 
     <body>
-        <div class="flex justify-center min-h-screen mb-4 bg-blue-50">
+        <div class="flex justify-center min-h-screen pb-4 bg-blue-50">
             <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md w-1/2">
                 <div class="flex justify-between mb-4 items-start">
                     <div class="font-medium2 text-xl"><i class="ri-notification-3-line mr-2"></i>Notification</div>

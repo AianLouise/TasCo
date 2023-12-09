@@ -13,7 +13,7 @@
     </style>
 
     <!-- Welcome Page -->
-    <section class="flex items-center justify-center">
+    <section class="flex items-center justify-center bg-blue-50">
         <div id="welcomePage" class="h-screen sm:w-1/2 flex items-center justify-center">
             <div class="container mx-auto p-4 bg-blue-500 rounded-md">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
