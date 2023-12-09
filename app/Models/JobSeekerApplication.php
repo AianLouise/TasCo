@@ -10,7 +10,7 @@ class JobSeekerApplication extends Model
     use HasFactory;
 
     protected $table = 'jobseeker_application';
-    protected $fillable = ['resume', 'valid_id', 'barangay_clearance', 'police_clearance', 'latest_picture'];
+    protected $fillable = ['resume', 'valid_id', 'barangay_clearance', 'police_clearance', 'latest_picture', 'category_id', 'user_id', 'status'];
 
     public function category()
     {

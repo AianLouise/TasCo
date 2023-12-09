@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\WorkerHiringController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -84,6 +85,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 // Worker Routes (Requires Authentication and Worker Role)
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [AppController::class, 'Home'])->name('app.home');
+    Route::get('/notification', [UserController::class, 'Notification'])->name('app.notifications');
     Route::get('/about-us', [AppController::class, 'AboutUs'])->name('app.aboutUs');
     Route::get('/apply-as-jobseeker', [AppController::class, 'applyJobseeker'])->name('app.applyJobseeker');
     Route::get('/apply-as-employer', [AppController::class, 'applyEmployer'])->name('app.applyEmployer');
@@ -134,7 +136,7 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/work/{HiringForm_id}', [WorkerHiringController::class, 'WorkView'])->name('work.view');
     Route::get('/start-working/{hiringFormId}/{eventId}', [WorkerHiringController::class, 'startWorking'])->name('startWorking');
     Route::post('/upload-documentation/{id}/{eventId}', [WorkerHiringController::class, 'uploadDocumentation'])
-    ->name('uploadDocumentation');
+        ->name('uploadDocumentation');
 
 
 

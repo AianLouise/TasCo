@@ -59,10 +59,10 @@ class AppController extends Controller
         $user = auth()->user();
 
         // Check if the user has already submitted an employer application
-        $hasSubmittedApplication = JobSeekerApplication::where('user_id', $user->id)->exists();
+        $application = JobSeekerApplication::where('user_id', $user->id)->latest()->first();
 
-        if ($hasSubmittedApplication) {
-            // User has already submitted an application, return a view with a message
+        if ($application && $application->status != 'Rejected') {
+            // User has already submitted an application and it's not rejected, return a view with a message
             return view('tasco.application-already-submitted');
         }
 
@@ -81,14 +81,14 @@ class AppController extends Controller
         $user = auth()->user();
 
         // Check if the user has already submitted an employer application
-        $hasSubmittedApplication = EmployerApplication::where('user_id', $user->id)->exists();
+        $application = EmployerApplication::where('user_id', $user->id)->latest()->first();
 
-        if ($hasSubmittedApplication) {
-            // User has already submitted an application, return a view with a message
+        if ($application && $application->status != 'Rejected') {
+            // User has already submitted an application and it's not rejected, return a view with a message
             return view('tasco.application-already-submitted');
         }
 
-        // User hasn't submitted an application yet, proceed to the application form
+        // User hasn't submitted an application yet, or their last application was rejected, proceed to the application form
         return view('tasco.apply-employer', compact('pageTitle'));
     }
 

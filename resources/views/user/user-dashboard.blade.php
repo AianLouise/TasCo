@@ -44,68 +44,122 @@
 
             <!-- Right Column (Upcoming Schedule) -->
             <div class="flex-1 bg-white p-6 rounded-md divide-y mb-10 mt-4 mr-10">
-                <div class="flex justify-between mb-3 items-start">
-                    <h2 class="font-medium2 mb-4 text-start">Upcoming Schedule</h2>
+                <div class="flex justify-between mb-1 items-start">
+                    <h2 class="font-medium2 mb-1 text-start">Upcoming Work Schedule</h2>
                 </div>
 
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white shadow-md rounded-md text-start">
+                <div class="overflow-x-auto max-h-52">
+                    <table class="min-w-full bg-white shadow-md rounded-md text-start text-xs">
                         <thead>
                             <tr class="border-b">
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                    Event</th>
+                                    class="px-6 py-3 text-left font-medium text-gray-800 uppercase tracking-wider">
+                                    Project</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                    Worker</th>
+                                    class="px-6 py-3 text-left font-medium text-gray-800 uppercase tracking-wider">
+                                    Employer</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                    Start Date</th>
+                                    class="px-6 py-3 text-left font-medium text-gray-800 uppercase tracking-wider">
+                                    Date</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                    End Date</th>
+                                    class="px-6 py-3 text-left font-medium text-gray-800 uppercase tracking-wider">
+                                    Status</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    class="px-6 py-3 text-left font-medium text-gray-800 uppercase tracking-wider">
                                     Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($events as $event)
-                                <tr class="border-b">
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $event->title }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $event->worker->name }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $event->start }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        {{ $event->end }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                        <!-- Add your action button here -->
-                                        <a href="{{ route('work.view', ['HiringForm_id' => $event->hiring_form_id]) }}"
-                                            class="bg-blue-500 text-white px-4 py-2 rounded">View</a>
-                                    </td>
-
-                                </tr>
+                                @if ($event->status == 'Pending' || $event->status == 'Ongoing')
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
+                                            {{ $event->title }}-{{ $event->dayText }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
+                                            {{ $event->employer->name }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
+                                            {{ \Carbon\Carbon::parse($event->start)->format('M d, Y') }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
+                                            {{ $event->status }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
+                                            <!-- Add your action button here -->
+                                            <a href="{{ route('work.view', ['HiringForm_id' => $event->id]) }}"
+                                                class="bg-blue-500 text-white px-4 py-2 rounded">View</a>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
+                </div>
 
+                <div class="flex justify-between mb-3 items-start">
+                    <h2 class="font-medium2 mt-4 text-start">Done Work Schedule</h2>
+                </div>
+
+                <div class="overflow-x-auto max-h-48">
+                    <table class="min-w-full bg-white shadow-md rounded-md text-start text-xs">
+                        <thead>
+                            <tr class="border-b">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left font-medium text-gray-800 uppercase tracking-wider">
+                                    Project</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left font-medium text-gray-800 uppercase tracking-wider">
+                                    Employer</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left font-medium text-gray-800 uppercase tracking-wider">
+                                    Date</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left font-medium text-gray-800 uppercase tracking-wider">
+                                    Status</th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left font-medium text-gray-800 uppercase tracking-wider">
+                                    Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($events as $event)
+                                @if ($event->status == 'Done')
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
+                                            {{ $event->title }}-{{ $event->dayText }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
+                                            {{ $event->employer->name }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
+                                            {{ \Carbon\Carbon::parse($event->start)->format('M d, Y') }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
+                                            {{ $event->status }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
+                                            <!-- Add your action button here -->
+                                            <a href="{{ route('work.view', ['HiringForm_id' => $event->id]) }}"
+                                                class="bg-blue-500 text-white px-4 py-2 rounded">View</a>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
         </div>
 
 
-        <!-- Center Column (Accepted Job) -->
+        <!-- Center Column (Current Hires) -->
         <div>
             <div class="flex-1 bg-white p-4 rounded-md md:mx-4 mb-4">
                 <div>
-                    <h2 class="font-medium2 mb-4 text-start">Accepted Job</h2>
+                    <h2 class="font-medium2 mb-4 text-start">Current Hires</h2>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -140,7 +194,7 @@
                         </thead>
                         <tbody id="hiring-application-table">
                             @foreach ($hiringForms as $hiringForm)
-                                @if ($hiringForm->status === 'Accepted')
+                                @if ($hiringForm->status === 'Accepted' || $hiringForm->status === 'Ongoing' || $hiringForm->status === 'Finished')
                                     <tr class="border-b">
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->projectTitle }}</td>
@@ -155,9 +209,11 @@
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->employer->name ?? 'N/A' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                            {{ $hiringForm->startDate }}</td>
+                                            {{ \Carbon\Carbon::parse($hiringForm->startDate)->format('F d, Y') }}
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                            {{ $hiringForm->endDate }}</td>
+                                            {{ \Carbon\Carbon::parse($hiringForm->endDate)->format('F d, Y') }}
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->status }}</td>
                                         <!-- Action Column -->
@@ -171,225 +227,9 @@
                             @endforeach
                         </tbody>
                     </table>
-
-                    @foreach ($hiringForms as $hiringForm)
-                        <dialog class="content-center shadow-lg rounded-lg m-auto" id="nameModal-{{ $hiringForm->id }}"
-                            style="width: 80vw; max-width: 800px; overflow-y: auto;">
-                            <div class="text-center grid divide-gray-200 w-full">
-                                <div class="bg-white shadow-md p-8 w-full text-center rounded-lg">
-                                    <form method="POST" action="" class="overflow-hidden">
-                                        @csrf
-                                        <!-- Form heading -->
-                                        <h1 class="text-lg font-semibold mb-1">Job Hiring Form</h1>
-
-                                        <!-- Employer Details section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Employer Details</h2>
-
-                                            <!-- Full Name -->
-                                            <div class="w-full mb-2">
-                                                <label for="employerFullName"
-                                                    class="block text-xs font-medium text-gray-700">Full Name</label>
-                                                <input type="text" name="employerFullName" id="employerFullName"
-                                                    placeholder="Enter employer's full name" disabled
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                    value="{{ isset($hiringForm->employer) ? $hiringForm->employer->name : '' }}"
-                                                    required>
-                                            </div>
-
-                                            <!-- Email -->
-                                            <div class="flex mb-2">
-                                                <div class="w-1/2 mr-1">
-                                                    <label for="employerEmail"
-                                                        class="block text-xs font-medium text-gray-700">Email</label>
-                                                    <input type="text" name="employerEmail" id="employerEmail"
-                                                        placeholder="Enter employer's email" disabled
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->email : '' }}"
-                                                        required>
-                                                </div>
-
-                                                <!-- Phone -->
-                                                <div class="w-1/2 ml-1">
-                                                    <label for="employerPhone"
-                                                        class="block text-xs font-medium text-gray-700">Phone</label>
-                                                    <input type="text" name="employerPhone" id="employerPhone"
-                                                        placeholder="Enter employer's phone number" disabled
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs"
-                                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->phone : '' }}"
-                                                        required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Project Details section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Project Details</h2>
-                                            <div class="w-full mb-2">
-                                                <label for="projectTitle"
-                                                    class="block text-xs font-medium text-gray-700">Project
-                                                    Title</label>
-                                                <input type="text" name="projectTitle" id="projectTitle"
-                                                    placeholder="Enter project title" disabled
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" required
-                                                    value="{{ isset($hiringForm) ? $hiringForm->projectTitle : '' }}">
-                                            </div>
-
-                                            <div class="w-full mb-2">
-                                                <label for="projectDescription"
-                                                    class="block text-xs font-medium text-gray-700">Project
-                                                    Description</label>
-                                                <textarea name="projectDescription" id="projectDescription" placeholder="Enter project description" disabled
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required>{{ isset($hiringForm) ? $hiringForm->projectDescription : '' }}</textarea>
-                                            </div>
-
-                                            <div class="flex mb-2">
-                                                <div class="w-1/2 mr-1">
-                                                    <label for="startDate"
-                                                        class="block text-xs font-medium text-gray-700">Start
-                                                        Date</label>
-                                                    <input type="text" name="startDate" id="startDate"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs" disabled
-                                                        placeholder="Select start date" required
-                                                        value="{{ isset($hiringForm) ? $hiringForm->startDate : '' }}">
-                                                </div>
-                                                <div class="w-1/2 ml-1">
-                                                    <label for="endDate"
-                                                        class="block text-xs font-medium text-gray-700">End
-                                                        Date</label>
-                                                    <input type="text" name="endDate" id="endDate"
-                                                        class="mt-1 p-2 w-full border rounded-md text-xs" disabled
-                                                        placeholder="Select end date" required
-                                                        value="{{ isset($hiringForm) ? $hiringForm->endDate : '' }}">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Scope of Work section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Scope of Work</h2>
-                                            <div class="w-full mb-2">
-                                                <label for="scopeOfWork"
-                                                    class="block text-xs font-medium text-gray-700">Briefly describe
-                                                    the
-                                                    tasks and responsibilities of the worker.</label>
-                                                <textarea name="scopeOfWork" id="scopeOfWork" placeholder="Enter scope of work" disabled
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required>{{ isset($hiringForm) ? $hiringForm->scopeOfWork : '' }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <!-- Payment Terms section -->
-                                        <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
-                                            <h2 class="text-sm font-semibold mb-2">Payment Terms</h2>
-
-                                            <!-- Total Payment -->
-                                            <div class="w-full mb-2">
-                                                <label for="totalPayment"
-                                                    class="block text-xs font-medium text-gray-700">Total
-                                                    Payment</label>
-                                                <input type="text" name="totalPayment" id="totalPayment"
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" disabled
-                                                    placeholder="Enter total payment" required
-                                                    value="{{ isset($hiringForm) ? $hiringForm->totalPayment : '' }}">
-                                            </div>
-
-                                            <!-- Payment Frequency -->
-                                            <div class="w-full mb-2">
-                                                <label for="paymentFrequency"
-                                                    class="block text-xs font-medium text-gray-700">Payment
-                                                    Frequency</label>
-                                                <select name="paymentFrequency" id="paymentFrequency" disabled
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" required>
-                                                    <option value="hourly"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentFrequency === 'hourly' ? 'selected' : '' }}>
-                                                        Hourly</option>
-                                                    <option value="perMilestone"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentFrequency === 'perMilestone' ? 'selected' : '' }}>
-                                                        Per Milestone</option>
-                                                    <!-- Add more options as needed -->
-                                                </select>
-                                            </div>
-
-                                            <!-- Payment Method -->
-                                            <div class="w-full mb-2">
-                                                <label for="paymentMethod"
-                                                    class="block text-xs font-medium text-gray-700">Payment
-                                                    Method</label>
-                                                <select name="paymentMethod" id="paymentMethod" disabled
-                                                    class="mt-1 p-2 w-full border rounded-md text-xs" required>
-                                                    <option value="bankTransfer"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentMethod === 'bankTransfer' ? 'selected' : '' }}>
-                                                        Bank Transfer</option>
-                                                    <option value="cash"
-                                                        {{ isset($hiringForm) && $hiringForm->paymentMethod === 'cash' ? 'selected' : '' }}>
-                                                        Cash</option>
-                                                    <!-- Add more options as needed -->
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <!-- Submit button -->
-                                        <div class="flex mb-2 mt-3">
-                                            @if ($hiringForm->status === 'Pending')
-                                                <div class="w-1/2">
-                                                    <a href="{{ route('acceptStatus', ['id' => $hiringForm->id]) }}"
-                                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-xs">
-                                                        Accept
-                                                    </a>
-                                                </div>
-                                                <div class="w-1/2">
-                                                    <a href="#"
-                                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs">
-                                                        Reject
-                                                    </a>
-                                                </div>
-                                            @endif
-                                        </div>
-
-                                    </form>
-                                </div>
-
-                                <!-- Load flatpickr script after the form -->
-                                <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-                                <script>
-                                    flatpickr('#startDate, #endDate', {
-                                        dateFormat: 'Y-m-d', // Store the date in Y-m-d format
-                                        altInput: true, // Create an alternate input field
-                                        altFormat: 'F j, Y', // Format for the alternate input field (displayed in the textbox)
-                                        // Add other Flatpickr options as needed
-                                    });
-                                </script>
-                            </div>
-                        </dialog>
-                    @endforeach
                 </div>
             </div>
         </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Add click event listener to open-button
-                const openButtons = document.querySelectorAll('.open-button');
-                openButtons.forEach((openButton) => {
-                    openButton.addEventListener('click', () => {
-                        const hiringFormId = openButton.getAttribute('data-id');
-                        const modalId = `nameModal-${hiringFormId}`;
-                        const modal = document.getElementById(modalId);
-                        modal.showModal();
-                    });
-                });
-
-                // Add click event listener to close the dialog when clicking outside
-                const modals = document.querySelectorAll('dialog');
-                modals.forEach((modal) => {
-                    modal.addEventListener('click', (e) => {
-                        if (e.target === modal) {
-                            modal.close();
-                        }
-                    });
-                });
-            });
-        </script>
 
 
         <!-- Center Column (Hiring Applicationa) -->
@@ -446,9 +286,11 @@
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->employer->name ?? 'N/A' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                            {{ $hiringForm->startDate }}</td>
+                                            {{ \Carbon\Carbon::parse($hiringForm->startDate)->format('F d, Y') }}
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                            {{ $hiringForm->endDate }}</td>
+                                            {{ \Carbon\Carbon::parse($hiringForm->endDate)->format('F d, Y') }}
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->status }}</td>
                                         <!-- Action Column -->
@@ -462,17 +304,15 @@
                             @endforeach
                         </tbody>
                     </table>
-
-
                 </div>
             </div>
         </div>
 
         <div>
-            <!-- Center Column (Accepted Job) -->
+            <!-- Center Column (Completed Job) -->
             <div class="flex-1 bg-white p-4 rounded-md md:mx-4 mb-4 mt-4">
                 <div>
-                    <h2 class="font-medium2 mb-4 text-start">Completed</h2>
+                    <h2 class="font-medium2 mb-4 text-start">Completed Projects</h2>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -522,9 +362,11 @@
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->employer->name ?? 'N/A' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                            {{ $hiringForm->startDate }}</td>
+                                            {{ \Carbon\Carbon::parse($hiringForm->startDate)->format('F d, Y') }}
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                            {{ $hiringForm->endDate }}</td>
+                                            {{ \Carbon\Carbon::parse($hiringForm->endDate)->format('F d, Y') }}
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->status }}</td>
                                         <!-- Action Column -->
@@ -541,6 +383,293 @@
                 </div>
             </div>
         </div>
+
+        <div>
+            <!-- Center Column (Completed Job) -->
+            <div class="flex-1 bg-white p-4 rounded-md md:mx-4 mb-4 mt-4">
+                <div>
+                    <h2 class="font-medium2 mb-4 text-start">Rejected Hiring Applications</h2>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white shadow-md rounded-md text-start">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Project Title</th>
+                                <th
+                                    class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Project Description</th>
+                                <th
+                                    class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Category</th>
+                                <th
+                                    class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Employer</th>
+                                <th
+                                    class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Start Date</th>
+                                <th
+                                    class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    End Date</th>
+                                <th
+                                    class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Status</th>
+                                <th
+                                    class="border-b px-6 py-3 text-center text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hiring-application-table">
+                            @foreach ($hiringForms as $hiringForm)
+                                @if ($hiringForm->status === 'Rejected')
+                                    <tr class="border-b">
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ $hiringForm->projectTitle }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ $hiringForm->projectDescription }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            @php
+                                                $workerCategory = $hiringForm->worker ? $hiringForm->worker->category->name : 'N/A';
+                                                echo $workerCategory;
+                                            @endphp
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ $hiringForm->employer->name ?? 'N/A' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ \Carbon\Carbon::parse($hiringForm->startDate)->format('F d, Y') }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ \Carbon\Carbon::parse($hiringForm->endDate)->format('F d, Y') }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ $hiringForm->status }}</td>
+                                        <!-- Action Column -->
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800 text-center">
+                                            <a class="open-button text-blue-500" data-id="{{ $hiringForm->id }}"
+                                                style="cursor: pointer;">View</a>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        @foreach ($hiringForms as $hiringForm)
+            <dialog class="content-center shadow-lg rounded-lg m-auto" id="nameModal-{{ $hiringForm->id }}"
+                style="width: 80vw; max-width: 800px; overflow-y: auto;">
+                <div class="text-center grid divide-gray-200 w-full">
+                    <div class="bg-white shadow-md p-8 w-full text-center rounded-lg">
+                        <form method="POST" action="" class="overflow-hidden">
+                            @csrf
+                            <!-- Form heading -->
+                            <h1 class="text-lg font-semibold mb-1">Job Hiring Form</h1>
+
+                            <!-- Employer Details section -->
+                            <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
+                                <h2 class="text-sm font-semibold mb-2">Employer Details</h2>
+
+                                <!-- Full Name -->
+                                <div class="w-full mb-2">
+                                    <label for="employerFullName" class="block text-xs font-medium text-gray-700">Full
+                                        Name</label>
+                                    <input type="text" name="employerFullName" id="employerFullName"
+                                        placeholder="Enter employer's full name" disabled
+                                        class="mt-1 p-2 w-full border rounded-md text-xs"
+                                        value="{{ isset($hiringForm->employer) ? $hiringForm->employer->name : '' }}"
+                                        required>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="flex mb-2">
+                                    <div class="w-1/2 mr-1">
+                                        <label for="employerEmail"
+                                            class="block text-xs font-medium text-gray-700">Email</label>
+                                        <input type="text" name="employerEmail" id="employerEmail"
+                                            placeholder="Enter employer's email" disabled
+                                            class="mt-1 p-2 w-full border rounded-md text-xs"
+                                            value="{{ isset($hiringForm->employer) ? $hiringForm->employer->email : '' }}"
+                                            required>
+                                    </div>
+
+                                    <!-- Phone -->
+                                    <div class="w-1/2 ml-1">
+                                        <label for="employerPhone"
+                                            class="block text-xs font-medium text-gray-700">Phone</label>
+                                        <input type="text" name="employerPhone" id="employerPhone"
+                                            placeholder="Enter employer's phone number" disabled
+                                            class="mt-1 p-2 w-full border rounded-md text-xs"
+                                            value="{{ isset($hiringForm->employer) ? $hiringForm->employer->phone : '' }}"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Details section -->
+                            <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
+                                <h2 class="text-sm font-semibold mb-2">Project Details</h2>
+                                <div class="w-full mb-2">
+                                    <label for="projectTitle" class="block text-xs font-medium text-gray-700">Project
+                                        Title</label>
+                                    <input type="text" name="projectTitle" id="projectTitle"
+                                        placeholder="Enter project title" disabled
+                                        class="mt-1 p-2 w-full border rounded-md text-xs" required
+                                        value="{{ isset($hiringForm) ? $hiringForm->projectTitle : '' }}">
+                                </div>
+
+                                <div class="w-full mb-2">
+                                    <label for="projectDescription"
+                                        class="block text-xs font-medium text-gray-700">Project
+                                        Description</label>
+                                    <textarea name="projectDescription" id="projectDescription" placeholder="Enter project description" disabled
+                                        class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required>{{ isset($hiringForm) ? $hiringForm->projectDescription : '' }}</textarea>
+                                </div>
+
+                                <div class="flex mb-2">
+                                    <div class="w-1/2 mr-1">
+                                        <label for="startDate" class="block text-xs font-medium text-gray-700">Start
+                                            Date</label>
+                                        <input type="text" name="startDate" id="startDate"
+                                            class="mt-1 p-2 w-full border rounded-md text-xs" disabled
+                                            placeholder="Select start date" required
+                                            value="{{ isset($hiringForm) ? $hiringForm->startDate : '' }}">
+                                    </div>
+                                    <div class="w-1/2 ml-1">
+                                        <label for="endDate" class="block text-xs font-medium text-gray-700">End
+                                            Date</label>
+                                        <input type="text" name="endDate" id="endDate"
+                                            class="mt-1 p-2 w-full border rounded-md text-xs" disabled
+                                            placeholder="Select end date" required
+                                            value="{{ isset($hiringForm) ? $hiringForm->endDate : '' }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Scope of Work section -->
+                            <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
+                                <h2 class="text-sm font-semibold mb-2">Scope of Work</h2>
+                                <div class="w-full mb-2">
+                                    <label for="scopeOfWork" class="block text-xs font-medium text-gray-700">Briefly
+                                        describe
+                                        the
+                                        tasks and responsibilities of the worker.</label>
+                                    <textarea name="scopeOfWork" id="scopeOfWork" placeholder="Enter scope of work" disabled
+                                        class="mt-1 p-2 w-full border rounded-md text-xs" rows="4" required>{{ isset($hiringForm) ? $hiringForm->scopeOfWork : '' }}</textarea>
+                                </div>
+                            </div>
+
+                            <!-- Payment Terms section -->
+                            <div class="bg-blue-100 p-10 rounded-lg pt-5 pb-5 mt-2">
+                                <h2 class="text-sm font-semibold mb-2">Payment Terms</h2>
+
+                                <!-- Total Payment -->
+                                <div class="w-full mb-2">
+                                    <label for="totalPayment" class="block text-xs font-medium text-gray-700">Total
+                                        Payment</label>
+                                    <input type="text" name="totalPayment" id="totalPayment"
+                                        class="mt-1 p-2 w-full border rounded-md text-xs" disabled
+                                        placeholder="Enter total payment" required
+                                        value="{{ isset($hiringForm) ? $hiringForm->totalPayment : '' }}">
+                                </div>
+
+                                <!-- Payment Frequency -->
+                                <div class="w-full mb-2">
+                                    <label for="paymentFrequency"
+                                        class="block text-xs font-medium text-gray-700">Payment
+                                        Frequency</label>
+                                    <select name="paymentFrequency" id="paymentFrequency" disabled
+                                        class="mt-1 p-2 w-full border rounded-md text-xs" required>
+                                        <option value="hourly"
+                                            {{ isset($hiringForm) && $hiringForm->paymentFrequency === 'hourly' ? 'selected' : '' }}>
+                                            Hourly</option>
+                                        <option value="perMilestone"
+                                            {{ isset($hiringForm) && $hiringForm->paymentFrequency === 'perMilestone' ? 'selected' : '' }}>
+                                            Per Milestone</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+
+                                <!-- Payment Method -->
+                                <div class="w-full mb-2">
+                                    <label for="paymentMethod" class="block text-xs font-medium text-gray-700">Payment
+                                        Method</label>
+                                    <select name="paymentMethod" id="paymentMethod" disabled
+                                        class="mt-1 p-2 w-full border rounded-md text-xs" required>
+                                        <option value="bankTransfer"
+                                            {{ isset($hiringForm) && $hiringForm->paymentMethod === 'bankTransfer' ? 'selected' : '' }}>
+                                            Bank Transfer</option>
+                                        <option value="cash"
+                                            {{ isset($hiringForm) && $hiringForm->paymentMethod === 'cash' ? 'selected' : '' }}>
+                                            Cash</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Submit button -->
+                            <div class="flex mb-2 mt-3">
+                                @if ($hiringForm->status === 'Pending')
+                                    <div class="w-1/2">
+                                        <a href="{{ route('acceptStatus', ['id' => $hiringForm->id]) }}"
+                                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-xs">
+                                            Accept
+                                        </a>
+                                    </div>
+                                    <div class="w-1/2">
+                                        <a href="#"
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs">
+                                            Reject
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!-- Load flatpickr script after the form -->
+                    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                    <script>
+                        flatpickr('#startDate, #endDate', {
+                            dateFormat: 'Y-m-d', // Store the date in Y-m-d format
+                            altInput: true, // Create an alternate input field
+                            altFormat: 'F j, Y', // Format for the alternate input field (displayed in the textbox)
+                            // Add other Flatpickr options as needed
+                        });
+                    </script>
+                </div>
+            </dialog>
+        @endforeach
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Add click event listener to open-button
+                const openButtons = document.querySelectorAll('.open-button');
+                openButtons.forEach((openButton) => {
+                    openButton.addEventListener('click', () => {
+                        const hiringFormId = openButton.getAttribute('data-id');
+                        const modalId = `nameModal-${hiringFormId}`;
+                        const modal = document.getElementById(modalId);
+                        modal.showModal();
+                    });
+                });
+
+                // Add click event listener to close the dialog when clicking outside
+                const modals = document.querySelectorAll('dialog');
+                modals.forEach((modal) => {
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            modal.close();
+                        }
+                    });
+                });
+            });
+        </script>
 
     </main>
 

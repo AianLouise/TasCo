@@ -5,7 +5,8 @@
 <link rel="stylesheet" href="guest.blade.php">
 
         <p class="uppercase text-5xl font-bold text-center mb-5">Register</p>
-        
+
+
     <div class="flex gap-5">
        <!-- First Name -->
         <div class="relative">

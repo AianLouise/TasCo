@@ -337,24 +337,28 @@ class AdminController extends Controller
     public function updateIsVerifiedJobSeeker(Request $request)
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter
-
+    
         // Retrieve the 'category_id' from the 'jobseeker_applications' table
         $category = JobSeekerApplication::where('user_id', $userId)->value('category_id');
-
+    
         // Update the user information in a single query
         User::where('id', $userId)->update([
             'is_verified' => 1,
             'role' => 'worker',
             'category_id' => $category,
         ]);
-
+    
         // Update the status in the 'jobseeker_applications' table
         JobSeekerApplication::where('user_id', $userId)->update(['status' => 'Accepted']);
-
-        // return response()->json(['message' => 'User is now verified']);
+    
+        // Get the user instance
+        $user = User::find($userId);
+    
+        // Send the notification
+        $user->notify(new \App\Notifications\UserVerified());
+    
         return redirect()->route('admin.application')->with('success', 'User is now verified');
     }
-
 
 
     public function updateIsRejectedJobSeeker(Request $request)
@@ -362,7 +366,7 @@ class AdminController extends Controller
         $userId = $request->route('user_id'); // Use route() to get the parameter
 
         // Update the status in the employer_applications table to 'Rejected'
-        EmployerApplication::where('user_id', $userId)->update(['status' => 'Rejected']);
+        JobSeekerApplication::where('user_id', $userId)->update(['status' => 'Rejected']);
 
         return redirect()->route('admin.application')->with('success', 'User application has been rejected');
     }
