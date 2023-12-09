@@ -361,7 +361,6 @@ class AdminController extends Controller
     }
 
 
-
     public function updateIsRejectedJobSeeker(Request $request)
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter

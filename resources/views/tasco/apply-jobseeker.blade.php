@@ -15,18 +15,20 @@
     <!-- Welcome Page -->
     <section class="flex items-center justify-center">
         <div id="welcomePage" class="h-screen sm:w-1/2 flex items-center justify-center">
-            <div class="container mx-auto p-4">
+            <div class="container mx-auto p-4 bg-blue-500">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                     <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to TasCo Job Seeker Application</h1>
 
                     <p class="text-sm text-gray-600 mb-4">
-                        Explore exciting job opportunities with TasCo. Start your journey to find the perfect job for
+                        Explore exciting job opportunities with TasCo. Start your journey to find the perfect job
+                        for
                         you.
                     </p>
 
                     <a href="#" id="startApplicationBtn"
-                        class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60  mx-auto">Start
-                        Your Application Now</a>
+                        class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto shadow-lg transform hover:scale-105">
+                        Start Your Application Now
+                    </a>
                 </div>
             </div>
         </div>
@@ -34,7 +36,7 @@
 
         <!-- Terms and Conditions Page -->
         <div id="termsAndConditionsPage" class="hidden flex items-center justify-center h-screen">
-            <div class="container mx-auto p-4">
+            <div class="container mx-auto p-4 bg-blue-500">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                     <h2 class="text-2xl font-bold text-gray-800 mb-2">Terms and Conditions</h2>
                     <p class="text-gray-600 mb-4">
@@ -53,27 +55,34 @@
                                 <li class="mb-2">TasCo reserves the right to reject or terminate your application
                                     without
                                     notice.</li>
-                                <li class="mb-2">You agree to comply with all applicable laws and regulations.</li>
-                                <li class="mb-2">TasCo is not responsible for any damages or losses resulting from the
+                                <li class="mb-2">You agree to comply with all applicable laws and regulations.
+                                </li>
+                                <li class="mb-2">TasCo is not responsible for any damages or losses resulting from
+                                    the
                                     use
                                     of
                                     our platform.</li>
-                                <li class="mb-2">You understand and acknowledge that TasCo collects and processes your
+                                <li class="mb-2">You understand and acknowledge that TasCo collects and processes
+                                    your
                                     personal data in accordance with our Privacy Policy.</li>
                                 <li class="mb-2">You agree to receive communications from TasCo related to your
                                     application
                                     and other relevant information.</li>
-                                <li class="mb-2">You acknowledge that TasCo may update these terms from time to time,
+                                <li class="mb-2">You acknowledge that TasCo may update these terms from time to
+                                    time,
                                     and
                                     it
                                     is your responsibility to review them periodically.</li>
-                                <li class="mb-2">You agree not to misuse our platform, including but not limited to
+                                <li class="mb-2">You agree not to misuse our platform, including but not limited
+                                    to
                                     engaging
                                     in fraudulent activities or violating any applicable laws.</li>
-                                <li class="mb-2">TasCo reserves the right to suspend or terminate your application if
+                                <li class="mb-2">TasCo reserves the right to suspend or terminate your application
+                                    if
                                     you
                                     violate these terms or engage in any prohibited activities.</li>
-                                <li class="mb-2">You indemnify TasCo against any claims, damages, or losses arising
+                                <li class="mb-2">You indemnify TasCo against any claims, damages, or losses
+                                    arising
                                     from
                                     your
                                     use of our platform or any violation of these terms.</li>
@@ -92,7 +101,7 @@
 
         <!-- Category Selection Page -->
         <div id="categorySelectionPage" class="hidden flex items-center justify-center h-screen sm:w-1/2">
-            <div class="container mx-auto p-4">
+            <div class="container mx-auto p-4 bg-blue-500">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                     <h2 class="text-2xl font-bold text-gray-800 mb-4">Select Job Category</h2>
                     <!-- Add your category selection options here -->
@@ -116,7 +125,7 @@
         </div>
 
         <div id="uploadRequirementsPage" class="hidden flex items-center h-screen justify-center mt-[20rem] md:mt-9">
-            <div class="container mx-auto p-4">
+            <div class="container mx-auto p-4 bg-blue-500">
                 <div class="text-center bg-white p-8 rounded-md flex flex-col justify-center">
                     <h2 class="font-bold text-2xl sm:text-4xl text-gray-800 p-2">Required Documents</h2>
                     <p class="text-gray-600">
@@ -375,5 +384,4 @@
             document.getElementById('submissionConfirmationPage').classList.remove('hidden');
         });
     </script>
-
 </x-app-layout>
