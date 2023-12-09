@@ -367,7 +367,7 @@ class AdminController extends Controller
         $userId = $request->route('user_id'); // Use route() to get the parameter
 
         // Update the status in the employer_applications table to 'Rejected'
-        EmployerApplication::where('user_id', $userId)->update(['status' => 'Rejected']);
+        JobSeekerApplication::where('user_id', $userId)->update(['status' => 'Rejected']);
 
         return redirect()->route('admin.application')->with('success', 'User application has been rejected');
     }

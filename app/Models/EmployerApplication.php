@@ -12,7 +12,11 @@ class EmployerApplication extends Model
     protected $fillable = [
         'valid_id',
         'barangay_clearance',
-        'latest_picture'
+        'latest_picture',
+        'category_id',
+        'user_id',
+        'status'
+
     ];
 
     public function user()
