@@ -14,7 +14,7 @@
 
         <!-- Project Page -->
         <section class="flex justify-center height w-full">
-            <div id="ProjectPage" class="m-2 mt-10 sm:m-10 w-full width sm:w-1/3">
+            <div id="ProjectPage" class="m-2 mt-10 sm:m-10 w-full sm:w-1/3 ">
                 <div class="container px-4 sm:px-16 sm:py-2.5 bg-white rounded-xl shadow-xl mt-32 sm:mt-0">
                     <div class="rounded-md sm:flex sm:items-start justify-center pt-10 pb-4 sm:pb-2">
                         <div class="grid sm:flex sm:flex-col justify-center items-center">
@@ -100,7 +100,7 @@
                                     Start Working
                                 </a>
                             @else
-                                <span class="text-red-600 bg-gray-200 p-4 rounded-lg">You can only start working on the
+                                <span class="text-red-600 bg-gray-200 p-4 rounded-lg mb-4">You can only start working on the
                                     day of the work.</span>
                             @endif
                         @elseif ($hiringForm->status === 'Ongoing' && $event->status === 'Ongoing')

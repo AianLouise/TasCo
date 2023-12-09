@@ -7,8 +7,7 @@
         }
     </style>
     <main class="bg-gray-200 min-h-screen flex items-center justify-center">
-        
-        <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-center mt-36 sm:mt-0 rounded-lg border-8 border-blue-500">
+        <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-center mt-36 sm:mt-0 rounded-lg">
             <div class="sm:grid sm:grid-cols-3">
             @if (Auth::user()->avatar == 'avatar.png')
                 <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF"
@@ -28,7 +27,6 @@
                 <button
                 class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-6 rounded w-38"><i class="ri-folder-line font-normal"></i> Employments</button>
                </div>
-           
         </div>
             <div class="text-center bg-blue-100 p-8 sm:p-4 rounded-xl divide-y divide-black sm:text-justify">
                 <h2 class="text-xl sm:text-4xl font-semibold mb-2">{{ Auth::user()->name }}</h2>
@@ -45,9 +43,22 @@
                         <p class="text-red-500">Category not found</p>
                     @endif
                 @endif
-            </div>
+
             
-                <div class="mt-4">
+                
+            </div>
+            <div class="grid grid-cols-2 py-2 sm:py-0">
+            <div class="block lg:hidden">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="ri-edit-line font-normal"></i> Edit
+                    Profile</button>
+            </div>
+            <div class="block lg:hidden">
+                <button
+                class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-4 rounded w-38"><i class="ri-folder-line font-normal"></i> Employments</button>
+               </div>
+            </div>
+        
+                <div class="sm:mt-4">
                     <div class="grid grid-rows-1 sm:grid-cols-2 gap-4">
                         <div>
                             <div
