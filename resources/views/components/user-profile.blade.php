@@ -8,7 +8,7 @@
         </div>
 
         <div class="mr-6">
-            <a href="{{ route('app.notifications') }}" target="_new">
+            <a href="{{ route('app.notifications') }}">
                 <i class="ri-notification-3-line text-2xl"></i>
             </a>
         </div>
