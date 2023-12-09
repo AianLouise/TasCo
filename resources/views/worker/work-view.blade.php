@@ -100,7 +100,8 @@
                                     Start Working
                                 </a>
                             @else
-                                <span class="text-red-600 bg-gray-200 p-4 rounded-lg">You can only start working on the day of the work.</span>
+                                <span class="text-red-600 bg-gray-200 p-4 rounded-lg">You can only start working on the
+                                    day of the work.</span>
                             @endif
                         @elseif ($hiringForm->status === 'Ongoing' && $event->status === 'Ongoing')
                             <div class="grid grid-rows-1 sm:grid-cols-2 gap-4">
@@ -113,16 +114,9 @@
                                     <i class="ri-check-fill mr-2"></i>Finish
                                 </button>
                             </div>
-                        @elseif ($event->status === 'Done')
-                            <div class="col-span-2 mt-4">
-                                <!-- Display your three images here -->
-                                <img src="{{ $hiringForm->image1 }}" alt="Image 1" class="w-full h-auto mb-2">
-                                <img src="{{ $hiringForm->image2 }}" alt="Image 2" class="w-full h-auto mb-2">
-                                <img src="{{ $hiringForm->image3 }}" alt="Image 3" class="w-full h-auto">
-                            </div>
                         @endif
                     </div>
-                    
+
 
                 </div>
             </div>

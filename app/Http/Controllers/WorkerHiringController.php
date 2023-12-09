@@ -76,7 +76,7 @@ class WorkerHiringController extends Controller
             // Create multiple events based on the days between start and end dates
             for ($i = 0; $i <= $daysDifference; $i++) {
                 $eventDate = $startDate->copy()->addDays($i);
-            
+
                 // Create the event for the current day
                 $event = Event::create([
                     'hiring_form_id' => $hiringForm->id,
@@ -87,14 +87,14 @@ class WorkerHiringController extends Controller
                     'worker_id' => $hiringForm->worker_id,
                     'user_id' => Auth::user()->id,
                 ]);
-            
+
                 // Create the employment with the associated event_id (ID of the Event)
                 Employment::create([
                     'hiring_form_id' => $hiringForm->id,
                     'event_id' => $event->id,
                     // Other columns in the employment table
                 ]);
-            }            
+            }
 
             return redirect()->back()->with('success', 'Status updated successfully');
         }
@@ -117,6 +117,7 @@ class WorkerHiringController extends Controller
         return redirect()->back()->with('error', 'Hiring form not found');
     }
 
+    // WorkerHiringController
 
     public function WorkView($event_id)
     {
@@ -131,12 +132,16 @@ class WorkerHiringController extends Controller
             // Retrieve the employer user associated with the hiringForm
             $user = User::find($hiringForm->employer_id);
 
-            return view('worker.work-view', compact('event', 'hiringForm', 'user'));
+            // Retrieve the employment associated with the event
+            $employment = $event->employment;
+
+            return view('worker.work-view', compact('event', 'hiringForm', 'user', 'employment'));
         } else {
             // Handle the case where the event record with the given ID doesn't exist.
             return redirect()->route('worker.dashboard')->with('error', 'Event not found.');
         }
     }
+
 
 
     public function startWorking($hiringFormId, $eventId)
@@ -190,7 +195,6 @@ class WorkerHiringController extends Controller
             $employment = Employment::where('hiring_form_id', $hiringForm->id)->first();
 
             if ($employment) {
-                // Find the specific event by ID and update its status to 'Done'
                 $event = Event::find($eventId);
 
                 if ($event) {
@@ -204,7 +208,6 @@ class WorkerHiringController extends Controller
                         'image3' => $path3,
                         // Repeat the process for Image 2 and Image 3
                     ]);
-                    
 
                     // Update the status of the specific event to 'Done'
                     $event->update(['status' => 'Done']);
@@ -220,9 +223,6 @@ class WorkerHiringController extends Controller
                         // Update the status of the hiring form to 'Finished'
                         $hiringForm->update(['status' => 'Finished']);
                     }
-
-                    // Redirect back or to another page as needed
-                    return redirect()->back()->with('success', 'Finished working successfully!');
                 } else {
                     // Handle the case where the event with the given ID doesn't exist
                     return redirect()->route('some.redirect.route')->with('error', 'Event not found.');
