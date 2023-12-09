@@ -16,20 +16,20 @@
                             <!-- Table Header -->
                             <tr class="border-b">
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider ml-5">
+                                    class="px-10 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider ml-5">
                                     Notification
                                 </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                                    class="px-10 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                     Created at
                                 </th>
                             </tr>
                         </thead>
         
-                        <tbody class="bg-white divide-y divide-gray-200 ">
+                        <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($notifications as $notification)
                                 <tr>
-                                    <td class="py-4 whitespace-nowrap text-left">
+                                    <td class="py-4 whitespace-nowrap text-left pr-6">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-10 w-10">
                                             </div>
@@ -40,13 +40,13 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="py-4 whitespace-nowrap text-left">
+                                    <td class="py-4 whitespace-nowrap text-left pr-6">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-10 w-10">
                                             </div>
                                             <div class="">
                                                 <div class="text-base text-gray-800">
-                                                    {{ $notification->created_at }}
+                                                    {{ $notification->created_at->format('M d, Y h:i A') }}
                                                 </div>
                                             </div>
                                         </div>
