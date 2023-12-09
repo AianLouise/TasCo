@@ -82,7 +82,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
-Route::middleware(['auth', 'role:user'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/home', [AppController::class, 'Home'])->name('app.home');
     Route::get('/about-us', [AppController::class, 'AboutUs'])->name('app.aboutUs');
     Route::get('/apply-as-jobseeker', [AppController::class, 'applyJobseeker'])->name('app.applyJobseeker');
@@ -105,10 +105,12 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
 
+    Route::post('/update-profile/{id}', [UserController::class, 'updateProfile'])->name('update.profile');
     Route::post('/update-name', [UserController::class, 'updateName'])->name('update.name');
     Route::post('/update-address', [UserController::class, 'updateAddress'])->name('update.address');
     Route::post('/update-email', [UserController::class, 'updateEmail'])->name('update.email');
     Route::post('/update-phone', [UserController::class, 'updatePhone'])->name('update.phone');
+    Route::post('/update-password', [UserController::class, 'updatePassword'])->name('update.password');
 });
 
 Route::middleware(['auth'])->group(function () {

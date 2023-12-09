@@ -36,7 +36,9 @@
                     @endphp
 
                     @if ($category)
-                        <p class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-medium text-xs py-2 px-4 rounded-lg w-32 mx-auto">{{ $category->name }}</p>
+                        <p
+                            class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-medium text-xs py-2 px-4 rounded-lg w-32 mx-auto">
+                            {{ $category->name }}</p>
                         <!-- Display other category information as needed -->
                     @else
                         <p class="text-red-500">Category not found</p>
@@ -47,8 +49,20 @@
                     <!-- Hire button -->
                     <div class="flex justify-center space-x-4">
                         @if (Auth::user()->is_verified)
-                            <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">Hire</a>
+                            @php
+                                $applicationExists = \App\Models\HiringForm::where('employer_id', Auth::user()->id)
+                                    ->where('worker_id', $user->id)
+                                    ->exists();
+                            @endphp
+
+                            @if ($applicationExists)
+                                <span
+                                    class="inline-block bg-gray-400 text-white font-bold py-2 px-4 rounded">Application
+                                    Sent</span>
+                            @else
+                                <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">Hire</a>
+                            @endif
                         @else
                             <span
                                 class="inline-block hover:bg-red-400 hover:text-white text-black font-bold py-2 px-4 rounded">You
@@ -60,8 +74,8 @@
                             class="border hover:border-blue-700 hover:text-blue-500 text-gray font-bold py-2 px-4 rounded w-36">
                             Message
                         </a>
-
                     </div>
+
                 </div>
                 <div class="mt-4">
                     <div class="grid grid-cols-2 gap-4">

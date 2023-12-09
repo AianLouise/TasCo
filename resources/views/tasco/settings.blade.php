@@ -152,7 +152,7 @@
                 group-[.selected]:bg-blue-600 group-[.selected]:text-white
                 cursor-pointer
                 ">
-                <i class="ri-price-tag-3-line text-2xl p-1 ml-3"></i>
+                <i class="ri-image-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
                     <span>Change Profile Picture:</span>
                     <span>
@@ -173,7 +173,7 @@
 
             <!-- Updated HTML Structure for First Name and Last Name -->
             <dialog class="content-center shadow-lg rounded-lg w-96" id="profileModal" style="margin: auto;">
-                <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-48 mt-4">
+                <div class="text-center grid grid-rows-6 divide-y divide-gray-200 h-[16rem] mt-4">
                     <div>
                         <i class="ri-user-line text-blue-400 text-base"></i>
                         <span class="tracking-wider font-semibold text-base">Change Profile Picture</span>
@@ -182,18 +182,30 @@
                         </button>
                     </div>
                     <div>
-                        <form class="mt-2 p-4" id="updateNameForm" action="{{ route('update.name') }}" method="POST">
+                        <form class="mt-2 p-4" id="updateProfile"
+                            action="{{ route('update.profile', ['id' => auth()->user()->id]) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
-                            <div class="flex ">
+                            <div class="flex items-center justify-center">
                                 @if (Auth::user()->avatar == 'avatar.png')
-                                    <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF"
+                                    <img id="profile-picture"
+                                        src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF"
                                         alt="" class="w-20 h-20 rounded block object-cover mx-auto">
                                 @else
-                                    <img src="{{ asset('storage/users-avatar/' . basename(Auth::user()->avatar)) }}"
+                                    <img id="profile-picture"
+                                        src="{{ asset('storage/users-avatar/' . basename(Auth::user()->avatar)) }}"
                                         alt="" class="w-20 h-20 rounded block object-cover mx-auto">
                                 @endif
                             </div>
-                            <input type="file" name="avatar" id="avatar" class="mt-2">
+                            <div class="mt-2 flex items-center justify-center">
+                                <input type="file" name="avatar" id="avatar" class="hidden"
+                                    onchange="previewImage(this)">
+                                <label for="avatar"
+                                    class="cursor-pointer bg-white border border-gray-300 rounded-md py-2 px-4 inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    Upload New Picture
+                                </label>
+                                <span id="file-name" class="ml-2"></span>
+                            </div>
 
                             <button type="submit"
                                 class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
@@ -213,6 +225,15 @@
                 </div>
             </dialog>
 
+            <script>
+                function previewImage(input) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('profile-picture').src = e.target.result;
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            </script>
 
             <script>
                 // Add click event listener to open-button
@@ -241,7 +262,7 @@
                 group-[.selected]:bg-blue-600 group-[.selected]:text-white
                 cursor-pointer
                 ">
-                <i class="ri-price-tag-3-line text-2xl p-1 ml-3"></i>
+                <i class="ri-user-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
                     <span>Name:</span>
                     <span>{{ Auth::user()->name }}</span>
@@ -263,7 +284,8 @@
                         </button>
                     </div>
                     <div>
-                        <form class="mt-2 p-4" id="updateNameForm" action="{{ route('update.name') }}" method="POST">
+                        <form class="mt-2 p-4" id="updateNameForm" action="{{ route('update.name') }}"
+                            method="POST">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
@@ -429,13 +451,14 @@
                             </div>
                             <button type="submit"
                                 class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
-                    hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
-                    group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100 saveButton">
+                                hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
+                                group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100 saveButton">
                                 <span class="rounded-lg w-full text-base tracking-wide">
                                     <i class="ri-save-line font-bold mr-2"></i>Save
                                 </span>
                             </button>
                         </form>
+
                     </div>
                 </div>
             </dialog>
@@ -531,7 +554,8 @@
         <div class="pl-4 grid grid-cols-1">
             <span class="titleinfo text-2xl pb-2 pt-2">Password and Security</span>
         </div>
-        {{-- Name --}}
+
+        {{-- Password --}}
         <div>
             <div
                 class="open-button flex items-center py-2 text-gray-800 rounded-lg
@@ -543,20 +567,6 @@
                 <i class="ri-lock-line text-2xl p-1 ml-3"></i>
                 <div class="grid grid-cols-1 pl-4">
                     <span>Change Password</span>
-                    {{-- <span>{{ Auth::user()->name }}</span> --}}
-                </div>
-            </div>
-            <div
-                class="open-button flex items-center py-2 text-gray-800 rounded-lg
-            hover:bg-blue-400 hover:text-white
-            group-[.active]:bg-blue-600 group-[.active]:text-white
-            group-[.selected]:bg-blue-600 group-[.selected]:text-white
-            cursor-pointer
-            ">
-                <i class="ri-mail-check-line text-2xl p-1 ml-3"></i>
-                <div class="grid grid-cols-1 pl-4">
-                    <span>Two Factor Authentication</span>
-                    {{-- <span>{{ Auth::user()->name }}</span> --}}
                 </div>
             </div>
 
@@ -571,31 +581,95 @@
                         </button>
                     </div>
                     <div>
-                        <form class="mt-2 p-4">
+                        <form id="passwordForm" class="mt-2 p-4" action="{{ route('update.password') }}"
+                            method="POST">
+                            @csrf
                             <div class="grid grid-cols-1 gap-4">
                                 <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
                                     type="password" id="currentPassword" name="currentPassword"
                                     placeholder="Current Password">
+                                @error('currentPassword')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
+
                                 <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
                                     type="password" id="newPassword" name="newPassword" placeholder="New Password">
+                                @error('newPassword')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
+
                                 <input class="rounded-lg w-full p-2 text-base border-gray-200 tracking-wide"
-                                    type="password" id="confirmPassword" name="confirmPassword"
+                                    type="password" id="confirmPassword" name="newPassword_confirmation"
                                     placeholder="Confirm Password">
+                                @error('newPassword_confirmation')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
                             </div>
+                            <button type="submit"
+                                class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
+                                hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
+                                group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
+                                <span class="rounded-lg w-full text-base tracking-wide">
+                                    <i class="ri-save-line font-bold mr-2 saveButton"></i>Save
+                                </span>
+                            </button>
                         </form>
 
-                        <button
-                            class="edit-button border rounded-lg border-gray-200 border-solid p-2 mt-2 w-72 text-base
-                    hover:bg-blue-400 hover:text-gray-100 group-[.active]:bg-blue-500 group-[.active]:text-white 
-                    group-[.selected]:bg-blue-600 group-[.selected]:text-gray-100">
-                            <span class="rounded-lg w-full text-base tracking-wide">
-                                <i class="ri-save-line font-bold mr-2 saveButton"></i>Save
-                            </span>
-                        </button>
+
+
                     </div>
                 </div>
             </dialog>
 
+            <script>
+                $(document).ready(function() {
+                    // Check if there are any error messages
+                    if ($('.text-red-500').length > 0) {
+                        // If there are, open the modal dialog
+                        $('#passwordModal').modal('show');
+                    }
+                });
+            </script>
+
+            <script>
+                document.getElementById('openPasswordModal').addEventListener('click', function() {
+                    document.getElementById('passwordModal').showModal();
+                });
+
+                document.querySelectorAll('.close-button').forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        document.getElementById('passwordModal').close();
+                    });
+                });
+
+                function submitPasswordForm() {
+                    let form = document.getElementById('passwordForm');
+
+                    fetch(form.action, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                            },
+                            body: new FormData(form),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Display success message or handle accordingly
+                                console.log(data.success);
+                                document.getElementById('passwordModal').close();
+                            } else {
+                                // Display error messages or handle accordingly
+                                console.error(data.errors);
+                            }
+                        })
+                        .catch(error => {
+                            // Handle fetch error
+                            console.error('Fetch error:', error);
+                        });
+                }
+            </script>
         </div>
     </div>
 

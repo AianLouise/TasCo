@@ -20,6 +20,12 @@ class AppController extends Controller
      */
     public function home()
     {
+        // Check if the user is an admin
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            // Redirect admin users to the admin dashboard
+            return redirect()->route('admin.dashboard');
+        }
+
         // Retrieve worker users and categories
         $workerUsers = User::where('role', 'worker')->get();
         $categories = Category::all();
