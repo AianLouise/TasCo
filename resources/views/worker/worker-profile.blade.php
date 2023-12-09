@@ -8,7 +8,7 @@
     </style>
     <main class="bg-gray-200 min-h-screen flex items-center justify-center">
         
-        <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-center mt-36 sm:mt-0 rounded-lg">
+        <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-center mt-36 sm:mt-0 rounded-lg border-8 border-blue-500">
             <div class="sm:grid sm:grid-cols-3">
             @if (Auth::user()->avatar == 'avatar.png')
                 <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF"
@@ -31,15 +31,15 @@
            
         </div>
             <div class="text-center bg-blue-100 p-8 sm:p-4 rounded-xl divide-y divide-black sm:text-justify">
-                <h2 class="text-2xl sm:text-4xl font-semibold mb-2">{{ Auth::user()->name }}</h2>
-                <p class="text-gray-700 text-2xl p-2">Address: {{ Auth::user()->address }}</p>
+                <h2 class="text-xl sm:text-4xl font-semibold mb-2">{{ Auth::user()->name }}</h2>
+                <p class="text-gray-700 text-xl p-2">{{ Auth::user()->address }}</p>
                 @if (Auth::user()->category_id)
                     @php
                         $category = App\Models\Category::find(Auth::user()->category_id);
                     @endphp
 
                     @if ($category)
-                        <p class="text-gray-700 text-2xl p-1">Category: {{ $category->name }}</p>
+                        <p class="text-gray-700 text-xl p-2">{{ $category->name }}</p>
                         <!-- Display other category information as needed -->
                     @else
                         <p class="text-red-500">Category not found</p>

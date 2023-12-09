@@ -15,7 +15,7 @@
     <!-- Welcome Page -->
     <section class="flex items-center justify-center">
         <div id="welcomePage" class="h-screen sm:w-1/2 flex items-center justify-center">
-            <div class="container mx-auto p-4 bg-blue-500">
+            <div class="container mx-auto p-4 bg-blue-500 rounded-md">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                     <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to TasCo Job Seeker Application</h1>
 
