@@ -1,11 +1,11 @@
 <div>
     <!-- Start: Footer Section -->
 
-    <section class="flex flex-col mt-16 lg:justify-end">
+    <section class="flex flex-col lg:justify-end">
 
         <!-- Div Box for Text Upper Footer Section -->
 
-        <div class="w-full bg-blue-50 border-t py-4">
+        <div class="w-full bg-blue-100 border-t py-4">
 
             <!-- Div Box for Text Area -->
             <div class="max-w-6xl mx-auto">
@@ -25,13 +25,22 @@
                             <div class="w-16 mb-4 border-b-2 border-blue-500"></div>
                             <ul>
                                 <li class="mb-4">
-                                    <a href="#" class="inline-block text-base font-normal">Home</a>
+                                    <a href="{{ route('app.home') }}" class="text-base font-normal hover:text-blue-400 transition">Home</a>
+                                </li>
+                                @if (Auth::check() && Auth::user()->is_verified == 1)
+                                    <li class="mb-4">
+                                        <a href="{{ route('user.dashboard') }}" class="text-base font-normal hover:text-blue-400 transition">Employer Dashboard</a>
+                                    </li>
+                                @elseif (Auth::check() && Auth::user()->role == 'worker')
+                                    <li class="mb-4">
+                                        <a href="{{ route('worker.dashboard') }}" class="text-base font-normal hover:text-blue-400 transition">Job Seeker Dashboard</a>
+                                    </li>
+                                @endif
+                                <li class="mb-4">
+                                    <a href="{{ route('app.jobListing') }}" class="text-base font-normal hover:text-blue-400 transition">Job Listing</a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="#" class="inline-block text-base font-normal">About Us</a>
-                                </li>
-                                <li class="mb-4">
-                                    <a href="#" class="inline-block text-base font-normal">Features</a>
+                                    <a href="#" class="text-base font-normal hover:text-blue-400 transition">About Us</a>
                                 </li>
                             </ul>
                         </div>
@@ -40,14 +49,20 @@
                             <h2 class="pb-2 text-lg font-bold text-gray-800">Features</h2>
                             <div class="w-16 mb-4 border-b-2 border-blue-500"></div>
                             <ul>
+                                @if (Auth::user()->is_verified === 0)
+                                    <li class="mb-4">
+                                        <a href="{{ route('app.applyEmployer') }}"
+                                            class="inline-block text-base font-normal hover:text-blue-400 transition">Apply for Employer</a>
+                                    </li>
+                                    <li class="mb-4">
+                                        <a href="{{ route('app.applyJobseeker') }}"
+                                            class="inline-block text-base font-normal hover:text-blue-400 transition">Apply for Job Seeker</a>
+                                    </li>
+                                @endif
+
                                 <li class="mb-4">
-                                    <a href="#" class="inline-block text-base font-normal">Home</a>
-                                </li>
-                                <li class="mb-4">
-                                    <a href="#" class="inline-block text-base font-normal">About Us</a>
-                                </li>
-                                <li class="mb-4">
-                                    <a href="#" class="inline-block text-base font-normal">Features</a>
+                                    <a href="{{ route('app.jobListing') }}"
+                                        class="inline-block text-base font-normal hover:text-blue-400 transition">Hire a Worker</a>
                                 </li>
                             </ul>
                         </div>

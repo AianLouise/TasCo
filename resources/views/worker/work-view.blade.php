@@ -13,8 +13,8 @@
     <body>
 
         <!-- Project Page -->
-        <section class="flex justify-center height w-full">
-            <div id="ProjectPage" class="m-2 mt-10 sm:m-10 w-full sm:w-1/3 ">
+        <section class="flex justify-center height w-full bg-blue-50">
+            <div id="ProjectPage" class="m-2 mt-10 sm:m-10 w-full sm:w-1/2 ">
                 <div class="container px-4 sm:px-16 sm:py-2.5 bg-white rounded-xl shadow-xl mt-32 sm:mt-0">
                     <div class="rounded-md sm:flex sm:items-start justify-center pt-10 pb-4 sm:pb-2">
                         <div class="grid sm:flex sm:flex-col justify-center items-center">
@@ -72,7 +72,7 @@
                                         <input type="text" name="Username" id="Username"
                                             placeholder="Enter UserName"
                                             class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
-                                            value="{{ $hiringForm->startDate }}" disabled>
+                                            value="{{ $hiringForm->startDate->format('l, F j, Y') }}" disabled>
                                     </div>
                                     <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
                                         <p class="block  text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
@@ -80,9 +80,9 @@
                                         <input type="text" name="Username" id="Username"
                                             placeholder="Enter UserName"
                                             class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
-                                            value="{{ $hiringForm->endDate }}" disabled>
-
+                                            value="{{ $hiringForm->endDate->format('l, F j, Y') }}" disabled>
                                     </div>
+
 
                                 </div>
                             @else
@@ -100,7 +100,8 @@
                                     Start Working
                                 </a>
                             @else
-                                <span class="text-red-600 bg-gray-200 p-4 rounded-lg mb-4">You can only start working on the
+                                <span class="text-red-600 bg-gray-200 p-4 rounded-lg mb-4">You can only start working on
+                                    the
                                     day of the work.</span>
                             @endif
                         @elseif ($hiringForm->status === 'Ongoing' && $event->status === 'Ongoing')
@@ -114,6 +115,22 @@
                                     <i class="ri-check-fill mr-2"></i>Finish
                                 </button>
                             </div>
+                        @elseif ($event->status === 'Done')
+                        <div class="flex flex-col items-center">
+                            <h1 class="text-2xl font-bold mb-4">Documentation</h1>
+                            <div class="flex justify-between">
+                                <div class="w-1/3">
+                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image1)) }}" alt="Image">
+                                </div>
+                                <div class="w-1/3 flex flex-col items-center">
+                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image2)) }}" alt="Image">
+                                </div>
+                                <div class="w-1/3">
+                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image3)) }}" alt="Image">
+                                </div>
+                            </div>
+                        </div>
+                        
                         @endif
                     </div>
 
@@ -128,41 +145,82 @@
         </div>
 
 
-        <div id="uploadDocumentationPage" class="hidden items-center justify-center h-screen mx-10 mt-10">
+        <div id="uploadDocumentationPage" class="hidden flex items-center justify-center h-screen mx-10 mt-10">
             <div class="container mx-auto p-4 bg-white">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                     <h2 class="text-2xl font-bold text-gray-800 mb-2">Upload Documentation</h2>
-                    <div class="max-h-60 overflow-y-auto mb-4">
+                    <div class="max-h-100 overflow-y-auto mb-4">
                         <!-- Add your form elements for uploading requirements here -->
-                        <form id="uploadRequirementsForm" method="POST"
-                            action="{{ route('uploadDocumentation', ['id' => $hiringForm->id, 'eventId' => $event->id]) }}"
-                            enctype="multipart/form-data">
+                        <form id="uploadRequirementsForm" method="POST" action="{{ route('uploadDocumentation', ['id' => $hiringForm->id, 'eventId' => $event->id]) }}" enctype="multipart/form-data">
                             @csrf
-
-                            <!-- Update the label and name for Image 1 -->
-                            <label for="image1">Image 1:</label>
-                            <input type="file" id="image1" name="image1" accept="image/*">
-
-                            <!-- Update the label and name for Image 2 -->
-                            <label for="image2">Image 2:</label>
-                            <input type="file" id="image2" name="image2" accept="image/*">
-
-                            <!-- Update the label and name for Image 3 -->
-                            <label for="image3">Image 3:</label>
-                            <input type="file" id="image3" name="image3" accept="image/*">
-
-                            <!-- Add some spacing for the job description -->
-                            <div class="mt-4"></div>
-
-                            <!-- Add the job description textbox -->
-                            <label for="jobDescription">Job Description:</label>
-                            <textarea id="jobDescription" name="jobDescription" class="w-full p-2 border rounded"
-                                placeholder="Enter job description here"></textarea>
-
-                            <!-- Update the button type to "submit" -->
-                            <button type="submit" id="submitBtn"
-                                class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-blue-100 p-10 rounded-xl">
+                                <!-- Image 1 -->
+                                <div class="mb-4">
+                                    <label for="image1">
+                                        <i class="ri-bank-card-2-line font-bold text-2xl"></i> Image 1:
+                                    </label>
+                                    <div id="image1Preview" class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                        <input type="file" id="image1" name="image1" class="hidden" accept="image/*" onchange="previewImage('image1', 'image1Preview')">
+                                        <label for="image1" class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                            <!-- Display the current image or a placeholder -->
+                                            @if (isset($uploadedImages['image1']))
+                                                <img src="{{ $uploadedImages['image1'] }}" class="w-full h-full object-cover rounded-lg" alt="Image 1">
+                                            @else
+                                                <img src="{{ asset('images/placeholder.jpg') }}" class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                            @endif
+                                            <div class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                                <span class="text-black">Upload</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                        
+                                <!-- Image 2 -->
+                                <div class="mb-4">
+                                    <label for="image2">
+                                        <i class="ri-bill-line font-bold text-2xl"></i> Image 2:
+                                    </label>
+                                    <div id="image2Preview" class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                        <input type="file" id="image2" name="image2" class="hidden" accept="image/*" onchange="previewImage('image2', 'image2Preview')">
+                                        <label for="image2" class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                            <!-- Display the current image or a placeholder -->
+                                            @if (isset($uploadedImages['image2']))
+                                                <img src="{{ $uploadedImages['image2'] }}" class="w-full h-full object-cover rounded-lg" alt="Image 2">
+                                            @else
+                                                <img src="{{ asset('images/placeholder.jpg') }}" class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                            @endif
+                                            <div class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                                <span class="text-black">Upload</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                        
+                                <!-- Image 3 -->
+                                <div class="mb-4">
+                                    <label for="image3">
+                                        <i class="ri-account-box-line text-2xl"></i> Image 3:
+                                    </label>
+                                    <div id="image3Preview" class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                        <input type="file" id="image3" name="image3" class="hidden" accept="image/*" onchange="previewImage('image3', 'image3Preview')">
+                                        <label for="image3" class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                            <!-- Display the current image or a placeholder -->
+                                            @if (isset($uploadedImages['image3']))
+                                                <img src="{{ $uploadedImages['image3'] }}" class="w-full h-full object-cover rounded-lg" alt="Image 3">
+                                            @else
+                                                <img src="{{ asset('images/placeholder.jpg') }}" class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                            @endif
+                                            <div class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                                <span class="text-black">Upload</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <button type="submit" id="submitBtn" class="bg-blue-500 mt-4 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
                         </form>
+                        
                     </div>
                 </div>
             </div>
@@ -171,6 +229,22 @@
 
     </body>
 
+    <script>
+        function previewImage(inputId, previewId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.querySelector('img').src = e.target.result;
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 
     <!-- Place this script at the end of your Blade file or in a separate JS file -->
     <script>

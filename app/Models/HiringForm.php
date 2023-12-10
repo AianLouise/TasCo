@@ -11,6 +11,11 @@ class HiringForm extends Model
 
     protected $table = 'hiring_forms';
 
+    protected $casts = [
+        'startDate' => 'datetime',
+        'endDate' => 'datetime',
+    ];
+
     protected $fillable = [
         'employer_id',
         'worker_id',

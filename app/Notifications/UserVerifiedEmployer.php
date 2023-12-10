@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserVerified extends Notification
+class UserVerifiedEmployer extends Notification
 {
     use Queueable;
 
@@ -35,11 +35,11 @@ class UserVerified extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-        ->subject('Account Verification')
-        ->line('Dear user,')
-        ->line('Your job seeker application has been approved.')
-        ->action('Visit Website', url('/'))
-        ->line('Thank you for using our application!');
+            ->subject('Account Verification')
+            ->line('Dear user,')
+            ->line('Your application for employer has been approved.')
+            ->action('View My Account', url('/home'))
+            ->line('Thank you for using our application!');
     }
 
     /**
@@ -50,7 +50,7 @@ class UserVerified extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'message' => 'Your Job Seeker application has been approved.',
+            'message' => 'Your Employer application has been approved.',
             // Add any other data you want to store here
         ];
     }

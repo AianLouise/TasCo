@@ -274,4 +274,21 @@ class UserController extends Controller
 
         return view("tasco.notification", compact('user', 'pageTitle', 'notifications', 'user'));
     }
+
+    public function MarkAsCompletedUser(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        $hiringForm = HiringForm::find($id);
+
+        if ($hiringForm) {
+            // Update the hiring form status
+            $hiringForm->status = 'Completed(Pending)'; // You might want to set a default status here
+            $hiringForm->save();
+
+            return redirect()->back()->with('success', 'Status updated successfully');
+        }
+
+        return redirect()->back()->with('error', 'Hiring form not found');
+    }
 }

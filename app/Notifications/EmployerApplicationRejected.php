@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserVerified extends Notification
+class EmployerApplicationRejected extends Notification
 {
     use Queueable;
 
@@ -35,11 +35,14 @@ class UserVerified extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-        ->subject('Account Verification')
-        ->line('Dear user,')
-        ->line('Your job seeker application has been approved.')
-        ->action('Visit Website', url('/'))
-        ->line('Thank you for using our application!');
+            ->subject('Application Rejected Notification')
+            ->line('Dear User,')
+            ->line('We regret to inform you that your recent application for Employer role has been rejected. Please contact us for more information')
+            ->line('Thank you for considering our organization.')
+            ->action('Visit Our Website', url('/'))
+            ->line('Best Regards,')
+            ->line(config('app.name'));
+
     }
 
     /**
@@ -50,8 +53,7 @@ class UserVerified extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'message' => 'Your Job Seeker application has been approved.',
-            // Add any other data you want to store here
+            'message' => 'Your Employer application has been rejected.',
         ];
     }
 }

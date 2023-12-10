@@ -13,13 +13,14 @@ class Employment extends Model
 
     public function hiringForm()
     {
-    return $this->belongsTo(HiringForm::class);
+        return $this->belongsTo(HiringForm::class);
     }
 
 
     public function event()
     {
-        return $this->belongsTo(Event::class, 'event_id');
+        return $this->hasOne(Event::class, 'event_id', 'id'); // Adjust column names accordingly
     }
+
 
 }

@@ -53,7 +53,7 @@
                                 Name
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Job Offer
+                                Address
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                 Date Posted
@@ -97,12 +97,12 @@
 
                                 <!-- Job Offer Column -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    Sample Offer
+                                    {{ $employer->address }}
                                 </td>
 
                                 <!-- Date Posted Column -->
                                 <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    <i class="ri-time-line mr-1"></i> 24 hrs ago
+                                    {{ $employer->phone }}
                                 </td>
 
                                 <!-- Action Column -->
