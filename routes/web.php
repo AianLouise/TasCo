@@ -122,8 +122,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jobseeker-submit-application', [ApplicationController::class, 'submitJobSeekerApplication'])->name('submit.jobseekerapplication');
     Route::get('/submission-confirmation', [ApplicationController::class, 'showSubmissionConfirmationPage'])
         ->name('tasco.submissionConfirmationPage');
-    Route::post('/mark-as-complete/{id}/{eventId}', [WorkerHiringController::class, 'markAsComplete'])->name('submit.markAsComplete');
-
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
@@ -137,7 +135,7 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/work/{HiringForm_id}', [WorkerHiringController::class, 'WorkView'])->name('work.view');
     Route::get('/start-working/{hiringFormId}/{eventId}', [WorkerHiringController::class, 'startWorking'])->name('startWorking');
     Route::post('/upload-documentation/{id}/{eventId}', [WorkerHiringController::class, 'uploadDocumentation'])->name('uploadDocumentation');
-    Route::get('/mark-as-completed/{id}', [WorkerHiringController::class, 'MarkAsCompletedWorker'])->name('worker.MarkAsCompleted');
+    Route::get('/mark-as-completed-worker/{id}', [WorkerHiringController::class, 'MarkAsCompletedWorker'])->name('worker.MarkAsCompleted');
 });
 
 // User Routes (Requires Authentication and User Role)

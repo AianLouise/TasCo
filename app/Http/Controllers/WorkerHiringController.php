@@ -254,7 +254,7 @@ class WorkerHiringController extends Controller
         return redirect()->back()->with('success', 'Documentation uploaded successfully.');
     }
 
-    public function MarkAsCompletedWorker($id)
+    public function MarkAsCompletedWorker(Request $request, $id)
     {
         // Find the HiringForm by ID
         $hiringForm = HiringForm::find($id);
@@ -268,9 +268,9 @@ class WorkerHiringController extends Controller
         }
 
         // Handle the case where the HiringForm record with the given ID doesn't exist.
-        return redirect()->route('worker.dashboard')->with('error', 'HiringForm not found.');
+        return redirect()->back()->with('error', 'Hiring form not found');
     }
     
     
-    
+
 }
