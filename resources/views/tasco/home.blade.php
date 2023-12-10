@@ -551,7 +551,7 @@
 
         <!-- Start: Apply Now Section -->
         <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
-            <div class="container xl:max-w-6xl mx-auto px-4">
+            <div class="container xl:max-w-6xl mx-auto px-4 mb-20">
                 @auth
                     @if (auth()->user()->is_verified)
                         <!-- User is verified, hide the Apply Now Section -->
@@ -591,7 +591,6 @@
                         </div>
                     @endif
                 @else
-                    <!-- User is not authenticated, show the Apply Now Section -->
                     <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
                         <h5 class="mb-2 text-3xl font-bold">Apply Now</h5>
                         <p class="mb-5 text-base text-gray-500 sm:text-lg">Interested in joining our community?</p>

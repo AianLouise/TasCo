@@ -58,5 +58,6 @@
                 </div>
             </div>
         </div>
+        <x-footer />
     </body>
 </x-app-layout>

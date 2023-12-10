@@ -7,18 +7,19 @@
             <div class="container xl:max-w-6xl mx-auto px-4">
                 <!-- Start: Heading-->
                 <div class="text-center mx-auto mb-12 lg:px-20 mt-10">
-                    <h2 class=" leading-normal mb-2 text-4xl font-bold text-black">Available Worker</h2>
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto;height: 35px;" xml:space="preserve">
+                    <h2 class="text-4xl font-bold text-black leading-normal mb-2">Available Workers</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto; height: 35px;" xml:space="preserve">
                         <circle cx="50.1" cy="30.4" r="5" class="stroke-primary"
-                            style="fill: transparent;stroke-width: 2;stroke-miterlimit: 10;"></circle>
+                                style="fill: transparent; stroke-width: 2; stroke-miterlimit: 10;"></circle>
                         <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary"
-                            style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                              style="stroke-width: 2; stroke-miterlimit: 10;"></line>
                         <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary"
-                            style="stroke-width: 2;stroke-miterlimit: 10;"></line>
+                              style="stroke-width: 2; stroke-miterlimit: 10;"></line>
                     </svg>
-                    <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">With their services</p>
+                    <p class="text-xl text-gray-500 font-light leading-relaxed mx-auto pb-2">Providing their services</p>
                 </div>
+                
                 <!-- End: Heading -->
                 <!-- Your updated form -->
                 <form class="mb-12 w-full" action="{{ route('app.jobListing') }}#top" method="get">

@@ -718,7 +718,7 @@
                 });
             });
         </script>
-
+        <x-footer />
     </main>
 
 
