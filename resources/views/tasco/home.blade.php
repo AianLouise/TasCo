@@ -38,7 +38,7 @@
                         </a>
                     </div>
                 </div>
-            </section>
+            </section> 
             <!-- End: Hero Section-->
         @elseif (auth()->user()->is_verified === 1 && auth()->user()->role === 'worker')
             <section>
