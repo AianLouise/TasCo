@@ -36,16 +36,116 @@
 
 
     <main class="bg-blue-50">
-        <div class="grid grid-cols-2 p-4 ">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4 pt-4 px-10">
+
+            <!-- Start: Dashboard Analytics: Job Seeker -->
+
+            <div class="bg-white rounded-md border border-gray-200 p-6 shadow-md shadow-black/5">
+                <div class="flex justify-between mb-4">
+                    <div>
+                        <div class="flex items-center mb-1">
+                            <div class="text-3xl font-semibold">10</div>
+                            {{-- <div
+                                class="p-1 rounded bg-rose-500/10 text-rose-500 text-[12px] font-semibold leading-none ml-2">
+                                -1%</div> --}}
+                        </div>
+                        <div class="text-sm font-medium text-gray-800">Active Jobs</div>
+                    </div>
+                    <div>
+                        <button type="button" class="dropdown-toggle text-gray-800 hover:text-gray-600"><i
+                                class="ri-more-fill"></i></button>
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <!-- Display avatars or other content based on your needs -->
+                    {{-- @php $maxAvatars = 5; @endphp
+                    @foreach ($workers->take($maxAvatars) as $worker)
+                        @if ($worker->avatar == 'avatar.png')
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($worker->name) }}&color=7F9CF5&background=EBF4FF"
+                                alt="" class="w-8 h-8 rounded block object-cover align-middle">
+                        @else
+                            <img src="{{ asset('storage/users-avatar/' . basename($worker->avatar)) }}" alt=""
+                                class="w-8 h-8 rounded block object-cover align-middle">
+                        @endif
+                    @endforeach --}}
+
+                </div>
+
+
+            </div>
+
+
+            <!-- End: Dashboard Analytics: Job Seeker -->
+
+            <!-- Start: Dashboard Analytics: Employer-->
+
+            <div class="bg-white rounded-md border p-6 shadow-md shadow-black/5">
+                <div class="flex justify-between mb-4">
+                    <div>
+                        <div class="flex items-center mb-1">
+                            <div class="text-3xl font-semibold">10</div>
+                            {{-- <div
+                                class="p-1 rounded bg-blue-500/10 text-blue-500 text-[12px] font-semibold leading-none ml-2">
+                                +1%</div> --}}
+                        </div>
+                        <div class="text-sm font-medium text-gray-800">Hiring Applications</div>
+                    </div>
+                    <div>
+                        <button type="button" class="dropdown-toggle text-gray-800 hover:text-gray-600"><i
+                                class="ri-more-fill"></i></button>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <!-- Display avatars or other content based on your needs -->
+                    {{-- @php $maxAvatars = 5; @endphp
+                    @foreach ($employers->take($maxAvatars) as $employer)
+                        @if ($employer->avatar == 'avatar.png')
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($employer->name) }}&color=7F9CF5&background=EBF4FF"
+                                alt="" class="w-8 h-8 rounded block object-cover align-middle">
+                        @else
+                            <img src="{{ asset('storage/users-avatar/' . basename($employer->avatar)) }}" alt=""
+                                class="w-8 h-8 rounded block object-cover align-middle">
+                        @endif
+                    @endforeach --}}
+                </div>
+
+            </div>
+
+            <!-- End: Dashboard Analytics: Employer -->
+
+            <!-- Start: Dashboard Analytics: All Users -->
+
+            <div class="bg-white rounded-md border border-gray-200 p-6 shadow-md shadow-black/5">
+                <div class="flex justify-between mb-6">
+                    <div>
+                        <div class="text-2xl font-semibold mb-1">10</div>
+                        <div class="text-sm font-medium text-gray-800">Total Employments</div>
+                    </div>
+                    <div>
+                        <button type="button" class="dropdown-toggle text-gray-800 hover:text-gray-600"><i
+                                class="ri-more-fill"></i></button>
+                    </div>
+                </div>
+                <a href="{{ route('admin.viewAllUsers') }}"
+                    class="text-blue-500 font-medium text-sm hover:text-blue-600">View all</a>
+            </div>
+
+            <!-- End: Dashboard Analytics: All Users -->
+
+        </div>
+        
+        <div class="grid grid-cols-1 p-4  md:grid-cols-2 mx-auto">
             <!-- Left Column (Calendar) -->
-            <div class="flex-1 mb-4 md:mb-0 p-10 pt-4">
+            <div class="flex-1 mb-4 p-5">
                 <div id='full-calendar' class="bg-white p-4 shadow-md rounded-md"></div>
             </div>
 
             <!-- Right Column (Upcoming Schedule) -->
-            <div class="flex-1 bg-white p-6 rounded-md divide-y mb-10 mt-4 mr-10">
+            <div class="flex-1 bg-white p-6 rounded-md divide-y mb-10 mt-5 md:mr-10 md:p-10">
                 <div class="flex justify-between mb-1 items-start">
-                    <h2 class="font-medium2 mb-1 text-start"><i class="ri-calendar-event-fill"></i> Upcoming Work Schedule
+                    <h2 class="font-medium2 mb-1 text-start"><i class="ri-calendar-event-fill"></i> Upcoming Work
+                        Schedule
                     </h2>
                 </div>
 
@@ -670,7 +770,6 @@
                                                     Mark as Completed
                                                 </a>
                                             </div>
-                                            
                                         @endif
 
                                     </div>
