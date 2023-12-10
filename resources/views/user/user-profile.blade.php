@@ -12,37 +12,34 @@
             <!-- Added rounded-lg class -->
             <!-- Modified: Increased max width to max-w-2xl -->
             <div class="sm:grid grid-cols-3">
-                @if (Auth::user()->avatar == 'avatar.png')
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF"
-                        alt=""
-                        class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
-                @else
-                    <img src="{{ asset('storage/users-avatar/' . basename(Auth::user()->avatar)) }}" alt=""
-                        class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
-                @endif
-
-                <div class=" sm:-mr-24 hidden lg:block">
-                    <a href="{{ route('app.settings') }}"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded"><i
-                            class="ri-edit-line font-normal"></i> Edit
-                        Profile</a>
-                    @php
-                        $isVerified = Auth::user()->is_verified;
-                        $buttonClass = $isVerified ? 'bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-4 rounded w-38' : 'hidden'; // Use the 'hidden' class to hide the button if not verified
-                    @endphp
-                </div>
-                <div class="mt-0 sm:-mr-6 hidden lg:block">
-                    <a href="#"
-                        class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-6 rounded w-38"><i
-                            class="ri-folder-line font-normal"></i> Employments</a>
-                </div>
+            @if (Auth::user()->avatar == 'avatar.png')
+                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF"
+                    alt=""
+                    class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
+            @else
+                <img src="{{ asset('storage/users-avatar/' . basename(Auth::user()->avatar)) }}" alt=""
+                    class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
+            @endif
+            
+        <div class=" sm:-mr-24 hidden lg:block">
+            <a href="{{ route('app.settings') }}"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded"><i class="ri-edit-line font-normal"></i> Edit
+            Profile</a>
+        @php
+            $isVerified = Auth::user()->is_verified;
+            $buttonClass = $isVerified ? 'bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-4 rounded w-38' : 'hidden'; // Use the 'hidden' class to hide the button if not verified
+        @endphp
+         </div>
+         <div class=" sm:-mr-6 sm:-mt-2 hidden lg:block">
+            <button
+            class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-gray-700 font-bold py-2 px-6 rounded w-38"><i class="ri-folder-line font-normal"></i> Employments</button>
+         </div>
 
             </div>
             <!-- Modified: Increased width and height to w-48 and h-48 -->
-            <div
-                class="text-center bg-blue-100 p-8 sm:p-4 rounded-xl divide-y divide-black sm:text-justify mb-4 sm:mb-0">
-                <h2 class="text-xl sm:text-4xl font-semibold mb-2">{{ Auth::user()->name }}</h2>
-                <p class="text-gray-700 text-xl p-2">{{ Auth::user()->address }}</p>
+            <div class="text-center bg-blue-100 p-8 sm:p-4 rounded-xl divide-y divide-black sm:text-justify mb-4 sm:mb-0">
+                <h2 class="text-gray-700 text-2xl sm:text-2xl font-semibold mb-2">{{ Auth::user()->name }}</h2>
+                <p class="text-gray-700 text-xl p-2">Address: {{ Auth::user()->address }}</p>
             </div>
             <!-- Add more profile details as needed -->
             <div class="grid grid-cols-2 py-2 sm:py-0">
@@ -55,19 +52,18 @@
                         $isVerified = Auth::user()->is_verified;
                         $buttonClass = $isVerified ? 'bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-4 rounded w-38' : 'hidden'; // Use the 'hidden' class to hide the button if not verified
                     @endphp
+                     </div>
+                     <div class="block -mt-1 lg:hidden">
+                        <button
+                        class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-gray-700 font-bold rounded px-4 py-1"><i class="ri-folder-line font-normal"></i> Employments</button>
+                     </div>
+            
                 </div>
-                <div class="block -mt-1 lg:hidden">
-                    <button
-                        class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold rounded px-4 py-1"><i
-                            class="ri-folder-line font-normal"></i> Employments</button>
-                </div>
-
-            </div>
-            <div class="mt-4">
-                @php
-                    $isVerified = Auth::user()->is_verified;
-                    $gridColsClass = $isVerified ? 'grid-cols-2' : 'grid-cols-1';
-                @endphp
+                <div class="mt-4">
+                    @php
+                        $isVerified = Auth::user()->is_verified;
+                        $gridColsClass = $isVerified ? 'grid-cols-2' : 'grid-cols-1';
+                    @endphp
 
                 <div class="grid grid-rows-1 sm:grid-cols-2 gap-4{{ $gridColsClass }} gap-4">
                     @if ($isVerified)
