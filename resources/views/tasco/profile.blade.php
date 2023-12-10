@@ -148,14 +148,18 @@
                         <div class="">
                             <div class="bg-red-500 grid grid-cols-2">
                                 <h3 class="p-2 text-center text-white text-md -mr-48"><i class="ri-mail-line"></i> Message</h3>
-                        <i class="ri-close-line cursor-pointer p-2 flex justify-end text-white close-button"></i>
+                             <i class="ri-close-line cursor-pointer p-2 flex justify-end text-white close-button"></i>
                            </div>
+                           <div class="grid justify-center grid-rows-1 divide-y">
                        <p class="grid p-4 sm:p-6 text-red-400 font-semibold border-b border-red-400 mb-2">You are not yet verified to Hire a Job Seeker </p>
-                       <button class="bg-red-500 text-white px-4 py-1 sm:py-2 rounded-md hover:bg-blue-500 transition-all hover:font-bold sm:mb-0 mb-4"><i class="ri-question-line"></i> | Apply now</button>
+                       <button class="bg-red-500 hover:bg-blue-500 transition-colors flex justify-center rounded-md px-4 py-2 mx-20 text-white sm:mb-0 mb-4"><i class="ri-question-line"></i> | Apply now</button>
+                           </div>
                          </div>
+
                     </dialog>
 
-                    
+                    {{-- MOBILE DIALOGUE --}}
+{{--                     
                     <dialog class="w-96 h-50 sm:h-44 mx-auto my-auto m-modal rounded-lg">
                         <div class="">
                             <div class="bg-red-500 grid grid-cols-2">
@@ -165,7 +169,7 @@
                        <p class="grid p-4 sm:p-6 text-red-400 font-semibold border-b border-red-400 mb-2">You are not yet verified to Hire a Job Seeker </p>
                        <button class="bg-red-500 text-white px-4 py-1 sm:py-2 rounded-md hover:bg-blue-500 transition-all hover:font-bold sm:mb-0 mb-4"><i class="ri-question-line"></i> | Apply now</button>
                          </div>
-                    </dialog>
+                    </dialog> --}}
 
                     {{-- SCRIPT --}}
 
