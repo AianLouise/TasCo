@@ -13,9 +13,9 @@
     </style>
 
     <!-- Welcome Page -->
-    <section class="flex items-center justify-center">
+    <section class="flex items-center justify-center bg-blue-50">
         <div id="welcomePage" class="flex items-center justify-center h-screen  sm:w-1/2">
-            <div class="container mx-auto p-4">
+            <div class="container mx-auto p-4 bg-blue-500 rounded-md">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                     <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to TasCo Employer Application</h1>
 
@@ -25,15 +25,16 @@
                     </p>
 
                     <a href="#" id="startApplicationBtn"
-                        class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Start
-                        Your Application Now</a>
+                        class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto shadow-lg transform hover:scale-105">
+                        Start Your Application Now
+                    </a>
                 </div>
             </div>
         </div>
 
         <!-- Terms and Conditions Page -->
         <div id="termsAndConditionsPage" class="hidden flex items-center justify-center h-screen">
-            <div class="container mx-auto p-4">
+            <div class="container mx-auto p-4 bg-blue-500 rounded-md">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                     <h2 class="text-2xl font-bold text-gray-800 mb-2">Terms and Conditions</h2>
                     <p class="text-gray-600 mb-4">
@@ -82,7 +83,7 @@
         </div>
 
         <div id="uploadRequirementsPage" class="hidden flex items-center h-screen justify-center mt-32 md:mt-9">
-            <div class="container mx-auto p-4">
+            <div class="container mx-auto p-4 bg-blue-500 rounded-md">
                 <div class="text-center bg-white p-8 rounded-md">
                     <h2 class="text-2xl font-bold text-gray-800 mb-2">Upload Requirements</h2>
                     <p class="text-gray-600">

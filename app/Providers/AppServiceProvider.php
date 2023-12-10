@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
     
         Blade::if('isUser', function () {
             return auth()->user()->role === 'user';
+        });
+
+        Validator::extend('password', function ($attribute, $value, $parameters, $validator) {
+            return Hash::check($value, current($parameters));
         });
     }
 }

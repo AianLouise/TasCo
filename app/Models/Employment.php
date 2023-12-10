@@ -9,5 +9,18 @@ class Employment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['hiring_form_id', 'job_description', 'start_date', 'end_date', 'image1', 'image2', 'image3'];
+    protected $fillable = ['hiring_form_id', 'job_description', 'start_date', 'end_date', 'image1', 'image2', 'image3', 'event_id', 'status'];
+
+    public function hiringForm()
+    {
+        return $this->belongsTo(HiringForm::class);
+    }
+
+
+    public function event()
+    {
+        return $this->hasOne(Event::class, 'event_id', 'id'); // Adjust column names accordingly
+    }
+
+
 }

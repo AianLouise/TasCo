@@ -2,7 +2,9 @@
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
     <main class="bg-gray-100 min-h-screen flex items-center justify-center">
         <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-center rounded-lg mt-10">
-            <form method="POST" action="{{ route('submit.hiring.form', ['worker' => $user->id]) }}">
+            <form method="POST" action="{{ route('submit.hiring.form', ['worker' => $user->id]) }}"
+                onsubmit="return validateDates()">
+
                 @csrf
                 <!-- Form heading -->
                 <h1 class="text-lg font-semibold mb-1">Job Hiring Form</h1>
@@ -65,26 +67,31 @@
                     <div class="w-full mb-2">
                         <label for="projectTitle" class="block text-xs font-medium  mb-2">Project Title</label>
                         <input type="text" name="projectTitle" id="projectTitle" placeholder="Enter project title"
-                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full text-sm" required>
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full text-sm"
+                            required>
                     </div>
                     <div class="w-full mb-2">
                         <label for="projectDescription" class="block text-xs font-medium  mb-2">Project
                             Description</label>
                         <textarea name="projectDescription" id="projectDescription" placeholder="Enter project description"
-                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full p-2 text-sm" rows="4" required></textarea>
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full p-2 text-sm"
+                            rows="4" required></textarea>
                     </div>
                     <div class="flex mb-2">
+                        <!-- Start Date -->
                         <div class="w-1/2 mr-1">
-                            <label for="startDate" class="block text-xs font-medium  mb-2">Start Date</label>
+                            <label for="startDate" class="block text-xs font-medium mb-2">Start Date</label>
                             <input type="text" name="startDate" id="startDate"
-                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full text-sm" placeholder="Select start date"
-                                required>
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full text-sm"
+                                placeholder="Select start date">
                         </div>
+
+                        <!-- End Date -->
                         <div class="w-1/2 ml-1">
-                            <label for="endDate" class="block text-xs font-medium  mb-2">End Date</label>
+                            <label for="endDate" class="block text-xs font-medium mb-2">End Date</label>
                             <input type="text" name="endDate" id="endDate"
-                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full text-sm" placeholder="Select end date"
-                                required>
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full text-sm"
+                                placeholder="Select end date">
                         </div>
                     </div>
                 </div>
@@ -98,7 +105,8 @@
                             and
                             responsibilities of the worker.</label>
                         <textarea name="scopeOfWork" id="scopeOfWork" placeholder="Enter scope of work"
-                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full p-2 text-sm" rows="4" required></textarea>
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full p-2 text-sm"
+                            rows="4" required></textarea>
                     </div>
                 </div>
 
@@ -111,8 +119,8 @@
                         <label for="totalPayment" class="block text-xs font-medium  mb-2">Total
                             Payment</label>
                         <input type="number" name="totalPayment" id="totalPayment"
-                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-sm text-center" placeholder="Enter total payment" required
-                            pattern="[0-9]+">
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-sm text-center"
+                            placeholder="Enter total payment" required pattern="[0-9]+">
                     </div>
 
 
@@ -121,7 +129,8 @@
                         <label for="paymentFrequency" class="block text-xs font-medium  mb-2">Payment
                             Frequency</label>
                         <select name="paymentFrequency" id="paymentFrequency"
-                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-center h-10 text-sm" required>
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-center h-10 text-sm"
+                            required>
                             <option value="hourly">Hourly</option>
                             <option value="perDay">Per Day</option>
                             <!-- Add more options as needed -->
@@ -133,7 +142,8 @@
                         <label for="paymentMethod" class="block text-xs font-medium  mb-2">Payment
                             Method</label>
                         <select name="paymentMethod" id="paymentMethod"
-                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-center h-10 text-sm" required>
+                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-center h-10 text-sm"
+                            required>
                             <option value="bankTransfer">Bank Transfer</option>
                             <option value="cash">Cash</option>
                             <!-- Add more options as needed -->
@@ -144,7 +154,7 @@
                 <!-- Submit button -->
                 <div class="mt-2">
 
-                    <button type="submit"
+                    <button type="submit" onclick="validateDates()"
                         class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-7 rounded text-sm">Submit</button>
 
                 </div>
@@ -161,5 +171,17 @@
             altFormat: 'F j, Y', // Format for the alternate input field (displayed in the textbox)
             // Add other Flatpickr options as needed
         });
+
+        function validateDates() {
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+            if (startDate === '' || endDate === '') {
+                alert('Start Date and End Date are required.');
+                return false; // prevent form submission
+            } else {
+                return true; // allow form submission
+            }
+        }
     </script>
 </x-app-layout>

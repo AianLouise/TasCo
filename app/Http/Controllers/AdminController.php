@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EmployerApplication;
-use App\Models\Employment;
-use App\Models\HiringForm;
-use App\Models\JobSeekerApplication;
 use App\Models\User;
 use App\Models\Service;
 use App\Models\Category;
+use App\Models\Employment;
+use App\Models\HiringForm;
 use App\Models\ActivityLog;
 use App\Models\ServicesLog;
 use Illuminate\Http\Request;
 use Symfony\Component\Mime\Email;
+use App\Models\EmployerApplication;
+use App\Notifications\UserVerified;
 use App\Http\Controllers\Controller;
+use App\Models\JobSeekerApplication;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CustomerServiceMessage;
 use Illuminate\Support\Facades\Password;
+use App\Notifications\UserVerifiedEmployer;
+use App\Notifications\EmployerApplicationRejected;
+use App\Notifications\JobSeekerApplicationRejected;
 
 class AdminController extends Controller
 {
@@ -249,7 +253,7 @@ class AdminController extends Controller
         $pageTitle = 'Employment';
         $hiringForms = HiringForm::get();
 
-        return view('admin.admin-employment', compact( 'pageTitle', 'hiringForms'));
+        return view('admin.admin-employment', compact('pageTitle', 'hiringForms'));
     }
 
     public function AdminHiringApplication()
@@ -266,18 +270,18 @@ class AdminController extends Controller
         $categories = Category::all();
         // Use the $id parameter to find the specific HiringForm
         $hiringForm = HiringForm::find($id);
-    
+
         // Check if the HiringForm with the given id exists
         if (!$hiringForm) {
             // Handle the case where the HiringForm is not found, for example, redirect to an error page.
             abort(404, 'HiringForm not found');
         }
-    
+
         $pageTitle = 'Hiring Application';
-    
+
         return view('admin.admin-hiring-application-view', compact('hiringForm', 'pageTitle'));
     }
-    
+
 
 
 
@@ -320,6 +324,10 @@ class AdminController extends Controller
         // Update the status in the employer_applications table
         EmployerApplication::where('user_id', $userId)->update(['status' => 'Accepted']);
 
+        // Send notification to the user
+        $user = User::find($userId);
+        $user->notify(new UserVerifiedEmployer());
+
         // return response()->json(['message' => 'User is now verified']);
         return redirect()->route('admin.application')->with('success', 'User is now verified');
     }
@@ -327,10 +335,14 @@ class AdminController extends Controller
     public function updateIsRejected(Request $request)
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter
-
+    
         // Update the status in the employer_applications table to 'Rejected'
         EmployerApplication::where('user_id', $userId)->update(['status' => 'Rejected']);
-
+    
+        // Send notification to the user
+        $user = User::find($userId);
+        $user->notify(new EmployerApplicationRejected());
+    
         return redirect()->route('admin.application')->with('success', 'User application has been rejected');
     }
 
@@ -351,10 +363,14 @@ class AdminController extends Controller
         // Update the status in the 'jobseeker_applications' table
         JobSeekerApplication::where('user_id', $userId)->update(['status' => 'Accepted']);
 
-        // return response()->json(['message' => 'User is now verified']);
+        // Get the user instance
+        $user = User::find($userId);
+
+        // Send the notification
+        $user->notify(new UserVerified());
+
         return redirect()->route('admin.application')->with('success', 'User is now verified');
     }
-
 
 
     public function updateIsRejectedJobSeeker(Request $request)
@@ -362,7 +378,11 @@ class AdminController extends Controller
         $userId = $request->route('user_id'); // Use route() to get the parameter
 
         // Update the status in the employer_applications table to 'Rejected'
-        EmployerApplication::where('user_id', $userId)->update(['status' => 'Rejected']);
+        JobSeekerApplication::where('user_id', $userId)->update(['status' => 'Rejected']);
+
+        $user = User::find($userId);
+        $user->notify(new JobSeekerApplicationRejected());
+    
 
         return redirect()->route('admin.application')->with('success', 'User application has been rejected');
     }

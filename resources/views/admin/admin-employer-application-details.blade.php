@@ -93,9 +93,6 @@
                                             alt="Valid ID Image"
                                             class="max-w-full mb-2 h-auto border-2  border-gray-500  rounded-lg p-4 hover:p-1 transition-all">
                                     </a>
-
-
-
                                 </div>
 
                                 <!-- Barangay Clearance Image -->

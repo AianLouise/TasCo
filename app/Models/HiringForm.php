@@ -11,15 +11,23 @@ class HiringForm extends Model
 
     protected $table = 'hiring_forms';
 
+    protected $casts = [
+        'startDate' => 'datetime',
+        'endDate' => 'datetime',
+    ];
+
     protected $fillable = [
         'employer_id',
         'worker_id',
-        'address',
-        'date',
-        'time',
-        'subject',
-        'description',
-        'status'
+        'projectTitle',
+        'projectDescription',
+        'startDate',
+        'endDate',
+        'scopeOfWork',
+        'totalPayment',
+        'paymentFrequency',
+        'paymentMethod',
+        'status',
     ];
 
     // HiringForm.php
@@ -38,4 +46,12 @@ class HiringForm extends Model
     {
         return $this->hasMany(Event::class, 'hiring_form_id');
     }
+
+    // HiringForm.php
+
+public function employments()
+{
+    return $this->hasMany(Employment::class);
+}
+
 }

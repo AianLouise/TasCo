@@ -8,8 +8,10 @@ use App\Models\Category;
 use App\Models\HiringForm;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\CustomerServiceMessage;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,22 +24,22 @@ class UserController extends Controller
 
         return view("user.user-profile", compact('user', 'pageTitle'));
     }
-    
+
     public function UserDashboard()
     {
         // Get the authenticated user
         $employer = auth()->user();
-    
+
         // Retrieve hiring forms where the employer_id matches the authenticated user's ID
         $hiringForms = HiringForm::where('employer_id', $employer->id)->get();
 
         // Retrieve events associated with the hiring forms, including the employer relationship
         $events = Event::with('employer')->whereIn('hiring_form_id', $hiringForms->pluck('id'))->get();
-    
+
         $workerUsers = User::where('role', 'worker')->get();
         $categories = Category::all();
         $pageTitle = 'Dashboard';
-    
+
         return view("user.user-dashboard", compact('hiringForms', 'workerUsers', 'categories', 'pageTitle', 'events'));
     }
 
@@ -76,6 +78,42 @@ class UserController extends Controller
 
         return view('tasco.home', compact('workerUsers', 'categories'));
     }
+
+    public function updateProfile(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            // Handle the case where the user is not found
+            return redirect()->back()->with('error', 'User not found.');
+        }
+
+        $request->validate([
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules for the avatar as needed
+        ], [
+            'avatar.max' => 'The avatar file size must not exceed 2 MB.',
+        ]);
+
+        // Handle file upload for the updated avatar
+        if ($request->hasFile('avatar')) {
+            // Process the updated avatar file
+            $avatar = $request->file('avatar');
+            // Check file size before storing
+            if ($avatar->getSize() > 2048 * 1024) { // 2 MB in kilobytes
+                return redirect()->back()->with('messages', 'The avatar file size must not exceed 2 MB.');
+            }
+            $avatarName = $avatar->hashName(); // Generate a unique file name
+            $avatar->storeAs('public/users-avatar', $avatarName); // Store the file with the desired path and name
+            $user->avatar = $avatarName; // Save the file name in the database
+        }
+
+        // Save the updated user details
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully');
+    }
+
+
 
     public function updateName(Request $request)
     {
@@ -149,11 +187,36 @@ class UserController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Send verification email
-        Auth::user()->sendEmailVerificationNotification();
+        // Update the email address temporarily
+        $user = Auth::user();
+        $user->temp_email = $request->input('email');
+        $user->save();
 
-        return redirect()->route('verification.notice')->with('status', 'A verification link has been sent to your email.');
+        // Send verification email to the new email
+        $user->sendEmailVerificationNotification();
+
+        return redirect()->route('verification.notice')->with('status', 'A verification link has been sent to your new email.');
     }
+
+    public function verifyEmail(Request $request, $id, $hash)
+    {
+        $user = User::find($id);
+
+        if (!$user || !hash_equals($hash, sha1($user->getEmailForVerification()))) {
+            return redirect('/');
+        }
+
+        // Update the email address in the database
+        $user->email = $user->temp_email;
+        $user->temp_email = null;
+        $user->email_verified_at = now();
+        $user->save();
+
+        return redirect('/')->with('status', 'Email verified successfully.');
+    }
+
+
+
 
     public function updatePhone(Request $request)
     {
@@ -180,4 +243,35 @@ class UserController extends Controller
         return redirect()->back()->with('status', 'Phone updated successfully');
     }
 
+    public function updatePassword(Request $request)
+    {
+        Log::info('Updating password...');
+
+        $request->validate([
+            'currentPassword' => ['required', function ($attribute, $value, $fail) {
+                if (!Hash::check($value, Auth::user()->password)) {
+                    return $fail(__('The current password is incorrect.'));
+                }
+            }],
+            'newPassword' => 'required|min:8|confirmed|different:currentPassword',
+        ]);
+
+        $user = Auth::user();
+        $user->password = Hash::make($request->newPassword);
+        $user->save();
+
+        Log::info('Password updated successfully.');
+
+        return redirect()->back()->with('success', 'Password updated successfully.');
+    }
+
+    public function Notification(Request $request)
+    {
+        $user = Auth::user();
+        $pageTitle = 'Notification';
+
+        $notifications = $request->user()->notifications;
+
+        return view("tasco.notification", compact('user', 'pageTitle', 'notifications', 'user'));
+    }
 }
