@@ -114,6 +114,7 @@
                 <div class="border border-blue-200 bg-white shadow-md p-10 rounded-lg pt-5 pb-5 mt-2">
                     <h2 class="text-sm font-semibold mb-2">Payment Terms</h2>
 
+                <div class="grid grid-cols-3">
                     <!-- Total Payment -->
                     <div class="w-full mb-2">
                         <label for="totalPayment" class="block text-xs font-medium  mb-2">Total
@@ -149,6 +150,7 @@
                             <!-- Add more options as needed -->
                         </select>
                     </div>
+                </div>
                 </div>
 
                 <!-- Submit button -->

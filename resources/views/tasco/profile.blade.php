@@ -49,7 +49,7 @@
                             </span>
                         @else
                             <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded w-36">
                                 Hire
                             </a>
                         @endif
@@ -113,7 +113,7 @@
 
                         @if ($previousApplicationExists && $previousApplication->status === 'Completed')
                             <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded w-36">
                                 Hire Again
                             </a>
                         @elseif ($previousApplicationExists)
@@ -122,10 +122,11 @@
                             </span>
                         @else
                             <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded w-36">
                                 Hire
                             </a>
                         @endif
+                        
                     @else
                         <button
                             class="button open-button bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-4 md:px-8 rounded w-36 m-open-button">Hire</button>        
@@ -159,17 +160,6 @@
                     </dialog>
 
                     {{-- MOBILE DIALOGUE --}}
-{{--                     
-                    <dialog class="w-96 h-50 sm:h-44 mx-auto my-auto m-modal rounded-lg">
-                        <div class="">
-                            <div class="bg-red-500 grid grid-cols-2">
-                                <h3 class="p-2 text-center text-white text-md -mr-48"><i class="ri-mail-line"></i> Message</h3>
-                        <i class="ri-close-line cursor-pointer p-2 flex justify-end text-white m-close-button"></i>
-                           </div>
-                       <p class="grid p-4 sm:p-6 text-red-400 font-semibold border-b border-red-400 mb-2">You are not yet verified to Hire a Job Seeker </p>
-                       <button class="bg-red-500 text-white px-4 py-1 sm:py-2 rounded-md hover:bg-blue-500 transition-all hover:font-bold sm:mb-0 mb-4"><i class="ri-question-line"></i> | Apply now</button>
-                         </div>
-                    </dialog> --}}
 
                     {{-- SCRIPT --}}
 
