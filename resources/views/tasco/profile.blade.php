@@ -62,12 +62,12 @@
 
 
                         <a href="{{ route('user.chatify', ['user_id' => $worker->id]) }}" target="_new"
-                            class="border hover:bg-blue-500 hover:text-white text-gray border-blue-400 font-semibold py-2 px-4 rounded w-36 open-button">
+                            class="border hover:bg-blue-500 hover:text-white text-gray border-blue-400 font-semibold py-2 px-4 rounded w-36">
                             Message
                         </a>
 
-                        <button
-                            class="text-sm font-medium bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36">Employments</button>
+                        <a href="{{ route('worker.employments', ['worker' => $worker->id]) }}"
+                            class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36">Employments</a>
                     </div>
                 </div>
             </div>
@@ -139,7 +139,7 @@
 
 
                         <button
-                            class="text-sm font-medium bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36">Employments</button>
+                            class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36">Employments</button>
                     </div>
                 </div>
 
@@ -153,9 +153,9 @@
                         <div class="grid justify-center grid-rows-1 divide-y">
                             <p class="grid p-4 sm:p-6 text-red-400 font-semibold border-b border-red-400 mb-2">You are
                                 not yet verified to Hire a Job Seeker </p>
-                            <button
-                                class="bg-red-500 hover:bg-blue-500 transition-colors flex justify-center rounded-md px-4 py-2 mx-20 text-white sm:mb-0 mb-4"><i
-                                    class="ri-question-line"></i> | Apply now</button>
+                            <a href="{{ route('app.applyEmployer') }}"
+                                class="bg-red-500 hover:bg-blue-500 transition-colors flex justify-center rounded-md px-4 py-2 mx-20 text-white sm:mb-0 mb-4">
+                                <i class="ri-question-line"></i> Apply now</a>
                         </div>
                     </div>
 

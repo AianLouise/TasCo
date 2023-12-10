@@ -303,4 +303,11 @@ class AppController extends Controller
             'chat' => $chat,
         ]);
     }
+
+    public function workerEmployments()
+    {
+        $pageTitle = 'Employments';
+
+        return view("tasco.worker-employments", compact('pageTitle'));
+    }
 }
