@@ -25,19 +25,19 @@
             </div>
             <div class=" sm:-mr-6 hidden sm:block">
                 <button
-                class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-6 rounded w-38"><i class="ri-folder-line font-normal"></i> Employments</button>
+                class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-gray-700 font-bold py-2 px-6 rounded w-38"><i class="ri-folder-line font-normal"></i> Employments</button>
                </div>
         </div>
             <div class="text-center bg-blue-100 p-8 sm:p-4 rounded-xl divide-y divide-black sm:text-justify">
-                <h2 class="text-xl sm:text-4xl font-semibold mb-2">{{ Auth::user()->name }}</h2>
-                <p class="text-gray-700 text-xl p-2">{{ Auth::user()->address }}</p>
+                <h2 class="text-xl sm:text-2xl font-semibold mb-2 text-gray-700">{{ Auth::user()->name }}</h2>
+                <p class="text-gray-700 text-lg p-2">{{ Auth::user()->address }}</p>
                 @if (Auth::user()->category_id)
                     @php
                         $category = App\Models\Category::find(Auth::user()->category_id);
                     @endphp
 
                     @if ($category)
-                        <p class="text-gray-700 text-xl p-2">{{ $category->name }}</p>
+                        <p class="text-gray-700 text-lg p-2">{{ $category->name }}</p>
                         <!-- Display other category information as needed -->
                     @else
                         <p class="text-red-500">Category not found</p>
@@ -54,7 +54,7 @@
             </div>
             <div class="block lg:hidden">
                 <button
-                class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-4 rounded w-38"><i class="ri-folder-line font-normal"></i> Employments</button>
+                class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-4 rounded w-38 text-gray-700"><i class="ri-folder-line font-normal"></i> Employments</button>
                </div>
             </div>
         

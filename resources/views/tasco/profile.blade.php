@@ -28,8 +28,10 @@
 
 
             <div class="text-center"> <!-- Modified: Changed text-left to text-center -->
+                <div class="bg-blue-100 p-4 mx-40 rounded-lg">
                 <h2 class="text-xl font-semibold mb-2">{{ $user->name }}</h2>
                 <p class="text-gray-700 mb-2">{{ $user->address }}</p>
+                 </div>
                 @if (Auth::user()->category_id)
                     @php
                         $category = App\Models\Category::find($user->category_id);

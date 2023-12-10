@@ -32,14 +32,14 @@
          </div>
          <div class=" sm:-mr-6 sm:-mt-2 hidden lg:block">
             <button
-            class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-6 rounded w-38"><i class="ri-folder-line font-normal"></i> Employments</button>
+            class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-gray-700 font-bold py-2 px-6 rounded w-38"><i class="ri-folder-line font-normal"></i> Employments</button>
          </div>
 
         </div>
             <!-- Modified: Increased width and height to w-48 and h-48 -->
             <div class="text-center bg-blue-100 p-8 sm:p-4 rounded-xl divide-y divide-black sm:text-justify mb-4 sm:mb-0">
-                <h2 class="text-2xl sm:text-4xl font-semibold mb-2">{{ Auth::user()->name }}</h2>
-                <p class="text-gray-700 text-2xl p-2">Address: {{ Auth::user()->address }}</p>
+                <h2 class="text-gray-700 text-2xl sm:text-2xl font-semibold mb-2">{{ Auth::user()->name }}</h2>
+                <p class="text-gray-700 text-xl p-2">Address: {{ Auth::user()->address }}</p>
             </div>
                 <!-- Add more profile details as needed -->
                 <div class="grid grid-cols-2 py-2 sm:py-0">
@@ -54,7 +54,7 @@
                      </div>
                      <div class="block -mt-1 lg:hidden">
                         <button
-                        class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold rounded px-4 py-1"><i class="ri-folder-line font-normal"></i> Employments</button>
+                        class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-gray-700 font-bold rounded px-4 py-1"><i class="ri-folder-line font-normal"></i> Employments</button>
                      </div>
             
                 </div>
