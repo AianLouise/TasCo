@@ -78,18 +78,22 @@
 
             <div class="text-center sm:text-justify"> <!-- Modified: Changed text-left to text-center -->
                 <div class="bg-blue-100 p-4 rounded-lg gird grid-rows-1 divide-y divide-gray-400">
-                    <h2 class="text-gray-700 text-2xl font-bold mb-2">{{ $user->name }}</h2>
-                    <p class="text-gray-700 mb-2 p-1">{{ $user->address }}</p>
-                    @php
-                        $category = App\Models\Category::find($user->category_id);
-                    @endphp
+                    <h2 class="text-gray-700 text-md sm:text-2xl font-bold mb-2">{{ $user->name }} | @if (Auth::user()->category_id)
+                        @php
+                            $category = App\Models\Category::find($user->category_id);
+                        @endphp
 
-                    @if ($category)
-                        <p class="text-gray-700 mb-2 p-1">{{ $category->name }}</p>
-                    @else
-                        <p class="text-red-500">Category not found</p>
-                    @endif
-                    <p class="text-blue-600 p-1 font-semibold">Available for Hiring</p>
+                        @if ($category)
+
+                            <span class="text-blue-700">{{ $category->name }}</span>
+                        @else
+                            <p class="text-red-500">Category not found</p>
+                        @endif
+                       
+                    @endif</h2>
+                    <p class="text-gray-700 p-1 mb-1">{{ $user->address }}</p>
+                  
+                    <p class="text-blue-600 p-1 font-semibold pt-2">Available for Hiring</p>
                 </div>
                 <!-- Add more profile details as needed -->
 

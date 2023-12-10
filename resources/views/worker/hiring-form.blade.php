@@ -10,18 +10,18 @@
                 <h1 class="text-lg font-semibold mb-1">Job Hiring Form</h1>
 
                 <!-- Worker Details section -->
-                <div class="border bg-white shadow-lg p-10 rounded-lg pt-5 pb-5">
+                <div class="border bg-white shadow-lg p-5 md:p-10 rounded-lg pt-5 pb-5">
                     <h2 class="text-sm font-semibold mb-2">Worker Details</h2>
 
-                    <div class="flex items-center justify-center mb-2">
+                    <div class="grid grid-rows-1 sm:flex sm:items-center justify-center mb-2">
                         <!-- Worker Avatar -->
                         <div>
                             @if ($user->avatar == 'avatar.png')
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&color=7F9CF5&background=EBF4FF"
-                                    alt="" class="w-28 h-auto rounded-full shadow-xl avatarimg mb-5 hover:shadow-inner transition-all">
+                                    alt="" class="w-28 h-auto mx-auto sm:mx-0 rounded-full shadow-xl avatarimg mb-5 hover:shadow-inner transition-all">
                             @else
                                 <img src="{{ asset('storage/users-avatar/' . basename($user->avatar)) }}" alt=""
-                                    class="w-28 h-auto rounded-full shadow-xl avatarimg mb-5 hover:shadow-inner transition-all">
+                                    class="w-28 h-auto mx-auto sm:mx-0 rounded-full shadow-xl avatarimg mb-5 hover:shadow-inner transition-all">
                             @endif
 
                             <!-- Message Link -->
@@ -33,28 +33,28 @@
 
 
                         <!-- Worker Information -->
-                        <div class="bg-blue-100 text-gray-700 hover:text-black hover:bg-white px-6 py-2 rounded-lg ml-12 text-justify divide-
-                         divide-gray-500 w-full shadow-inner hover:shadow-lg transition-all">
+                        <div class="bg-blue-100 text-gray-700 hover:text-black hover:bg-white px-6 py-2 rounded-lg sm:ml-12 sm:text-justify divide-
+                         divide-gray-500 w-full shadow-inner hover:shadow-lg transition-all mt-5 sm:mt-0 text-center">
                             <div class="mb-2 transition-all">
                                 <label for="workerFullName" class="block text-xs font-medium">Full
                                     Name</label>
-                                <p class="py-1 rounded-md bg-blue-100 my-1 pl-2 shadow-xs">{{ $user->name }}</p>
+                                <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">{{ $user->name }}</p>
                             </div>
 
                             <div class="pb-2">
                                 <label for="workerJobTitle" class="block text-xs font-medium pt-1 ">Job
                                     Title</label>
-                                <p class="py-1 rounded-md bg-blue-100 my-1 pl-2 shadow-xs">{{ $user->category->name }}</p>
+                                <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">{{ $user->category->name }}</p>
                             </div>
 
                             <div class="pb-2">
                                 <label for="workerEmail" class="block text-xs font-medium pt-1 ">Email</label>
-                                <p class="py-1 rounded-md bg-blue-100 my-1 pl-2 shadow-xs">{{ $user->email }}</p>
+                                <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">{{ $user->email }}</p>
                             </div>
 
                             <div class="pb-2">
                                 <label for="workerPhone" class="block text-xs font-medium pt-1">Phone</label>
-                                <p class="py-1 rounded-md bg-blue-100 my-1 pl-2 shadow-xs">{{ $user->phone }}</p>
+                                <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">{{ $user->phone }}</p>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                             <input type="text" name="startDate" id="startDate"
                                 class="border-gray-400 hover:bg-blue-500
                                  hover:placeholder:text-white placeholder:text-blue-400 placeholder:font-semibold placeholder:text-center focus:shadow-inner hover:border-white
-                                 focus:bg-white focus:border-white rounded-md shadow-sm w-full text-sm transition-all"
+                                 focus:bg-white focus:border-white rounded-md shadow-sm w-full text-sm transition-all hover:text-white"
                                 placeholder="Select start date">
                         </div>
 
@@ -128,7 +128,7 @@
                 <div class="border border-blue-200 bg-white shadow-md p-10 rounded-lg pt-5 pb-5 mt-2">
                     <h2 class="text-sm font-semibold mb-2">Payment Terms</h2>
 
-                <div class="grid grid-cols-3">
+                <div class="grid grid-rows-1 sm:grid-cols-3">
                     <!-- Total Payment -->
                     <div class="w-full mb-2">
                         <label for="totalPayment" class="block text-xs font-medium  mb-2">Total
