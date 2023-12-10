@@ -45,7 +45,7 @@
             <!-- Right Column (Upcoming Schedule) -->
             <div class="flex-1 bg-white p-6 rounded-md divide-y mb-10 mt-4 mr-10">
                 <div class="flex justify-between mb-1 items-start">
-                    <h2 class="font-medium2 mb-1 text-start"><i class="ri-calendar-event-fill"></i> Upcoming Work Schedule
+                    <h2 class="font-medium2 mb-1 text-start"><i class="ri-calendar-event-fill"></i> Upcoming Work Schedules
                     </h2>
                 </div>
 
