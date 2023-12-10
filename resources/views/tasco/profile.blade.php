@@ -66,7 +66,7 @@
                             Message
                         </a>
 
-                        <a href="{{ route('worker.employments', ['worker' => $worker->id]) }}"
+                        <a href="{{ route('app.employments', ['worker' => $worker->id]) }}"
                             class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36">Employments</a>
                     </div>
                 </div>

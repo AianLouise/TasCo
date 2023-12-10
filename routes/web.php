@@ -105,7 +105,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/chatify/{user_id}', [AppController::class, 'openChat'])->name('user.chatify');
 
     Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
-    Route::get('/worker/employments/{worker}', [AppController::class, 'workerEmployments'])->name('worker.employments');
+    Route::get('/worker/employments/{worker}', [AppController::class, 'workerEmployments'])->name('app.employments');
 
     Route::post('/update-profile/{id}', [UserController::class, 'updateProfile'])->name('update.profile');
     Route::post('/update-name', [UserController::class, 'updateName'])->name('update.name');
