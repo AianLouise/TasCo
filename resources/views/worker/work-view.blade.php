@@ -14,7 +14,7 @@
 
         <!-- Project Page -->
         <section class="flex justify-center height w-full">
-            <div id="ProjectPage" class="m-2 mt-10 sm:m-10 w-full sm:w-1/3 ">
+            <div id="ProjectPage" class="m-2 mt-10 sm:m-10 w-full sm:w-1/2 ">
                 <div class="container px-4 sm:px-16 sm:py-2.5 bg-white rounded-xl shadow-xl mt-32 sm:mt-0">
                     <div class="rounded-md sm:flex sm:items-start justify-center pt-10 pb-4 sm:pb-2">
                         <div class="grid sm:flex sm:flex-col justify-center items-center">
@@ -72,7 +72,7 @@
                                         <input type="text" name="Username" id="Username"
                                             placeholder="Enter UserName"
                                             class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
-                                            value="{{ $hiringForm->startDate }}" disabled>
+                                            value="{{ $hiringForm->startDate->format('l, F j, Y') }}" disabled>
                                     </div>
                                     <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
                                         <p class="block  text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
@@ -80,9 +80,9 @@
                                         <input type="text" name="Username" id="Username"
                                             placeholder="Enter UserName"
                                             class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
-                                            value="{{ $hiringForm->endDate }}" disabled>
-
+                                            value="{{ $hiringForm->endDate->format('l, F j, Y') }}" disabled>
                                     </div>
+
 
                                 </div>
                             @else
@@ -100,7 +100,8 @@
                                     Start Working
                                 </a>
                             @else
-                                <span class="text-red-600 bg-gray-200 p-4 rounded-lg mb-4">You can only start working on the
+                                <span class="text-red-600 bg-gray-200 p-4 rounded-lg mb-4">You can only start working on
+                                    the
                                     day of the work.</span>
                             @endif
                         @elseif ($hiringForm->status === 'Ongoing' && $event->status === 'Ongoing')
@@ -114,6 +115,22 @@
                                     <i class="ri-check-fill mr-2"></i>Finish
                                 </button>
                             </div>
+                        @elseif ($event->status === 'Done')
+                        <div class="flex flex-col items-center">
+                            <h1 class="text-2xl font-bold mb-4">Documentation</h1>
+                            <div class="flex justify-between">
+                                <div class="w-1/3">
+                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image1)) }}" alt="Image">
+                                </div>
+                                <div class="w-1/3 flex flex-col items-center">
+                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image2)) }}" alt="Image">
+                                </div>
+                                <div class="w-1/3">
+                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image3)) }}" alt="Image">
+                                </div>
+                            </div>
+                        </div>
+                        
                         @endif
                     </div>
 

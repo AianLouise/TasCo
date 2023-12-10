@@ -57,7 +57,7 @@
 
                             @if ($applicationExists)
                                 <span
-                                    class="inline-block bg-gray-400 text-white font-bold py-2 px-4 rounded">Application
+                                    class="inline-block bg-green-400 text-white font-bold py-2 px-4 rounded">Application
                                     Sent</span>
                             @else
                                 <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"

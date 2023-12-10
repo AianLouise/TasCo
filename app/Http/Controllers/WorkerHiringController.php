@@ -133,7 +133,7 @@ class WorkerHiringController extends Controller
             $user = User::find($hiringForm->employer_id);
 
             // Retrieve the employment associated with the event
-            $employment = $event->employment;
+            $employment = Employment::where('id', $event->id)->first();
 
             return view('worker.work-view', compact('event', 'hiringForm', 'user', 'employment'));
         } else {
@@ -183,9 +183,14 @@ class WorkerHiringController extends Controller
         ]);
 
         // Handle Image 1
-        $path1 = $request->file('image1')->store('documentation');
-        $path2 = $request->file('image2')->store('documentation');
-        $path3 = $request->file('image3')->store('documentation');
+        $path1 = $request->file('image1')->store('public/documentation');
+
+        // Handle Image 2
+        $path2 = $request->file('image2')->store('public/documentation');
+
+        // Handle Image 3
+        $path3 = $request->file('image3')->store('public/documentation');
+        $path3 = str_replace('public/', '', $path3); // Adjust the path
 
         // Find the HiringForm by ID
         $hiringForm = HiringForm::find($id);
@@ -194,11 +199,20 @@ class WorkerHiringController extends Controller
             // Find the Employment record with the same hiring_form_id
             $employment = Employment::where('hiring_form_id', $hiringForm->id)->first();
 
-            if ($employment) {
-                $event = Event::find($eventId);
+            // If Employment record doesn't exist, create a new one
+            if (!$employment) {
+                $employment = new Employment();
+                $employment->hiring_form_id = $hiringForm->id;
+                $employment->save();
+            }
 
-                if ($event) {
-                    // Update the existing Employment record with job description, current dates, and image paths
+            $event = Event::find($eventId);
+
+            if ($event) {
+                // Update the existing Employment record with job description, current dates, and image paths
+                $employment = Employment::where('event_id', $eventId)->first();
+
+                if ($employment) {
                     $employment->update([
                         'job_description' => $request->input('jobDescription'),
                         'start_date' => Carbon::now(),
@@ -208,32 +222,36 @@ class WorkerHiringController extends Controller
                         'image3' => $path3,
                         // Repeat the process for Image 2 and Image 3
                     ]);
-
-                    // Update the status of the specific event to 'Done'
-                    $event->update(['status' => 'Done']);
-
-                    // Check if all events associated with the hiring form are done
-                    $allEventsDone = $hiringForm->events()->where('status', '<>', 'Done')->count() === 0;
-
-                    // Check if all events are done and update the status of the employment and hiring form to 'Finished'
-                    if ($allEventsDone) {
-                        // Update the status of the employment to 'Finished'
-                        $employment->update(['status' => 'Finished']);
-
-                        // Update the status of the hiring form to 'Finished'
-                        $hiringForm->update(['status' => 'Finished']);
-                    }
                 } else {
-                    // Handle the case where the event with the given ID doesn't exist
-                    return redirect()->route('some.redirect.route')->with('error', 'Event not found.');
+                    // Handle the case where the Employment record with the given event_id doesn't exist.
+                    return redirect()->route('worker.dashboard')->with('error', 'Employment record not found.');
+                }
+
+                // Update the status of the specific event to 'Done'
+                $event->update(['status' => 'Done']);
+
+                // Check if all events associated with the hiring form are done
+                $allEventsDone = $hiringForm->events()->where('status', '<>', 'Done')->count() === 0;
+
+                // Check if all events are done and update the status of the employment and hiring form to 'Finished'
+                if ($allEventsDone) {
+                    // Update the status of the employment to 'Finished'
+                    // $employment->update(['status' => 'Finished']);
+
+                    // Update the status of the hiring form to 'Finished'
+                    $hiringForm->update(['status' => 'Finished']);
                 }
             } else {
-                // Handle the case where the Employment record with the given hiring_form_id doesn't exist.
-                return redirect()->route('some.redirect.route')->with('error', 'Employment record not found.');
+                // Handle the case where the event with the given ID doesn't exist
+                return redirect()->route('worker.dashboard')->with('error', 'Event not found.');
             }
+        } else {
+            // Handle the case where the HiringForm record with the given ID doesn't exist.
+            return redirect()->route('worker.dashboard')->with('error', 'HiringForm not found.');
         }
 
-        // Handle the case where the HiringForm record with the given ID doesn't exist.
-        return redirect()->route('some.redirect.route')->with('error', 'HiringForm not found.');
+        // Redirect back to the previous page on success
+        return redirect()->back()->with('success', 'Documentation uploaded successfully.');
     }
+
 }

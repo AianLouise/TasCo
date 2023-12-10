@@ -45,7 +45,8 @@
             <!-- Right Column (Upcoming Schedule) -->
             <div class="flex-1 bg-white p-6 rounded-md divide-y mb-10 mt-4 mr-10">
                 <div class="flex justify-between mb-1 items-start">
-                    <h2 class="font-medium2 mb-1 text-start"><i class="ri-calendar-event-fill"></i> Upcoming Work Schedule</h2>
+                    <h2 class="font-medium2 mb-1 text-start"><i class="ri-calendar-event-fill"></i> Upcoming Work Schedule
+                    </h2>
                 </div>
 
                 <div class="overflow-x-auto max-h-52">
@@ -98,7 +99,8 @@
                 </div>
 
                 <div class="flex justify-between mb-3 items-start">
-                    <h2 class="font-medium2 mt-4 text-start"><i class="ri-calendar-check-line"></i> Done Work Schedule</h2>
+                    <h2 class="font-medium2 mt-4 text-start"><i class="ri-calendar-check-line"></i> Done Work Schedule
+                    </h2>
                 </div>
 
                 <div class="overflow-x-auto max-h-48">
@@ -362,12 +364,12 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->employer->name ?? 'N/A' }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                                {{ \Carbon\Carbon::parse($hiringForm->startDate)->format('F d, Y') }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                                {{ \Carbon\Carbon::parse($hiringForm->endDate)->format('F d, Y') }}
-                                            </td>                                            
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ \Carbon\Carbon::parse($hiringForm->startDate)->format('F d, Y') }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ \Carbon\Carbon::parse($hiringForm->endDate)->format('F d, Y') }}
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->status }}</td>
                                         <!-- Action Column -->
@@ -438,12 +440,12 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->employer->name ?? 'N/A' }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                                {{ \Carbon\Carbon::parse($hiringForm->startDate)->format('F d, Y') }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                                {{ \Carbon\Carbon::parse($hiringForm->endDate)->format('F d, Y') }}
-                                            </td>                                            
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ \Carbon\Carbon::parse($hiringForm->startDate)->format('F d, Y') }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
+                                            {{ \Carbon\Carbon::parse($hiringForm->endDate)->format('F d, Y') }}
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->status }}</td>
                                         <!-- Action Column -->
@@ -633,6 +635,26 @@
                                         Reject
                                     </a>
                                 </div>
+                            @elseif($hiringForm->status === 'Finished')
+                                @foreach ($hiringForm->employments as $index => $employment)
+                                <div class="flex  flex-col items-center">
+                                    <h1 class="text-2xl font-bold mb-4">Day {{ $index + 1 }} - Documentation</h1>
+                                    <div class="flex justify-between">
+                                        <div class="w-1/3">
+                                            <img src="{{ asset('storage/documentation/' . basename($employment->image1)) }}"
+                                                alt="Image1">
+                                        </div>
+                                        <div class="w-1/3">
+                                            <img src="{{ asset('storage/documentation/' . basename($employment->image2)) }}"
+                                                alt="Image2">
+                                        </div>
+                                        <div class="w-1/3">
+                                            <img src="{{ asset('storage/documentation/' . basename($employment->image3)) }}"
+                                                alt="Image3">
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                             @endif
                         </div>
 

@@ -50,4 +50,15 @@ class Event extends Model
         // If the index is found, add "Day" and the incremented number to the title
         return $index !== false ? 'Day ' . ($index + 1) : '';
     }
+
+    public function employment()
+    {
+        return $this->belongsTo(Employment::class, 'id', 'event_id'); // Adjust column names accordingly
+    }
+
+    public function employments()
+    {
+        return $this->belongsTo(Employment::class);
+    }
+
 }
