@@ -129,14 +129,14 @@
                                 </a>
                             </div>
 
-                            <div class="">
+                            {{-- <div class="">
                                 <p><strong><i class="ri-account-box-line text-lg font-bold"></i>Filler:</strong></p>
                                 <a href="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
                                     data-lightbox="latest_picture">
                                     <img src="{{ asset('storage/application_documents/' . basename($application->latest_picture)) }}"
                                     alt="Latest Picture Image" class="max-w-full h-auto mb-2 border-2 border-gray-500 rounded-lg p-4 hover:p-1 transition-all">
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <!-- Add more document information as needed -->
