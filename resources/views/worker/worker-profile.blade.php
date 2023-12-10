@@ -54,7 +54,7 @@
             </div>
             <div class="block lg:hidden">
                 <button
-                class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-4 rounded w-38 text-gray-700"><i class="ri-folder-line font-normal"></i> Employments</button>
+                class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-whitefont-bold py-2 px-4 rounded w-38 text-gray-700"><i class="ri-folder-line font-normal"></i> Employments</button>
                </div>
             </div>
         
