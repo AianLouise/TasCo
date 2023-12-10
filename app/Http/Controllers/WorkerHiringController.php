@@ -34,7 +34,7 @@ class WorkerHiringController extends Controller
             'projectTitle' => 'required|string|max:255',
             'projectDescription' => 'required|string',
             'startDate' => 'required|date',
-            'endDate' => 'required|date|after:startDate',
+            'endDate' => 'required|date',
             'scopeOfWork' => 'required|string',
             'totalPayment' => 'required|numeric',
             'paymentFrequency' => 'required|in:hourly,perDay',

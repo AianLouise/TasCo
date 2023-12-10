@@ -28,7 +28,7 @@
                 <div class="mr-8 hidden md:block">
                     <!-- Hire button -->
                     <div class="flex justify-center space-x-4">
-                        @if (Auth::user()->is_verified)
+                        @if ($user->is_verified)
                             @php
                                 $previousApplication = \App\Models\HiringForm::where('employer_id', Auth::user()->id)
                                     ->where('worker_id', $user->id)
@@ -44,7 +44,8 @@
                                     Hire Again
                                 </a>
                             @elseif ($previousApplicationExists)
-                                <span class="inline-block bg-blue-400 text-white font-bold py-2 px-4 rounded">
+                                <span
+                                    class="inline-block text-center bg-blue-400 text-white font-bold py-2 px-4 rounded">
                                     Application Sent
                                 </span>
                             @else
@@ -79,19 +80,16 @@
                 <div class="bg-blue-100 p-4 rounded-lg gird grid-rows-1 divide-y divide-gray-400">
                     <h2 class="text-gray-700 text-2xl font-bold mb-2">{{ $user->name }}</h2>
                     <p class="text-gray-700 mb-2 p-1">{{ $user->address }}</p>
-                    @if (Auth::user()->category_id)
-                        @php
-                            $category = App\Models\Category::find($user->category_id);
-                        @endphp
+                    @php
+                        $category = App\Models\Category::find($user->category_id);
+                    @endphp
 
-                        @if ($category)
-
-                            <p class="text-gray-700 mb-2 p-1">{{ $category->name }}</p>
-                        @else
-                            <p class="text-red-500">Category not found</p>
-                        @endif
-                        <p class="text-blue-600 p-1 font-semibold">Available for Hiring</p>
+                    @if ($category)
+                        <p class="text-gray-700 mb-2 p-1">{{ $category->name }}</p>
+                    @else
+                        <p class="text-red-500">Category not found</p>
                     @endif
+                    <p class="text-blue-600 p-1 font-semibold">Available for Hiring</p>
                 </div>
                 <!-- Add more profile details as needed -->
 
@@ -101,7 +99,7 @@
                     <div class="flex justify-center space-x-4 mt-4 sm:mt-0">
                         @if (Auth::user()->is_verified)
                             @php
-                                $previousApplication = \App\Models\HiringForm::where('employer_id', Auth::user()->id)
+                                $previousApplication = \App\Models\HiringForm::where('employer_id', $user->id)
                                     ->where('worker_id', $user->id)
                                     ->latest() // Assuming you want to get the latest application
                                     ->first();

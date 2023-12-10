@@ -84,10 +84,11 @@
                 <div class="flex justify-between mb-4">
                     <div>
                         <div class="flex items-center mb-1">
-                            <div class="text-3xl font-semibold">10</div>
-                            {{-- <div
-                                class="p-1 rounded bg-blue-500/10 text-blue-500 text-[12px] font-semibold leading-none ml-2">
-                                +1%</div> --}}
+                            @foreach ($hiringForms as $hiringForm)
+                                @if ($hiringForm->status === 'Pending')
+                                    <div class="text-3xl font-semibold">10</div>
+                                @endif
+                            @endforeach
                         </div>
                         <div class="text-sm font-medium text-gray-800">Hiring Applications</div>
                     </div>
@@ -119,7 +120,7 @@
             <div class="bg-white rounded-md border border-gray-200 p-6 shadow-md shadow-black/5">
                 <div class="flex justify-between mb-6">
                     <div>
-                        <div class="text-2xl font-semibold mb-1">10</div>
+                        <div class="text-3xl font-semibold mb-1">10</div>
                         <div class="text-sm font-medium text-gray-800">Total Employments</div>
                     </div>
                     <div>
@@ -134,7 +135,7 @@
             <!-- End: Dashboard Analytics: All Users -->
 
         </div>
-        
+
         <div class="grid grid-cols-1 p-4  md:grid-cols-2 mx-auto">
             <!-- Left Column (Calendar) -->
             <div class="flex-1 mb-4 p-5">
