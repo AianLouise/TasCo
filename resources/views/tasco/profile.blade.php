@@ -90,8 +90,9 @@
                         @else
                             <p class="text-red-500">Category not found</p>
                         @endif
-                        <p class="text-blue-600 p-1 font-semibold">Available for Hiring</p>
+                       
                     @endif
+                    <p class="text-blue-600 p-1 font-semibold">Available for Hiring</p>
                 </div>
                 <!-- Add more profile details as needed -->
 
