@@ -20,12 +20,12 @@
         
             
             <div class=" sm:-mr-24 hidden sm:block">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="ri-edit-line font-normal"></i> Edit
-                    Profile</button>
+                <a href="{{ route('app.settings') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="ri-edit-line font-normal"></i> Edit
+                    Profile</a>
             </div>
             <div class=" sm:-mr-6 hidden sm:block">
-                <button
-                class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-6 rounded w-38"><i class="ri-folder-line font-normal"></i> Employments</button>
+                <a href="#"
+                class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-6 rounded w-38"><i class="ri-folder-line font-normal"></i> Employments</a>
                </div>
         </div>
             <div class="text-center bg-blue-100 p-8 sm:p-4 rounded-xl divide-y divide-black sm:text-justify">

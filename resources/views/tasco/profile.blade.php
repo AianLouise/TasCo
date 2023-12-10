@@ -64,7 +64,7 @@
                                     Hire Again
                                 </a>
                             @elseif ($previousApplicationExists)
-                                <span class="inline-block bg-green-400 text-white font-bold py-2 px-4 rounded">
+                                <span class="inline-block bg-blue-400 text-white font-bold py-2 px-4 rounded">
                                     Application Sent
                                 </span>
                             @else
