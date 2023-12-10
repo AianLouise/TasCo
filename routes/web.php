@@ -102,7 +102,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/guidelines', [AppController::class, 'Guidelines'])->name('app.guidelines');
 
     Route::get('/chatify', [AppController::class, 'Chatify'])->name('app.chatify');
-    Route::get('/chatify/{user_id}', [AppController::class, 'UserChatify'])->name('user.chatify');
+    Route::get('/chatify/{user_id}', [AppController::class, 'openChat'])->name('user.chatify');
 
     Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
 
