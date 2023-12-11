@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="">
                                                 <div class="text-base font-medium2 text-gray-900">
-                                                    {{ $form->startDate }}
+                                                    {{ $form->startDate->format(' F j, Y') }}
                                                 </div>
                                             </div>
                                         </div>
@@ -68,7 +68,7 @@
                                             </div>
                                             <div class="">
                                                 <div class="text-base font-medium2 text-gray-900">
-                                                    {{ $form->endDate }}
+                                                    {{ $form->endDate->format(' F j, Y')  }}
                                                 </div>
                                             </div>
                                         </div>
@@ -115,10 +115,6 @@
                                     class="sm:w-40 w-52 h-auto transition-all rounded-full shadow-md avatarimg mb-4">
                             @endif
                         @endif
-
-                        <!-- Message Button -->
-                        <button
-                            class="bg-blue-500 text-white px-4 sm:px-12 py-2 rounded mt-4 sm:mt-4 mb-2 sm:mb-0 hover:bg-blue-800 transition-colors">Message</button>
                     </div>
 
                     <div class="sm:ml-10 mt-4 bg-blue-100 p-4 sm:p-6 divide-y-2 divide-gray-500 rounded-xl shadow-md">
