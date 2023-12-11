@@ -12,8 +12,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\StartedWorking;
+use App\Notifications\FinishedWorking;
 use App\Notifications\HiringFormAccepted;
 use App\Notifications\HiringFormRejected;
+use App\Notifications\HiringFormCompleted;
 use App\Notifications\HiringFormSubmitted;
 
 class WorkerHiringController extends Controller
@@ -260,6 +262,10 @@ class WorkerHiringController extends Controller
 
                     // Update the status of the hiring form to 'Finished'
                     $hiringForm->update(['status' => 'Finished']);
+
+                    // Dispatch the notification
+                    $employer = $hiringForm->employer;
+                    Auth::user()->notify(new FinishedWorking($hiringForm));
                 }
             } else {
                 // Handle the case where the event with the given ID doesn't exist
@@ -282,6 +288,10 @@ class WorkerHiringController extends Controller
         if ($hiringForm) {
             // Update the status of the HiringForm to 'Completed'
             $hiringForm->update(['status' => 'Completed']);
+
+            // Dispatch the notification
+            $employer = $hiringForm->employer;
+            Auth::user()->notify(new HiringFormCompleted($hiringForm));
 
             // Redirect back or to another page as needed
             return redirect()->back()->with('success', 'Marked as completed successfully!');
