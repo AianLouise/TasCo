@@ -34,16 +34,18 @@
 
                                     <td class="py-2 md:py-4 min-w-[150px] whitespace-nowrap text-left px-4 md:pr-6">
                                         <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10">
-                                                <!-- You can add an icon or image here if needed -->
+                                            <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10 p-2">
+                                                <i class="ri-notification-3-line text-blue-500"></i>
+                                                <!-- Replace ri-notification-3-line with your desired Remixicon and customize the icon color as needed -->
                                             </div>
                                             <div class="">
                                                 <div class="text-sm md:text-base font-medium2 text-gray-900">
-                                                    {{ $notification->data['message'] }}
+                                                    {{ $notification->data['subject'] }}
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>                                        
                                     </td>
+                                    
                                     <td class="py-2 md:py-4 min-w-[150px] whitespace-nowrap text-left px-4 md:pr-6">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10">
@@ -51,8 +53,9 @@
                                             </div>
                                             <div class="">
                                                 <div class="text-sm md:text-base font-medium2 text-gray-900">
-                                                    {{ $notification->created_at->format('l, F j, Y') }}
-                                                </div>
+                                                    <i class="ri-time-line"></i>
+                                                    {{ $notification->created_at->diffForHumans() }}
+                                                </div>                                                                                               
                                             </div>
                                         </div>
                                     </td>

@@ -11,6 +11,10 @@ use App\Models\HiringForm;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\StartedWorking;
+use App\Notifications\HiringFormAccepted;
+use App\Notifications\HiringFormRejected;
+use App\Notifications\HiringFormSubmitted;
 
 class WorkerHiringController extends Controller
 {
@@ -55,6 +59,9 @@ class WorkerHiringController extends Controller
         $hiringForm->status = 'Pending';
         $hiringForm->save();
 
+        // Dispatch the notification
+        $worker->notify(new HiringFormSubmitted($hiringForm));
+
         // Redirect back to the worker's profile
         return redirect()->route('app.workerprofile', ['worker' => $worker->id])->with('success', 'Form submitted successfully');
     }
@@ -96,6 +103,10 @@ class WorkerHiringController extends Controller
                 ]);
             }
 
+            // Notify the employer about the acceptance
+            $employer = $hiringForm->employer;
+            $employer->notify(new HiringFormAccepted($hiringForm));
+                
             return redirect()->back()->with('success', 'Status updated successfully');
         }
 
@@ -110,6 +121,10 @@ class WorkerHiringController extends Controller
             // Update the hiring form status
             $hiringForm->status = 'Rejected'; // You might want to set a default status here
             $hiringForm->save();
+
+             // Notify the employer about the rejection
+            $employer = $hiringForm->employer;
+            $employer->notify(new HiringFormRejected($hiringForm));
 
             return redirect()->back()->with('success', 'Status updated successfully');
         }
@@ -158,6 +173,11 @@ class WorkerHiringController extends Controller
 
             if ($event) {
                 $event->update(['status' => 'Ongoing']);
+
+                // Notify the employer
+                $employer = $hiringForm->employer;
+                $employer->notify(new StartedWorking(['hiringForm' => $hiringForm, 'eventId' => $eventId]));
+
                 // Redirect back or to another page as needed
                 return redirect()->back()->with('success', 'Started working successfully!');
             } else {
