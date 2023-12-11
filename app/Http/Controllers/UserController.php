@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CustomerServiceMessage;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\HiringFormCompletedPending;
 
 class UserController extends Controller
 {
@@ -302,6 +303,9 @@ class UserController extends Controller
             // Update the hiring form status
             $hiringForm->status = 'Completed(Pending)'; // You might want to set a default status here
             $hiringForm->save();
+
+            // Dispatch the notification to the user
+            $user->notify(new HiringFormCompletedPending($hiringForm));
 
             return redirect()->back()->with('success', 'Status updated successfully');
         }
