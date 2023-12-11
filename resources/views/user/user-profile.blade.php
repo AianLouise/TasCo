@@ -30,22 +30,21 @@
                     @endphp
                 </div>
                 <div class="sm:-mr-6 sm:-mt-2 hidden lg:block">
-                    <button class="{{ $buttonClass }}"><i
-                            class="ri-folder-line font-normal"></i> Employments</button>
+                    <button class="{{ $buttonClass }}"><i class="ri-folder-line font-normal"></i> Employments</button>
                 </div>
 
             </div>
 
             <div
-                class="text-center bg-blue-100 p-8 sm:p-4 rounded-xl divide-y divide-black sm:text-justify mb-4 sm:mb-0">
+                class="text-center bg-blue-100 p-8 sm:p-4 rounded-xl divide-y divide-gray-400 sm:text-justify mb-4 sm:mb-0">
                 <h2 class="text-gray-700 text-2xl sm:text-2xl font-semibold mb-2">{{ Auth::user()->name }}</h2>
-                <p class="text-gray-700 text-xl p-2">{{ Auth::user()->address }}</p>
+                <p class="text-gray-700 text-base p-1 mb-1">{{ Auth::user()->address }}</p>
             </div>
 
             <div class="grid grid-cols-2 py-2 sm:py-0">
                 <div class="block lg:hidden">
                     <a href="{{ route('app.settings') }}"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded px-4 py-2"><i
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded px-4 py-2 h-10"><i
                             class="ri-edit-line font-normal"></i> Edit
                         Profile</a>
                     @php
@@ -56,7 +55,7 @@
                 @if (Auth::user()->is_verified != 0)
                     <div class="block -mt-1 lg:hidden">
                         <a href="{{ route('app.employments', ['worker' => Auth::user()->id]) }}"
-                            class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-gray-700 font-bold rounded px-4 py-2">
+                            class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-gray-700 font-bold rounded px-4 py-2 h-10">
                             <i class="ri-folder-line font-normal"></i> Employments
                         </a>
                     </div>
@@ -65,37 +64,33 @@
             </div>
 
             <div class="mt-4">
-                @php
-                    $isVerified = Auth::user()->is_verified;
-                    $gridColsClass = $isVerified ? 'grid-cols-2' : 'grid-cols-1';
-                @endphp
-
-                <div class="grid grid-rows-1 {{ $gridColsClass }} gap-4">
-                    @if ($isVerified)
-                        <div>
-                            <div
-                                class="bg-white border-blue-400 border hover:text-blue-400 transition-all p-4 rounded min-h-32 shadow">
-                                <h3 class="text-lg font-semibold mb-2">Services Employed</h3>
-                                <!-- Add services employed details here -->
-                                <p
-                                    class="text-gray-700 text-4xl hover:text-blue-400 hover:font-semibold hover:text-5xl hover:p-2 transition-all">
-                                    20
-                                </p>
-                            </div>
+                <div class="grid grid-rows-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <div
+                            class="bg-white border-blue-400 border hover:text-blue-400 transition-all p-4 rounded min-h-32 shadow">
+                            <!-- Added shadow class -->
+                            <h3 class="text-lg font-semibold mb-2 text-center">Number of Employment</h3>
+                            <!-- Add services employed details here -->
+                            <p
+                                class="text-gray-700 text-xl hover:text-blue-400 hover:font-semibold hover:text-4xl hover:p-2 transition-all text-center">
+                                20</p> <!-- Increased font size to text-xl -->
                         </div>
-                    @endif
 
+                    </div>
                     <div
-                        class="text-base p-2 rounded hover:text-black hover:bg-white hover:text-xl hover:font-semibold transition-all">
-                        <div class="flex items-center mb-2 bg-blue-400 px-5 py-1 text-gray-700 rounded">
-                            <div class="border-t border-black flex-grow mr-4"></div>
-                            <!-- Line above Contact Information -->
-                            <h3 class="text-lg font-semibold text-white">Contact Information</h3>
-                            <div class="border-t border-black flex-grow ml-4"></div>
-                            <!-- Line above Contact Information -->
+                        class="text-base p-2 rounded hover:text-black hover:bg-white md:hover:text-lg hover:font-semibold transition-all text-center">
+                        <div>
+                            <div class="flex items-center mb-2 bg-blue-100 px-5 py-1 text-gray-700 rounded">
+                                <div class="border-t border-black flex-grow mr-4"></div>
+                                <!-- Line above Contact Information -->
+                                <h3 class=" md:text-lg font-semibold text-gray-700 text-center">Contact Information</h3>
+                                <div class="border-t border-black flex-grow ml-4"></div>
+                                <!-- Line above Contact Information -->
+                            </div>
+                            <p class="">Email: {{ Auth::user()->email }}</p>
+                            <p class="">Phone: {{ Auth::user()->phone }}</p>
                         </div>
-                        <p class="">Email: {{ Auth::user()->email }}</p>
-                        <p class="">Phone: {{ Auth::user()->phone }}</p>
+
                     </div>
                 </div>
             </div>

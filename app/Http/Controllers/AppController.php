@@ -52,6 +52,11 @@ class AppController extends Controller
             return redirect()->back()->with('error', 'Worker not found');
         }
     
+        // If the authenticated user's ID is the same as the worker's ID, return the 'worker.profile' view
+        if (Auth::id() == $workerId) {
+            return view("worker.worker-profile", compact('pageTitle', 'worker'));
+        }
+    
         return view("tasco.profile", compact('pageTitle', 'worker'));
     }
 

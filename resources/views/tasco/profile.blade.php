@@ -75,7 +75,7 @@
 
 
 
-            <div class="text-center sm:text-justify"> <!-- Modified: Changed text-left to text-center -->
+            <div class="text-center sm:text-justify">
                 <div class="bg-blue-100 p-4 rounded-lg gird grid-rows-1 divide-y divide-gray-400">
                     <h2 class="text-gray-700 text-md sm:text-2xl font-bold mb-2">{{ $worker->name }} | @if ($worker->category_id)
                             @php
@@ -208,20 +208,22 @@
 
                     </div>
                     <div
-                        class="text-base p-2 rounded hover:text-black hover:bg-white hover:text-xl hover:font-semibold transition-all text-center">
-                        <div class="flex items-center mb-2 bg-blue-300 px-5 py-1 text-gray-700 rounded">
-                            <div class="border-t border-black flex-grow mr-4"></div>
-                            <!-- Line above Contact Information -->
-                            <h3 class="text-sm font-semibold ">Contact Information</h3>
-                            <div class="border-t border-black flex-grow ml-4"></div>
-                            <!-- Line above Contact Information -->
+                        class="text-base p-2 rounded hover:text-black hover:bg-white md:hover:text-lg hover:font-semibold transition-all text-center">
+                        <div>
+                            <div class="flex items-center mb-2 bg-blue-100 px-5 py-1 text-gray-700 rounded">
+                                <div class="border-t border-black flex-grow mr-4"></div>
+                                <!-- Line above Contact Information -->
+                                <h3 class=" md:text-lg font-semibold text-gray-700 text-center">Contact Information</h3>
+                                <div class="border-t border-black flex-grow ml-4"></div>
+                                <!-- Line above Contact Information -->
+                            </div>
+                            <p class="">Email: {{ $worker->email }}</p>
+                            <p class="">Phone: {{ $worker->phone }}</p>
                         </div>
-                        <p class="">{{ $worker->email }}</p>
-                        <p class="">{{ $worker->phone }}</p>
+
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </main>
 </x-app-layout>
