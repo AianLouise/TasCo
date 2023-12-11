@@ -53,6 +53,7 @@ class EmployerApplicationRejected extends Notification
     public function toArray(object $notifiable): array
     {
         return [
+            'read_at' => null, // Initialize as unread
             'subject' => 'Employer Application Rejection',
             'greeting' => 'Hello!',
             'message' => 'Your Employer application has been rejected.',

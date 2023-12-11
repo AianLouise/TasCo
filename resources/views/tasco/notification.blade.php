@@ -22,7 +22,7 @@
                                 </th>
                                 <th scope="col"
                                     class="px-4 md:px-10 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider ml-5">
-                                    Start Date
+                                    Date
                                 </th>
                             </tr>
                         </thead>
@@ -30,7 +30,8 @@
                         <tbody class="bg-gray-50">
                             @foreach ($notifications as $notification)
                                 <tr class="border border-gray-300 hover:border-blue-500 cursor-pointer transition-colors duration-300 "
-                                    onclick="openModal('{{ $notification->id }}')">
+                                    onclick="markAsRead('{{ $notification->id }}', this); openModal('{{ $notification->id }}')">
+
                                     <td class="py-2 md:py-4 min-w-[150px] whitespace-nowrap text-left px-4 md:pr-6">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10">
@@ -124,6 +125,35 @@
                 });
             });
         </script>
+
+        <script>
+            function markAsRead(notificationId, row) {
+                // Send an AJAX request to mark the notification as read
+                fetch(`/mark-as-read/${notificationId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        },
+                        body: JSON.stringify({}),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update the UI if the notification was marked as read successfully
+                        if (data.success) {
+                            row.classList.add('bg-gray-100'); // Change the background color to indicate read
+                            // ... Any other UI changes you want to make ...
+
+                            // If you want to ensure the modal opens after marking the notification as read
+                            openModal(notificationId);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        </script>
+
+
+
         <x-footer />
     </body>
 </x-app-layout>

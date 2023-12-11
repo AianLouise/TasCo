@@ -85,6 +85,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [AppController::class, 'Home'])->name('app.home');
     Route::get('/notification', [UserController::class, 'Notification'])->name('app.notifications');
+    Route::post('/mark-as-read/{notification}', [UserController::class, 'MarkAsRead'])->name('markAsRead');
     Route::get('/about-us', [AppController::class, 'AboutUs'])->name('app.aboutUs');
     Route::get('/apply-as-jobseeker', [AppController::class, 'applyJobseeker'])->name('app.applyJobseeker');
     Route::get('/apply-as-employer', [AppController::class, 'applyEmployer'])->name('app.applyEmployer');

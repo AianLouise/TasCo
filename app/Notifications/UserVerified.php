@@ -50,6 +50,7 @@ class UserVerified extends Notification
     public function toArray(object $notifiable): array
     {
         return [
+            'read_at' => null, // Initialize as unread
             'subject' => 'Job Seeker Application Approval',
             'greeting' => 'Hello!',
             'message' => 'Your Job Seeker application has been approved.',
