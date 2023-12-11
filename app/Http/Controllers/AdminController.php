@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Service;
 use App\Models\Category;
+use App\Models\SosAlert;
 use App\Models\Employment;
 use App\Models\HiringForm;
 use App\Models\ActivityLog;
@@ -254,6 +255,15 @@ class AdminController extends Controller
         $hiringForms = HiringForm::get();
 
         return view('admin.admin-employment', compact('pageTitle', 'hiringForms'));
+    }
+
+    public function AdminEmergency()
+    {
+        // $employment = Employment::with('category')->get();
+        $pageTitle = 'Emergency Assistance';
+        $sosAlerts = SosAlert::all();
+
+        return view('admin.admin-emergencyAssistance', compact('pageTitle', 'sosAlerts'));
     }
 
     public function AdminHiringApplication()

@@ -143,80 +143,21 @@
         <!-- Your existing HTML structure -->
 
         <!-- Updated HTML structure with a more appealing design -->
-
         <div id="HelpPage" class="hidden flex items-center justify-center h-screen p-10 px-20 bg-blue-50">
             <div class="container mx-auto p-8 bg-white rounded-xl shadow-xl text-center">
                 <h1 class="text-3xl font-semibold text-blue-700 mb-6">Emergency Assistance</h1>
                 <p class="text-gray-700 mb-8">When in distress or feeling unsafe, click the "Send SOS" button below for
                     immediate assistance. Help is on the way!</p>
-                <button id="sendSOSButton"
-                    class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full focus:outline-none focus:shadow-outline-red transition duration-300">Send
-                    SOS</button>
+                <a href="{{ route('tasco.sendSOS') }}" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full focus:outline-none focus:shadow-outline-red transition duration-300">Send
+                    SOS</a>
             </div>
         </div>
-
+        
         <script>
-            document.getElementById('sendSOSButton').addEventListener('click', function() {
-                // Assume you have a function to send an SOS request to the backend
-                sendSOS();
-            });
-
-            function sendSOS() {
-                // You can use AJAX to send an SOS request to the backend
-                // Example using Fetch API
-                fetch('/sendSOS', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            // Add any additional headers as needed
-                        },
-                        // You can include more data in the body if needed
-                        body: JSON.stringify({}),
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        // Handle the response from the server (e.g., show a success message)
-                        alert('SOS sent successfully!');
-                    })
-                    .catch(error => {
-                        console.error('Error sending SOS:', error);
-                        // Handle errors (e.g., show an error message)
-                        alert('Error sending SOS. Please try again.');
-                    });
-            }
+            // You can remove the JavaScript code related to the button click event since it's no longer needed.
         </script>
-
-
-        <script>
-            document.getElementById('sendSOSButton').addEventListener('click', function() {
-                // Assume you have a function to send an SOS request to the backend
-                sendSOS();
-            });
-
-            function sendSOS() {
-                // You can use AJAX to send an SOS request to the backend
-                // Example using Fetch API
-                fetch('/sendSOS', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            // Add any additional headers as needed
-                        },
-                        // You can include more data in the body if needed
-                        body: JSON.stringify({}),
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        // Handle the response from the server (e.g., show a success message)
-                        alert('SOS sent successfully!');
-                    })
-                    .catch(error => {
-                        console.error('Error sending SOS:', error);
-                        // Handle errors (e.g., show an error message)
-                        alert('Error sending SOS. Please try again.');
-                    });
-            }
-        </script>
+        
+        
 
 
 

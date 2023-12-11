@@ -62,6 +62,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/edit-profile/{id}', [AdminController::class, 'AdminEditProfile'])->name('admin.editProfile');
     Route::delete('/admin/deleteProfile/{id}', [AdminController::class, 'deleteProfile'])->name('admin.deleteProfile');
     Route::get('/admin/employment', [AdminController::class, 'AdminEmployment'])->name('admin.employment');
+    Route::get('/admin/emergency-assistance', [AdminController::class, 'AdminEmergency'])->name('admin.emergency');
     Route::get('/admin/hiring-application', [AdminController::class, 'AdminHiringApplication'])->name('admin.hiringApplication');
     Route::get('/admin/hiring-application/{id}', [AdminController::class, 'AdminHiringApplicationView'])->name('admin.hiringApplicationView');
 
@@ -124,6 +125,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jobseeker-submit-application', [ApplicationController::class, 'submitJobSeekerApplication'])->name('submit.jobseekerapplication');
     Route::get('/submission-confirmation', [ApplicationController::class, 'showSubmissionConfirmationPage'])
         ->name('tasco.submissionConfirmationPage');
+
+    Route::post('/sendSOS', [SosAlertController::class, 'sendSOS'])->name('tasco.sendSOS');
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
