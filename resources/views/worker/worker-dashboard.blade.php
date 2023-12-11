@@ -747,13 +747,13 @@
                             @if ($hiringForm->status === 'Pending')
                                 <div class="">
                                     <a href="{{ route('acceptStatus', ['id' => $hiringForm->id]) }}"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-lg w-20">
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-base w-20">
                                         Accept
                                     </a>
                                 </div>
                                 <div class="">
                                     <a href="{{ route('rejectStatus', ['id' => $hiringForm->id]) }}"
-                                        class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded text-lg">
+                                        class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded text-base">
                                         Reject
                                     </a>
                                 </div>
