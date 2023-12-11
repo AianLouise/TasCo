@@ -45,7 +45,7 @@
                     </div>
 
                     <!-- New Section for Project Information with Styled Design -->
-                    <div class="bg-white rounded-md mt-2 text-center">
+                    <div class="bg-white rounded-md mt-2 text-center border-t pt-2">
                         <h2 class="text-2xl font-bold text-gray-800 pb-4">Project Information</h2>
                         <div class="">
                             @if ($hiringForm)
@@ -92,7 +92,7 @@
                     </div>
 
                     <!-- Buttons Section -->
-                    <div class="flex justify-center mt-4 sm:mt-10 space-x-4 mb-9">
+                    <div class="flex justify-center mt-4 sm:mt-4 space-x-4 sm:mb-9">
                         @if ($hiringForm->status === 'Accepted' || $event->status === 'Pending')
                             @if (\Carbon\Carbon::parse($event->start)->isToday())
                                 <a href="{{ route('startWorking', ['hiringFormId' => $hiringForm->id, 'eventId' => $event->id]) }}"
@@ -116,17 +116,17 @@
                                 </button>
                             </div>
                         @elseif ($event->status === 'Done')
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col justify-center items-center mb-9 p-2 border-t">
                             <h1 class="text-2xl font-bold mb-4">Documentation</h1>
-                            <div class="flex justify-between">
-                                <div class="w-1/3">
-                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image1)) }}" alt="Image">
+                            <div class="grid grid-rows-1 sm:flex justify-center sm:justify-between gap-5">
+                                <div class="w-full sm:w-1/3">
+                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image1)) }}" alt="Image" class="border shadow-xl rounded-xl">
                                 </div>
-                                <div class="w-1/3 flex flex-col items-center">
-                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image2)) }}" alt="Image">
+                                <div class="w-full sm:w-1/3 flex flex-col items-center">
+                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image2)) }}" alt="Image" class="border shadow-xl rounded-xl">
                                 </div>
-                                <div class="w-1/3">
-                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image3)) }}" alt="Image">
+                                <div class="w-full sm:w-1/3">
+                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image3)) }}" alt="Image" class="border shadow-xl rounded-xl">
                                 </div>
                             </div>
                         </div>
