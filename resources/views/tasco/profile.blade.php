@@ -39,7 +39,7 @@
                             @endphp
 
                             @if ($previousApplicationExists && $previousApplication->status === 'Completed')
-                                <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
+                                <a href="{{ route('worker.hire', ['worker' => $worker->id]) }}"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">
                                     Hire Again
                                 </a>

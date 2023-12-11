@@ -128,7 +128,7 @@ Route::middleware(['auth'])->group(function () {
 // Worker Routes (Requires Authentication and Worker Role)
 Route::middleware(['auth', 'role:worker'])->group(function () {
     // Worker Dashboard and Related Routes
-    Route::get('/worker/dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
+    Route::get('/worker-dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
     Route::get('/worker/profile', [WorkerController::class, 'WorkerProfile'])->name('worker.profile');
     Route::get('/worker/chatify', [WorkerController::class, 'WorkerChatify'])->name('worker.chatify');
     Route::get('/accept-status/{id}', [WorkerHiringController::class, 'acceptStatus'])->name('acceptStatus');
@@ -146,9 +146,14 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 Route::middleware(['auth', 'role:user', 'is_verified:1'])->group(function () {
     // User Dashboard and Related Routes
-    Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+    Route::get('/employer-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/mark-as-completed/{id}', [UserController::class, 'MarkAsCompletedUser'])->name('user.MarkAsCompleted');
 });
+
+Route::middleware(['auth', 'is_verified:1'])->group(function () {
+    Route::get('/work/{HiringForm_id}', [WorkerHiringController::class, 'WorkView'])->name('work.view');
+});
+
 
 
 Route::controller(FullCalenderController::class)->group(function () {

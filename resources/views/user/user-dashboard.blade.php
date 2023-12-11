@@ -36,6 +36,81 @@
 
 
     <main class="bg-blue-50">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4 pt-4 px-10">
+
+            <!-- Start: Dashboard Analytics - Active Hires Section -->
+            <div class="bg-white rounded-md border border-gray-200 p-6 shadow-md shadow-black/5">
+                <div class="flex justify-between mb-4">
+                    <div>
+                        @php
+                            $statusCount = $hiringForms->whereIn('status', ['Finished', 'Ongoing', 'Accepted', 'Completed(Pending)'])->count();
+                        @endphp
+
+                        <div class="flex items-center mb-1">
+                            <div class="text-3xl font-semibold">{{ $statusCount }}</div>
+                        </div>
+                        <div class="text-sm font-medium text-gray-800">Active Hires</div>
+                    </div>
+                    <div>
+                        <button type="button" class="dropdown-toggle text-gray-800 hover:text-gray-600"><i
+                                class="ri-more-fill"></i></button>
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <!-- Additional content if needed -->
+                </div>
+            </div>
+            <!-- End: Dashboard Analytics - Active Hires Section -->
+
+            <!-- Start: Dashboard Analytics - Hiring Applications Section -->
+            <div class="bg-white rounded-md border p-6 shadow-md shadow-black/5">
+                <div class="flex justify-between mb-4">
+                    <div>
+                        <div class="flex items-center mb-1">
+                            @php
+                                $pendingCount = $hiringForms->where('status', 'Pending')->count();
+                            @endphp
+
+                            <div class="text-3xl font-semibold">{{ $pendingCount }}</div>
+                        </div>
+                        <div class="text-sm font-medium text-gray-800">Hiring Applications</div>
+                    </div>
+                    <div>
+                        <button type="button" class="dropdown-toggle text-gray-800 hover:text-gray-600"><i
+                                class="ri-more-fill"></i></button>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <!-- Additional content if needed -->
+                </div>
+            </div>
+            <!-- End: Dashboard Analytics - Hiring Applications Section -->
+
+            <!-- Start: Dashboard Analytics - Total Employments Section -->
+            <div class="bg-white rounded-md border border-gray-200 p-6 shadow-md shadow-black/5">
+                <div class="flex justify-between mb-6">
+                    <div>
+                        @php
+                            $completedCount = $hiringForms->where('status', 'Completed')->count();
+                        @endphp
+
+                        <div class="text-3xl font-semibold mb-1">{{ $completedCount }}</div>
+                        <div class="text-sm font-medium text-gray-800">Total Employments</div>
+                    </div>
+                    <div>
+                        <button type="button" class="dropdown-toggle text-gray-800 hover:text-gray-600"><i
+                                class="ri-more-fill"></i></button>
+                    </div>
+                </div>
+                <a href="{{ route('admin.viewAllUsers') }}"
+                    class="text-blue-500 font-medium text-sm hover:text-blue-600">View all</a>
+            </div>
+            <!-- End: Dashboard Analytics - Total Employments Section -->
+        </div>
+
+
         <div class="grid grid-cols-2 p-4">
             <!-- Left Column (Calendar) -->
             <div class="flex-1 mb-4 md:mb-0 p-10 pt-4">
@@ -45,7 +120,8 @@
             <!-- Right Column (Upcoming Schedule) -->
             <div class="flex-1 bg-white p-6 rounded-md divide-y mb-10 mt-4 mr-10">
                 <div class="flex justify-between mb-1 items-start">
-                    <h2 class="font-medium2 mb-1 text-start"><i class="ri-calendar-event-fill"></i> Upcoming Work Schedule
+                    <h2 class="font-medium2 mb-1 text-start"><i class="ri-calendar-event-fill"></i> Upcoming Work
+                        Schedule
                     </h2>
                 </div>
 
@@ -629,7 +705,7 @@
 
                             <!-- Submit button -->
                             <div class="flex mb-2 mt-3 justify-center space-x-1">
-                                @if ($hiringForm->status === 'Pending')
+                                {{-- @if ($hiringForm->status === 'Pending')
                                     <div class="">
                                         <a href="{{ route('acceptStatus', ['id' => $hiringForm->id]) }}"
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs w-20">
@@ -641,8 +717,8 @@
                                             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-xs">
                                             Reject
                                         </a>
-                                    </div>
-                                @elseif($hiringForm->status === 'Finished')
+                                    </div> --}}
+                                @if ($hiringForm->status === 'Finished')
                                     <div class="flex flex-col justify-center">
                                         <div class="flex flex-col justify-center">
                                             @foreach ($hiringForm->employments as $index => $employment)
