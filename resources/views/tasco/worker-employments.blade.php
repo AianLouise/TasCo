@@ -3,85 +3,88 @@
 
 
     <body>
-        <div class="flex justify-center min-h-screen pb-4 bg-blue-50">
-            <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-10 ml-4 mt-4 mr-4 rounded-md w-1/2">
+        <div class="flex flex-col items-center min-h-screen p-4 bg-blue-50">
+            <div
+                class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 md:p-10 w-full max-w-screen-lg rounded-md">
                 <div class="flex justify-between mb-4 items-start">
                     <div class="font-medium2 text-xl"><i class="ri-briefcase-line mr-2"></i>Employments</div>
                 </div>
 
                 <div class="overflow-x-auto">
                     <!-- Employer Table -->
-                    <table class="w-full min-w-[540px]">
+                    <table class="w-full">
                         <thead>
                             <!-- Table Header -->
                             <tr class="border-b">
                                 <th scope="col"
-                                    class="px-10 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider ml-5">
+                                    class="px-4 md:px-10 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider ml-5">
                                     Title
                                 </th>
                                 <th scope="col"
-                                    class="px-10 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider ml-5">
+                                    class="px-4 md:px-10 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider ml-5">
                                     Start Date
                                 </th>
                                 <th scope="col"
-                                    class="px-10 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider ml-5">
+                                    class="px-4 md:px-10 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider ml-5">
                                     End Date
                                 </th>
                             </tr>
                         </thead>
 
                         <tbody class="bg-gray-50">
-                            <!-- Add an empty row with transparent borders -->
-                            <tr class="border-t border-gray-300"></tr>
+                            <!-- Add an empty row with borders -->
+                            <tr class="border-b border-t border-gray-300"></tr>
 
                             @foreach ($hiringForms as $form)
-                                <tr class="border border-gray-300 hover:border-blue-500 cursor-pointer transition-colors duration-300 mt-2"
-                                    onclick="openModal('{{ $form->id }}')">
-                                    <td class="py-4 whitespace-nowrap text-left pr-6">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <!-- You can add an icon or image here if needed -->
-                                            </div>
-                                            <div class="">
-                                                <div class="text-base font-medium2 text-gray-900">
-                                                    {{ $form->projectTitle }}
+                                @if ($form->status === 'Completed')
+                                    <tr class="border border-gray-300 hover:border-blue-500 cursor-pointer transition-colors duration-300 "
+                                        onclick="openModal('{{ $form->id }}')">
+                                        <td class="py-2 md:py-4 min-w-[150px] whitespace-nowrap text-left px-4 md:pr-6">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10">
+                                                    <!-- You can add an icon or image here if needed -->
+                                                </div>
+                                                <div class="">
+                                                    <div class="text-sm md:text-base font-medium2 text-gray-900">
+                                                        {{ $form->projectTitle }}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="py-4 whitespace-nowrap text-left pr-6">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <!-- You can add an icon or image here if needed -->
-                                            </div>
-                                            <div class="">
-                                                <div class="text-base font-medium2 text-gray-900">
-                                                    {{ $form->startDate->format(' F j, Y') }}
+                                        </td>
+                                        <td class="py-2 md:py-4 min-w-[150px] whitespace-nowrap text-left px-4 md:pr-6">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10">
+                                                    <!-- You can add an icon or image here if needed -->
+                                                </div>
+                                                <div class="">
+                                                    <div class="text-sm md:text-base font-medium2 text-gray-900">
+                                                        {{ $form->startDate->format(' F j, Y') }}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="py-4 whitespace-nowrap text-left pr-6">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <!-- You can add an icon or image here if needed -->
-                                            </div>
-                                            <div class="">
-                                                <div class="text-base font-medium2 text-gray-900">
-                                                    {{ $form->endDate->format(' F j, Y')  }}
+                                        </td>
+                                        <td class="py-2 md:py-4 min-w-[150px] whitespace-nowrap text-left px-4 md:pr-6">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10">
+                                                    <!-- You can add an icon or image here if needed -->
+                                                </div>
+                                                <div class="">
+                                                    <div class="text-sm md:text-base font-medium2 text-gray-900">
+                                                        {{ $form->endDate->format(' F j, Y') }}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
-
                     </table>
-
                 </div>
             </div>
+
         </div>
+
 
         <script>
             function openModal(formId) {

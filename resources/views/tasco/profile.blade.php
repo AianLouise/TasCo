@@ -32,18 +32,17 @@
                             @php
                                 $previousApplication = \App\Models\HiringForm::where('employer_id', Auth::user()->id)
                                     ->where('worker_id', $worker->id)
-                                    ->latest() // Assuming you want to get the latest application
                                     ->first();
 
                                 $previousApplicationExists = $previousApplication !== null;
                             @endphp
 
-                            @if ($previousApplicationExists && $previousApplication->status === 'Completed')
+                            @if ($previousApplication->status === 'Completed')
                                 <a href="{{ route('worker.hire', ['worker' => $worker->id]) }}"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">
+                                    class="bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded w-36">
                                     Hire Again
                                 </a>
-                            @elseif ($previousApplicationExists)
+                            @elseif ($previousApplicationExists && $previousApplication->status === 'Pending')
                                 <span
                                     class="inline-block text-center bg-blue-400 text-white font-bold py-2 px-4 rounded">
                                     Application Sent
@@ -62,12 +61,12 @@
 
 
                         <a href="{{ route('user.chatify', ['user_id' => $worker->id]) }}" target="_new"
-                            class="border hover:bg-blue-500 hover:text-white text-gray border-blue-400 font-semibold py-2 px-4 rounded w-36">
+                            class="border hover:bg-blue-500 hover:text-white text-gray border-blue-400 font-semibold py-2 px-4 rounded w-36 max-h-10">
                             Message
                         </a>
 
                         <a href="{{ route('app.employments', ['worker' => $worker->id]) }}"
-                            class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36">Employments</a>
+                            class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36 max-h-10">Employments</a>
                     </div>
                 </div>
             </div>
