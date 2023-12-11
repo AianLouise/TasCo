@@ -8,10 +8,10 @@
     </style>
 
     <main class="bg-gray-200 min-h-screen flex items-center justify-center">
-        {{-- @php
+        @php
             $userId = request()->route('worker');
             $user = \App\Models\User::find($userId);
-        @endphp --}}
+        @endphp
         <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-right rounded-lg mt-36 sm:mt-20">
             <!-- Added rounded-lg class -->
             <!-- Modified: Increased max width to max-w-2xl -->
@@ -32,22 +32,28 @@
                             @php
                                 $previousApplication = \App\Models\HiringForm::where('employer_id', Auth::user()->id)
                                     ->where('worker_id', $worker->id)
-                                    ->latest() // Assuming you want to get the latest application
                                     ->first();
 
                                 $previousApplicationExists = $previousApplication !== null;
                             @endphp
 
-                            @if ($previousApplicationExists && $previousApplication->status === 'Completed')
-                                <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">
-                                    Hire Again
-                                </a>
-                            @elseif ($previousApplicationExists)
-                                <span
-                                    class="inline-block text-center bg-blue-400 text-white font-bold py-2 px-4 rounded">
-                                    Application Sent
-                                </span>
+                            @if ($previousApplicationExists)
+                                @if ($previousApplication->status === 'Completed')
+                                    <a href="{{ route('worker.hire', ['worker' => $worker->id]) }}"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded w-36">
+                                        Hire Again
+                                    </a>
+                                @elseif ($previousApplication->status === 'Pending')
+                                    <span
+                                        class="inline-block text-center bg-blue-400 text-white font-bold py-2 px-4 rounded">
+                                        Application Sent
+                                    </span>
+                                @else
+                                    <a href="{{ route('worker.hire', ['worker' => $worker->id]) }}"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded w-36">
+                                        Hire
+                                    </a>
+                                @endif
                             @else
                                 <a href="{{ route('worker.hire', ['worker' => $worker->id]) }}"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded w-36">
@@ -56,18 +62,20 @@
                             @endif
                         @else
                             <button
-                                class="button open-button bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-8 rounded w-36 transition-colors">Hire</button>
-
+                                class="button open-button bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-8 rounded w-36 transition-colors">
+                                Hire
+                            </button>
                         @endif
 
 
+
                         <a href="{{ route('user.chatify', ['user_id' => $worker->id]) }}" target="_new"
-                            class="border hover:bg-blue-500 hover:text-white text-gray border-blue-400 font-semibold py-2 px-4 rounded w-36">
+                            class="border hover:bg-blue-500 hover:text-white text-gray border-blue-400 font-semibold py-2 px-4 rounded w-36 max-h-10">
                             Message
                         </a>
 
-                        <a href="{{ route('worker.employments', ['worker' => $worker->id]) }}"
-                            class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36">Employments</a>
+                        <a href="{{ route('app.employments', ['worker' => $worker->id]) }}"
+                            class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36 max-h-10">Employments</a>
                     </div>
                 </div>
             </div>
@@ -75,7 +83,7 @@
 
 
 
-            <div class="text-center sm:text-justify"> <!-- Modified: Changed text-left to text-center -->
+            <div class="text-center sm:text-justify">
                 <div class="bg-blue-100 p-4 rounded-lg gird grid-rows-1 divide-y divide-gray-400">
                     <h2 class="text-gray-700 text-md sm:text-2xl font-bold mb-2">{{ $worker->name }} | @if ($worker->category_id)
                             @php
@@ -208,20 +216,22 @@
 
                     </div>
                     <div
-                        class="text-base p-2 rounded hover:text-black hover:bg-white hover:text-xl hover:font-semibold transition-all text-center">
-                        <div class="flex items-center mb-2 bg-blue-300 px-5 py-1 text-gray-700 rounded">
-                            <div class="border-t border-black flex-grow mr-4"></div>
-                            <!-- Line above Contact Information -->
-                            <h3 class="text-sm font-semibold ">Contact Information</h3>
-                            <div class="border-t border-black flex-grow ml-4"></div>
-                            <!-- Line above Contact Information -->
+                        class="text-base p-2 rounded hover:text-black hover:bg-white md:hover:text-lg hover:font-semibold transition-all text-center">
+                        <div>
+                            <div class="flex items-center mb-2 bg-blue-100 px-5 py-1 text-gray-700 rounded">
+                                <div class="border-t border-black flex-grow mr-4"></div>
+                                <!-- Line above Contact Information -->
+                                <h3 class=" md:text-lg font-semibold text-gray-700 text-center">Contact Information</h3>
+                                <div class="border-t border-black flex-grow ml-4"></div>
+                                <!-- Line above Contact Information -->
+                            </div>
+                            <p class="">Email: {{ $worker->email }}</p>
+                            <p class="">Phone: {{ $worker->phone }}</p>
                         </div>
-                        <p class="">{{ $worker->email }}</p>
-                        <p class="">{{ $worker->phone }}</p>
+
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </main>
 </x-app-layout>

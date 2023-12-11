@@ -116,21 +116,25 @@
                                 </button>
                             </div>
                         @elseif ($event->status === 'Done')
-                        <div class="flex flex-col items-center">
-                            <h1 class="text-2xl font-bold mb-4">Documentation</h1>
-                            <div class="flex justify-between">
-                                <div class="w-1/3">
-                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image1)) }}" alt="Image">
-                                </div>
-                                <div class="w-1/3 flex flex-col items-center">
-                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image2)) }}" alt="Image">
-                                </div>
-                                <div class="w-1/3">
-                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image3)) }}" alt="Image">
+                            <div class="flex flex-col items-center">
+                                <h1 class="text-2xl font-bold mb-4">Image Proof of Work</h1>
+                                <p class="text-gray-600 mb-6">Here are the uploaded images serving as proof of the
+                                    worker's activities. Review them for verification and processing.</p>
+                                <div class="flex justify-between">
+                                    <div class="w-1/3">
+                                        <img src="{{ asset('storage/documentation/' . basename($event->employment->image1)) }}"
+                                            alt="Image 1">
+                                    </div>
+                                    <div class="w-1/3 flex flex-col items-center">
+                                        <img src="{{ asset('storage/documentation/' . basename($event->employment->image2)) }}"
+                                            alt="Image 2">
+                                    </div>
+                                    <div class="w-1/3">
+                                        <img src="{{ asset('storage/documentation/' . basename($event->employment->image3)) }}"
+                                            alt="Image 3">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        
                         @endif
                     </div>
 
@@ -138,20 +142,98 @@
                 </div>
             </div>
         </section>
-        <div id="HelpPage" class="hidden items-center justify-center h-screen mx-10">
-            <div class="container mx-auto p-4 bg-white ">
-                Help Page
+        <!-- Your existing HTML structure -->
+
+        <!-- Updated HTML structure with a more appealing design -->
+
+        <div id="HelpPage" class="hidden flex items-center justify-center h-screen p-10 px-20 bg-blue-50">
+            <div class="container mx-auto p-8 bg-white rounded-xl shadow-xl text-center">
+                <h1 class="text-3xl font-semibold text-blue-700 mb-6">Emergency Assistance</h1>
+                <p class="text-gray-700 mb-8">When in distress or feeling unsafe, click the "Send SOS" button below for
+                    immediate assistance. Help is on the way!</p>
+                <button id="sendSOSButton"
+                    class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full focus:outline-none focus:shadow-outline-red transition duration-300">Send
+                    SOS</button>
             </div>
         </div>
 
+        <script>
+            document.getElementById('sendSOSButton').addEventListener('click', function() {
+                // Assume you have a function to send an SOS request to the backend
+                sendSOS();
+            });
 
-        <div id="uploadDocumentationPage" class="hidden flex items-center justify-center h-screen mx-10 mt-10">
-            <div class="container mx-auto p-4 bg-white">
+            function sendSOS() {
+                // You can use AJAX to send an SOS request to the backend
+                // Example using Fetch API
+                fetch('/sendSOS', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            // Add any additional headers as needed
+                        },
+                        // You can include more data in the body if needed
+                        body: JSON.stringify({}),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle the response from the server (e.g., show a success message)
+                        alert('SOS sent successfully!');
+                    })
+                    .catch(error => {
+                        console.error('Error sending SOS:', error);
+                        // Handle errors (e.g., show an error message)
+                        alert('Error sending SOS. Please try again.');
+                    });
+            }
+        </script>
+
+
+        <script>
+            document.getElementById('sendSOSButton').addEventListener('click', function() {
+                // Assume you have a function to send an SOS request to the backend
+                sendSOS();
+            });
+
+            function sendSOS() {
+                // You can use AJAX to send an SOS request to the backend
+                // Example using Fetch API
+                fetch('/sendSOS', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            // Add any additional headers as needed
+                        },
+                        // You can include more data in the body if needed
+                        body: JSON.stringify({}),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle the response from the server (e.g., show a success message)
+                        alert('SOS sent successfully!');
+                    })
+                    .catch(error => {
+                        console.error('Error sending SOS:', error);
+                        // Handle errors (e.g., show an error message)
+                        alert('Error sending SOS. Please try again.');
+                    });
+            }
+        </script>
+
+
+
+        <div id="uploadDocumentationPage" class="hidden flex items-center justify-center h-screen p-10 bg-blue-50">
+            <div class="container mx-auto p-4 bg-white rounded-xl shadow-xl">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Upload Documentation</h2>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Upload Documentation</h2>
+                    <p class="text-gray-600 mb-6">Help us process your hiring application faster by uploading the
+                        required
+                        documentation. You can upload up to three images.</p>
                     <div class="max-h-100 overflow-y-auto mb-4">
                         <!-- Add your form elements for uploading requirements here -->
-                        <form id="uploadRequirementsForm" method="POST" action="{{ route('uploadDocumentation', ['id' => $hiringForm->id, 'eventId' => $event->id]) }}" enctype="multipart/form-data">
+                        <form id="uploadRequirementsForm" method="POST"
+                            action="{{ route('uploadDocumentation', ['id' => $hiringForm->id, 'eventId' => $event->id]) }}"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-blue-100 p-10 rounded-xl">
                                 <!-- Image 1 -->
@@ -159,68 +241,87 @@
                                     <label for="image1">
                                         <i class="ri-bank-card-2-line font-bold text-2xl"></i> Image 1:
                                     </label>
-                                    <div id="image1Preview" class="mt-4 border border-gray-600 rounded-lg p-16 relative">
-                                        <input type="file" id="image1" name="image1" class="hidden" accept="image/*" onchange="previewImage('image1', 'image1Preview')">
-                                        <label for="image1" class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                    <div id="image1Preview"
+                                        class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                        <input type="file" id="image1" name="image1" class="hidden"
+                                            accept="image/*" onchange="previewImage('image1', 'image1Preview')">
+                                        <label for="image1"
+                                            class="absolute top-0 left-0 w-full h-full cursor-pointer">
                                             <!-- Display the current image or a placeholder -->
                                             @if (isset($uploadedImages['image1']))
-                                                <img src="{{ $uploadedImages['image1'] }}" class="w-full h-full object-cover rounded-lg" alt="Image 1">
+                                                <img src="{{ $uploadedImages['image1'] }}"
+                                                    class="w-full h-full object-cover rounded-lg" alt="Image 1">
                                             @else
-                                                <img src="{{ asset('images/placeholder.jpg') }}" class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                                <img src="{{ asset('images/placeholder.jpg') }}"
+                                                    class="w-full h-full object-cover rounded-lg" alt="Placeholder">
                                             @endif
-                                            <div class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                            <div
+                                                class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
                                                 <span class="text-black">Upload</span>
                                             </div>
                                         </label>
                                     </div>
                                 </div>
-                        
+
                                 <!-- Image 2 -->
                                 <div class="mb-4">
                                     <label for="image2">
                                         <i class="ri-bill-line font-bold text-2xl"></i> Image 2:
                                     </label>
-                                    <div id="image2Preview" class="mt-4 border border-gray-600 rounded-lg p-16 relative">
-                                        <input type="file" id="image2" name="image2" class="hidden" accept="image/*" onchange="previewImage('image2', 'image2Preview')">
-                                        <label for="image2" class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                    <div id="image2Preview"
+                                        class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                        <input type="file" id="image2" name="image2" class="hidden"
+                                            accept="image/*" onchange="previewImage('image2', 'image2Preview')">
+                                        <label for="image2"
+                                            class="absolute top-0 left-0 w-full h-full cursor-pointer">
                                             <!-- Display the current image or a placeholder -->
                                             @if (isset($uploadedImages['image2']))
-                                                <img src="{{ $uploadedImages['image2'] }}" class="w-full h-full object-cover rounded-lg" alt="Image 2">
+                                                <img src="{{ $uploadedImages['image2'] }}"
+                                                    class="w-full h-full object-cover rounded-lg" alt="Image 2">
                                             @else
-                                                <img src="{{ asset('images/placeholder.jpg') }}" class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                                <img src="{{ asset('images/placeholder.jpg') }}"
+                                                    class="w-full h-full object-cover rounded-lg" alt="Placeholder">
                                             @endif
-                                            <div class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                            <div
+                                                class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
                                                 <span class="text-black">Upload</span>
                                             </div>
                                         </label>
                                     </div>
                                 </div>
-                        
+
                                 <!-- Image 3 -->
                                 <div class="mb-4">
                                     <label for="image3">
                                         <i class="ri-account-box-line text-2xl"></i> Image 3:
                                     </label>
-                                    <div id="image3Preview" class="mt-4 border border-gray-600 rounded-lg p-16 relative">
-                                        <input type="file" id="image3" name="image3" class="hidden" accept="image/*" onchange="previewImage('image3', 'image3Preview')">
-                                        <label for="image3" class="absolute top-0 left-0 w-full h-full cursor-pointer">
+                                    <div id="image3Preview"
+                                        class="mt-4 border border-gray-600 rounded-lg p-16 relative">
+                                        <input type="file" id="image3" name="image3" class="hidden"
+                                            accept="image/*" onchange="previewImage('image3', 'image3Preview')">
+                                        <label for="image3"
+                                            class="absolute top-0 left-0 w-full h-full cursor-pointer">
                                             <!-- Display the current image or a placeholder -->
                                             @if (isset($uploadedImages['image3']))
-                                                <img src="{{ $uploadedImages['image3'] }}" class="w-full h-full object-cover rounded-lg" alt="Image 3">
+                                                <img src="{{ $uploadedImages['image3'] }}"
+                                                    class="w-full h-full object-cover rounded-lg" alt="Image 3">
                                             @else
-                                                <img src="{{ asset('images/placeholder.jpg') }}" class="w-full h-full object-cover rounded-lg" alt="Placeholder">
+                                                <img src="{{ asset('images/placeholder.jpg') }}"
+                                                    class="w-full h-full object-cover rounded-lg" alt="Placeholder">
                                             @endif
-                                            <div class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                            <div
+                                                class="opacity-75 hover:opacity-100 transition-all absolute top-0 left-0 w-full h-full flex items-center justify-center">
                                                 <span class="text-black">Upload</span>
                                             </div>
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                        
-                            <button type="submit" id="submitBtn" class="bg-blue-500 mt-4 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
+
+                            <button type="submit" id="submitBtn"
+                                class="bg-blue-500 mt-4 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>

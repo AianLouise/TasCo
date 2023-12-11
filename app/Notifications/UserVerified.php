@@ -26,7 +26,7 @@ class UserVerified extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail', 'database'];
+        return [ 'database'];
     }
 
     /**
@@ -50,8 +50,15 @@ class UserVerified extends Notification
     public function toArray(object $notifiable): array
     {
         return [
+            'read_at' => null, // Initialize as unread
+            'subject' => 'Job Seeker Application Approval',
+            'greeting' => 'Hello!',
             'message' => 'Your Job Seeker application has been approved.',
-            // Add any other data you want to store here
+            'closing' => 'Thank you for using our platform.',
+            'additional_data' => [
+                // Add any other data you want to include here
+            ],
         ];
+        
     }
 }

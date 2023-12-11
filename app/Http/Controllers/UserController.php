@@ -275,6 +275,23 @@ class UserController extends Controller
         return view("tasco.notification", compact('user', 'pageTitle', 'notifications', 'user'));
     }
 
+    public function markAsRead(Request $request, $notificationId)
+    {
+        $notification = Auth::user()->notifications()->findOrFail($notificationId);
+        $notification->markAsRead();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function notificationCount()
+    {
+        // Get the unread notifications count for the authenticated user
+        $unreadNotificationsCount = Auth::user()->unreadNotifications->count();
+
+        // Pass the variable to the view
+        return view('components.user-profile', ['unreadNotificationsCount' => $unreadNotificationsCount]);
+    }
+
     public function MarkAsCompletedUser(Request $request, $id)
     {
         $user = Auth::user();

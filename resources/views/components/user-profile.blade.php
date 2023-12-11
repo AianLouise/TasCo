@@ -12,6 +12,7 @@
                 <i class="ri-notification-3-line text-2xl"></i>
             </a>
         </div>
+        
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">
                 <button

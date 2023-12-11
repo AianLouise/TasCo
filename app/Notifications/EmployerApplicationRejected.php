@@ -26,7 +26,7 @@ class EmployerApplicationRejected extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail', 'database'];
+        return ['database'];
     }
 
     /**
@@ -53,7 +53,15 @@ class EmployerApplicationRejected extends Notification
     public function toArray(object $notifiable): array
     {
         return [
+            'read_at' => null, // Initialize as unread
+            'subject' => 'Employer Application Rejection',
+            'greeting' => 'Hello!',
             'message' => 'Your Employer application has been rejected.',
+            'closing' => 'Thank you for considering our platform.',
+            'additional_data' => [
+                // Add any other data you want to include here
+            ],
         ];
+        
     }
 }

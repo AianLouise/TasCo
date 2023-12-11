@@ -43,11 +43,12 @@
             <div class="bg-white rounded-md border border-gray-200 p-6 shadow-md shadow-black/5">
                 <div class="flex justify-between mb-4">
                     <div>
+                        @php
+                            $statusCount = $hiringForms->whereIn('status', ['Finished', 'Ongoing', 'Accepted', 'Completed(Pending)'])->count();
+                        @endphp
+
                         <div class="flex items-center mb-1">
-                            <div class="text-3xl font-semibold">10</div>
-                            {{-- <div
-                                class="p-1 rounded bg-rose-500/10 text-rose-500 text-[12px] font-semibold leading-none ml-2">
-                                -1%</div> --}}
+                            <div class="text-3xl font-semibold">{{ $statusCount }}</div>
                         </div>
                         <div class="text-sm font-medium text-gray-800">Active Jobs</div>
                     </div>
@@ -58,17 +59,6 @@
                 </div>
 
                 <div class="flex items-center">
-                    <!-- Display avatars or other content based on your needs -->
-                    {{-- @php $maxAvatars = 5; @endphp
-                    @foreach ($workers->take($maxAvatars) as $worker)
-                        @if ($worker->avatar == 'avatar.png')
-                            <img src="https://ui-avatars.com/api/?name={{ urlencode($worker->name) }}&color=7F9CF5&background=EBF4FF"
-                                alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                        @else
-                            <img src="{{ asset('storage/users-avatar/' . basename($worker->avatar)) }}" alt=""
-                                class="w-8 h-8 rounded block object-cover align-middle">
-                        @endif
-                    @endforeach --}}
 
                 </div>
 
@@ -84,11 +74,11 @@
                 <div class="flex justify-between mb-4">
                     <div>
                         <div class="flex items-center mb-1">
-                            @foreach ($hiringForms as $hiringForm)
-                                @if ($hiringForm->status === 'Pending')
-                                    <div class="text-3xl font-semibold">10</div>
-                                @endif
-                            @endforeach
+                            @php
+                                $pendingCount = $hiringForms->where('status', 'Pending')->count();
+                            @endphp
+
+                            <div class="text-3xl font-semibold">{{ $pendingCount }}</div>
                         </div>
                         <div class="text-sm font-medium text-gray-800">Hiring Applications</div>
                     </div>
@@ -98,17 +88,6 @@
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <!-- Display avatars or other content based on your needs -->
-                    {{-- @php $maxAvatars = 5; @endphp
-                    @foreach ($employers->take($maxAvatars) as $employer)
-                        @if ($employer->avatar == 'avatar.png')
-                            <img src="https://ui-avatars.com/api/?name={{ urlencode($employer->name) }}&color=7F9CF5&background=EBF4FF"
-                                alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                        @else
-                            <img src="{{ asset('storage/users-avatar/' . basename($employer->avatar)) }}" alt=""
-                                class="w-8 h-8 rounded block object-cover align-middle">
-                        @endif
-                    @endforeach --}}
                 </div>
 
             </div>
@@ -120,7 +99,11 @@
             <div class="bg-white rounded-md border border-gray-200 p-6 shadow-md shadow-black/5">
                 <div class="flex justify-between mb-6">
                     <div>
-                        <div class="text-3xl font-semibold mb-1">10</div>
+                        @php
+                            $completedCount = $hiringForms->where('status', 'Completed')->count();
+                        @endphp
+
+                        <div class="text-3xl font-semibold mb-1">{{ $completedCount }}</div>
                         <div class="text-sm font-medium text-gray-800">Total Employments</div>
                     </div>
                     <div>
