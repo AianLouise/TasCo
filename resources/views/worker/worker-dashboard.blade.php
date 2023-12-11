@@ -662,12 +662,15 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                        <div>
-                                            <a href="{{ route('worker.MarkAsCompleted', ['id' => $hiringForm->id]) }}"
-                                                class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                Confirm Mark as Completed
-                                            </a>
-                                        </div>
+                                        @if ($hiringForm->status === 'Completed(Pending)')
+                                            <div>
+                                                <a href="{{ route('worker.MarkAsCompleted', ['id' => $hiringForm->id]) }}"
+                                                    class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                    Mark as Completed
+                                                </a>
+                                            </div>
+                                            
+                                        @endif
 
                                     </div>
                                 </div>

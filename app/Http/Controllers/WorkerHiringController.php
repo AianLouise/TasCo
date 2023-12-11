@@ -176,7 +176,7 @@ class WorkerHiringController extends Controller
     {
         // Validate the form data, including the job description and images
         $request->validate([
-            'jobDescription' => 'required|string|max:255',
+            // 'jobDescription' => 'required|string|max:255',
             'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -214,7 +214,7 @@ class WorkerHiringController extends Controller
 
                 if ($employment) {
                     $employment->update([
-                        'job_description' => $request->input('jobDescription'),
+                        // 'job_description' => $request->input('jobDescription'),
                         'start_date' => Carbon::now(),
                         'end_date' => Carbon::now(),
                         'image1' => $path1,

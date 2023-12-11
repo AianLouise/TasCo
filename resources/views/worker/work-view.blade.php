@@ -172,9 +172,9 @@
                             <div class="mt-4"></div>
 
                             <!-- Add the job description textbox -->
-                            <label for="jobDescription">Job Description:</label>
+                            {{-- <label for="jobDescription">Job Description:</label>
                             <textarea id="jobDescription" name="jobDescription" class="w-full p-2 border rounded"
-                                placeholder="Enter job description here"></textarea>
+                                placeholder="Enter job description here"></textarea> --}}
 
                             <!-- Update the button type to "submit" -->
                             <button type="submit" id="submitBtn"

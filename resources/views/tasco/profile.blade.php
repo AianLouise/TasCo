@@ -50,18 +50,28 @@
                     <div class="flex justify-center space-x-4">
                         @if (Auth::user()->is_verified)
                             @php
-                                $applicationExists = \App\Models\HiringForm::where('employer_id', Auth::user()->id)
+                                $previousApplication = \App\Models\HiringForm::where('employer_id', Auth::user()->id)
                                     ->where('worker_id', $user->id)
-                                    ->exists();
+                                    ->latest() // Assuming you want to get the latest application
+                                    ->first();
+
+                                $previousApplicationExists = $previousApplication !== null;
                             @endphp
 
-                            @if ($applicationExists)
-                                <span
-                                    class="inline-block bg-green-400 text-white font-bold py-2 px-4 rounded">Application
-                                    Sent</span>
+                            @if ($previousApplicationExists && $previousApplication->status === 'Completed')
+                                <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">
+                                    Hire Again
+                                </a>
+                            @elseif ($previousApplicationExists)
+                                <span class="inline-block bg-green-400 text-white font-bold py-2 px-4 rounded">
+                                    Application Sent
+                                </span>
                             @else
                                 <a href="{{ route('worker.hire', ['worker' => $user->id]) }}"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">Hire</a>
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-36">
+                                    Hire
+                                </a>
                             @endif
                         @else
                             <span
