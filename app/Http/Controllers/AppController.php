@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\Category;
+use App\Models\HiringForm;
 use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use App\Models\EmployerApplication;
@@ -309,10 +310,14 @@ class AppController extends Controller
         ]);
     }
 
-    public function workerEmployments()
+    public function workerEmployments($worker)
     {
         $pageTitle = 'Employments';
 
-        return view("tasco.worker-employments", compact('pageTitle'));
+        $hiringForms = HiringForm::where('worker_id', $worker)->get();
+
+        // $user = User::find($hiringForms->employer_id);
+
+        return view("tasco.worker-employments", compact('pageTitle', 'hiringForms'));
     }
 }
