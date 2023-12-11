@@ -260,7 +260,7 @@ class AdminController extends Controller
     {
         $categories = Category::all();
         $hiringForm = HiringForm::get();
-        $pageTitle = 'Services';
+        $pageTitle = 'Hiring Application';
 
         return view('admin.admin-hiring-application', compact('hiringForm', 'pageTitle'));
     }
