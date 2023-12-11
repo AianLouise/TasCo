@@ -15,18 +15,20 @@
     <!-- Welcome Page -->
     <section class="flex items-center justify-center bg-blue-50">
         <div id="welcomePage" class="flex items-center justify-center h-screen  sm:w-1/2">
-            <div class="container mx-auto p-4 bg-blue-500 rounded-md">
+            <div class="container mx-auto rounded-md">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
-                    <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to TasCo Employer Application</h1>
+                     <img src="{{ URL('images/welcome-employer.PNG') }}" width="400" class="mx-auto">
+                    <h1 class="text-3xl font-bold text-gray-800">Welcome to TasCo Employer Application</h1>
 
-                    <p class="text-sm text-gray-600 mb-4">
+                    <p class="mt-2 max-w-lg mx-auto mb-4 text-center text-xl leading-relaxed text-gray-800">
                         Elevate your hiring process with TasCo, the ultimate platform for connecting with top talents.
                         Simplify your recruitment journey and find the perfect candidates for your company.
                     </p>
 
                     <a href="#" id="startApplicationBtn"
-                        class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto shadow-lg transform hover:scale-105">
-                        Start Your Application Now
+                        class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg border border-blue-500 px-10 py-3 text-blue-500
+                        hover:bg-blue-500 transition duration-300  hover:text-white mx-auto shadow-lg transform hover:scale-105">
+                        Apply Now →
                     </a>
                 </div>
             </div>
@@ -34,58 +36,58 @@
 
         <!-- Terms and Conditions Page -->
         <div id="termsAndConditionsPage" class="hidden flex items-center justify-center h-screen">
-            <div class="container mx-auto p-4 bg-blue-500 rounded-md">
+            <div class="container mx-auto rounded-md">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Terms and Conditions</h2>
-                    <p class="text-gray-600 mb-4">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-2">Terms and Conditions</h2>
+                    <p class="text-center text-xl leading-relaxed text-gray-600 mb-4">
                         By proceeding with the application, you agree to the following terms and conditions:
                     </p>
-                    <div class="overflow-y-auto mb-4 text-justify bg-blue-100 rounded-lg p-6">
+                    <div class="overflow-y-auto mb-4 text-justify border border-gray-50 rounded-lg p-6">
 
                         <ol class="ml-6 list-decimal">
-                            <li class="mb-2">You must provide accurate and truthful information in your application.
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">You must provide accurate and truthful information in your application.
                             </li>
-                            <li class="mb-2">You are responsible for maintaining the confidentiality of your account
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">You are responsible for maintaining the confidentiality of your account
                                 and
                                 password.</li>
-                            <li class="mb-2">TasCo reserves the right to reject or terminate your application without
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">TasCo reserves the right to reject or terminate your application without
                                 notice.</li>
-                            <li class="mb-2">You agree to comply with all applicable laws and regulations.</li>
-                            <li class="mb-2">TasCo is not responsible for any damages or losses resulting from the use
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">You agree to comply with all applicable laws and regulations.</li>
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">TasCo is not responsible for any damages or losses resulting from the use
                                 of
                                 our platform.</li>
-                            <li class="mb-2">You understand and acknowledge that TasCo collects and processes your
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">You understand and acknowledge that TasCo collects and processes your
                                 personal data in accordance with our Privacy Policy.</li>
-                            <li class="mb-2">You agree to receive communications from TasCo related to your
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">You agree to receive communications from TasCo related to your
                                 application
                                 and other relevant information.</li>
-                            <li class="mb-2">You acknowledge that TasCo may update these terms from time to time, and
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">You acknowledge that TasCo may update these terms from time to time, and
                                 it
                                 is your responsibility to review them periodically.</li>
-                            <li class="mb-2">You agree not to misuse our platform, including but not limited to
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">You agree not to misuse our platform, including but not limited to
                                 engaging
                                 in fraudulent activities or violating any applicable laws.</li>
-                            <li class="mb-2">TasCo reserves the right to suspend or terminate your application if you
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">TasCo reserves the right to suspend or terminate your application if you
                                 violate these terms or engage in any prohibited activities.</li>
-                            <li class="mb-2">You indemnify TasCo against any claims, damages, or losses arising from
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">You indemnify TasCo against any claims, damages, or losses arising from
                                 your
                                 use of our platform or any violation of these terms.</li>
-                            <li class="mb-2">These terms constitute the entire agreement between you and TasCo
+                            <li class="text-md leading-relaxed text-gray-600 mb-2">These terms constitute the entire agreement between you and TasCo
                                 regarding
                                 your application.</li>
                         </ol>
                     </div>
                     <a href="#" id="agreeBtn"
-                        class="bg-blue-500 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">I
-                        Agree</a>
+                        class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg hover:border hover:bg-white hover:text-blue-500 hover:border-blue-500 px-10 py-3 text-white
+                        bg-blue-500 transition duration-300 text-white mx-auto shadow-lg transform hover:scale-105">Accept</a>
                 </div>
             </div>
         </div>
 
-        <div id="uploadRequirementsPage" class="hidden flex items-center h-screen justify-center mt-32 md:mt-9">
-            <div class="container mx-auto p-4 bg-blue-500 rounded-md">
+        <div id="uploadRequirementsPage" class="hidden flex items-center h-full justify-center mt-32 md:mt-9">
+            <div class="container mx-auto rounded-md">
                 <div class="text-center bg-white p-8 rounded-md">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Upload Requirements</h2>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Upload Requirements</h2>
                     <p class="text-gray-600">
                         Please upload the following documents that are specified below:
                     </p>
@@ -94,7 +96,7 @@
                         <form id="uploadRequirementsForm" method="POST" action="{{ route('submit.application') }}"
                             enctype="multipart/form-data">
                             @csrf
-                            <div class="grid grid-rows-1 sm:grid-cols-3 gap-4 bg-blue-100 p-10 rounded-xl">
+                            <div class="grid grid-rows-1 sm:grid-cols-3 gap-4 p-10 rounded-xl">
                                 <!-- Valid ID -->
                                 <div class="grid grid-rows-1">
                                     <label for="validId">
@@ -182,7 +184,8 @@
                             </div>
 
                             <button type="submit" id="submitBtn"
-                                class="bg-blue-500 mt-4 text-white py-2 px-3 rounded-full inline-block hover:bg-blue-700 transition duration-300 text-sm w-60 mx-auto">Submit</button>
+                                class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg hover:border hover:bg-white hover:text-blue-500 hover:border-blue-500 px-10 py-3 text-white
+                        bg-blue-500 transition duration-300 text-white mx-auto shadow-lg transform hover:scale-105">Submit</button>
                         </form>
 
                         <script>

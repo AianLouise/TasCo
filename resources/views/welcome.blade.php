@@ -209,7 +209,7 @@
         </div>
 
         <!-- Start: Hero Section-->
-        <div class="relative overflow-hidden min-h-screen bg-blue-50">
+        <div class="relative overflow-hidden min-h-screen bg-blue-100">
             <div class="max-w-6xl mx-auto">
                 <div class="relative pb-8">
                     <div class="px-4 mx-auto mt-10 max-w-7xl">
@@ -246,7 +246,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div class="hidden sm:flex mt-44 md:justify-end md:w-1/2 lg:absolute lg:inset-y-0 lg:right-0 lg:px-32">
                     <img src={{ URL('images/hero.png') }} alt="" class="object-cover sm:h-72 md:h-96 ">

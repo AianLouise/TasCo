@@ -253,7 +253,7 @@
 
         </style>
     </head>
-    <body class="font-sans text-gray-900 antialiased">
+    <body class="font-sans text-gray-900 antialiased bg-blue-100">
 
         <section class="side">
             @if (request()->is('register'))

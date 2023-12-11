@@ -417,7 +417,7 @@
                     <div class="w-full flex justify-center">
                         <a href="{{ route('app.jobListing') }}"
                             class="mb-20 w-64 sm:w-auto bg-blue-500 font-medium text-white hover:border hover:border-blue-500 hover:bg-transparent hover:text-blue-500 rounded-lg inline-flex items-center justify-center px-10 py-3">See
-                            More Workers</a>
+                            More Workers →</a>
                     </div>
                 </div>
                 <!-- end row -->
@@ -550,18 +550,18 @@
 
         <!-- Start: Apply Now Section -->
         <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
-            <div class="container xl:max-w-6xl mx-auto px-4 mb-20">
+            <div class="container xl:max-w-6xl mx-auto mb-20">
                 @auth
                     @if (auth()->user()->is_verified)
                         <!-- User is verified, hide the Apply Now Section -->
                     @else
-                        <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+                        <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow-lg sm:p-8">
                             <h5 class="mb-2 text-3xl font-bold">Apply Now</h5>
                             <p class="mb-5 text-base text-gray-500 sm:text-lg">Interested in joining our community?</p>
                             <div
                                 class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
                                 <a href="{{ route('app.applyJobseeker') }}"
-                                    class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
+                                    class="w-full sm:w-auto bg-blue-500 focus:ring-4 focus:outline-none text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
                                     <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                         <path
@@ -574,14 +574,9 @@
                                     </div>
                                 </a>
                                 <a href="{{ route('app.applyEmployer') }}"
-                                    class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
-                                    <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path
-                                            d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z"
-                                            fill="rgba(255,255,255,1)"></path>
-                                    </svg>
-                                    <div class="text-left rtl:text-right">
+                                    class="w-full sm:w-auto bg-white border border-blue-500 focus:ring-4 focus:outline-none rounded-lg inline-flex items-center justify-center px-4 py-2.5">
+                                    <svg class="me-3 w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z" fill="rgba(70,146,221,1)"></path></svg>
+                                    <div class="text-left rtl:text-right text-blue-500">
                                         <div class="mb-1 text-xs">Apply as</div>
                                         <div class="-mt-1 font-sans text-sm font-semibold">Employer</div>
                                     </div>
