@@ -18,7 +18,7 @@ cd C:/xampp/htdocs/tasco
 Then type the following
 composer install
 npm install
-php artisan migrate
+php artisan migrate:fresh
 
 To seed user table:
 php artisan migrate --seed
