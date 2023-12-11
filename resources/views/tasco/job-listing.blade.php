@@ -1,9 +1,30 @@
 <x-app-layout class="bg-white">
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
 
+    <section class="bg-blue-200">
+        <div class="container xl:max-w-6xl mx-auto px-4">
+            <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+                    <div class="max-w-lg">
+                        <span class="text-base font-semibold uppercase tracking-wide text-blue-600">
+                           Job Listing
+                        </span>
+                        <h2 class="font-heading mb-4 font-bold tracking-tight text-gray-900 text-3xl sm:text-5xl">
+                            Unlock Your Next Opportunity with TasCo
+                        </h2>
+                        <p class="mb-5 text-base text-body-color">
+                        Join the TasCo community and discover a range of exciting opportunities tailored to your skills and interests.  </p>
+                    </div>
+                    <div class="mt-12 md:mt-0">
+                        <img src="{{ asset('images/search.png') }}" alt="About Us Image" class="w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
     <section class="relative md:pb-0 bg-white">
 
-        <div class="bg-blue-50 w-full py-0.5">
+        <div class=" w-full py-0.5">
             <div class="container xl:max-w-6xl mx-auto px-4">
                 <!-- Start: Heading-->
                 <div class="text-center mx-auto mb-12 lg:px-20 mt-10">

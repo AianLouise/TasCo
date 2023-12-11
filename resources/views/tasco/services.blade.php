@@ -10,20 +10,20 @@
     <body class="font-sans">
 
         <section class="min-h-full bg-blue-100">
-            <div class="mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:px-8 ">
+            <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 ">
                 <div class="mb-4">
                     <div class="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
                         <p class="text-base font-semibold uppercase tracking-wide text-blue-500">
                             Services
                         </p>
                         <h2
-                            class="font-heading mb-2 font-bold tracking-tight text-gray-900 text-3xl sm:text-5xl">
+                            class="font-heading mt-4 mb-2 font-bold tracking-tight text-gray-900 text-3xl sm:text-5xl">
                             We Offer
                         </h2>
                         <div class="h-full">
                         <img src="{{ URL('images/Services.png') }}" width="700" class="mx-auto">
                             <p class="mb-12 mt-8 mx-auto max-w-lg text-center text-xl leading-relaxed text-gray-800">
-                            Welcome to Tasco! Our dedicated customer service team is here to assist you with any inquiries or support you may need. We're committed to ensuring your experience with Tasco is seamless and satisfying.
+                            TasCo empowers you with a suite of services curated for success, spanning from efficient scheduling to robust workforce management. Experience unparalleled convenience, reliability, and innovation with TasCo.
                             </p> 
                         </div>
                     </div>

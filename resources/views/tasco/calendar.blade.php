@@ -24,7 +24,7 @@
                         <div class="h-full">
                         <img src="{{ URL('images/calendar.png') }}" width="500" class="mx-auto">
                             <p class="mb-12 mt-8 mx-auto max-w-lg text-center text-xl leading-relaxed text-gray-800">
-                            Welcome to Tasco! Our dedicated customer service team is here to assist you with any inquiries or support you may need. We're committed to ensuring your experience with Tasco is seamless and satisfying.
+                            Experience a new era of streamlined operations with TasCo's Calendar Feature. Revolutionize the way you manage your local services – from tracking upcoming tasks and hires to celebrating completed projects.
                             </p> 
                         </div>
                     </div>
