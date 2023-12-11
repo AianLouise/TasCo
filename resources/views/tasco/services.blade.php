@@ -22,7 +22,7 @@
                         </h2>
                         <div class="h-full">
                         <img src="{{ URL('images/Services.png') }}" width="700" class="mx-auto">
-                            <p class="mb-12 text-lg text-gray-600">
+                            <p class="mb-12 mt-8 mx-auto max-w-lg text-center text-xl leading-relaxed text-gray-800">
                             Welcome to Tasco! Our dedicated customer service team is here to assist you with any inquiries or support you may need. We're committed to ensuring your experience with Tasco is seamless and satisfying.
                             </p> 
                         </div>

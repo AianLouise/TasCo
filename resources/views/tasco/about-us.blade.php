@@ -1,49 +1,6 @@
 <x-app-layout>
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
 
-    <style>
-        .teamimg:hover {
-            border-radius: 2rem;
-            border: rgb(98, 98, 255) 1px solid;
-            width: 12rem;
-            height: auto;
-            padding: 1rem;
-            background-color: white;
-            transition: width 2s, height 1s, color 2s, margin-top 2s, padding 1s, border 2s, border-radius 0.5s, transform 2s;
-            color: gray;
-            z-index: 4;
-        }
-
-        .teamimg2:hover {
-            border-radius: 2rem;
-            border: rgb(98, 98, 255) 1px solid;
-            width: 12rem;
-            transition: width 4s, height 2s, color 2s, margin-top 2s, border 2s, border-radius 0.5s, z-index 1s, transform 2s;
-            color: gray;
-            z-index: 4;
-        }
-
-        .teamimg {
-            width: 9rem;
-            border-radius: 30rem;
-            border: white;
-            padding: 2rem;
-            background-color: transparent;
-            color: transparent;
-            z-index: 1;
-            padding: 0;
-        }
-
-        .teamimg2 {
-            width: 8rem;
-            border-radius: 30rem;
-            border: white;
-            color: transparent;
-            z-index: 1;
-            padding: 0;
-        }
-    </style>
-
     <body>
         <section class="bg-gray-100">
             <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -66,7 +23,7 @@
             </div>
         </section>
 
-        <section class="">
+        <section>
             <div class="py-12 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -185,7 +142,7 @@
                         <span class="text-base font-semibold uppercase tracking-wide text-blue-600">
                             The Team
                         </span>
-                        <h2 class="font-heading mb-4 font-bold tracking-tight text-gray-900 text-3xl sm:text-5xl">
+                        <h2 class="font-heading mt-4 mb-4 font-bold tracking-tight text-gray-900 text-3xl sm:text-5xl">
                             Meet the TasCo Team
                         </h2>
                     </div>
@@ -198,8 +155,8 @@
                             <div class="relative overflow-hidden rounded-lg">
                                 <img src="{{ asset('images/Alfaro.jpg') }}" alt=""
                                     class="w-full h-auto ease-in-out shadow-xl">
-                                <div class="absolute bottom-5 left-0 w-full text-center ">
-                                    <div class="relative mx-5 overflow-hidden  rounded-lg bg-blue-200 py-3 px-3">
+                                <div class="absolute bottom-3 left-0 w-full text-center ">
+                                    <div class="relative mx-5 overflow-hidden  rounded-lg bg-yellow-400 border border-black py-1 px-3">
                                         <h3 class="text-dark  text-base font-semibold">
                                             Aian Louise Alfaro
                                         </h3>
@@ -214,8 +171,8 @@
                             <div class="relative overflow-hidden rounded-lg">
                                 <img src="{{ asset('images/Capili.jpg') }}" alt=""
                                     class="w-full h-auto ease-in-out shadow-xl">
-                                <div class="absolute bottom-5 left-0 w-full text-center">
-                                    <div class="relative mx-5 overflow-hidden rounded-lg bg-blue-200 py-3 px-3">
+                                <div class="absolute bottom-3 left-0 w-full text-center">
+                                    <div class="relative mx-5 overflow-hidden  rounded-lg bg-yellow-400 border border-black py-1 px-3">
                                         <h3 class="text-dark text-base font-semibold">
                                             Dana Maxine Capili
                                         </h3>
@@ -231,8 +188,8 @@
                             <div class="relative overflow-hidden rounded-lg">
                                 <img src="{{ asset('images/Castro.jpg') }}" alt=""
                                     class="w-full h-auto ease-in-out shadow-xl">
-                                <div class="absolute bottom-5 left-0 w-full text-center">
-                                    <div class="relative mx-5 overflow-hidden rounded-lg bg-white py-3 px-3">
+                                <div class="absolute bottom-3 left-0 w-full text-center">
+                                    <div class="relative mx-5 overflow-hidden  rounded-lg bg-yellow-400 border border-black py-1 px-3">
                                         <h3 class="text-dark text-base font-semibold">
                                             Shania Nicole Castro
                                         </h3>
@@ -247,8 +204,8 @@
                             <div class="relative overflow-hidden rounded-lg">
                                 <img src="{{ asset('images/Bautista.jpg') }}" alt=""
                                     class="w-full h-auto ease-in-out shadow-xl">
-                                <div class="absolute bottom-5 left-0 w-full text-center">
-                                    <div class="relative mx-5 overflow-hidden rounded-lg bg-white py-3 px-3">
+                                <div class="absolute bottom-3 left-0 w-full text-center">
+                                    <div class="relative mx-5 overflow-hidden  rounded-lg bg-yellow-400 border border-black py-1 px-3">
                                         <h3 class="text-dark text-base font-semibold">
                                             Jo Ann Bautista
                                         </h3>
@@ -264,8 +221,8 @@
                             <div class="relative overflow-hidden rounded-lg">
                                 <img src="{{ asset('images/Gonzales.jpg') }}" alt=""
                                     class="w-full h-auto ease-in-out shadow-xl">
-                                <div class="absolute bottom-5 left-0 w-full text-center ">
-                                    <div class="relative mx-5 overflow-hidden rounded-lg bg-blue-200 py-3 px-3">
+                                <div class="absolute bottom-3 left-0 w-full text-center ">
+                                    <div class="relative mx-5 overflow-hidden  rounded-lg bg-yellow-400 border border-black py-1 px-3">
                                         <h3 class="text-dark text-base font-semibold">
                                             Emmanuel Louise Gonnnzales
                                         </h3>
@@ -281,8 +238,8 @@
                             <div class="relative overflow-hidden rounded-lg">
                                 <img src="{{ asset('images/Casupang.jpg') }}" alt=""
                                     class="w-full h-auto ease-in-out shadow-xl">
-                                <div class="absolute bottom-5 left-0 w-full text-center">
-                                    <div class="relative mx-5 overflow-hidden rounded-lg bg-blue-200 py-3 px-3">
+                                <div class="absolute bottom-3 left-0 w-full text-center">
+                                    <div class="relative mx-5 overflow-hidden  rounded-lg bg-yellow-400 border border-black py-1 px-3">
                                         <h3 class="text-dark text-base font-semibold">
                                             Joshua Casupang
                                         </h3>
@@ -298,8 +255,8 @@
                             <div class="relative overflow-hidden rounded-lg">
                                 <img src="{{ asset('images/Dizon.jpg') }}" alt="image"
                                     class="w-full h-auto ease-in-out shadow-xl">
-                                <div class="absolute bottom-5 left-0 w-full text-center">
-                                    <div class="relative mx-5 overflow-hidden rounded-lg bg-white py-3 px-3">
+                                <div class="absolute bottom-3 left-0 w-full text-center">
+                                    <div class="relative mx-5 overflow-hidden  rounded-lg bg-yellow-400 border border-black py-1 px-3">
                                         <h3 class="text-dark text-base font-semibold">
                                             Joshua Neil Dizon
                                         </h3>
@@ -315,8 +272,8 @@
                             <div class="relative overflow-hidden rounded-lg">
                                 <img src="{{ asset('images/Maglalang.jpg') }}" alt=""
                                     class="w-full h-auto ease-in-out shadow-xl">
-                                <div class="absolute bottom-5 left-0 w-full text-center">
-                                    <div class="relative mx-5 overflow-hidden rounded-lg bg-white  py-5 px-3">
+                                <div class="absolute bottom-3 left-0 w-full text-center">
+                                    <div class="relative mx-5 overflow-hidden  rounded-lg bg-yellow-400 border border-black py-1 px-3">
                                         <h3 class="text-dark text-base font-semibold">
                                             MR Rey Maglalang
                                         </h3>

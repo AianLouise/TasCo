@@ -7,17 +7,8 @@
             <div class="container xl:max-w-6xl mx-auto px-4">
                 <!-- Start: Heading-->
                 <div class="text-center mx-auto mb-12 lg:px-20 mt-10">
-                    <h2 class="text-4xl font-bold text-black leading-normal mb-2">Available Workers</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                         x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto; height: 35px;" xml:space="preserve">
-                        <circle cx="50.1" cy="30.4" r="5" class="stroke-primary"
-                                style="fill: transparent; stroke-width: 2; stroke-miterlimit: 10;"></circle>
-                        <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary"
-                              style="stroke-width: 2; stroke-miterlimit: 10;"></line>
-                        <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary"
-                              style="stroke-width: 2; stroke-miterlimit: 10;"></line>
-                    </svg>
-                    <p class="text-xl text-gray-500 font-light leading-relaxed mx-auto pb-2">Providing their services</p>
+                    <h2 class="text-4xl font-bold text-black leading-normal mb-2">Job Listing</h2>
+                    <p class="text-xl text-gray-500 font-light leading-relaxed mx-auto pb-2">Search for workers and services</p>
                 </div>
                 
                 <!-- End: Heading -->
@@ -102,7 +93,7 @@
 
                         <!-- Worker Profile -->
                         <div
-                            class="py-8 px-12 mb-12 border border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                            class="py-8 px-12 mb-12 border rounded-lg shadow-md transform transition duration-300 ease-in-out hover:-translate-y-2">
                             <div class="flex flex-col items-center pb-10">
                                 @if ($worker->avatar == 'avatar.png')
                                     <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
