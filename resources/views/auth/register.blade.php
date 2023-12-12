@@ -15,9 +15,11 @@
                         <x-text-input id="fname" placeholder="First Name" class="pl-12 py-2 i-1 block mt-1 w-full"
                             type="text" name="fname" :value="old('fname')" required autofocus autocomplete="fname" />
                         <i>
-                            <?xml version="1.0" ?><svg class="icon icon-tabler icon-tabler-letter-f absolute left-4 top-1/2 transform -translate-y-1/2" fill="none"
-                                height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <?xml version="1.0" ?><svg
+                                class="icon icon-tabler icon-tabler-letter-f absolute left-4 top-1/2 transform -translate-y-1/2"
+                                fill="none" height="15" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0 0h24v24H0z" fill="none" stroke="none" />
                                 <path d="M17 4h-10v16" />
                                 <line x1="7" x2="15" y1="12" y2="12" />
@@ -33,9 +35,11 @@
                         <x-text-input id="lname" placeholder="Last Name" class="pl-12 py-2 i-1 block mt-1 w-full"
                             type="text" name="lname" :value="old('lname')" required autofocus autocomplete="lname" />
                         <i>
-                            <?xml version="1.0" ?><svg class="icon icon-tabler icon-tabler-letter-l absolute left-4 top-1/2 transform -translate-y-1/2" fill="none"
-                                height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <?xml version="1.0" ?><svg
+                                class="icon icon-tabler icon-tabler-letter-l absolute left-4 top-1/2 transform -translate-y-1/2"
+                                fill="none" height="15" stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0 0h24v24H0z" fill="none" stroke="none" />
                                 <path d="M7 4v16h10" />
                             </svg>
@@ -67,8 +71,21 @@
                         <i class="ri-mail-line absolute left-4 top-1/2 transform -translate-y-1/2"></i>
                     </div>
                 </div>
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <x-input-error :messages="$errors->get('email')" class="-mt-4" />
             </div>
+
+            <!-- Phone Number -->
+            <div class="relative">
+                <div class="w-full relative mb-5">
+                    <div class="relative">
+                        <x-text-input id="phone" placeholder="Phone Number" class="pl-12 py-2 i-1 block mt-1 w-full"
+                            type="tel" name="phone" :value="old('phone')" required autofocus autocomplete="tel" />
+                        <i class="ri-phone-line absolute left-4 top-1/2 transform -translate-y-1/2"></i>
+                    </div>
+                </div>
+                <x-input-error :messages="$errors->get('phone')" class="-mt-4" />
+            </div>
+
 
             <!-- Password -->
             <div class="relative">
@@ -83,7 +100,7 @@
                         </span>
                     </div>
                 </div>
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <x-input-error :messages="$errors->get('password')" class="-mt-4" />
             </div>
 
             <!-- Confirm Password -->
@@ -100,7 +117,7 @@
                         </span>
                     </div>
                 </div>
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-1" />
+                <x-input-error :messages="$errors->get('password_confirmation')" class="-mt-4" />
             </div>
 
             <script>
