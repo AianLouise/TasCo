@@ -141,13 +141,13 @@
 
 
                         <a href="{{ route('user.chatify', ['user_id' => $worker->id]) }}" target="_new"
-                            class="border hover:bg-blue-500 hover:text-white text-gray border-blue-400 font-semibold py-2 px-4 rounded w-36">
+                            class="border hover:bg-blue-500 hover:text-white text-gray border-blue-400 font-semibold py-2 px-4 rounded w-36 h-10">
                             Message
                         </a>
 
 
                         <button
-                            class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36">Employments</button>
+                            class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36 h-10">Employments</button>
                     </div>
                 </div>
 
