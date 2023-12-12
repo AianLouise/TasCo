@@ -49,10 +49,11 @@ class HiringFormAccepted extends Notification
     {
         return [
             'read_at' => null,
-            'subject' => 'Hiring Form Accepted',
-            'greeting' => 'Hello!',
-            'message' => 'Your hiring form has been accepted by the worker.',
-            'closing' => 'Thank you for using our platform.',
+            'subject' => 'Good News: Your Hiring Form Is Accepted!',
+            'greeting' => 'Hello there!',
+            'message' => 'Exciting news! A worker has happily accepted your hiring form. Take a moment to check your dashboard for additional details and what comes next.',
+            'closing' => 'Thank you for being a part of our community. If you have any questions or need assistance, feel free to reach out. We’re here to help!',
         ];
+        
     }
 }

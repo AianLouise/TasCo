@@ -49,12 +49,13 @@ class FinishedWorking extends Notification
     {
         return [
             'read_at' => null,
-            'subject' => 'Finished Working',
+            'subject' => 'Project Completion Update',
             'greeting' => 'Hello!',
-            'message' => 'The worker has finished working on your project.',
-            'closing' => 'Thank you for using our platform.',
-            'additional_data' => [
-            ],
+            'message' => 'We\'re delighted to inform you that the worker has successfully completed your project. Please check your dashboard to review the results. If everything looks good, feel free to mark the project as complete. If you have any questions or need further assistance, we\'re here to help!',
+            'closing' => 'Thank you for choosing our platform. We appreciate your business!',
+            'additional_data' => [],
         ];
+        
+        
     }
 }

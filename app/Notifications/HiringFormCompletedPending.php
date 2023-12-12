@@ -49,12 +49,11 @@ class HiringFormCompletedPending extends Notification
     {
         return [
             'read_at' => null,
-            'subject' => 'Hiring Form Status Update',
-            'greeting' => 'Hello!',
-            'message' => 'The status of the hiring form has been updated to "Completed (Pending)".',
-            'closing' => 'Thank you for using our platform.',
-            'additional_data' => [
-            ],
-        ];
+            'subject' => 'Exciting News: Hiring Form Progress!',
+            'greeting' => 'Hi there!',
+            'message' => 'We wanted to share the good news that your hiring form is making progress! 🚀 It\'s now in the "Completed (Pending)" status. If everything looks good, including payment confirmation, you can mark it as complete to finalize the process.',
+            'closing' => 'Thanks for being a part of our platform!',
+            'additional_data' => [],
+        ];        
     }
 }

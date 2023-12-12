@@ -49,12 +49,12 @@ class HiringFormCompleted extends Notification
     {
         return [
             'read_at' => null,
-            'subject' => 'Hiring Form Completed',
-            'greeting' => 'Hello!',
-            'message' => 'The hiring form has been marked as completed.',
-            'closing' => 'Thank you for using our platform.',
-            'additional_data' => [
-            ],
+            'subject' => 'Exciting News: Hiring Form Completed!',
+            'greeting' => 'Hi there!',
+            'message' => 'We\'re thrilled to let you know that your hiring form has been successfully marked as completed. 🎉',
+            'closing' => 'Thanks a bunch for choosing our platform!',
+            'additional_data' => [],
         ];
+        
     }
 }

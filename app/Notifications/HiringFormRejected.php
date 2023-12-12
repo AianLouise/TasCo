@@ -49,10 +49,10 @@ class HiringFormRejected extends Notification
     {
         return [
             'read_at' => null,
-            'subject' => 'Hiring Form Rejected',
+            'subject' => 'Important: Your Hiring Form Status Update',
             'greeting' => 'Hello!',
-            'message' => 'Your hiring form has been rejected by the worker.',
-            'closing' => 'Thank you for using our platform.',
-        ];
+            'message' => 'We wanted to inform you that unfortunately, the worker has decided not to proceed with your hiring form at this time. If you have any questions or would like more details, we encourage you to try reaching out to the worker directly.',
+            'closing' => 'We appreciate your understanding and thank you for using our platform. If you have any questions or need further assistance, feel free to reach out.',
+        ];        
     }
 }

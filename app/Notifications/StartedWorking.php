@@ -49,13 +49,11 @@ class StartedWorking extends Notification
     {
         return [
             'read_at' => null,
-            'subject' => 'Worker Started Working',
+            'subject' => 'Exciting News: Your Worker Has Started!',
             'greeting' => 'Hello!',
-            'message' => 'Your hired worker has started working on the project.',
-            'closing' => 'Thank you for using our platform.',
-            'additional_data' => [
-            ],
-        ];
-        
+            'message' => 'We are thrilled to inform you that your hired worker has begun working on your project. If you have any questions or need updates, feel free to reach out!',
+            'closing' => 'Thank you for choosing our platform. We wish you a successful collaboration!',
+            'additional_data' => [],
+        ];        
     }
 }
