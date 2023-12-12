@@ -101,7 +101,7 @@
                         <p class="text-gray-600">{{ $notification->data['greeting'] }}</p>
                         <p class="text-gray-800 leading-7 mt-4 mb-4">{{ $notification->data['message'] }}</p>
                         <div class="h-auto max-w-full">
-                            <img src="{{ URL('images/accepted.jpg') }}">
+                            <img src="{{ URL('images/notification/' . $notification->data['image']) }}" class="rounded-lg">
                         </div>
                         <!-- You can add additional data here -->
                         @if (!empty($notification->data['additional_data']))
