@@ -14,7 +14,7 @@
 
     <!-- Welcome Page -->
     <section class="flex items-center justify-center bg-blue-50">
-        <div id="welcomePage" class="h-full mt-16 sm:w-1/2 flex items-center justify-center">
+        <div id="welcomePage" class="h-full sm:w-1/2 flex items-center justify-center py-[7rem]">
             <div class="container mx-auto rounded-lg bg-white shadow-lg">
                 <div class="text-center bg-white p-8 rounded-md flex flex-col justify-center">
 
@@ -39,7 +39,7 @@
 
         <!-- Terms and Conditions Page -->
         <div id="termsAndConditionsPage" class="hidden flex items-center justify-center h-screen">
-            <div class="container mx-auto p-4 bg-white">
+            <div class="container mx-auto p-4 bg-white rounded-lg bg-white shadow-lg">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                     <h2 class="text-4xl font-bold text-gray-800 mb-2">Terms and Conditions</h2>
                     <p class="text-center text-xl leading-relaxed text-gray-600 mb-4">
@@ -104,7 +104,7 @@
 
         <!-- Category Selection Page -->
         <div id="categorySelectionPage" class="hidden flex items-center justify-center h-screen sm:w-1/2">
-            <div class="container mx-auto p-4 bg-white">
+            <div class="container mx-auto p-4 bg-white rounded-lg shadow-lg">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                 <img src="{{ URL('images/category.PNG') }}" width="300" class="mx-auto">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">Select Job Category</h2>
@@ -129,8 +129,8 @@
             </div>
         </div>
 
-        <div id="uploadRequirementsPage" class="hidden flex items-center h-full justify-center mt-[20rem] md:mt-9">
-            <div class="container mx-auto">
+        <div id="uploadRequirementsPage" class="hidden items-center h-full justify-center py-[8.3rem] md:mt-9">
+            <div class="container mx-auto rounded-lg bg-white shadow-lg">
                 <div class="text-center bg-white p-8 rounded-md flex flex-col justify-center">
                     <h2 class="font-bold text-2xl sm:text-4xl text-gray-800 p-2">Required Documents</h2>
                     <p class="text-gray-600">

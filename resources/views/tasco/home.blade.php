@@ -497,54 +497,57 @@
 
                     </div>
 
-                    <div class="grid gap-14 mt-10 mb-20 md:grid-cols-3 md:gap-5">
-                        <div class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
-                            <div
-                                class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border border-gray-200 rounded-full bg-blue-400 shadow-lg shadow-blue-500/40">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M17 9.2L22.2133 5.55071C22.4395 5.39235 22.7513 5.44737 22.9096 5.6736C22.9684 5.75764 23 5.85774 23 5.96033V18.0397C23 18.3158 22.7761 18.5397 22.5 18.5397C22.3974 18.5397 22.2973 18.5081 22.2133 18.4493L17 14.8V19C17 19.5523 16.5523 20 16 20H2C1.44772 20 1 19.5523 1 19V5C1 4.44772 1.44772 4 2 4H16C16.5523 4 17 4.44772 17 5V9.2ZM17 12.3587L21 15.1587V8.84131L17 11.6413V12.3587ZM3 6V18H15V6H3ZM5 8H7V10H5V8Z">
-                                    </path>
-                                </svg>
+                    <div class="pt-12 p-4">
+                        <div class="grid gap-14 mt-10 mb-20 md:grid-cols-3 md:gap-5">
+                            <div class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
+                                <div
+                                    class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border border-gray-200 rounded-full bg-blue-400 shadow-lg shadow-blue-500/40">
+    
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M17 9.2L22.2133 5.55071C22.4395 5.39235 22.7513 5.44737 22.9096 5.6736C22.9684 5.75764 23 5.85774 23 5.96033V18.0397C23 18.3158 22.7761 18.5397 22.5 18.5397C22.3974 18.5397 22.2973 18.5081 22.2133 18.4493L17 14.8V19C17 19.5523 16.5523 20 16 20H2C1.44772 20 1 19.5523 1 19V5C1 4.44772 1.44772 4 2 4H16C16.5523 4 17 4.44772 17 5V9.2ZM17 12.3587L21 15.1587V8.84131L17 11.6413V12.3587ZM3 6V18H15V6H3ZM5 8H7V10H5V8Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Monitoring</h1>
+                                <p class="px-4 text-gray-500">Not only do we monitor your documents, feedbacks, services,
+                                    we also monitor on how well the community interact with each other</p>
                             </div>
-                            <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Monitoring</h1>
-                            <p class="px-4 text-gray-500">Not only do we monitor your documents, feedbacks, services,
-                                we also monitor on how well the community interact with each other</p>
-                        </div>
-                        <div data-aos-delay="150"
-                            class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
-                            <div
-                                class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full border border-gray-200 shadow-lg bg-yellow-300 shadow-yellow-200/40">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M6 10V20H19V10H6ZM18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16ZM7 11H9V13H7V11ZM7 14H9V16H7V14ZM7 17H9V19H7V17Z">
-                                    </path>
-                                </svg>
+                            <div data-aos-delay="150"
+                                class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
+                                <div
+                                    class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full border border-gray-200 shadow-lg bg-yellow-300 shadow-yellow-200/40">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M6 10V20H19V10H6ZM18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16ZM7 11H9V13H7V11ZM7 14H9V16H7V14ZM7 17H9V19H7V17Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h1 class="text-darken mb-3 text-xl font-medium lg:px-14 ">Secure</h1>
+                                <p class="px-4 text-gray-500">We secure the safety of every individual that will be working
+                                    or employing each other. We prioritize security overall along with monitoring.</p>
                             </div>
-                            <h1 class="text-darken mb-3 text-xl font-medium lg:px-14 ">Secure</h1>
-                            <p class="px-4 text-gray-500">We secure the safety of every individual that will be working
-                                or employing each other. We prioritize security overall along with monitoring.</p>
-                        </div>
-
-                        <div data-aos-delay="300"
-                            class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
-                            <div
-                                class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border-gray-200 rounded-full shadow-lg bg-blue-500 shadow-blue-500/40">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M5 3V19H21V21H3V3H5ZM20.2929 6.29289L21.7071 7.70711L16 13.4142L13 10.415L8.70711 14.7071L7.29289 13.2929L13 7.58579L16 10.585L20.2929 6.29289Z">
-                                    </path>
-                                </svg>
+    
+                            <div data-aos-delay="300"
+                                class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
+                                <div
+                                    class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border-gray-200 rounded-full shadow-lg bg-blue-500 shadow-blue-500/40">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M5 3V19H21V21H3V3H5ZM20.2929 6.29289L21.7071 7.70711L16 13.4142L13 10.415L8.70711 14.7071L7.29289 13.2929L13 7.58579L16 10.585L20.2929 6.29289Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Growth</h1>
+                                <p class="px-4 text-gray-500">In our community, every individual matters, we secure, hear,
+                                    and talk to one another in order to have an efficient growth of the community!</p>
                             </div>
-                            <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Growth</h1>
-                            <p class="px-4 text-gray-500">In our community, every individual matters, we secure, hear,
-                                and talk to one another in order to have an efficient growth of the community!</p>
                         </div>
                     </div>
+                    
                 </div>
                 <!-- end row -->
             </div>

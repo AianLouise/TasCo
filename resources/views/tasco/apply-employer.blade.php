@@ -15,7 +15,7 @@
     <!-- Welcome Page -->
     <section class="flex items-center justify-center bg-blue-50">
         <div id="welcomePage" class="flex items-center justify-center h-screen  sm:w-1/2">
-            <div class="container mx-auto rounded-md">
+            <div class="container mx-auto rounded-lg bg-white shadow-lg">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                      <img src="{{ URL('images/welcome-employer.PNG') }}" width="400" class="mx-auto">
                     <h1 class="text-3xl font-bold text-gray-800">Welcome to TasCo Employer Application</h1>
@@ -36,7 +36,7 @@
 
         <!-- Terms and Conditions Page -->
         <div id="termsAndConditionsPage" class="hidden flex items-center justify-center h-screen">
-            <div class="container mx-auto rounded-md">
+            <div class="container mx-auto rounded-lg bg-white shadow-lg">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
                     <h2 class="text-4xl font-bold text-gray-800 mb-2">Terms and Conditions</h2>
                     <p class="text-center text-xl leading-relaxed text-gray-600 mb-4">
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <div id="uploadRequirementsPage" class="hidden flex items-center h-full justify-center mt-32 md:mt-9">
+        <div id="uploadRequirementsPage" class="hidden flex items-center h-full justify-center py-[10rem] md:mt-9">
             <div class="container mx-auto rounded-md">
                 <div class="text-center bg-white p-8 rounded-md">
                     <h2 class="text-3xl font-bold text-gray-800 mb-2">Upload Requirements</h2>
