@@ -14,7 +14,7 @@
             <div class="-mt-20 px-5">
                 <img src="{{ URL('images/Pending.PNG') }}" width="400" class="mx-auto">
                 <p class="text-2xl font-bold text-gray-800 mb-2">Application Already Submitted</p>
-                <p class="text-gray-600 mb-4">You have already submitted an employer application. If you have any
+                <p class="text-gray-600 mb-4">You have already submitted an application. If you have any
                     questions,
                     please contact support.</p>
                 <a href="{{ route('app.home') }}"

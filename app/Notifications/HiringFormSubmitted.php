@@ -54,6 +54,7 @@ class HiringFormSubmitted extends Notification
             'greeting' => 'Hi there!', 
             'message' => 'Great news! Someone has submitted a hiring form for your consideration. Head over to your dashboard to check out the details and confirm the application.',
             'closing' => 'Thanks for being part of our platform. If you have any questions or need assistance, we’re here to help!',
+            'image' => 'accepted.jpg',
         ];
         
     }

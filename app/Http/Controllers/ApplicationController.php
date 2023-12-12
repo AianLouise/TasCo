@@ -91,8 +91,9 @@ class ApplicationController extends Controller
 
     public function showSubmissionConfirmationPage()
     {
+        $pageTitle = 'Application Submitted';
         // Add any necessary logic for displaying the submission confirmation page
-        return view('tasco.submissionConfirmationPage');
+        return view('tasco.submissionConfirmationPage' , compact('pageTitle'));
     }
 
 

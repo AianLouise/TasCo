@@ -3,7 +3,7 @@
 
 
     <body>
-        <div class="flex justify-center min-h-screen p-4 bg-blue-50">
+        <div class="flex flex-col items-center min-h-screen p-4 bg-blue-50">
             <div
                 class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 md:p-10 w-full max-w-screen-lg rounded-md">
                 <div class="flex justify-between mb-4 items-start">
@@ -101,7 +101,7 @@
                         <p class="text-gray-600">{{ $notification->data['greeting'] }}</p>
                         <p class="text-gray-800 leading-7 mt-4 mb-4">{{ $notification->data['message'] }}</p>
                         <div class="h-auto max-w-full">
-                            <img src="{{ URL('images/accepted.jpg') }}">
+                            <img src="{{ URL('images/notification/' . $notification->data['image']) }}" class="rounded-lg">
                         </div>
                         <!-- You can add additional data here -->
                         @if (!empty($notification->data['additional_data']))
