@@ -60,11 +60,12 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="2" class="py-4 text-center text-gray-500">No notifications available</td>
+                                    <td colspan="2" class="py-4 text-center text-gray-500">No notifications available
+                                    </td>
                                 </tr>
                             @endforelse
                         </tbody>
-                        
+
                     </table>
                 </div>
             </div>
@@ -157,9 +158,6 @@
                     .catch(error => console.error('Error:', error));
             }
         </script>
-
-
-
         <x-footer />
     </body>
 </x-app-layout>

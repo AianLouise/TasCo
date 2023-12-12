@@ -54,7 +54,7 @@
 
                     </div>
                     <h1
-                        class="mt-8 max-w-sm bg-gradient-to-br from-blue-500 via-sky-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-6xl">
+                        class="mt-8 max-w-sm bg-gradient-to-br from-blue-500 via-sky-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-5xl">
                         Kickstart Your Journey with TasCo!
                     </h1>
 

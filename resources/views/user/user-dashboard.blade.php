@@ -104,7 +104,7 @@
                                 class="ri-more-fill"></i></button>
                     </div>
                 </div>
-                <a href="{{ route('admin.viewAllUsers') }}"
+                <a href="{{ route('app.employments', ['worker' => Auth::user()->id]) }}"
                     class="text-blue-500 font-medium text-sm hover:text-blue-600">View all</a>
             </div>
             <!-- End: Dashboard Analytics - Total Employments Section -->

@@ -36,7 +36,7 @@
                             <tr class=""></tr>
 
                             @if (Auth::user()->role === 'user' && Auth::user()->is_verified === 1)
-                                @foreach ($hiringForms2 as $form)
+                                @forelse ($hiringForms2 as $form)
                                     @if ($form->status === 'Completed')
                                         <tr class="border border-gray-300 hover:border-blue-500 cursor-pointer transition-colors duration-300 "
                                             onclick="openModal('{{ $form->id }}')">
@@ -81,9 +81,14 @@
                                             </td>
                                         </tr>
                                     @endif
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="3" class="py-4 text-center text-gray-500">No employments
+                                            available</td>
+                                    </tr>
+                                @endforelse
                             @elseif (Auth::user()->role === 'worker' && Auth::user()->is_verified === 1)
-                                @foreach ($hiringForms as $form)
+                                @forelse ($hiringForms as $form)
                                     @if ($form->status === 'Completed')
                                         <tr class="border border-gray-300 hover:border-blue-500 cursor-pointer transition-colors duration-300 "
                                             onclick="openModal('{{ $form->id }}')">
@@ -128,7 +133,12 @@
                                             </td>
                                         </tr>
                                     @endif
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="3" class="py-4 text-center text-gray-500">No employments
+                                            available</td>
+                                    </tr>
+                                @endforelse
                             @endif
                         </tbody>
                     </table>
@@ -178,7 +188,8 @@
                             <h2 class="text-xl font-medium text-gray-800 mb-2">Worker Name:
                                 {{ $form->worker->name ?? 'N/A' }}<span class="text-blue-600 text-lg"> </span></h2>
                             <h2 class="text-xl font-medium text-gray-800 mb-2">Job Title:
-                                {{ $form->worker->category->name ?? 'N/A' }}<span class="text-blue-600 text-lg"> </span></h2>
+                                {{ $form->worker->category->name ?? 'N/A' }}<span class="text-blue-600 text-lg">
+                                </span></h2>
                             <h2 class="text-xl font-medium text-gray-800 mb-2">Email:
                                 {{ $form->worker->email ?? 'N/A' }}<span class="text-blue-600 text-lg"></span></h2>
                             <h2 class="text-xl font-medium text-gray-800 mb-2">Address:
