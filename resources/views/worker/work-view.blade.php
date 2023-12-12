@@ -148,11 +148,14 @@
                 <h1 class="text-3xl font-semibold text-blue-700 mb-6">Emergency Assistance</h1>
                 <p class="text-gray-700 mb-8">When in distress or feeling unsafe, click the "Send SOS" button below for
                     immediate assistance. Help is on the way!</p>
-                <form action="{{ route('tasco.sendSOS') }}" method="POST">
-                    @csrf
-                    <!-- Your form fields and submit button -->
-                    <button type="submit">Send SOS</button>
-                </form>
+                    <form action="{{ route('tasco.sendSOS') }}" method="POST">
+                        @csrf
+                        <!-- Your form fields and submit button -->
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full focus:outline-none focus:shadow-outline-red transition duration-300">
+                            Send SOS
+                        </button>
+                    </form>
+                    
 
             </div>
         </div>

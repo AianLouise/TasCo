@@ -71,7 +71,6 @@
                                 <!-- User Column -->
                                 <td class="py-2 px-4 border-b border-b-gray-50">
                                     <div class="flex items-center">
-                                        <img src="{{ $sosAlert->user->avatar_url }}" alt="User Avatar" class="w-6 h-6 rounded-full mr-2">
                                         <span class="text-gray-800 font-medium2">{{ $sosAlert->user->name }}</span>
                                     </div>
                                 </td>
@@ -83,13 +82,13 @@
         
                                 <!-- Action Column -->
                                 <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="text-gray-400 text-[13px] font-medium2">{{ $sosAlert->action }}</span>
+                                    <span class="text-gray-400 text-[13px] font-medium2">SOS Request</span>
                                 </td>
         
                                 <!-- Description Column -->
                                 <td class="py-2 px-4 border-b border-b-gray-50">
-                                    <span class="inline-block p-1 rounded bg-{{ $sosAlert->status === 'emergency' ? 'red' : 'green' }}-500/10 text-{{ $sosAlert->status === 'emergency' ? 'red' : 'green' }}-500 font-medium2 text-[12px] leading-none">
-                                        {{ $sosAlert->description }}
+                                    <span class="inline-block p-1 rounded bg-red-500/10 text-{{ $sosAlert->status === 'emergency' ? 'red' : 'green' }}-500 font-medium2 text-[12px] leading-none">
+                                        Immediate assistance needed
                                     </span>
                                 </td>
         

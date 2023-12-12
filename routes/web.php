@@ -126,7 +126,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/submission-confirmation', [ApplicationController::class, 'showSubmissionConfirmationPage'])
         ->name('tasco.submissionConfirmationPage');
 
-    Route::post('/sendSOS', [SosAlertController::class, 'sendSOS'])->name('tasco.sendSOS');
+    Route::post('/sendSOS', [UserController::class, 'sendSOS'])->name('tasco.sendSOS');
 });
 
 // Worker Routes (Requires Authentication and Worker Role)

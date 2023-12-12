@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Category;
+use App\Models\SosAlert;
 use App\Models\HiringForm;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -312,5 +313,20 @@ class UserController extends Controller
         }
 
         return redirect()->back()->with('error', 'Hiring form not found');
+    }
+
+    public function sendSOS(Request $request)
+    {
+        // Validate and store the SOS alert in the database
+        $sosAlert = new SosAlert([
+            'user_id' => auth()->id(), // Adjust this based on your authentication logic
+            'location' => 'location',
+            'details' => 'details',
+            // Add any other fields as needed
+        ]);
+
+        $sosAlert->save();
+
+        return redirect()->back()->with('success', 'SOS alert stored successfully');
     }
 }
