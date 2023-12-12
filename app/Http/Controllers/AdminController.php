@@ -404,7 +404,7 @@ class AdminController extends Controller
 
     public function showEmailView(User $user)
     {
-        $pageTitle = 'Email';
+        $pageTitle = 'Inbox View';
 
         return view('admin.admin-inboxMessage', compact('user', 'pageTitle'));
     }
