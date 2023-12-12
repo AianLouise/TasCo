@@ -265,7 +265,7 @@ class WorkerHiringController extends Controller
 
                     // Dispatch the notification
                     $employer = $hiringForm->employer;
-                    Auth::user()->notify(new FinishedWorking($hiringForm));
+                    $employer->notify(new FinishedWorking($hiringForm));
                 }
             } else {
                 // Handle the case where the event with the given ID doesn't exist
@@ -291,7 +291,7 @@ class WorkerHiringController extends Controller
 
             // Dispatch the notification
             $employer = $hiringForm->employer;
-            Auth::user()->notify(new HiringFormCompleted($hiringForm));
+            $employer->notify(new HiringFormCompleted($hiringForm));
 
             // Redirect back or to another page as needed
             return redirect()->back()->with('success', 'Marked as completed successfully!');

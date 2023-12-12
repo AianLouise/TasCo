@@ -305,7 +305,8 @@ class UserController extends Controller
             $hiringForm->save();
 
             // Dispatch the notification to the user
-            $user->notify(new HiringFormCompletedPending($hiringForm));
+            $jobseeker = $hiringForm->worker;
+            $jobseeker->notify(new HiringFormCompletedPending($hiringForm));
 
             return redirect()->back()->with('success', 'Status updated successfully');
         }
