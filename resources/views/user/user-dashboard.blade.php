@@ -594,29 +594,27 @@
                                         <div class="mb-2 transition-all">
                                             <label for="workerFullName" class="block text-xs font-medium">Full
                                                 Name</label>
-                                            <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                            <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
                                                 {{ isset($hiringForm->worker) ? $hiringForm->worker->name : '' }}
                                             </p>
                                         </div>
 
-                                        @foreach ($hiringForms as $hiringForm)
-                                            @if (isset($hiringForm->worker))
-                                                <div class="pb-2">
-                                                    <label for="workerEmail"
-                                                        class="block text-xs font-medium pt-1">Job Title</label>
-                                                    <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
-                                                        {{ optional($hiringForm->worker->category)->name ?? 'N/A' }}
-                                                    </p>
-                                                </div>
-                                            @endif
-                                        @endforeach
+                                        @if (isset($hiringForm->worker))
+                                            <div class="pb-2">
+                                                <label for="workerEmail" class="block text-xs font-medium pt-1">Job
+                                                    Title</label>
+                                                <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                                    {{ optional($hiringForm->worker->category)->name ?? 'N/A' }}
+                                                </p>
+                                            </div>
+                                        @endif
 
 
 
                                         <div class="pb-2">
                                             <label for="workerEmail"
                                                 class="block text-xs font-medium pt-1 ">Email</label>
-                                            <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                            <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
                                                 {{ isset($hiringForm->worker) ? $hiringForm->worker->email : '' }}
                                             </p>
                                         </div>
@@ -624,7 +622,7 @@
                                         <div class="pb-2">
                                             <label for="workerPhone"
                                                 class="block text-xs font-medium pt-1">Phone</label>
-                                            <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                            <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
                                                 {{ isset($hiringForm->worker) ? $hiringForm->worker->phone : '' }}
                                             </p>
                                         </div>

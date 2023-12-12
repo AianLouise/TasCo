@@ -323,4 +323,17 @@ class AppController extends Controller
 
         return view("tasco.worker-employments", compact('pageTitle', 'hiringForms', 'hiringForms2'));
     }
+
+    public function Employments($worker)
+    {
+        $pageTitle = 'Employments';
+
+        $hiringForms = HiringForm::where('worker_id', $worker)->get();
+
+        $hiringForms2 = HiringForm::where('employer_id', $worker)->get();
+
+        // $user = User::find($hiringForms->employer_id);
+
+        return view("tasco.employments", compact('pageTitle', 'hiringForms', 'hiringForms2'));
+    }
 }

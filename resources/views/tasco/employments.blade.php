@@ -35,10 +35,6 @@
                             <!-- Add an empty row with borders -->
                             <tr class=""></tr>
 
-                            @php
-                                $hiringForms = Auth::user()->role === 'worker' && Auth::user()->is_verified === 1 ? $hiringForms : $hiringForms2;
-                            @endphp
-
                             @forelse ($hiringForms as $form)
                                 @if ($form->status === 'Completed')
                                     <tr class="border border-gray-300 hover:border-blue-500 cursor-pointer transition-colors duration-300 "
@@ -109,7 +105,7 @@
         </script>
 
         @if (Auth::user()->role === 'user' && Auth::user()->is_verified === 1)
-            @foreach ($hiringForms2 as $form)
+            @foreach ($hiringForms as $form)
                 <dialog class="content-center shadow-lg rounded-lg m-auto" id="nameModal-{{ $form->id }}"
                     style="width: 80vw; max-width: 800px; overflow-y: auto;">
                     <div class="rounded-md sm:flex sm:items-start justify-center pt-10 pb-4 sm:pb-2">
