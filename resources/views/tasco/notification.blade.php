@@ -83,19 +83,26 @@
         </script>
 
         @foreach ($notifications as $notification)
-            <dialog class="content-center shadow-lg rounded-lg m-auto" id="nameModal-{{ $notification->id }}"
+            <dialog class="content-center bg-blue-50 shadow-lg rounded-lg m-auto" id="nameModal-{{ $notification->id }}"
                 style="width: 80vw; max-width: 800px; overflow-y: auto;">
                 <div class="rounded-md sm:flex sm:items-start justify-center p-10 sm:p-6">
-                    <div class="bg-white w-full sm:w-3/4 p-8 rounded-md">
+                    <div class="bg-blue-50 w-full sm:w-3/4 p-8 rounded-md">
                         <!-- Add Logo-->
-                        <div class="flex items-center mb-4">
-                            <img src="{{ URL('images/App-Logo.png') }}" class="mr-1 h-6 sm:h-9" alt="Tasco Logo" />
-                            <span class="self-center text-xl font-bold whitespace-nowrap">TasCo</span>
+                        <div class="flex items-center mb-2">
+                            <img src="{{ URL('images/App-Logo.png') }}" class="mr-1 h-5 sm:h-9" alt="Tasco Logo" />
+                            <span class="self-center text-lg font-bold whitespace-nowrap">TasCo</span>
                         </div>
                         <h2 class="text-3xl font-bold mb-4">{{ $notification->data['subject'] }}</h2>
+                        <div class="relative py-4">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-b border-gray-300"></div>
+                            </div>
+                        </div>
                         <p class="text-gray-600">{{ $notification->data['greeting'] }}</p>
                         <p class="text-gray-800 leading-7 mt-4 mb-4">{{ $notification->data['message'] }}</p>
-                        <img src="{{ URL('images/accepted.jpg') }}" width="400">
+                        <div class="h-auto max-w-full">
+                            <img src="{{ URL('images/accepted.jpg') }}">
+                        </div>
                         <!-- You can add additional data here -->
                         @if (!empty($notification->data['additional_data']))
                             <ul class="list-disc pl-6 mt-4">
