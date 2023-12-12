@@ -78,6 +78,7 @@ class AppController extends Controller
 
         if ($application && $application->status != 'Rejected') {
             // User has already submitted an application and it's not rejected, return a view with a message
+            $pageTitle = 'Application Already Submitted';
             return view('tasco.application-already-submitted');
         }
 
