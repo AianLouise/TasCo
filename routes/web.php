@@ -60,7 +60,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/add-profile', [AdminController::class, 'AdminAddProfile'])->name('admin.addProfile');
     Route::post('/create-user', [AdminController::class, 'createUser'])->name('admin.createUser');
     Route::get('/admin/edit-profile/{id}', [AdminController::class, 'AdminEditProfile'])->name('admin.editProfile');
-    Route::put('/update-profile/{id}', [AdminController::class, 'updateProfile'])->name('update.profile');
     Route::delete('/admin/deleteProfile/{id}', [AdminController::class, 'deleteProfile'])->name('admin.deleteProfile');
     Route::get('/admin/employment', [AdminController::class, 'AdminEmployment'])->name('admin.employment');
     Route::get('/admin/hiring-application', [AdminController::class, 'AdminHiringApplication'])->name('admin.hiringApplication');
@@ -123,7 +122,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jobseeker-submit-application', [ApplicationController::class, 'submitJobSeekerApplication'])->name('submit.jobseekerapplication');
     Route::get('/submission-confirmation', [ApplicationController::class, 'showSubmissionConfirmationPage'])
         ->name('tasco.submissionConfirmationPage');
-        Route::post('/mark-as-complete/{id}/{eventId}', [WorkerHiringController::class, 'markAsComplete'])->name('submit.markAsComplete');
+    Route::post('/mark-as-complete/{id}/{eventId}', [WorkerHiringController::class, 'markAsComplete'])->name('submit.markAsComplete');
 
 });
 
@@ -137,23 +136,19 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/reject-status/{id}', [WorkerHiringController::class, 'rejectStatus'])->name('rejectStatus');
     Route::get('/work/{HiringForm_id}', [WorkerHiringController::class, 'WorkView'])->name('work.view');
     Route::get('/start-working/{hiringFormId}/{eventId}', [WorkerHiringController::class, 'startWorking'])->name('startWorking');
-    Route::post('/upload-documentation/{id}/{eventId}', [WorkerHiringController::class, 'uploadDocumentation'])
-        ->name('uploadDocumentation');
-
-
-
-    // Other Worker Routes...
+    Route::post('/upload-documentation/{id}/{eventId}', [WorkerHiringController::class, 'uploadDocumentation'])->name('uploadDocumentation');
+    Route::get('/mark-as-completed/{id}', [WorkerHiringController::class, 'MarkAsCompletedWorker'])->name('worker.MarkAsCompleted');
 });
 
 // User Routes (Requires Authentication and User Role)
 Route::middleware(['auth', 'role:user'])->group(function () {
-    // User Dashboard and Related Routes
     Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
 });
 
 Route::middleware(['auth', 'role:user', 'is_verified:1'])->group(function () {
     // User Dashboard and Related Routes
     Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+    Route::get('/mark-as-completed/{id}', [UserController::class, 'MarkAsCompletedUser'])->name('user.MarkAsCompleted');
 });
 
 

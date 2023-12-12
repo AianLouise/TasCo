@@ -254,28 +254,21 @@ class WorkerHiringController extends Controller
         return redirect()->back()->with('success', 'Documentation uploaded successfully.');
     }
 
-    public function markAsComplete($id, $eventId)
+    public function MarkAsCompletedWorker($id)
     {
         // Find the HiringForm by ID
         $hiringForm = HiringForm::find($id);
-    
+
         if ($hiringForm) {
-            // Find the Event by ID
-            $event = Event::find($eventId);
-    
-            if ($event) {
-                // Update the status of the HiringForm to "Completed (Pending)"
-                $hiringForm->update(['status' => 'Completed (Pending)']);
-    
-                // Additional logic if needed
-    
-                return redirect()->back()->with('success', 'Hiring form marked as complete.');
-            } else {
-                return redirect()->back()->with('error', 'Event not found.');
-            }
+            // Update the status of the HiringForm to 'Completed'
+            $hiringForm->update(['status' => 'Completed']);
+
+            // Redirect back or to another page as needed
+            return redirect()->back()->with('success', 'Marked as completed successfully!');
         }
-    
-        return redirect()->back()->with('error', 'Hiring form not found.');
+
+        // Handle the case where the HiringForm record with the given ID doesn't exist.
+        return redirect()->route('worker.dashboard')->with('error', 'HiringForm not found.');
     }
     
     

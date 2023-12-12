@@ -194,7 +194,11 @@
                         </thead>
                         <tbody id="hiring-application-table">
                             @foreach ($hiringForms as $hiringForm)
-                                @if ($hiringForm->status === 'Finished' || $hiringForm->status === 'Ongoing' || $hiringForm->status === 'Accepted')
+                                @if (
+                                    $hiringForm->status === 'Finished' ||
+                                        $hiringForm->status === 'Ongoing' ||
+                                        $hiringForm->status === 'Accepted' ||
+                                        $hiringForm->status === 'Completed(Pending)')
                                     <tr class="border-b">
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->projectTitle }}</td>
@@ -635,7 +639,7 @@
                                         Reject
                                     </a>
                                 </div>
-                            @elseif($hiringForm->status === 'Finished')
+                            @elseif($hiringForm->status === 'Finished' || $hiringForm->status === 'Completed(Pending)')
                                 <div class="flex flex-col justify-center">
                                     <div class="flex flex-col justify-center">
                                         @foreach ($hiringForm->employments as $index => $employment)
@@ -658,13 +662,13 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                        {{-- <div>
-                                            <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4 "
-                                            onclick="completeDocumentation({{ $employment->id }})">
-                                            Mark As Complete
-                                        </button>
-                                        </div> --}}
-                                        
+                                        <div>
+                                            <a href="{{ route('worker.MarkAsCompleted' , ) }}"
+                                                class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                Confirm Mark as Completed
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </div>
                             @endif

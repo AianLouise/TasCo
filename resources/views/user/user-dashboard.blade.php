@@ -45,7 +45,8 @@
             <!-- Right Column (Upcoming Schedule) -->
             <div class="flex-1 bg-white p-6 rounded-md divide-y mb-10 mt-4 mr-10">
                 <div class="flex justify-between mb-1 items-start">
-                    <h2 class="font-medium2 mb-1 text-start">Upcoming Work Schedule</h2>
+                    <h2 class="font-medium2 mb-1 text-start"><i class="ri-calendar-event-fill"></i> Upcoming Work Schedule
+                    </h2>
                 </div>
 
                 <div class="overflow-x-auto max-h-52">
@@ -98,7 +99,8 @@
                 </div>
 
                 <div class="flex justify-between mb-3 items-start">
-                    <h2 class="font-medium2 mt-4 text-start">Done Work Schedule</h2>
+                    <h2 class="font-medium2 mt-4 text-start"><i class="ri-calendar-check-line"></i> Done Work Schedule
+                    </h2>
                 </div>
 
                 <div class="overflow-x-auto max-h-48">
@@ -194,7 +196,11 @@
                         </thead>
                         <tbody id="hiring-application-table">
                             @foreach ($hiringForms as $hiringForm)
-                                @if ($hiringForm->status === 'Accepted' || $hiringForm->status === 'Ongoing' || $hiringForm->status === 'Finished')
+                                @if (
+                                    $hiringForm->status === 'Accepted' ||
+                                        $hiringForm->status === 'Ongoing' ||
+                                        $hiringForm->status === 'Finished' ||
+                                        $hiringForm->status === 'Completed(Pending)')
                                     <tr class="border-b">
                                         <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
                                             {{ $hiringForm->projectTitle }}</td>
@@ -660,16 +666,10 @@
                                                 </div>
                                             @endforeach
                                             <div>
-                                                <form
-                                                    action="{{ route('submit.markAsComplete', ['id' => $hiringForm->id, 'eventId' => $event->id]) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    <button type="submit"
-                                                        class="bg-blue-500 text-white px-4 py-2 rounded mt-4">
-                                                        Mark As Complete
-                                                    </button>
-                                                </form>
-
+                                                <a href="{{ route('user.MarkAsCompleted', ['id' => $hiringForm->id]) }}"
+                                                    class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                    Mark as Completed
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
