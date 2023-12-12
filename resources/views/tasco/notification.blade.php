@@ -3,7 +3,7 @@
 
 
     <body>
-        <div class="flex justify-center min-h-screen p-4 bg-blue-50">
+        <div class="flex flex-col items-center min-h-screen p-4 bg-blue-50">
             <div
                 class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 md:p-10 w-full max-w-screen-lg rounded-md">
                 <div class="flex justify-between mb-4 items-start">
