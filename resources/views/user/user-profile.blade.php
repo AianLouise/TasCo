@@ -13,24 +13,22 @@
                 @if (Auth::user()->avatar == 'avatar.png')
                     <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF"
                         alt=""
-                        class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
+                        class="w-56 h-56 hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
                 @else
                     <img src="{{ asset('storage/users-avatar/' . basename(Auth::user()->avatar)) }}" alt=""
-                        class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
+                        class="w-56 h-56 hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
                 @endif
 
-                <div class="-mr-20 hidden lg:block">
+                <div class=" sm:-mr-24 hidden sm:block">
                     <a href="{{ route('app.settings') }}"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded"><i
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i
                             class="ri-edit-line font-normal"></i> Edit
                         Profile</a>
-                    @php
-                        $isVerified = Auth::user()->is_verified;
-                        $buttonClass = $isVerified ? 'bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-4 rounded w-38' : 'hidden'; // Use the 'hidden' class to hide the button if not verified
-                    @endphp
                 </div>
-                <div class="sm:-mr-6 sm:-mt-2 hidden lg:block">
-                    <button class="{{ $buttonClass }}"><i class="ri-folder-line font-normal"></i> Employments</button>
+                <div class=" sm:-mr-6 hidden sm:block">
+                    <a href="{{ route('app.employments', ['worker' => Auth::user()->id]) }}"
+                        class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-6 rounded w-38"><i
+                            class="ri-folder-line font-normal"></i> Employments</a>
                 </div>
 
             </div>
@@ -53,7 +51,7 @@
                     @endphp
                 </div>
                 @if (Auth::user()->is_verified != 0)
-                    <div class="block -mt-1 lg:hidden">
+                    <div class="block lg:hidden">
                         <a href="{{ route('app.employments', ['worker' => Auth::user()->id]) }}"
                             class="bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-gray-700 font-bold rounded px-4 py-2 h-10">
                             <i class="ri-folder-line font-normal"></i> Employments
