@@ -387,7 +387,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="pb-4">
             <!-- Center Column (Rejected Job) -->
             <div class="flex-1 bg-white p-4 rounded-md md:mx-4 bottom-10 mt-4">
                 <div>
@@ -636,26 +636,39 @@
                                     </a>
                                 </div>
                             @elseif($hiringForm->status === 'Finished')
-                                @foreach ($hiringForm->employments as $index => $employment)
-                                <div class="flex  flex-col items-center">
-                                    <h1 class="text-2xl font-bold mb-4">Day {{ $index + 1 }} - Documentation</h1>
-                                    <div class="flex justify-between">
-                                        <div class="w-1/3">
-                                            <img src="{{ asset('storage/documentation/' . basename($employment->image1)) }}"
-                                                alt="Image1">
-                                        </div>
-                                        <div class="w-1/3">
-                                            <img src="{{ asset('storage/documentation/' . basename($employment->image2)) }}"
-                                                alt="Image2">
-                                        </div>
-                                        <div class="w-1/3">
-                                            <img src="{{ asset('storage/documentation/' . basename($employment->image3)) }}"
-                                                alt="Image3">
-                                        </div>
+                                <div class="flex flex-col justify-center">
+                                    <div class="flex flex-col justify-center">
+                                        @foreach ($hiringForm->employments as $index => $employment)
+                                            <div class="flex flex-col mb-6 items-center">
+                                                <h1 class="text-2xl font-bold mb-4">Day {{ $index + 1 }} -
+                                                    Documentation</h1>
+                                                <div class="flex">
+                                                    <div class="w-1/3 m-1">
+                                                        <img src="{{ asset('storage/documentation/' . basename($employment->image1)) }}"
+                                                            alt="Image1">
+                                                    </div>
+                                                    <div class="w-1/3 m-1">
+                                                        <img src="{{ asset('storage/documentation/' . basename($employment->image2)) }}"
+                                                            alt="Image2">
+                                                    </div>
+                                                    <div class="w-1/3 m-1">
+                                                        <img src="{{ asset('storage/documentation/' . basename($employment->image3)) }}"
+                                                            alt="Image3">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        {{-- <div>
+                                            <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4 "
+                                            onclick="completeDocumentation({{ $employment->id }})">
+                                            Mark As Complete
+                                        </button>
+                                        </div> --}}
+                                        
                                     </div>
                                 </div>
-                                @endforeach
                             @endif
+
                         </div>
 
                     </form>

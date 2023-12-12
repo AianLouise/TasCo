@@ -123,6 +123,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jobseeker-submit-application', [ApplicationController::class, 'submitJobSeekerApplication'])->name('submit.jobseekerapplication');
     Route::get('/submission-confirmation', [ApplicationController::class, 'showSubmissionConfirmationPage'])
         ->name('tasco.submissionConfirmationPage');
+        Route::post('/mark-as-complete/{id}/{eventId}', [WorkerHiringController::class, 'markAsComplete'])->name('submit.markAsComplete');
+
 });
 
 // Worker Routes (Requires Authentication and Worker Role)

@@ -254,4 +254,30 @@ class WorkerHiringController extends Controller
         return redirect()->back()->with('success', 'Documentation uploaded successfully.');
     }
 
+    public function markAsComplete($id, $eventId)
+    {
+        // Find the HiringForm by ID
+        $hiringForm = HiringForm::find($id);
+    
+        if ($hiringForm) {
+            // Find the Event by ID
+            $event = Event::find($eventId);
+    
+            if ($event) {
+                // Update the status of the HiringForm to "Completed (Pending)"
+                $hiringForm->update(['status' => 'Completed (Pending)']);
+    
+                // Additional logic if needed
+    
+                return redirect()->back()->with('success', 'Hiring form marked as complete.');
+            } else {
+                return redirect()->back()->with('error', 'Event not found.');
+            }
+        }
+    
+        return redirect()->back()->with('error', 'Hiring form not found.');
+    }
+    
+    
+    
 }
