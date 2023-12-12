@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobSeekerApplication;
 use App\Models\User;
+use App\Models\Worker;
 use App\Models\Category;
+use App\Models\HiringForm;
 use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use App\Models\EmployerApplication;
+use App\Models\JobSeekerApplication;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerServiceMessage;
 
@@ -39,11 +41,24 @@ class AppController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function showProfile()
+    public function showProfile($workerId)
     {
         $pageTitle = 'Profile';
-
-        return view("tasco.profile", compact('pageTitle'));
+    
+        // Retrieve the worker object from the database
+        $worker = User::find($workerId);
+    
+        // If the worker doesn't exist, redirect or show an error message
+        if (!$worker) {
+            return redirect()->back()->with('error', 'Worker not found');
+        }
+    
+        // If the authenticated user's ID is the same as the worker's ID, return the 'worker.profile' view
+        if (Auth::id() == $workerId) {
+            return view("worker.worker-profile", compact('pageTitle', 'worker'));
+        }
+    
+        return view("tasco.profile", compact('pageTitle', 'worker'));
     }
 
     /**
@@ -281,20 +296,28 @@ class AppController extends Controller
         return view("tasco.chatify");
     }
 
-    public function UserChatify($user_id)
+    public function openChat(User $user_id)
     {
-        // Retrieve the user based on the user_id
-        $user = User::find($user_id);
+        // Retrieve the authenticated user (assuming you're using Laravel's authentication)
+        $currentUser = auth()->user();
 
-        if (!$user) {
-            // Handle the case where the user is not found
-            abort(404);
-        }
+        // Fetch the chat with the specified user
+        $chat = chatify()->getChat($currentUser->id, $user->id);
 
-        // Load or create the chat conversation for the specific user
-        // Your logic to load or create the chat conversation goes here
+        return view('chatify.index', [
+            'user' => $user,
+            'chat' => $chat,
+        ]);
+    }
 
-        // Return the chatify view with the user and chat data
-        return view("tasco.chatify", compact('user', 'chat'));
+    public function workerEmployments($worker)
+    {
+        $pageTitle = 'Employments';
+
+        $hiringForms = HiringForm::where('worker_id', $worker)->get();
+
+        // $user = User::find($hiringForms->employer_id);
+
+        return view("tasco.worker-employments", compact('pageTitle', 'hiringForms'));
     }
 }

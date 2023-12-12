@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserVerified extends Notification
+class FinishedWorking extends Notification
 {
     use Queueable;
 
@@ -26,7 +26,7 @@ class UserVerified extends Notification
      */
     public function via(object $notifiable): array
     {
-        return [ 'database'];
+        return ['database'];
     }
 
     /**
@@ -35,11 +35,9 @@ class UserVerified extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-        ->subject('Account Verification')
-        ->line('Dear user,')
-        ->line('Your job seeker application has been approved.')
-        ->action('Visit Website', url('/'))
-        ->line('Thank you for using our application!');
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -50,14 +48,12 @@ class UserVerified extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'read_at' => null, // Initialize as unread
-            'subject' => 'Exciting News: Your Job Seeker Application is Approved!',
+            'read_at' => null,
+            'subject' => 'Project Completion Update',
             'greeting' => 'Hello!',
-            'message' => 'Congratulations! We\'re thrilled to inform you that your Job Seeker application has been approved. Welcome to our platform!',
-            'closing' => 'Thank you for choosing us. If you have any questions or need assistance, feel free to reach out.',
-            'additional_data' => [
-                // Add any other data you want to include here
-            ],
+            'message' => 'We\'re delighted to inform you that the worker has successfully completed your project. Please check your dashboard to review the results. If everything looks good, feel free to mark the project as complete. If you have any questions or need further assistance, we\'re here to help!',
+            'closing' => 'Thank you for choosing our platform. We appreciate your business!',
+            'additional_data' => [],
         ];
         
         

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Category;
+use App\Models\SosAlert;
 use App\Models\HiringForm;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CustomerServiceMessage;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\HiringFormCompletedPending;
 
 class UserController extends Controller
 {
@@ -29,19 +31,19 @@ class UserController extends Controller
     {
         // Get the authenticated user
         $employer = auth()->user();
-
+    
         // Retrieve hiring forms where the employer_id matches the authenticated user's ID
         $hiringForms = HiringForm::where('employer_id', $employer->id)->get();
-
+    
         // Retrieve events associated with the hiring forms, including the employer relationship
         $events = Event::with('employer')->whereIn('hiring_form_id', $hiringForms->pluck('id'))->get();
-
+    
         $workerUsers = User::where('role', 'worker')->get();
         $categories = Category::all();
         $pageTitle = 'Dashboard';
-
+    
         return view("user.user-dashboard", compact('hiringForms', 'workerUsers', 'categories', 'pageTitle', 'events'));
-    }
+    }    
 
     public function Sort(Request $request)
     {
@@ -275,6 +277,23 @@ class UserController extends Controller
         return view("tasco.notification", compact('user', 'pageTitle', 'notifications', 'user'));
     }
 
+    public function markAsRead(Request $request, $notificationId)
+    {
+        $notification = Auth::user()->notifications()->findOrFail($notificationId);
+        $notification->markAsRead();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function notificationCount()
+    {
+        // Get the unread notifications count for the authenticated user
+        $unreadNotificationsCount = Auth::user()->unreadNotifications->count();
+
+        // Pass the variable to the view
+        return view('components.user-profile', ['unreadNotificationsCount' => $unreadNotificationsCount]);
+    }
+
     public function MarkAsCompletedUser(Request $request, $id)
     {
         $user = Auth::user();
@@ -286,9 +305,28 @@ class UserController extends Controller
             $hiringForm->status = 'Completed(Pending)'; // You might want to set a default status here
             $hiringForm->save();
 
+            // Dispatch the notification to the user
+            $jobseeker = $hiringForm->worker;
+            $jobseeker->notify(new HiringFormCompletedPending($hiringForm));
+
             return redirect()->back()->with('success', 'Status updated successfully');
         }
 
         return redirect()->back()->with('error', 'Hiring form not found');
+    }
+
+    public function sendSOS(Request $request)
+    {
+        // Validate and store the SOS alert in the database
+        $sosAlert = new SosAlert([
+            'user_id' => auth()->id(), // Adjust this based on your authentication logic
+            'location' => 'location',
+            'details' => 'details',
+            // Add any other fields as needed
+        ]);
+
+        $sosAlert->save();
+
+        return redirect()->back()->with('success', 'SOS alert stored successfully');
     }
 }

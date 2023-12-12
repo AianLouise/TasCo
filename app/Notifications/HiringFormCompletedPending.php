@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserVerifiedEmployer extends Notification
+class HiringFormCompletedPending extends Notification
 {
     use Queueable;
 
@@ -35,11 +35,9 @@ class UserVerifiedEmployer extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('Account Verification')
-            ->line('Dear user,')
-            ->line('Your application for employer has been approved.')
-            ->action('View My Account', url('/home'))
-            ->line('Thank you for using our application!');
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -50,15 +48,12 @@ class UserVerifiedEmployer extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'read_at' => null, // Initialize as unread
-            'subject' => 'Congratulations! Your Employer Application is Approved',
+            'read_at' => null,
+            'subject' => 'Exciting News: Hiring Form Progress!',
             'greeting' => 'Hi there!',
-            'message' => 'We are excited to inform you that your Employer application has been approved. Welcome to our platform! 🎉',
-            'closing' => 'Thank you for choosing our platform. We look forward to your contributions!',
-            'additional_data' => [
-                // Add any other data you want to include here
-            ],
+            'message' => 'We wanted to share the good news that your hiring form is making progress! 🚀 It\'s now in the "Completed (Pending)" status. If everything looks good, including payment confirmation, you can mark it as complete to finalize the process.',
+            'closing' => 'Thanks for being a part of our platform!',
+            'additional_data' => [],
         ];        
-        
     }
 }

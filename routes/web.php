@@ -62,6 +62,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/edit-profile/{id}', [AdminController::class, 'AdminEditProfile'])->name('admin.editProfile');
     Route::delete('/admin/deleteProfile/{id}', [AdminController::class, 'deleteProfile'])->name('admin.deleteProfile');
     Route::get('/admin/employment', [AdminController::class, 'AdminEmployment'])->name('admin.employment');
+    Route::get('/admin/emergency-assistance', [AdminController::class, 'AdminEmergency'])->name('admin.emergency');
     Route::get('/admin/hiring-application', [AdminController::class, 'AdminHiringApplication'])->name('admin.hiringApplication');
     Route::get('/admin/hiring-application/{id}', [AdminController::class, 'AdminHiringApplicationView'])->name('admin.hiringApplicationView');
 
@@ -85,6 +86,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [AppController::class, 'Home'])->name('app.home');
     Route::get('/notification', [UserController::class, 'Notification'])->name('app.notifications');
+    Route::post('/mark-as-read/{notification}', [UserController::class, 'MarkAsRead'])->name('markAsRead');
     Route::get('/about-us', [AppController::class, 'AboutUs'])->name('app.aboutUs');
     Route::get('/apply-as-jobseeker', [AppController::class, 'applyJobseeker'])->name('app.applyJobseeker');
     Route::get('/apply-as-employer', [AppController::class, 'applyEmployer'])->name('app.applyEmployer');
@@ -102,9 +104,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/guidelines', [AppController::class, 'Guidelines'])->name('app.guidelines');
 
     Route::get('/chatify', [AppController::class, 'Chatify'])->name('app.chatify');
-    Route::get('/chatify/{user_id}', [AppController::class, 'UserChatify'])->name('user.chatify');
+    Route::get('/chatify/{user_id}', [AppController::class, 'openChat'])->name('user.chatify');
 
     Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
+    Route::get('/worker/employments/{worker}', [AppController::class, 'workerEmployments'])->name('app.employments');
 
     Route::post('/update-profile/{id}', [UserController::class, 'updateProfile'])->name('update.profile');
     Route::post('/update-name', [UserController::class, 'updateName'])->name('update.name');
@@ -122,12 +125,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jobseeker-submit-application', [ApplicationController::class, 'submitJobSeekerApplication'])->name('submit.jobseekerapplication');
     Route::get('/submission-confirmation', [ApplicationController::class, 'showSubmissionConfirmationPage'])
         ->name('tasco.submissionConfirmationPage');
+
+    Route::post('/sendSOS', [UserController::class, 'sendSOS'])->name('tasco.sendSOS');
 });
 
 // Worker Routes (Requires Authentication and Worker Role)
 Route::middleware(['auth', 'role:worker'])->group(function () {
     // Worker Dashboard and Related Routes
-    Route::get('/worker/dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
+    Route::get('/worker-dashboard', [WorkerController::class, 'WorkerDashboard'])->name('worker.dashboard');
     Route::get('/worker/profile', [WorkerController::class, 'WorkerProfile'])->name('worker.profile');
     Route::get('/worker/chatify', [WorkerController::class, 'WorkerChatify'])->name('worker.chatify');
     Route::get('/accept-status/{id}', [WorkerHiringController::class, 'acceptStatus'])->name('acceptStatus');
@@ -145,9 +150,14 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 Route::middleware(['auth', 'role:user', 'is_verified:1'])->group(function () {
     // User Dashboard and Related Routes
-    Route::get('/user-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+    Route::get('/employer-dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::get('/mark-as-completed/{id}', [UserController::class, 'MarkAsCompletedUser'])->name('user.MarkAsCompleted');
 });
+
+Route::middleware(['auth', 'is_verified:1'])->group(function () {
+    Route::get('/work/{HiringForm_id}', [WorkerHiringController::class, 'WorkView'])->name('work.view');
+});
+
 
 
 Route::controller(FullCalenderController::class)->group(function () {

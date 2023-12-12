@@ -6,7 +6,6 @@
             <!-- Start: Hero Section-->
             <section>
                 <div class="relative my-12 flex w-full flex-col items-center sm:mt-24 md:mt-10">
-
                     <div
                         class="flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-all hover:bg-blue-200">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
@@ -18,7 +17,7 @@
 
                     </div>
                     <h1
-                        class="mt-8 max-w-sm bg-gradient-to-br from-blue-500 via-sky-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-6xl">
+                        class="mt-8 max-w-sm bg-gradient-to-br from-blue-500 via-sky-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-5xl">
                         Kickstart Your Journey with TasCo!
                     </h1>
 
@@ -28,17 +27,17 @@
                         tailored to meet your specific needs.
                     </span>
                     <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
-                        <a href=""
+                        <a href="{{ route('user.dashboard') }}"
                             class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-3 bg-blue-500">
                             View Application Status
                         </a>
-                        <a href=""
+                        <a href="{{ route('app.jobListing') }}"
                             class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg border border-blue-500 px-10 py-3 text-blue-500">Search
                             for Jobs →
                         </a>
                     </div>
                 </div>
-            </section> 
+            </section>
             <!-- End: Hero Section-->
         @elseif (auth()->user()->is_verified === 1 && auth()->user()->role === 'worker')
             <section>
@@ -65,11 +64,11 @@
                         offering a wide range of services crafted to align with your unique skills and aspirations.
                     </span>
                     <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
-                        <a href=""
+                        <a href="{{ route('worker.dashboard') }}"
                             class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-3 bg-blue-500">
                             Check Application Status
                         </a>
-                        <a href=""
+                        <a href="{{ route('app.jobListing') }}"
                             class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg border border-blue-500 px-10 py-3 text-blue-500">Explore
                             Job Opportunities →
                         </a>
@@ -135,9 +134,9 @@
                     </p>
                 </div>
 
-                <div class="flex flex-wrap flex-row -mx-12 pb-20">
+                <div class="flex flex-wrap flex-row md:-mx-12 pb-20 ">
                     <div
-                        class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:px-10">
+                        class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:px-10 p-10 mb-5">
                         <a href="{{ route('app.Calendar') }}">
                             <span
                                 class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
@@ -167,10 +166,11 @@
                                     </p>
                                 </div>
                             </div>
+                        </a>
                     </div>
 
                     <div
-                        class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:px-10">
+                        class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:px-10 p-10 mb-5">
                         <a href="{{ route('app.Services') }}">
                             <span
                                 class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
@@ -201,10 +201,11 @@
                                     </p>
                                 </div>
                             </div>
+                        </a>
                     </div>
 
                     <div
-                        class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:rounded-lg sm:px-10">
+                        class="group relative cursor-pointer overflow-hidden bg-white border rounded-lg pt-10 pb-8 shadow-md ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:mt-7 sm:rounded-lg sm:px-10 p-10 mb-5">
                         <a href="{{ route('app.customerService') }}">
                             <span
                                 class="absolute top-10 z-0 h-20 w-20 rounded-full bg-blue-500 transition-all duration-300 group-hover:scale-[10]"></span>
@@ -235,6 +236,7 @@
                                     </p>
                                 </div>
                             </div>
+                        </a>    
                     </div>
                 </div>
         </section>

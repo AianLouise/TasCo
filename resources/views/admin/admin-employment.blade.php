@@ -54,12 +54,7 @@
                             <th
                                 class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                 Employer</th>
-                            <th
-                                class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Start Date</th>
-                            <th
-                                class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                End Date</th>
+                            
                             <th
                                 class="border-b px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                 Status</th>

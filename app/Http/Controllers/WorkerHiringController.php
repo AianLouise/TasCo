@@ -11,6 +11,12 @@ use App\Models\HiringForm;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\StartedWorking;
+use App\Notifications\FinishedWorking;
+use App\Notifications\HiringFormAccepted;
+use App\Notifications\HiringFormRejected;
+use App\Notifications\HiringFormCompleted;
+use App\Notifications\HiringFormSubmitted;
 
 class WorkerHiringController extends Controller
 {
@@ -34,7 +40,7 @@ class WorkerHiringController extends Controller
             'projectTitle' => 'required|string|max:255',
             'projectDescription' => 'required|string',
             'startDate' => 'required|date',
-            'endDate' => 'required|date|after:startDate',
+            'endDate' => 'required|date',
             'scopeOfWork' => 'required|string',
             'totalPayment' => 'required|numeric',
             'paymentFrequency' => 'required|in:hourly,perDay',
@@ -54,6 +60,9 @@ class WorkerHiringController extends Controller
         $hiringForm->paymentMethod = $request->paymentMethod;
         $hiringForm->status = 'Pending';
         $hiringForm->save();
+
+        // Dispatch the notification
+        $worker->notify(new HiringFormSubmitted($hiringForm));
 
         // Redirect back to the worker's profile
         return redirect()->route('app.workerprofile', ['worker' => $worker->id])->with('success', 'Form submitted successfully');
@@ -96,6 +105,10 @@ class WorkerHiringController extends Controller
                 ]);
             }
 
+            // Notify the employer about the acceptance
+            $employer = $hiringForm->employer;
+            $employer->notify(new HiringFormAccepted($hiringForm));
+                
             return redirect()->back()->with('success', 'Status updated successfully');
         }
 
@@ -110,6 +123,10 @@ class WorkerHiringController extends Controller
             // Update the hiring form status
             $hiringForm->status = 'Rejected'; // You might want to set a default status here
             $hiringForm->save();
+
+             // Notify the employer about the rejection
+            $employer = $hiringForm->employer;
+            $employer->notify(new HiringFormRejected($hiringForm));
 
             return redirect()->back()->with('success', 'Status updated successfully');
         }
@@ -158,6 +175,11 @@ class WorkerHiringController extends Controller
 
             if ($event) {
                 $event->update(['status' => 'Ongoing']);
+
+                // Notify the employer
+                $employer = $hiringForm->employer;
+                $employer->notify(new StartedWorking(['hiringForm' => $hiringForm, 'eventId' => $eventId]));
+
                 // Redirect back or to another page as needed
                 return redirect()->back()->with('success', 'Started working successfully!');
             } else {
@@ -177,9 +199,9 @@ class WorkerHiringController extends Controller
         // Validate the form data, including the job description and images
         $request->validate([
             // 'jobDescription' => 'required|string|max:255',
-            'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg,JPG|max:5048',
+            'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg,JPG|max:5048',
+            'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg,JPG|max:5048',
         ]);
 
         // Handle Image 1
@@ -240,6 +262,10 @@ class WorkerHiringController extends Controller
 
                     // Update the status of the hiring form to 'Finished'
                     $hiringForm->update(['status' => 'Finished']);
+
+                    // Dispatch the notification
+                    $employer = $hiringForm->employer;
+                    $employer->notify(new FinishedWorking($hiringForm));
                 }
             } else {
                 // Handle the case where the event with the given ID doesn't exist
@@ -262,6 +288,10 @@ class WorkerHiringController extends Controller
         if ($hiringForm) {
             // Update the status of the HiringForm to 'Completed'
             $hiringForm->update(['status' => 'Completed']);
+
+            // Dispatch the notification
+            $employer = $hiringForm->employer;
+            $employer->notify(new HiringFormCompleted($hiringForm));
 
             // Redirect back or to another page as needed
             return redirect()->back()->with('success', 'Marked as completed successfully!');

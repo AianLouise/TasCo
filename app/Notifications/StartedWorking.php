@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserVerified extends Notification
+class StartedWorking extends Notification
 {
     use Queueable;
 
@@ -26,7 +26,7 @@ class UserVerified extends Notification
      */
     public function via(object $notifiable): array
     {
-        return [ 'database'];
+        return ['database'];
     }
 
     /**
@@ -35,11 +35,9 @@ class UserVerified extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-        ->subject('Account Verification')
-        ->line('Dear user,')
-        ->line('Your job seeker application has been approved.')
-        ->action('Visit Website', url('/'))
-        ->line('Thank you for using our application!');
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -50,16 +48,12 @@ class UserVerified extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'read_at' => null, // Initialize as unread
-            'subject' => 'Exciting News: Your Job Seeker Application is Approved!',
+            'read_at' => null,
+            'subject' => 'Exciting News: Your Worker Has Started!',
             'greeting' => 'Hello!',
-            'message' => 'Congratulations! We\'re thrilled to inform you that your Job Seeker application has been approved. Welcome to our platform!',
-            'closing' => 'Thank you for choosing us. If you have any questions or need assistance, feel free to reach out.',
-            'additional_data' => [
-                // Add any other data you want to include here
-            ],
-        ];
-        
-        
+            'message' => 'We are thrilled to inform you that your hired worker has begun working on your project. If you have any questions or need updates, feel free to reach out!',
+            'closing' => 'Thank you for choosing our platform. We wish you a successful collaboration!',
+            'additional_data' => [],
+        ];        
     }
 }

@@ -1,23 +1,35 @@
 <x-app-layout class="bg-white">
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
 
+    <section class="bg-blue-200">
+        <div class="container xl:max-w-6xl mx-auto px-4">
+            <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+                    <div class="max-w-lg">
+                        <span class="text-base font-semibold uppercase tracking-wide text-blue-600">
+                           Job Listing
+                        </span>
+                        <h2 class="font-heading mb-4 font-bold tracking-tight text-gray-900 text-3xl sm:text-5xl">
+                            Unlock Your Next Opportunity with TasCo
+                        </h2>
+                        <p class="mb-5 text-base text-body-color">
+                        Join the TasCo community and discover a range of exciting opportunities tailored to your skills and interests.  </p>
+                    </div>
+                    <div class="mt-12 md:mt-0">
+                        <img src="{{ asset('images/search.png') }}" alt="About Us Image" class="w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
     <section class="relative md:pb-0 bg-white">
 
-        <div class="bg-blue-50 w-full py-0.5">
+        <div class=" w-full py-0.5">
             <div class="container xl:max-w-6xl mx-auto px-4">
                 <!-- Start: Heading-->
                 <div class="text-center mx-auto mb-12 lg:px-20 mt-10">
-                    <h2 class="text-4xl font-bold text-black leading-normal mb-2">Available Workers</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                         x="0px" y="0px" viewBox="0 0 100 60" style="margin: 0 auto; height: 35px;" xml:space="preserve">
-                        <circle cx="50.1" cy="30.4" r="5" class="stroke-primary"
-                                style="fill: transparent; stroke-width: 2; stroke-miterlimit: 10;"></circle>
-                        <line x1="55.1" y1="30.4" x2="100" y2="30.4" class="stroke-primary"
-                              style="stroke-width: 2; stroke-miterlimit: 10;"></line>
-                        <line x1="45.1" y1="30.4" x2="0" y2="30.4" class="stroke-primary"
-                              style="stroke-width: 2; stroke-miterlimit: 10;"></line>
-                    </svg>
-                    <p class="text-xl text-gray-500 font-light leading-relaxed mx-auto pb-2">Providing their services</p>
+                    <h2 class="text-4xl font-bold text-black leading-normal mb-2">Job Listing</h2>
+                    <p class="text-xl text-gray-500 font-light leading-relaxed mx-auto pb-2">Search for workers and services</p>
                 </div>
                 
                 <!-- End: Heading -->
@@ -102,7 +114,7 @@
 
                         <!-- Worker Profile -->
                         <div
-                            class="py-8 px-12 mb-12 border border-blue-500 transform transition duration-300 ease-in-out hover:-translate-y-2">
+                            class="py-8 px-12 mb-12 border rounded-lg shadow-md transform transition duration-300 ease-in-out hover:-translate-y-2">
                             <div class="flex flex-col items-center pb-10">
                                 @if ($worker->avatar == 'avatar.png')
                                     <img class="w-24 h-24 mb-3 rounded-full shadow-lg"

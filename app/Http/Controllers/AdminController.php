@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Service;
 use App\Models\Category;
+use App\Models\SosAlert;
 use App\Models\Employment;
 use App\Models\HiringForm;
 use App\Models\ActivityLog;
@@ -256,11 +257,20 @@ class AdminController extends Controller
         return view('admin.admin-employment', compact('pageTitle', 'hiringForms'));
     }
 
+    public function AdminEmergency()
+    {
+        // $employment = Employment::with('category')->get();
+        $pageTitle = 'Emergency Assistance';
+        $sosAlerts = SosAlert::all();
+
+        return view('admin.admin-emergencyAssistance', compact('pageTitle', 'sosAlerts'));
+    }
+
     public function AdminHiringApplication()
     {
         $categories = Category::all();
         $hiringForm = HiringForm::get();
-        $pageTitle = 'Services';
+        $pageTitle = 'Hiring Application';
 
         return view('admin.admin-hiring-application', compact('hiringForm', 'pageTitle'));
     }
@@ -281,10 +291,6 @@ class AdminController extends Controller
 
         return view('admin.admin-hiring-application-view', compact('hiringForm', 'pageTitle'));
     }
-
-
-
-
 
     // View for admin application
     public function AdminApplication()
@@ -312,7 +318,7 @@ class AdminController extends Controller
         return view("admin.admin-jobseeker-application-details", compact('pageTitle', 'jobseekerApplications'));
     }
 
-    public function updateIsVerified(Request $request)
+    public function updateIsVerified(Request $request)//Employer
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter
 
@@ -332,7 +338,7 @@ class AdminController extends Controller
         return redirect()->route('admin.application')->with('success', 'User is now verified');
     }
 
-    public function updateIsRejected(Request $request)
+    public function updateIsRejected(Request $request)//Employer
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter
     
@@ -346,7 +352,7 @@ class AdminController extends Controller
         return redirect()->route('admin.application')->with('success', 'User application has been rejected');
     }
 
-    public function updateIsVerifiedJobSeeker(Request $request)
+    public function updateIsVerifiedJobSeeker(Request $request)//JobSeeker
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter
 
@@ -373,7 +379,7 @@ class AdminController extends Controller
     }
 
 
-    public function updateIsRejectedJobSeeker(Request $request)
+    public function updateIsRejectedJobSeeker(Request $request)//JobSeeker
     {
         $userId = $request->route('user_id'); // Use route() to get the parameter
 
