@@ -36,7 +36,7 @@
                         <!-- Worker Information -->
                         <div
                             class="bg-white text-gray-700 hover:text-black px-6 py-2 rounded-lg sm:ml-12 sm:text-justify divide-
-                         divide-gray-500 w-full shadow-inner hover:shadow-lg transition-all mt-5 sm:mt-0 text-center">
+                          w-full  mt-5 sm:mt-0 text-center">
                             <div class="mb-2 transition-all">
                                 <label for="workerFullName" class="block text-xs font-medium">Full
                                     Name</label>
