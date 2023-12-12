@@ -182,7 +182,7 @@ class AdminController extends Controller
         // Delete the user profile
         $user->delete();
 
-        return redirect()->route('admin.jobSeeker')->with('success', 'Profile deleted successfully');
+        return redirect()->route('admin.viewAllUsers')->with('success', 'Profile deleted successfully');
     }
 
     // Update a user profile based on the provided user ID and input data

@@ -111,8 +111,6 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                                     <a href="{{ route('admin.showEmailView', ['user' => $message->user_id]) }}"
                                         class="text-blue-400 hover:text-blue-600">View</a>
-                                    <span class="text-gray-600">/</span>
-                                    <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
