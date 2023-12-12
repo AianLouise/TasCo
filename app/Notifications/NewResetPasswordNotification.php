@@ -77,12 +77,6 @@ class NewResetPasswordNotification extends Notification
      */
     protected function buildMailMessage($url)
     {
-        // return (new MailMessage)
-        // ->subject(Lang::get('Reset Password Notification'))
-        // ->line(Lang::get('You are receiving this email because you have requested a password reset for your account on our Local Service Marketplace.'))
-        // ->action(Lang::get('Reset Password'), $url)
-        // ->line(Lang::get('Please note that this password reset link will be valid for the next :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
-        // ->line(Lang::get('If you did not initiate this password reset, you can ignore this message.'));
         return (new MailMessage)
             ->subject(Lang::get('Reset Password Notification'))
             ->line(Lang::get('You are receiving this email because you have requested a password reset for your account on TasCo, your Local Service Marketplace.'))
