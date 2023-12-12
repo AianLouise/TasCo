@@ -316,8 +316,10 @@ class AppController extends Controller
 
         $hiringForms = HiringForm::where('worker_id', $worker)->get();
 
+        $hiringForms2 = HiringForm::where('employer_id', $worker)->get();
+
         // $user = User::find($hiringForms->employer_id);
 
-        return view("tasco.worker-employments", compact('pageTitle', 'hiringForms'));
+        return view("tasco.worker-employments", compact('pageTitle', 'hiringForms', 'hiringForms2'));
     }
 }
