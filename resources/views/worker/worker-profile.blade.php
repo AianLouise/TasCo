@@ -67,12 +67,25 @@
             <div class="sm:mt-4">
                 <div class="grid grid-rows-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <div
-                            class="bg-white border-blue-300 border hover:text-blue-300 transition-all p-4 rounded min-h-32 shadow">
-                            <h3 class="text-lg font-semibold mb-2">Number of Employments</h3>
-                            <p
-                                class="text-gray-700 text-xl hover:text-blue-300 hover:font-semibold hover:text-5xl hover:p-2 transition-all">
-                                20</p>
+                        <div>
+                            @if (Auth::user()->is_verified == 1)
+                                @php
+                                    $completedHiringForms = \App\Models\HiringForm::where('employer_id', Auth::user()->id)
+                                        ->where('status', 'Completed')
+                                        ->count();
+                                @endphp
+    
+                                <div
+                                    class="bg-white border-blue-400 border hover:text-blue-400 transition-all p-4 rounded min-h-32 shadow">
+                                    <!-- Added shadow class -->
+                                    <h3 class="text-lg font-semibold mb-2 text-center">Number of Employments
+                                    </h3>
+                                    <!-- Display the number of completed hiring forms -->
+                                    <p
+                                        class="text-gray-700 text-xl hover:text-blue-400 hover:font-semibold hover:text-4xl hover:p-2 transition-all text-center">
+                                        {{ $completedHiringForms }}</p>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div
