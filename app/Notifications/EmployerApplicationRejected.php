@@ -56,12 +56,9 @@ class EmployerApplicationRejected extends Notification
             'read_at' => null, // Initialize as unread
             'subject' => 'Important Update: Your Employer Application',
             'greeting' => 'Hello!',
-            'message' => 'We regret to inform you that your Employer application has been rejected. We appreciate your interest and thank you for considering our platform.',
+            'message' => 'We regret to inform you that your Employer application has been rejected. We appreciate your interest and thank you for considering our platform. Please check the provided requirements and consider reapplying.',
             'closing' => 'If you have any questions or need further assistance, feel free to reach out. Thank you for your understanding.',
-            'additional_data' => [
-                // Add any other data you want to include here
-            ],
-        ];        
-        
+            'image' => 'EmployerApplicationRejected.jpg',
+        ];   
     }
 }

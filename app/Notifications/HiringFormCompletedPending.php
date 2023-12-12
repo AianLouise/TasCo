@@ -53,7 +53,7 @@ class HiringFormCompletedPending extends Notification
             'greeting' => 'Hi there!',
             'message' => 'We wanted to share the good news that your hiring form is making progress! 🚀 It\'s now in the "Completed (Pending)" status. If everything looks good, including payment confirmation, you can mark it as complete to finalize the process.',
             'closing' => 'Thanks for being a part of our platform!',
-            'additional_data' => [],
+            'image' => 'HiringFormCompletedPending.jpg',
         ];        
     }
 }

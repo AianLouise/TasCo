@@ -55,9 +55,7 @@ class UserVerifiedEmployer extends Notification
             'greeting' => 'Hi there!',
             'message' => 'We are excited to inform you that your Employer application has been approved. Welcome to our platform! 🎉',
             'closing' => 'Thank you for choosing our platform. We look forward to your contributions!',
-            'additional_data' => [
-                // Add any other data you want to include here
-            ],
+            'image' => 'UserVerifiedEmployer.jpg',
         ];        
         
     }
