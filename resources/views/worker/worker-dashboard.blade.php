@@ -59,17 +59,6 @@
                 </div>
 
                 <div class="flex items-center">
-                    <!-- Display avatars or other content based on your needs -->
-                    {{-- @php $maxAvatars = 5; @endphp
-                    @foreach ($workers->take($maxAvatars) as $worker)
-                        @if ($worker->avatar == 'avatar.png')
-                            <img src="https://ui-avatars.com/api/?name={{ urlencode($worker->name) }}&color=7F9CF5&background=EBF4FF"
-                                alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                        @else
-                            <img src="{{ asset('storage/users-avatar/' . basename($worker->avatar)) }}" alt=""
-                                class="w-8 h-8 rounded block object-cover align-middle">
-                        @endif
-                    @endforeach --}}
 
                 </div>
 
@@ -99,17 +88,6 @@
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <!-- Display avatars or other content based on your needs -->
-                    {{-- @php $maxAvatars = 5; @endphp
-                    @foreach ($employers->take($maxAvatars) as $employer)
-                        @if ($employer->avatar == 'avatar.png')
-                            <img src="https://ui-avatars.com/api/?name={{ urlencode($employer->name) }}&color=7F9CF5&background=EBF4FF"
-                                alt="" class="w-8 h-8 rounded block object-cover align-middle">
-                        @else
-                            <img src="{{ asset('storage/users-avatar/' . basename($employer->avatar)) }}" alt=""
-                                class="w-8 h-8 rounded block object-cover align-middle">
-                        @endif
-                    @endforeach --}}
                 </div>
 
             </div>
