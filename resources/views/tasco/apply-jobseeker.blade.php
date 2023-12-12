@@ -27,7 +27,7 @@
                         you.
                     </p>
 
-                    <a href="#" id="startApplicationBtn"
+                    <a href="#1" id="startApplicationBtn"
                         class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg border border-blue-500 px-10 py-3 text-blue-500
                         hover:bg-blue-500 transition duration-300  hover:text-white mx-auto shadow-lg transform hover:scale-105">
                         Apply Now →
@@ -38,6 +38,7 @@
 
 
         <!-- Terms and Conditions Page -->
+        <a id="1"></a>
         <div id="termsAndConditionsPage" class="hidden flex items-center justify-center h-screen">
             <div class="container mx-auto p-4 bg-white rounded-lg bg-white shadow-lg">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
@@ -48,54 +49,66 @@
                     <div class="overflow-y-auto mb-4">
                         <div class="max-w-fit overflow-y-auto text-justify border border-gray-50 rounded-lg p-6">
                             <ol class="ml-6 list-decimal">
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">You must provide accurate and truthful information in your
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">You must provide accurate and
+                                    truthful information in your
                                     application.
                                 </li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">You are responsible for maintaining the confidentiality of your
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">You are responsible for
+                                    maintaining the confidentiality of your
                                     account
                                     and
                                     password.</li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">TasCo reserves the right to reject or terminate your application
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">TasCo reserves the right to
+                                    reject or terminate your application
                                     without
                                     notice.</li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">You agree to comply with all applicable laws and regulations.
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">You agree to comply with all
+                                    applicable laws and regulations.
                                 </li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">TasCo is not responsible for any damages or losses resulting from
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">TasCo is not responsible for any
+                                    damages or losses resulting from
                                     the
                                     use
                                     of
                                     our platform.</li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">You understand and acknowledge that TasCo collects and processes
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">You understand and acknowledge
+                                    that TasCo collects and processes
                                     your
                                     personal data in accordance with our Privacy Policy.</li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">You agree to receive communications from TasCo related to your
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">You agree to receive
+                                    communications from TasCo related to your
                                     application
                                     and other relevant information.</li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">You acknowledge that TasCo may update these terms from time to
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">You acknowledge that TasCo may
+                                    update these terms from time to
                                     time,
                                     and
                                     it
                                     is your responsibility to review them periodically.</li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">You agree not to misuse our platform, including but not limited
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">You agree not to misuse our
+                                    platform, including but not limited
                                     to
                                     engaging
                                     in fraudulent activities or violating any applicable laws.</li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">TasCo reserves the right to suspend or terminate your application
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">TasCo reserves the right to
+                                    suspend or terminate your application
                                     if
                                     you
                                     violate these terms or engage in any prohibited activities.</li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">You indemnify TasCo against any claims, damages, or losses
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">You indemnify TasCo against any
+                                    claims, damages, or losses
                                     arising
                                     from
                                     your
                                     use of our platform or any violation of these terms.</li>
-                                <li class="text-md leading-relaxed text-gray-600 mb-2">These terms constitute the entire agreement between you and TasCo
+                                <li class="text-md leading-relaxed text-gray-600 mb-2">These terms constitute the entire
+                                    agreement between you and TasCo
                                     regarding
                                     your application.</li>
                             </ol>
                         </div>
                     </div>
-                    <a href="#" id="agreeBtn"
+                    <a href="#2" id="agreeBtn"
                         class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg hover:border hover:bg-white hover:text-blue-500 hover:border-blue-500 px-10 py-3 text-white
                         bg-blue-500 transition duration-300 text-white mx-auto shadow-lg transform hover:scale-105">Accept</a>
                 </div>
@@ -103,10 +116,11 @@
         </div>
 
         <!-- Category Selection Page -->
+        <a id="2"></a>
         <div id="categorySelectionPage" class="hidden flex items-center justify-center h-screen sm:w-1/2">
             <div class="container mx-auto p-4 bg-white rounded-lg shadow-lg">
                 <div class="text-center bg-white p-8 rounded-md height flex flex-col justify-center">
-                <img src="{{ URL('images/category.PNG') }}" width="300" class="mx-auto">
+                    <img src="{{ URL('images/category.PNG') }}" width="300" class="mx-auto">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">Select Job Category</h2>
                     <!-- Add your category selection options here -->
                     <div class="mb-4">

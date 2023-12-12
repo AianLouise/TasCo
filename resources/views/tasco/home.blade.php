@@ -98,15 +98,15 @@
                                 your needs.
                             </p>
                             <div class="relative flex w-full flex-col items-center md:mb-10 mb-10">
-                                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
+                                <div class=" gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
                                     <a href="{{ route('app.home') }}#browse"
                                         class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-3 bg-blue-500">
                                         Get Started
                                     </a>
-                                    <a href="{{ route('app.learnMore') }}"
+                                    {{-- <a href="{{ route('app.learnMore') }}"
                                         class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg border border-blue-500 px-10 py-3 text-blue-500">Learn
                                         More →
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </div>
                         </div>

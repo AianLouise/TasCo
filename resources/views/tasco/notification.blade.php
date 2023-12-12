@@ -28,10 +28,9 @@
                         </thead>
 
                         <tbody class="bg-gray-50">
-                            @foreach ($notifications as $notification)
+                            @forelse ($notifications as $notification)
                                 <tr class="border border-gray-300 hover:border-blue-500 cursor-pointer transition-colors duration-300 "
                                     onclick="markAsRead('{{ $notification->id }}', this); openModal('{{ $notification->id }}')">
-
                                     <td class="py-2 md:py-4 min-w-[150px] whitespace-nowrap text-left px-4 md:pr-6">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10 p-2">
@@ -43,9 +42,8 @@
                                                     {{ $notification->data['subject'] }}
                                                 </div>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </td>
-                                    
                                     <td class="py-2 md:py-4 min-w-[150px] whitespace-nowrap text-left px-4 md:pr-6">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10">
@@ -55,13 +53,18 @@
                                                 <div class="text-sm md:text-base font-medium2 text-gray-900">
                                                     <i class="ri-time-line"></i>
                                                     {{ $notification->created_at->diffForHumans() }}
-                                                </div>                                                                                               
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="2" class="py-4 text-center text-gray-500">No notifications available</td>
+                                </tr>
+                            @endforelse
                         </tbody>
+                        
                     </table>
                 </div>
             </div>
