@@ -209,7 +209,7 @@
         </div>
 
         <!-- Start: Hero Section-->
-        <div class="relative overflow-hidden min-h-screen bg-blue-50">
+        <div class="relative overflow-hidden min-h-screen bg-blue-100">
             <div class="max-w-6xl mx-auto">
                 <div class="relative pb-8">
                     <div class="px-4 mx-auto mt-40 max-w-7xl">
