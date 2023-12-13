@@ -78,6 +78,7 @@ class AppController extends Controller
 
         if ($application && $application->status != 'Rejected') {
             // User has already submitted an application and it's not rejected, return a view with a message
+            $pageTitle = 'Application Already Submitted';
             return view('tasco.application-already-submitted');
         }
 
@@ -316,8 +317,23 @@ class AppController extends Controller
 
         $hiringForms = HiringForm::where('worker_id', $worker)->get();
 
+        $hiringForms2 = HiringForm::where('employer_id', $worker)->get();
+
         // $user = User::find($hiringForms->employer_id);
 
-        return view("tasco.worker-employments", compact('pageTitle', 'hiringForms'));
+        return view("tasco.worker-employments", compact('pageTitle', 'hiringForms', 'hiringForms2'));
+    }
+
+    public function Employments($worker)
+    {
+        $pageTitle = 'Employments';
+
+        $hiringForms = HiringForm::where('worker_id', $worker)->get();
+
+        $hiringForms2 = HiringForm::where('employer_id', $worker)->get();
+
+        // $user = User::find($hiringForms->employer_id);
+
+        return view("tasco.employments", compact('pageTitle', 'hiringForms', 'hiringForms2'));
     }
 }

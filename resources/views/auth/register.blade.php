@@ -16,7 +16,7 @@
                             type="text" name="fname" :value="old('fname')" required autofocus autocomplete="fname" />
                         <i>
                             <?xml version="1.0" ?><svg
-                                class="icon icon-tabler icon-tabler-letter-f absolute left-4 top-1/2 transform -translate-y-1/2"
+                                class="icon icon-tabler icon-tabler-letter-f absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"
                                 fill="none" height="15" stroke="currentColor" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +36,7 @@
                             type="text" name="lname" :value="old('lname')" required autofocus autocomplete="lname" />
                         <i>
                             <?xml version="1.0" ?><svg
-                                class="icon icon-tabler icon-tabler-letter-l absolute left-4 top-1/2 transform -translate-y-1/2"
+                                class="icon icon-tabler icon-tabler-letter-l absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"
                                 fill="none" height="15" stroke="currentColor" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +55,7 @@
                     <div class="relative">
                         <x-text-input id="address" placeholder="Address" class="pl-12 py-2 i-1 block w-full"
                             type="text" name="address" :value="old('address')" required autofocus autocomplete="address" />
-                        <i class="ri-map-pin-line absolute left-4 top-1/2 transform -translate-y-1/2"></i>
+                        <i class="ri-map-pin-line absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
                     </div>
                 </div>
                 <x-input-error :messages="$errors->get('address')" class="mt-2" />
@@ -68,7 +68,7 @@
                     <div class="relative">
                         <x-text-input id="email" placeholder="Email" class="pl-12 py-2 i-1 block mt-1 w-full"
                             type="email" name="email" :value="old('email')" required autofocus autocomplete="email" />
-                        <i class="ri-mail-line absolute left-4 top-1/2 transform -translate-y-1/2"></i>
+                        <i class="ri-mail-line absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
                     </div>
                 </div>
                 <x-input-error :messages="$errors->get('email')" class="-mt-4" />
@@ -80,7 +80,7 @@
                     <div class="relative">
                         <x-text-input id="phone" placeholder="Phone Number" class="pl-12 py-2 i-1 block mt-1 w-full"
                             type="tel" name="phone" :value="old('phone')" required autofocus autocomplete="tel" />
-                        <i class="ri-phone-line absolute left-4 top-1/2 transform -translate-y-1/2"></i>
+                        <i class="ri-phone-line absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
                     </div>
                 </div>
                 <x-input-error :messages="$errors->get('phone')" class="-mt-4" />
@@ -93,10 +93,10 @@
                     <div class="relative">
                         <x-text-input id="password" placeholder="Password" class="pl-12 py-2 i-1 block mt-1 w-full"
                             type="password" name="password" required autocomplete="new-password" />
-                        <i class="ri-lock-line absolute left-4 top-1/2 transform -translate-y-1/2"></i>
+                        <i class="ri-lock-line absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
                         <span id="togglePassword"
                             class="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer">
-                            <i class="ri-eye-line" id="toggleIconPassword" style="color: #777;"></i>
+                            <i class="ri-eye-line text-gray-500" id="toggleIconPassword" style="color: #777;"></i>
                         </span>
                     </div>
                 </div>
@@ -110,10 +110,10 @@
                         <x-text-input id="password_confirmation" placeholder="Confirm Password"
                             class="sliders pl-12 py-2 block mt-1 w-full" type="password" name="password_confirmation"
                             required autocomplete="new-password" />
-                        <i class="ri-lock-password-line absolute left-4 top-1/2 transform -translate-y-1/2"></i>
+                        <i class="ri-lock-password-line absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
                         <span id="toggleConfirmPassword"
                             class="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer">
-                            <i class="ri-eye-line" id="toggleIconConfirmPassword" style="color: #777;"></i>
+                            <i class="ri-eye-line text-gray-500" id="toggleIconConfirmPassword" style="color: #777;"></i>
                         </span>
                     </div>
                 </div>

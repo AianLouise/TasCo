@@ -7,13 +7,14 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
                     <div class="max-w-lg">
                         <span class="text-base font-semibold uppercase tracking-wide text-blue-600">
-                           Job Listing
+                            Job Listing
                         </span>
                         <h2 class="font-heading mb-4 font-bold tracking-tight text-gray-900 text-3xl sm:text-5xl">
                             Unlock Your Next Opportunity with TasCo
                         </h2>
                         <p class="mb-5 text-base text-body-color">
-                        Join the TasCo community and discover a range of exciting opportunities tailored to your skills and interests.  </p>
+                            Join the TasCo community and discover a range of exciting opportunities tailored to your
+                            skills and interests. </p>
                     </div>
                     <div class="mt-12 md:mt-0">
                         <img src="{{ asset('images/search.png') }}" alt="About Us Image" class="w-full">
@@ -21,7 +22,9 @@
                 </div>
             </div>
         </div>
-        </section>
+    </section>
+
+    <a id="top"></a>
     <section class="relative md:pb-0 bg-white">
 
         <div class=" w-full py-0.5">
@@ -29,13 +32,14 @@
                 <!-- Start: Heading-->
                 <div class="text-center mx-auto mb-12 lg:px-20 mt-10">
                     <h2 class="text-4xl font-bold text-black leading-normal mb-2">Job Listing</h2>
-                    <p class="text-xl text-gray-500 font-light leading-relaxed mx-auto pb-2">Search for workers and services</p>
+                    <p class="text-xl text-gray-500 font-light leading-relaxed mx-auto pb-2">Search for workers and
+                        services</p>
                 </div>
-                
+
                 <!-- End: Heading -->
                 <!-- Your updated form -->
                 <form class="mb-12 w-full" action="{{ route('app.jobListing') }}#top" method="get">
-                    <div class="flex relative" >
+                    <div class="flex relative">
                         <!-- Your existing button -->
                         <button id="dropdown-button" onclick="toggleDropdown()"
                             class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
@@ -103,7 +107,7 @@
             }
         </script>
 
-        <div class="container xl:max-w-6xl mx-auto px-4 mt-10">
+        <div class="container xl:max-w-6xl mx-auto px-4 py-[5rem]">
             <!-- Start: Worker Section Row -->
             <div class="flex flex-wrap flex-row -mx-4 text-center">
 

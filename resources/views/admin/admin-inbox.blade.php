@@ -69,15 +69,19 @@
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             <!-- Display User Avatar -->
-                                            @if ($message->avatar == 'avatar.png')
-                                                <img src="https://ui-avatars.com/api/?name={{ urlencode($message->user->name) }}&color=7F9CF5&background=EBF4FF"
-                                                    alt=""
-                                                    class="w-8 h-8 rounded block object-cover align-middle">
-                                            @else
-                                                <img src="{{ asset('storage/users-avatar/' . basename($message->user->avatar)) }}"
-                                                    alt=""
-                                                    class="w-8 h-8 rounded block object-cover align-middle">
-                                            @endif
+                                            @foreach ($messages as $message)
+                                                @if ($message->user->avatar == 'avatar.png')
+                                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($message->user->name) }}&color=7F9CF5&background=EBF4FF"
+                                                        alt=""
+                                                        class="w-8 h-8 rounded block object-cover align-middle">
+                                                @else
+                                                    <img src="{{ asset('storage/users-avatar/' . basename($message->user->avatar)) }}"
+                                                        alt=""
+                                                        class="w-8 h-8 rounded block object-cover align-middle">
+                                                @endif
+                                                <!-- Display other message details as needed -->
+                                            @endforeach
+
                                         </div>
                                         <!-- User Name and Email -->
                                         <div class="ml-4">
@@ -107,8 +111,6 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                                     <a href="{{ route('admin.showEmailView', ['user' => $message->user_id]) }}"
                                         class="text-blue-400 hover:text-blue-600">View</a>
-                                    <span class="text-gray-600">/</span>
-                                    <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

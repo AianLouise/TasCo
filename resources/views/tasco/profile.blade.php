@@ -70,12 +70,13 @@
 
 
                         <a href="{{ route('user.chatify', ['user_id' => $worker->id]) }}" target="_new"
-                            class="border hover:bg-blue-500 hover:text-white text-gray border-blue-400 font-semibold py-2 px-4 rounded w-36 max-h-10">
+                            class="border text-center hover:bg-blue-500 hover:text-white text-gray border-blue-400 font-semibold py-2 px-4 rounded w-36 max-h-10">
                             Message
                         </a>
-
-                        <a href="{{ route('app.employments', ['worker' => $worker->id]) }}"
-                            class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36 max-h-10">Employments</a>
+                        @if (Auth::user()->is_verified == 1)
+                            <a href="{{ route('worker.employments', ['worker' => $worker->id]) }}"
+                                class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36 max-h-10">Employments</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -145,9 +146,10 @@
                             Message
                         </a>
 
-
-                        <button
-                            class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36 h-10">Employments</button>
+                        @if (Auth::user()->is_verified == 1)
+                            <button
+                                class="text-sm font-semibold bg-white border-blue-500 border border-solid hover:bg-blue-500 hover:text-white text-black py-2 px-4 rounded w-36 h-10">Employments</button>
+                        @endif
                     </div>
                 </div>
 
@@ -204,14 +206,21 @@
             <div class="mt-4">
                 <div class="grid grid-rows-1 sm:grid-cols-2 gap-4">
                     <div>
+                        @php
+                            $completedHiringForms = \App\Models\HiringForm::where('worker_id', $worker->id)
+                                ->where('status', 'Completed')
+                                ->count();
+                        @endphp
+
                         <div
                             class="bg-white border-blue-400 border hover:text-blue-400 transition-all p-4 rounded min-h-32 shadow">
                             <!-- Added shadow class -->
-                            <h3 class="text-lg font-semibold mb-2 text-center">Number of Employment</h3>
-                            <!-- Add services employed details here -->
+                            <h3 class="text-lg font-semibold mb-2 text-center">Number of Employments
+                            </h3>
+                            <!-- Display the number of completed hiring forms -->
                             <p
                                 class="text-gray-700 text-xl hover:text-blue-400 hover:font-semibold hover:text-4xl hover:p-2 transition-all text-center">
-                                20</p> <!-- Increased font size to text-xl -->
+                                {{ $completedHiringForms }}</p>
                         </div>
 
                     </div>

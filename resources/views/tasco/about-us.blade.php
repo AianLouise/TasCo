@@ -226,7 +226,7 @@
                                 <div class="absolute bottom-3 left-0 w-full text-center ">
                                     <div class="relative mx-5 overflow-hidden  rounded-lg bg-yellow-400 border border-black py-1 px-3">
                                         <h3 class="text-dark text-base font-semibold">
-                                            Emmanuel Louise Gonnnzales
+                                            Emmanuel Louise Gonzales
                                         </h3>
                                         <p class="text-body-color text-xs">Documents</p>
                                     </div>

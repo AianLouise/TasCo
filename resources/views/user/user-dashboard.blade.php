@@ -104,7 +104,7 @@
                                 class="ri-more-fill"></i></button>
                     </div>
                 </div>
-                <a href="{{ route('admin.viewAllUsers') }}"
+                <a href="{{ route('app.employments', ['worker' => Auth::user()->id]) }}"
                     class="text-blue-500 font-medium text-sm hover:text-blue-600">View all</a>
             </div>
             <!-- End: Dashboard Analytics - Total Employments Section -->
@@ -147,7 +147,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($events as $event)
+                            @forelse ($events as $event)
                                 @if ($event->status == 'Pending' || $event->status == 'Ongoing')
                                     <tr class="border-b">
                                         <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
@@ -169,7 +169,12 @@
                                         </td>
                                     </tr>
                                 @endif
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="py-4 text-center text-gray-500">No upcoming work schedule
+                                        available</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -201,7 +206,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($events as $event)
+                            @forelse ($events as $event)
                                 @if ($event->status == 'Done')
                                     <tr class="border-b">
                                         <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
@@ -223,7 +228,12 @@
                                         </td>
                                     </tr>
                                 @endif
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="py-4 text-center text-gray-500">No done work schedule
+                                        available</td>
+                                </tr>
+                            @endforelse
 
                         </tbody>
                     </table>
@@ -584,29 +594,27 @@
                                         <div class="mb-2 transition-all">
                                             <label for="workerFullName" class="block text-xs font-medium">Full
                                                 Name</label>
-                                            <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                            <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
                                                 {{ isset($hiringForm->worker) ? $hiringForm->worker->name : '' }}
                                             </p>
                                         </div>
 
-                                        @foreach ($hiringForms as $hiringForm)
-                                            @if (isset($hiringForm->worker))
-                                                <div class="pb-2">
-                                                    <label for="workerEmail"
-                                                        class="block text-xs font-medium pt-1">Job Title</label>
-                                                    <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
-                                                        {{ optional($hiringForm->worker->category)->name ?? 'N/A' }}
-                                                    </p>
-                                                </div>
-                                            @endif
-                                        @endforeach
+                                        @if (isset($hiringForm->worker))
+                                            <div class="pb-2">
+                                                <label for="workerEmail" class="block text-xs font-medium pt-1">Job
+                                                    Title</label>
+                                                <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                                    {{ optional($hiringForm->worker->category)->name ?? 'N/A' }}
+                                                </p>
+                                            </div>
+                                        @endif
 
 
 
                                         <div class="pb-2">
                                             <label for="workerEmail"
                                                 class="block text-xs font-medium pt-1 ">Email</label>
-                                            <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                            <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
                                                 {{ isset($hiringForm->worker) ? $hiringForm->worker->email : '' }}
                                             </p>
                                         </div>
@@ -614,7 +622,7 @@
                                         <div class="pb-2">
                                             <label for="workerPhone"
                                                 class="block text-xs font-medium pt-1">Phone</label>
-                                            <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                            <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
                                                 {{ isset($hiringForm->worker) ? $hiringForm->worker->phone : '' }}
                                             </p>
                                         </div>
@@ -690,7 +698,7 @@
                                         invalid:text-blue-30 invalid:bg-blue-100 invalid:shadow-inner
                                         bg-white focus:shadow-inner focus:bg-white focus:border-white
                                         focus:ring-0 rounded-md shadow-sm w-full p-2 text-sm transition-colors"
-                                        rows="4" required>{{ isset($hiringForm) ? $hiringForm->scopeOfWork : '' }}</textarea>
+                                        rows="4" required disabled>{{ isset($hiringForm) ? $hiringForm->scopeOfWork : '' }}</textarea>
                                 </div>
                             </div>
 
@@ -735,7 +743,7 @@
                                         <label for="paymentMethod" class="block text-xs font-medium  mb-2">Payment
                                             Method</label>
                                         <select name="paymentMethod" id="paymentMethod"
-                                            class="border-gray-400 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-center h-10 text-sm hover:bg-blue-500 hover:text-white" 
+                                            class="border-gray-400 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-40 text-center h-10 text-sm hover:bg-blue-500 hover:text-white"
                                             required disabled>
                                             <option value="bankTransfer"
                                                 {{ isset($hiringForm) && $hiringForm->paymentMethod === 'bankTransfer' ? 'selected' : '' }}>
@@ -791,7 +799,7 @@
                                             <div>
                                                 <a href="{{ route('user.MarkAsCompleted', ['id' => $hiringForm->id]) }}"
                                                     class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                    Mark as Completed
+                                                    Mark as Complete
                                                 </a>
                                             </div>
                                         </div>
@@ -829,7 +837,7 @@
                         modal.showModal();
                     });
                 });
-    
+
                 // Add click event listener to close the dialog when clicking outside
                 const modals = document.querySelectorAll('dialog');
                 modals.forEach((modal) => {

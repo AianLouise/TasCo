@@ -53,6 +53,7 @@ class HiringFormAccepted extends Notification
             'greeting' => 'Hello there!',
             'message' => 'Exciting news! A worker has happily accepted your hiring form. Take a moment to check your dashboard for additional details and what comes next.',
             'closing' => 'Thank you for being a part of our community. If you have any questions or need assistance, feel free to reach out. We’re here to help!',
+            'image' => 'HiringFormAccepted.jpg',
         ];
         
     }

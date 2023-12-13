@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('hiring_forms', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employer_id');
-            $table->unsignedBigInteger('worker_id');
-            $table->foreign('employer_id')->references('id')->on('users');
-            $table->foreign('worker_id')->references('id')->on('users');
+            $table->unsignedBigInteger('employer_id')->nullable();
+            $table->unsignedBigInteger('worker_id')->nullable();
+            $table->foreign('employer_id')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('worker_id')->references('id')->on('users')->nullOnDelete();
             $table->string('projectTitle')->nullable();
             $table->text('projectDescription')->nullable();
             $table->date('startDate')->nullable();

@@ -17,7 +17,7 @@
                     <a href="#" class="text-gray-800 hover:text-gray-600 font-medium2">TasCo</a>
                 </li>
                 <li class="text-gray-600 mr-2 font-medium2">/</li>
-                <li class="text-gray-600 mr-2 font-medium2">Services</li>
+                <li class="text-gray-600 mr-2 font-medium2">Hiring Application</li>
             </ul>
 
             <!-- End: Logo / Active Menu -->
@@ -229,7 +229,7 @@
                                         Reject
                                     </a>
                                 </div> --}}
-                            @elseif($hiringForm->status === 'Finished' || $hiringForm->status === 'Completed(Pending)')
+                            @elseif($hiringForm->status === 'Finished' || $hiringForm->status === 'Completed(Pending)' || $hiringForm->status === 'Completed')
                                 <div class="flex flex-col justify-center">
                                     <div class="flex flex-col justify-center">
                                         @foreach ($hiringForm->employments as $index => $employment)

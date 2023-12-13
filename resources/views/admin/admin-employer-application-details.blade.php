@@ -137,11 +137,11 @@
                     @if ($application->status != 'Accepted' && $application->status != 'Rejected')
                         <div
                             class="flex justify-center mt-4 mb-4 space-x-2 border-b-2 border-dashed border-blue-400 pb-6">
-                            <a href="{{ route('updateIsVerified', ['user_id' => $application->user_id]) }}"
+                            <a href="{{ route('updateIsVerified', ['user_id' => $application->user_id, 'id' => $application->id]) }}"
                                 class="text-blue-400 mt-2 bg-white border-blue-500 border hover:bg-green-400 hover:text-white hover:border-white  hover:px-10   focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all">
                                 Accept
                             </a>
-                            <a href="{{ route('updateIsRejected', ['user_id' => $application->user_id]) }}"
+                            <a href="{{ route('updateIsRejected', ['user_id' => $application->user_id, 'id' => $application->id]) }}"
                                 class="text-blue-400 mt-2 bg-white border-blue-500 border hover:bg-red-800 hover:text-white hover:border-white hover:px-10 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all">
                                 Reject
                             </a>

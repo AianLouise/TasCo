@@ -44,7 +44,7 @@
                     <div class="grid max-w-2xl mx-auto mt-8">
                         <form enctype="multipart/form-data" method="POST" action="{{ route('update.profile', ['id' => $user->id]) }}">
                             @csrf
-                            @method('PUT')
+                            @method('POST')
                             <div class="flex flex-col items-center space-y-5">
                                 <div class="flex flex-col items-center space-y-5">
                                     @if ($user->avatar == 'avatar.png')

@@ -18,7 +18,7 @@
                     <a href="#" class="text-gray-800 hover:text-gray-600 font-medium2">TasCo</a>
                 </li>
                 <li class="text-gray-600 mr-2 font-medium2">/</li>
-                <li class="text-gray-600 mr-2 font-medium2">Edit Profile</li>
+                <li class="text-gray-600 mr-2 font-medium2">Add Profile</li>
             </ul>
 
             <!-- End: Logo / Active Menu -->
@@ -49,7 +49,8 @@
                                 <div class="flex flex-col items-center space-y-5">
                                     <img id="profile-picture"
                                         class="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-blue-300 500"
-                                        src="{{ asset('storage/users-avatar/avatar.png') }}" alt="Custom Avatar">
+                                        src="{{ asset('images/avatar.jpg') }}" alt="Default Avatar">
+
                                 </div>
 
                                 <!-- Upload New Picture Section -->

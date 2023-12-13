@@ -73,7 +73,7 @@
                 </a>
             </li>
 
-            <!-- Employment Link -->
+            {{-- <!-- Employment Link -->
             <li class="mb-1 group {{ request()->routeIs('admin.employment') ? 'active' : '' }}">
                 <a href="{{ route('admin.employment') }}"
                     class="flex items-center py-2 px-4 text-gray-800 
@@ -84,7 +84,7 @@
                     <span class="text-sm">Employment</span>
                     <i class="ri-arrow-right-s-line ml-auto"></i>
                 </a>
-            </li>
+            </li> --}}
 
             <!-- Hiring Application Link -->
             <li class="mb-1 group {{ request()->routeIs('admin.hiringApplication') ? 'active' : '' }}">

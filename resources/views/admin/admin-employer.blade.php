@@ -49,16 +49,16 @@
                     <thead>
                         <!-- Table Header -->
                         <tr class="border-b">
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                 Name
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                 Address
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
-                                Date Posted
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider">
                                 Action
                             </th>
                         </tr>
@@ -100,17 +100,20 @@
                                     {{ $employer->address }}
                                 </td>
 
-                                <!-- Date Posted Column -->
-                                <td class="px-6 py-4 whitespace-nowrap font-medium2 text-sm text-gray-800">
-                                    {{ $employer->phone }}
-                                </td>
-
                                 <!-- Action Column -->
                                 <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium2 ">
                                     <!-- Edit and Delete Links -->
-                                    <a href="{{ route('admin.editProfile', ['id' => $employer->id]) }}" class="text-blue-400 hover:text-blue-600">Edit</a>
+                                    <a href="{{ route('admin.editProfile', ['id' => $employer->id]) }}"
+                                        class="text-blue-400 hover:text-blue-600">Edit</a>
                                     <span class="text-gray-600">/</span>
-                                    <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
+                                    <!-- Delete Profile Form -->
+                                    <form action="{{ route('admin.deleteProfile', ['id' => $employer->id]) }}"
+                                        method="POST" class="inline"
+                                        onsubmit="return confirm('Are you sure you want to delete this profile?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-gray-600 hover:text-gray-600">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

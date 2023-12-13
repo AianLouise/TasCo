@@ -35,7 +35,11 @@
                             <!-- Add an empty row with borders -->
                             <tr class=""></tr>
 
-                            @foreach ($hiringForms as $form)
+                            @php
+                                $hiringForms = Auth::user()->role === 'worker' && Auth::user()->is_verified === 1 ? $hiringForms : $hiringForms2;
+                            @endphp
+
+                            @forelse ($hiringForms as $form)
                                 @if ($form->status === 'Completed')
                                     <tr class="border border-gray-300 hover:border-blue-500 cursor-pointer transition-colors duration-300 "
                                         onclick="openModal('{{ $form->id }}')">
@@ -77,7 +81,13 @@
                                         </td>
                                     </tr>
                                 @endif
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="3" class="py-4 text-center text-gray-500">No employments available
+                                    </td>
+                                </tr>
+                            @endforelse
+
                         </tbody>
                     </table>
                 </div>
@@ -98,139 +108,288 @@
             }
         </script>
 
-        @foreach ($hiringForms as $form)
-            <dialog class="content-center shadow-lg rounded-lg m-auto" id="nameModal-{{ $form->id }}"
-                style="width: 80vw; max-width: 800px; overflow-y: auto;">
-                <div class="rounded-md sm:flex sm:items-start justify-center pt-10 pb-4 sm:pb-2">
-                    <div class="grid sm:flex sm:flex-col justify-center items-center">
-                        @if (isset($form->employer))
-                            @php
-                                $employer_id = $form->employer->id;
-                                $avatar = $form->employer->avatar;
-                            @endphp
+        @if (Auth::user()->role === 'user' && Auth::user()->is_verified === 1)
+            @foreach ($hiringForms2 as $form)
+                <dialog class="content-center shadow-lg rounded-lg m-auto" id="nameModal-{{ $form->id }}"
+                    style="width: 80vw; max-width: 800px; overflow-y: auto;">
+                    <div class="rounded-md sm:flex sm:items-start justify-center pt-10 pb-4 sm:pb-2">
+                        <div class="grid sm:flex sm:flex-col justify-center items-center">
+                            @if (isset($form->worker))
+                                @php
+                                    $worker_id = $form->worker->id;
+                                    $avatar = $form->worker->avatar;
+                                @endphp
 
-                            @if ($avatar == 'avatar.png')
-                                <img src="https://ui-avatars.com/api/?name={{ urlencode($form->employer->name) }}&color=7F9CF5&background=EBF4FF"
-                                    alt=""
-                                    class="sm:w-40 hover:w-48 w-52 h-auto transition-all rounded-full shadow-md avatarimg -mt-40 sm:mt-4 sm:mb-4">
-                            @else
-                                <img src="{{ asset('storage/users-avatar/' . basename($avatar)) }}" alt=""
-                                    class="sm:w-40 w-52 h-auto transition-all rounded-full shadow-md avatarimg mb-4">
+                                @if ($avatar == 'avatar.png')
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($form->worker->name) }}&color=7F9CF5&background=EBF4FF"
+                                        alt=""
+                                        class="sm:w-40 hover:w-48 w-52 h-auto transition-all rounded-full shadow-md avatarimg -mt-40 sm:mt-4 sm:mb-4">
+                                @else
+                                    <img src="{{ asset('storage/users-avatar/' . basename($avatar)) }}" alt=""
+                                        class="sm:w-40 w-52 h-auto transition-all rounded-full shadow-md avatarimg mb-4">
+                                @endif
                             @endif
-                        @endif
+                        </div>
+
+                        <div
+                            class="sm:ml-10 mt-4 bg-blue-100 p-4 sm:p-6 divide-y-2 divide-gray-500 rounded-xl shadow-md">
+                            <h2 class="text-xl font-medium text-gray-800 mb-2">Worker Name:
+                                {{ $form->worker->name ?? 'N/A' }}<span class="text-blue-600 text-lg"> </span></h2>
+                            <h2 class="text-xl font-medium text-gray-800 mb-2">Job Title:
+                                {{ $form->worker->category->name ?? 'N/A' }}<span class="text-blue-600 text-lg">
+                                </span></h2>
+                            <h2 class="text-xl font-medium text-gray-800 mb-2">Email:
+                                {{ $form->worker->email ?? 'N/A' }}<span class="text-blue-600 text-lg"></span></h2>
+                            <h2 class="text-xl font-medium text-gray-800 mb-2">Address:
+                                {{ $form->worker->address ?? 'N/A' }}<span class="text-blue-600 text-lg"></span></h2>
+                            <h2 class="text-xl font-medium text-gray-800 mb-2">Phone:
+                                {{ $form->worker->phone ?? 'N/A' }}<span class="text-blue-600 text-lg"></span></h2>
+                        </div>
+
                     </div>
 
-                    <div class="sm:ml-10 mt-4 bg-blue-100 p-4 sm:p-6 divide-y-2 divide-gray-500 rounded-xl shadow-md">
-                        <h2 class="text-xl font-medium text-gray-800 mb-2">Employer Name:
-                            {{ $form->employer->name ?? 'N/A' }}<span class="text-blue-600 text-lg"> </span></h2>
-                        <h2 class="text-xl font-medium text-gray-800 mb-2">Email:
-                            {{ $form->employer->email ?? 'N/A' }}<span class="text-blue-600 text-lg"></span></h2>
-                        <h2 class="text-xl font-medium text-gray-800 mb-2">Address:
-                            {{ $form->employer->address ?? 'N/A' }}<span class="text-blue-600 text-lg"></span></h2>
-                        <h2 class="text-xl font-medium text-gray-800 mb-2">Phone:
-                            {{ $form->employer->phone ?? 'N/A' }}<span class="text-blue-600 text-lg"></span></h2>
-                    </div>
-
-                </div>
-
-                <!-- New Section for Project Information with Styled Design -->
-                <div class="bg-white rounded-md mt-2 text-center">
-                    <h2 class="text-2xl font-bold text-gray-800 pb-4">Project Information</h2>
-                    <div class="">
-                        <div class="p-2 sm:p-10 rounded-lg bg-gray-100">
-                            <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
-                                <p class="block text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
-                                    Title:</p>
-                                <input type="text" name="Username" id="Username" placeholder="Enter UserName"
-                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
-                                    value="{{ $form->projectTitle }}" disabled>
-                            </div>
-                            <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
-                                <p class="block text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
-                                    Description:</p>
-                                <input type="text" name="Username" id="Username" placeholder="Enter UserName"
-                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
-                                    value="{{ $form->projectDescription }}" disabled>
-                            </div>
-                            <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
-                                <p class="block  text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
-                                    Start Date:</p>
-                                <input type="text" name="Username" id="Username" placeholder="Enter UserName"
-                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
-                                    value="{{ $form->startDate->format('l, F j, Y') }}" disabled>
-                            </div>
-                            <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
-                                <p class="block  text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
-                                    End Date:</p>
-                                <input type="text" name="Username" id="Username" placeholder="Enter UserName"
-                                    class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
-                                    value="{{ $form->endDate->format('l, F j, Y') }}" disabled>
+                    <!-- New Section for Project Information with Styled Design -->
+                    <div class="bg-white rounded-md mt-2 text-center">
+                        <h2 class="text-2xl font-bold text-gray-800 pb-4">Project Information</h2>
+                        <div class="">
+                            <div class="p-2 sm:p-10 rounded-lg bg-gray-100">
+                                <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                    <p class="block text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
+                                        Title:</p>
+                                    <input type="text" name="Username" id="Username" placeholder="Enter UserName"
+                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                        value="{{ $form->projectTitle }}" disabled>
+                                </div>
+                                <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                    <p class="block text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
+                                        Description:</p>
+                                    <input type="text" name="Username" id="Username" placeholder="Enter UserName"
+                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                        value="{{ $form->projectDescription }}" disabled>
+                                </div>
+                                <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                    <p class="block  text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
+                                        Start Date:</p>
+                                    <input type="text" name="Username" id="Username" placeholder="Enter UserName"
+                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                        value="{{ $form->startDate->format('l, F j, Y') }}" disabled>
+                                </div>
+                                <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                    <p class="block  text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
+                                        End Date:</p>
+                                    <input type="text" name="Username" id="Username" placeholder="Enter UserName"
+                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                        value="{{ $form->endDate->format('l, F j, Y') }}" disabled>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="flex flex-col justify-center">
                     <div class="flex flex-col justify-center">
-                        @foreach ($form->employments as $index => $employment)
-                            <div class="flex flex-col mb-6 items-center">
-                                <h1 class="text-2xl font-bold mb-4">Day {{ $index + 1 }} - Documentation</h1>
-                                <div class="flex">
-                                    <div class="w-1/3 m-1">
-                                        @if ($employment->image1)
-                                            <img src="{{ asset('storage/documentation/' . basename($employment->image1)) }}"
-                                                alt="Image1">
-                                        @else
-                                            <p class="text-gray-500">No Image Available</p>
-                                        @endif
-                                    </div>
-                                    <div class="w-1/3 m-1">
-                                        @if ($employment->image2)
-                                            <img src="{{ asset('storage/documentation/' . basename($employment->image2)) }}"
-                                                alt="Image2">
-                                        @else
-                                            <p class="text-gray-500">No Image Available</p>
-                                        @endif
-                                    </div>
-                                    <div class="w-1/3 m-1">
-                                        @if ($employment->image3)
-                                            <img src="{{ asset('storage/documentation/' . basename($employment->image3)) }}"
-                                                alt="Image3">
-                                        @else
-                                            <p class="text-gray-500">No Image Available</p>
-                                        @endif
+                        <div class="flex flex-col justify-center">
+                            @foreach ($form->employments as $index => $employment)
+                                <div class="flex flex-col mb-6 items-center">
+                                    <h1 class="text-2xl font-bold mb-4">Day {{ $index + 1 }} - Documentation</h1>
+                                    <div class="flex">
+                                        <div class="w-1/3 m-1">
+                                            @if ($employment->image1)
+                                                <img src="{{ asset('storage/documentation/' . basename($employment->image1)) }}"
+                                                    alt="Image1">
+                                            @else
+                                                <p class="text-gray-500">No Image Available</p>
+                                            @endif
+                                        </div>
+                                        <div class="w-1/3 m-1">
+                                            @if ($employment->image2)
+                                                <img src="{{ asset('storage/documentation/' . basename($employment->image2)) }}"
+                                                    alt="Image2">
+                                            @else
+                                                <p class="text-gray-500">No Image Available</p>
+                                            @endif
+                                        </div>
+                                        <div class="w-1/3 m-1">
+                                            @if ($employment->image3)
+                                                <img src="{{ asset('storage/documentation/' . basename($employment->image3)) }}"
+                                                    alt="Image3">
+                                            @else
+                                                <p class="text-gray-500">No Image Available</p>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
-                </div>
-            </dialog>
-        @endforeach
+                </dialog>
+            @endforeach
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Add click event listener to open-button
-                const openButtons = document.querySelectorAll('.open-button');
-                openButtons.forEach((openButton) => {
-                    openButton.addEventListener('click', () => {
-                        const hiringFormId = openButton.getAttribute('data-id');
-                        const modalId = `nameModal-${hiringFormId}`;
-                        const modal = document.getElementById(modalId);
-                        modal.showModal();
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Add click event listener to open-button
+                    const openButtons = document.querySelectorAll('.open-button');
+                    openButtons.forEach((openButton) => {
+                        openButton.addEventListener('click', () => {
+                            const hiringFormId = openButton.getAttribute('data-id');
+                            const modalId = `nameModal-${hiringFormId}`;
+                            const modal = document.getElementById(modalId);
+                            modal.showModal();
+                        });
+                    });
+
+                    // Add click event listener to close the dialog when clicking outside
+                    const modals = document.querySelectorAll('dialog');
+                    modals.forEach((modal) => {
+                        modal.addEventListener('click', (e) => {
+                            if (e.target === modal) {
+                                modal.close();
+                            }
+                        });
                     });
                 });
+            </script>
+        @elseif (Auth::user()->role === 'worker' && Auth::user()->is_verified === 1)
+            @foreach ($hiringForms as $form)
+                <dialog class="content-center shadow-lg rounded-lg m-auto" id="nameModal-{{ $form->id }}"
+                    style="width: 80vw; max-width: 800px; overflow-y: auto;">
+                    <div class="rounded-md sm:flex sm:items-start justify-center pt-10 pb-4 sm:pb-2">
+                        <div class="grid sm:flex sm:flex-col justify-center items-center">
+                            @if (isset($form->employer))
+                                @php
+                                    $employer_id = $form->employer->id;
+                                    $avatar = $form->employer->avatar;
+                                @endphp
 
-                // Add click event listener to close the dialog when clicking outside
-                const modals = document.querySelectorAll('dialog');
-                modals.forEach((modal) => {
-                    modal.addEventListener('click', (e) => {
-                        if (e.target === modal) {
-                            modal.close();
-                        }
+                                @if ($avatar == 'avatar.png')
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($form->employer->name) }}&color=7F9CF5&background=EBF4FF"
+                                        alt=""
+                                        class="sm:w-40 hover:w-48 w-52 h-auto transition-all rounded-full shadow-md avatarimg -mt-40 sm:mt-4 sm:mb-4">
+                                @else
+                                    <img src="{{ asset('storage/users-avatar/' . basename($avatar)) }}"
+                                        alt=""
+                                        class="sm:w-40 w-52 h-auto transition-all rounded-full shadow-md avatarimg mb-4">
+                                @endif
+                            @endif
+                        </div>
+
+                        <div
+                            class="sm:ml-10 mt-4 bg-blue-100 p-4 sm:p-6 divide-y-2 divide-gray-500 rounded-xl shadow-md">
+                            <h2 class="text-xl font-medium text-gray-800 mb-2">Employer Name:
+                                {{ $form->employer->name ?? 'N/A' }}<span class="text-blue-600 text-lg"> </span></h2>
+                            <h2 class="text-xl font-medium text-gray-800 mb-2">Email:
+                                {{ $form->employer->email ?? 'N/A' }}<span class="text-blue-600 text-lg"></span></h2>
+                            <h2 class="text-xl font-medium text-gray-800 mb-2">Address:
+                                {{ $form->employer->address ?? 'N/A' }}<span class="text-blue-600 text-lg"></span>
+                            </h2>
+                            <h2 class="text-xl font-medium text-gray-800 mb-2">Phone:
+                                {{ $form->employer->phone ?? 'N/A' }}<span class="text-blue-600 text-lg"></span></h2>
+                        </div>
+
+                    </div>
+
+                    <!-- New Section for Project Information with Styled Design -->
+                    <div class="bg-white rounded-md mt-2 text-center">
+                        <h2 class="text-2xl font-bold text-gray-800 pb-4">Project Information</h2>
+                        <div class="">
+                            <div class="p-2 sm:p-10 rounded-lg bg-gray-100">
+                                <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                    <p class="block text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
+                                        Title:</p>
+                                    <input type="text" name="Username" id="Username"
+                                        placeholder="Enter UserName"
+                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                        value="{{ $form->projectTitle }}" disabled>
+                                </div>
+                                <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                    <p class="block text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
+                                        Description:</p>
+                                    <input type="text" name="Username" id="Username"
+                                        placeholder="Enter UserName"
+                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                        value="{{ $form->projectDescription }}" disabled>
+                                </div>
+                                <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                    <p class="block  text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
+                                        Start Date:</p>
+                                    <input type="text" name="Username" id="Username"
+                                        placeholder="Enter UserName"
+                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                        value="{{ $form->startDate->format('l, F j, Y') }}" disabled>
+                                </div>
+                                <div class="w-full mb-2 grid grid-flow-row-dense grid-cols-3">
+                                    <p class="block  text-md sm:text-xl text-left font-medium text-gray-700 pt-2">
+                                        End Date:</p>
+                                    <input type="text" name="Username" id="Username"
+                                        placeholder="Enter UserName"
+                                        class="mt-1 p-2 w-full border rounded-md text-xs text-center col-span-2"
+                                        value="{{ $form->endDate->format('l, F j, Y') }}" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <div class="flex flex-col justify-center">
+                            @foreach ($form->employments as $index => $employment)
+                                <div class="flex flex-col mb-6 items-center">
+                                    <h1 class="text-2xl font-bold mb-4">Day {{ $index + 1 }} - Documentation</h1>
+                                    <div class="flex">
+                                        <div class="w-1/3 m-1">
+                                            @if ($employment->image1)
+                                                <img src="{{ asset('storage/documentation/' . basename($employment->image1)) }}"
+                                                    alt="Image1">
+                                            @else
+                                                <p class="text-gray-500">No Image Available</p>
+                                            @endif
+                                        </div>
+                                        <div class="w-1/3 m-1">
+                                            @if ($employment->image2)
+                                                <img src="{{ asset('storage/documentation/' . basename($employment->image2)) }}"
+                                                    alt="Image2">
+                                            @else
+                                                <p class="text-gray-500">No Image Available</p>
+                                            @endif
+                                        </div>
+                                        <div class="w-1/3 m-1">
+                                            @if ($employment->image3)
+                                                <img src="{{ asset('storage/documentation/' . basename($employment->image3)) }}"
+                                                    alt="Image3">
+                                            @else
+                                                <p class="text-gray-500">No Image Available</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </dialog>
+            @endforeach
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Add click event listener to open-button
+                    const openButtons = document.querySelectorAll('.open-button');
+                    openButtons.forEach((openButton) => {
+                        openButton.addEventListener('click', () => {
+                            const hiringFormId = openButton.getAttribute('data-id');
+                            const modalId = `nameModal-${hiringFormId}`;
+                            const modal = document.getElementById(modalId);
+                            modal.showModal();
+                        });
+                    });
+
+                    // Add click event listener to close the dialog when clicking outside
+                    const modals = document.querySelectorAll('dialog');
+                    modals.forEach((modal) => {
+                        modal.addEventListener('click', (e) => {
+                            if (e.target === modal) {
+                                modal.close();
+                            }
+                        });
                     });
                 });
-            });
-        </script>
+            </script>
+        @endif
+
+
         <x-footer />
     </body>
 </x-app-layout>

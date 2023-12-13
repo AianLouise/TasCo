@@ -69,10 +69,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/application', [AdminController::class, 'AdminApplication'])->name('admin.application');
     Route::get('/admin/application/{id}', [AdminController::class, 'AdminApplicationEmployerDetails'])->name('admin.employerapplication');
     Route::get('/admin/jobseeker-application/{id}', [AdminController::class, 'AdminApplicationJobseekerDetails'])->name('admin.jobseekerapplication');
-    Route::get('/updateIsVerified/{user_id}', [AdminController::class, 'updateIsVerified'])->name('updateIsVerified');
-    Route::get('/updateIsVerifiedjob/{user_id}', [AdminController::class, 'updateIsVerifiedJobSeeker'])->name('updateIsVerifiedJobSeeker');
-    Route::get('/updateIsRejected/{user_id}', [AdminController::class, 'updateIsRejected'])->name('updateIsRejected');
-    Route::get('/updateIsRejectedjob/{user_id}', [AdminController::class, 'updateIsRejectedJobSeeker'])->name('updateIsRejectedJobSeeker');
+    Route::get('/updateIsVerified/{user_id}/{id}', [AdminController::class, 'updateIsVerified'])->name('updateIsVerified');
+    Route::get('/updateIsVerifiedjob/{user_id}/{id}', [AdminController::class, 'updateIsVerifiedJobSeeker'])->name('updateIsVerifiedJobSeeker');
+    Route::get('/updateIsRejected/{user_id}/{id}', [AdminController::class, 'updateIsRejected'])->name('updateIsRejected');
+    Route::get('/updateIsRejectedjob/{user_id}/{id}', [AdminController::class, 'updateIsRejectedJobSeeker'])->name('updateIsRejectedJobSeeker');
 
     Route::get('/admin/inbox', [AdminController::class, 'AdminInbox'])->name('admin.inbox');
     Route::get('/inbox/{user}/view', [AdminController::class, 'showEmailView'])->name('admin.showEmailView');
@@ -107,7 +107,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/chatify/{user_id}', [AppController::class, 'openChat'])->name('user.chatify');
 
     Route::get('/worker/profile/{worker}', [AppController::class, 'showProfile'])->name('app.workerprofile');
-    Route::get('/worker/employments/{worker}', [AppController::class, 'workerEmployments'])->name('app.employments');
+    Route::get('/employments/{worker}', [AppController::class, 'workerEmployments'])->name('app.employments');
+    Route::get('/worker/employments/{worker}', [AppController::class, 'Employments'])->name('worker.employments');
 
     Route::post('/update-profile/{id}', [UserController::class, 'updateProfile'])->name('update.profile');
     Route::post('/update-name', [UserController::class, 'updateName'])->name('update.name');

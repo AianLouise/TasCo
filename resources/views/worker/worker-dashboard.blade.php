@@ -155,7 +155,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($events as $event)
+                            @forelse ($events as $event)
                                 @if ($event->status == 'Pending' || $event->status == 'Ongoing')
                                     <tr class="border-b">
                                         <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
@@ -177,7 +177,12 @@
                                         </td>
                                     </tr>
                                 @endif
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="py-4 text-center text-gray-500">No upcoming work schedule
+                                        available</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -209,7 +214,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($events as $event)
+                            @forelse ($events as $event)
                                 @if ($event->status == 'Done')
                                     <tr class="border-b">
                                         <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">
@@ -231,7 +236,12 @@
                                         </td>
                                     </tr>
                                 @endif
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="py-4 text-center text-gray-500">No done work schedule
+                                        available</td>
+                                </tr>
+                            @endforelse
 
                         </tbody>
                     </table>
@@ -243,7 +253,7 @@
         <div>
             <div class="flex-1 bg-white p-4 rounded-md md:mx-4 mb-4">
                 <div>
-                    <h2 class="font-medium2 mb-4 text-start">Active Jobs</h2>
+                    <h2 class="font-medium2 mb-4 text-start">Current Jobs</h2>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -403,7 +413,7 @@
             <!-- Center Column (Completed Job) -->
             <div class="flex-1 bg-white p-4 rounded-md md:mx-4 bottom-10 mt-4">
                 <div>
-                    <h2 class="font-medium2 mb-4 text-start">Completed</h2>
+                    <h2 class="font-medium2 mb-4 text-start">Completed Projects</h2>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -586,7 +596,7 @@
                                     <!-- Message Link -->
                                     <a href="{{ route('user.chatify', ['user_id' => isset($hiringForm->employer) ? $hiringForm->employer->id : '']) }}"
                                         target="_new"
-                                        class="border hover:border-1 hover:border-blue-700 hover:text-blue-500 hover:shadow-inner text-gray font-bold py-2 px-4 rounded w-36 text-sm shadow-md transition-all">
+                                        class="border hover:border-1 hover:border-blue-700 bg-blue-500 hover:text-blue-500 text-white py-2 -ml-1 rounded px-10 text-sm shadow-md transition-all">
                                         Message
                                     </a>
                                 </div>
@@ -597,19 +607,19 @@
                                     <div class="mb-2 transition-all">
                                         <label for="workerFullName" class="block text-xs font-medium">Full
                                             Name</label>
-                                        <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                        <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
                                             {{ isset($hiringForm->employer) ? $hiringForm->employer->name : '' }}</p>
                                     </div>
 
                                     <div class="pb-2">
                                         <label for="workerEmail" class="block text-xs font-medium pt-1 ">Email</label>
-                                        <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                        <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
                                             {{ isset($hiringForm->employer) ? $hiringForm->employer->email : '' }}</p>
                                     </div>
 
                                     <div class="pb-2">
                                         <label for="workerPhone" class="block text-xs font-medium pt-1">Phone</label>
-                                        <p class="py-1 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
+                                        <p class="py-1 px-10 rounded-md bg-blue-100 my-1 sm:pl-2 shadow-xs">
                                             {{ isset($hiringForm->employer) ? $hiringForm->employer->phone : '' }}</p>
                                     </div>
                                 </div>
@@ -683,7 +693,7 @@
                                     invalid:text-blue-30 invalid:bg-blue-100 invalid:shadow-inner
                                     bg-white focus:shadow-inner focus:bg-white focus:border-white
                                     focus:ring-0 rounded-md shadow-sm w-full p-2 text-sm transition-colors"
-                                    rows="4" required>{{ isset($hiringForm) ? $hiringForm->scopeOfWork : '' }}</textarea>
+                                    rows="4" required disabled>{{ isset($hiringForm) ? $hiringForm->scopeOfWork : '' }}</textarea>
                             </div>
                         </div>
 
@@ -757,7 +767,7 @@
                                         Reject
                                     </a>
                                 </div>
-                            @elseif($hiringForm->status === 'Finished' || $hiringForm->status === 'Completed(Pending)')
+                            @elseif($hiringForm->status === 'Finished' || $hiringForm->status === 'Completed(Pending)'|| $hiringForm->status === 'Completed')
                                 <div class="flex flex-col justify-center">
                                     <div class="flex flex-col justify-center">
                                         @foreach ($hiringForm->employments as $index => $employment)
@@ -785,7 +795,7 @@
                                             <div>
                                                 <a href="{{ route('worker.MarkAsCompleted', ['id' => $hiringForm->id]) }}"
                                                     class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                    Mark as Completed
+                                                    Mark as Complete
                                                 </a>
                                             </div>
                                         @endif

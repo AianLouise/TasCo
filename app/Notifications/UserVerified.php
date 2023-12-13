@@ -51,13 +51,11 @@ class UserVerified extends Notification
     {
         return [
             'read_at' => null, // Initialize as unread
-            'subject' => 'Exciting News: Your Job Seeker Application is Approved!',
+            'subject' => 'Congratulations! Your Job Seeker Application is Approved',
             'greeting' => 'Hello!',
             'message' => 'Congratulations! We\'re thrilled to inform you that your Job Seeker application has been approved. Welcome to our platform!',
             'closing' => 'Thank you for choosing us. If you have any questions or need assistance, feel free to reach out.',
-            'additional_data' => [
-                // Add any other data you want to include here
-            ],
+            'image' => 'UserVerified.jpg',
         ];
         
         

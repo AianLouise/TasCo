@@ -113,7 +113,13 @@
                                     <!-- Edit and Delete links for each user -->
                                     <a href="{{ route('admin.editProfile', ['id' => $user->id]) }}" class="text-blue-400 hover:text-blue-600">Edit</a>
                                     <span class="text-gray-600">/</span>
-                                    <a href="#" class="text-gray-600 hover:text-gray-600">Delete</a>
+                                    <form action="{{ route('admin.deleteProfile', ['id' => $user->id]) }}"
+                                        method="POST" class="inline"
+                                        onsubmit="return confirm('Are you sure you want to delete this profile?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-gray-600 hover:text-gray-600">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

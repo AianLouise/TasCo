@@ -54,7 +54,7 @@
 
                     </div>
                     <h1
-                        class="mt-8 max-w-sm bg-gradient-to-br from-blue-500 via-sky-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-6xl">
+                        class="mt-8 max-w-sm bg-gradient-to-br from-blue-500 via-sky-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold text-transparent sm:max-w-4xl sm:text-5xl">
                         Kickstart Your Journey with TasCo!
                     </h1>
 
@@ -98,15 +98,15 @@
                                 your needs.
                             </p>
                             <div class="relative flex w-full flex-col items-center md:mb-10 mb-10">
-                                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
+                                <div class=" gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
                                     <a href="{{ route('app.home') }}#browse"
                                         class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-3 bg-blue-500">
                                         Get Started
                                     </a>
-                                    <a href="{{ route('app.learnMore') }}"
+                                    {{-- <a href="{{ route('app.learnMore') }}"
                                         class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg border border-blue-500 px-10 py-3 text-blue-500">Learn
                                         More →
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </div>
                         </div>
@@ -420,7 +420,7 @@
                     <div class="w-full flex justify-center">
                         <a href="{{ route('app.jobListing') }}"
                             class="mb-20 w-64 sm:w-auto bg-blue-500 font-medium text-white hover:border hover:border-blue-500 hover:bg-transparent hover:text-blue-500 rounded-lg inline-flex items-center justify-center px-10 py-3">See
-                            More Workers</a>
+                            More Workers →</a>
                     </div>
                 </div>
                 <!-- end row -->
@@ -497,54 +497,57 @@
 
                     </div>
 
-                    <div class="grid gap-14 mt-10 mb-20 md:grid-cols-3 md:gap-5">
-                        <div class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
-                            <div
-                                class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border border-gray-200 rounded-full bg-blue-400 shadow-lg shadow-blue-500/40">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M17 9.2L22.2133 5.55071C22.4395 5.39235 22.7513 5.44737 22.9096 5.6736C22.9684 5.75764 23 5.85774 23 5.96033V18.0397C23 18.3158 22.7761 18.5397 22.5 18.5397C22.3974 18.5397 22.2973 18.5081 22.2133 18.4493L17 14.8V19C17 19.5523 16.5523 20 16 20H2C1.44772 20 1 19.5523 1 19V5C1 4.44772 1.44772 4 2 4H16C16.5523 4 17 4.44772 17 5V9.2ZM17 12.3587L21 15.1587V8.84131L17 11.6413V12.3587ZM3 6V18H15V6H3ZM5 8H7V10H5V8Z">
-                                    </path>
-                                </svg>
+                    <div class="pt-12 p-4">
+                        <div class="grid gap-14 mt-10 mb-20 md:grid-cols-3 md:gap-5">
+                            <div class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
+                                <div
+                                    class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border border-gray-200 rounded-full bg-blue-400 shadow-lg shadow-blue-500/40">
+    
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M17 9.2L22.2133 5.55071C22.4395 5.39235 22.7513 5.44737 22.9096 5.6736C22.9684 5.75764 23 5.85774 23 5.96033V18.0397C23 18.3158 22.7761 18.5397 22.5 18.5397C22.3974 18.5397 22.2973 18.5081 22.2133 18.4493L17 14.8V19C17 19.5523 16.5523 20 16 20H2C1.44772 20 1 19.5523 1 19V5C1 4.44772 1.44772 4 2 4H16C16.5523 4 17 4.44772 17 5V9.2ZM17 12.3587L21 15.1587V8.84131L17 11.6413V12.3587ZM3 6V18H15V6H3ZM5 8H7V10H5V8Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Monitoring</h1>
+                                <p class="px-4 text-gray-500">Not only do we monitor your documents, feedbacks, services,
+                                    we also monitor on how well the community interact with each other</p>
                             </div>
-                            <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Monitoring</h1>
-                            <p class="px-4 text-gray-500">Not only do we monitor your documents, feedbacks, services,
-                                we also monitor on how well the community interact with each other</p>
-                        </div>
-                        <div data-aos-delay="150"
-                            class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
-                            <div
-                                class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full border border-gray-200 shadow-lg bg-yellow-300 shadow-yellow-200/40">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M6 10V20H19V10H6ZM18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16ZM7 11H9V13H7V11ZM7 14H9V16H7V14ZM7 17H9V19H7V17Z">
-                                    </path>
-                                </svg>
+                            <div data-aos-delay="150"
+                                class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
+                                <div
+                                    class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full border border-gray-200 shadow-lg bg-yellow-300 shadow-yellow-200/40">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M6 10V20H19V10H6ZM18 8H20C20.5523 8 21 8.44772 21 9V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V9C3 8.44772 3.44772 8 4 8H6V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8ZM16 8V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8H16ZM7 11H9V13H7V11ZM7 14H9V16H7V14ZM7 17H9V19H7V17Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h1 class="text-darken mb-3 text-xl font-medium lg:px-14 ">Secure</h1>
+                                <p class="px-4 text-gray-500">We secure the safety of every individual that will be working
+                                    or employing each other. We prioritize security overall along with monitoring.</p>
                             </div>
-                            <h1 class="text-darken mb-3 text-xl font-medium lg:px-14 ">Secure</h1>
-                            <p class="px-4 text-gray-500">We secure the safety of every individual that will be working
-                                or employing each other. We prioritize security overall along with monitoring.</p>
-                        </div>
-
-                        <div data-aos-delay="300"
-                            class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
-                            <div
-                                class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border-gray-200 rounded-full shadow-lg bg-blue-500 shadow-blue-500/40">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M5 3V19H21V21H3V3H5ZM20.2929 6.29289L21.7071 7.70711L16 13.4142L13 10.415L8.70711 14.7071L7.29289 13.2929L13 7.58579L16 10.585L20.2929 6.29289Z">
-                                    </path>
-                                </svg>
+    
+                            <div data-aos-delay="300"
+                                class="rounded-xl bg-white p-6 text-center shadow-xl border border-gray-200">
+                                <div
+                                    class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center border-gray-200 rounded-full shadow-lg bg-blue-500 shadow-blue-500/40">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M5 3V19H21V21H3V3H5ZM20.2929 6.29289L21.7071 7.70711L16 13.4142L13 10.415L8.70711 14.7071L7.29289 13.2929L13 7.58579L16 10.585L20.2929 6.29289Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Growth</h1>
+                                <p class="px-4 text-gray-500">In our community, every individual matters, we secure, hear,
+                                    and talk to one another in order to have an efficient growth of the community!</p>
                             </div>
-                            <h1 class="text-darken mb-3 text-xl font-medium lg:px-14">Growth</h1>
-                            <p class="px-4 text-gray-500">In our community, every individual matters, we secure, hear,
-                                and talk to one another in order to have an efficient growth of the community!</p>
                         </div>
                     </div>
+                    
                 </div>
                 <!-- end row -->
             </div>
@@ -553,18 +556,18 @@
 
         <!-- Start: Apply Now Section -->
         <section class="relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white">
-            <div class="container xl:max-w-6xl mx-auto px-4 mb-20">
+            <div class="container xl:max-w-6xl mx-auto mb-20">
                 @auth
                     @if (auth()->user()->is_verified)
                         <!-- User is verified, hide the Apply Now Section -->
                     @else
-                        <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+                        <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow-lg sm:p-8">
                             <h5 class="mb-2 text-3xl font-bold">Apply Now</h5>
                             <p class="mb-5 text-base text-gray-500 sm:text-lg">Interested in joining our community?</p>
                             <div
                                 class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
                                 <a href="{{ route('app.applyJobseeker') }}"
-                                    class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
+                                    class="w-full sm:w-auto bg-blue-500 focus:ring-4 focus:outline-none text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
                                     <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                         <path
@@ -577,14 +580,9 @@
                                     </div>
                                 </a>
                                 <a href="{{ route('app.applyEmployer') }}"
-                                    class="w-full sm:w-auto bg-blue-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5">
-                                    <svg class="me-3 w-7 h-7" aria-hidden="true" focusable="false" role="img"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path
-                                            d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z"
-                                            fill="rgba(255,255,255,1)"></path>
-                                    </svg>
-                                    <div class="text-left rtl:text-right">
+                                    class="w-full sm:w-auto bg-white border border-blue-500 focus:ring-4 focus:outline-none rounded-lg inline-flex items-center justify-center px-4 py-2.5">
+                                    <svg class="me-3 w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z" fill="rgba(70,146,221,1)"></path></svg>
+                                    <div class="text-left rtl:text-right text-blue-500">
                                         <div class="mb-1 text-xs">Apply as</div>
                                         <div class="-mt-1 font-sans text-sm font-semibold">Employer</div>
                                     </div>

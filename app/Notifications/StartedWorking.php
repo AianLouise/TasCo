@@ -53,7 +53,7 @@ class StartedWorking extends Notification
             'greeting' => 'Hello!',
             'message' => 'We are thrilled to inform you that your hired worker has begun working on your project. If you have any questions or need updates, feel free to reach out!',
             'closing' => 'Thank you for choosing our platform. We wish you a successful collaboration!',
-            'additional_data' => [],
+            'image' => 'StartedWorking.jpg',
         ];        
     }
 }

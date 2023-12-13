@@ -293,6 +293,9 @@ class WorkerHiringController extends Controller
             $employer = $hiringForm->employer;
             $employer->notify(new HiringFormCompleted($hiringForm));
 
+            $worker = $hiringForm->worker;
+            $worker->notify(new HiringFormCompleted($hiringForm));
+
             // Redirect back or to another page as needed
             return redirect()->back()->with('success', 'Marked as completed successfully!');
         }

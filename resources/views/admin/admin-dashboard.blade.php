@@ -314,16 +314,18 @@
                                         <td class="px-2 py-1 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-8 w-8">
-                                                    <!-- Display User Avatar -->
-                                                    @if ($message->avatar == 'avatar.png')
-                                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($message->user->name) }}&color=7F9CF5&background=EBF4FF"
-                                                            alt=""
-                                                            class="w-6 h-6 rounded block object-cover align-middle">
-                                                    @else
-                                                        <img src="{{ asset('storage/users-avatar/' . basename($message->user->avatar)) }}"
-                                                            alt=""
-                                                            class="w-6 h-6 rounded block object-cover align-middle">
-                                                    @endif
+                                                    @foreach ($messages as $message)
+                                                        @if ($message->user->avatar == 'avatar.png')
+                                                            <img src="https://ui-avatars.com/api/?name={{ urlencode($message->user->name) }}&color=7F9CF5&background=EBF4FF"
+                                                                alt=""
+                                                                class="w-8 h-8 rounded block object-cover align-middle">
+                                                        @else
+                                                            <img src="{{ asset('storage/users-avatar/' . basename($message->user->avatar)) }}"
+                                                                alt=""
+                                                                class="w-8 h-8 rounded block object-cover align-middle">
+                                                        @endif
+                                                        <!-- Display other message details as needed -->
+                                                    @endforeach
                                                 </div>
                                                 <!-- User Name and Email -->
                                                 <div class="ml-2">

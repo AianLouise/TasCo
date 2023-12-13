@@ -53,7 +53,7 @@ class HiringFormCompleted extends Notification
             'greeting' => 'Hi there!',
             'message' => 'We\'re thrilled to let you know that your hiring form has been successfully marked as completed. 🎉',
             'closing' => 'Thanks a bunch for choosing our platform!',
-            'additional_data' => [],
+            'image' => 'HiringFormCompleted.jpg',
         ];
         
     }

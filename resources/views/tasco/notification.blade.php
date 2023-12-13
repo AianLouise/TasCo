@@ -3,7 +3,7 @@
 
 
     <body>
-        <div class="flex justify-center min-h-screen p-4 bg-blue-50">
+        <div class="flex flex-col items-center min-h-screen p-4 bg-blue-50">
             <div
                 class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 md:p-10 w-full max-w-screen-lg rounded-md">
                 <div class="flex justify-between mb-4 items-start">
@@ -28,14 +28,13 @@
                         </thead>
 
                         <tbody class="bg-gray-50">
-                            @foreach ($notifications as $notification)
-                                <tr class="border border-gray-300 hover:border-blue-500 cursor-pointer transition-colors duration-300 "
+                            @forelse ($notifications as $notification)
+                                <tr class="border border-gray-300 hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition-colors duration-300 "
                                     onclick="markAsRead('{{ $notification->id }}', this); openModal('{{ $notification->id }}')">
-
                                     <td class="py-2 md:py-4 min-w-[150px] whitespace-nowrap text-left px-4 md:pr-6">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10 p-2">
-                                                <i class="ri-notification-3-line text-blue-500"></i>
+                                                <i class="ri-notification-3-line"></i>
                                                 <!-- Replace ri-notification-3-line with your desired Remixicon and customize the icon color as needed -->
                                             </div>
                                             <div class="">
@@ -43,9 +42,8 @@
                                                     {{ $notification->data['subject'] }}
                                                 </div>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </td>
-                                    
                                     <td class="py-2 md:py-4 min-w-[150px] whitespace-nowrap text-left px-4 md:pr-6">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-8 w-8 md:h-10 md:w-10">
@@ -55,13 +53,19 @@
                                                 <div class="text-sm md:text-base font-medium2 text-gray-900">
                                                     <i class="ri-time-line"></i>
                                                     {{ $notification->created_at->diffForHumans() }}
-                                                </div>                                                                                               
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="2" class="py-4 text-center text-gray-500">No notifications available
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
+
                     </table>
                 </div>
             </div>
@@ -79,14 +83,26 @@
         </script>
 
         @foreach ($notifications as $notification)
-            <dialog class="content-center shadow-lg rounded-lg m-auto" id="nameModal-{{ $notification->id }}"
+            <dialog class="content-center bg-blue-50 shadow-lg rounded-lg m-auto" id="nameModal-{{ $notification->id }}"
                 style="width: 80vw; max-width: 800px; overflow-y: auto;">
                 <div class="rounded-md sm:flex sm:items-start justify-center p-10 sm:p-6">
-                    <div class="bg-white w-full sm:w-3/4 p-8 rounded-md">
+                    <div class="bg-blue-50 w-full sm:w-3/4 p-8 rounded-md">
+                        <!-- Add Logo-->
+                        <div class="flex items-center mb-2">
+                            <img src="{{ URL('images/App-Logo.png') }}" class="mr-1 h-5 sm:h-9" alt="Tasco Logo" />
+                            <span class="self-center text-lg font-bold whitespace-nowrap">TasCo</span>
+                        </div>
                         <h2 class="text-3xl font-bold mb-4">{{ $notification->data['subject'] }}</h2>
+                        <div class="relative py-4">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-b border-gray-300"></div>
+                            </div>
+                        </div>
                         <p class="text-gray-600">{{ $notification->data['greeting'] }}</p>
-                        <p class="text-gray-800 leading-7 mt-4">{{ $notification->data['message'] }}</p>
-
+                        <p class="text-gray-800 leading-7 mt-4 mb-4">{{ $notification->data['message'] }}</p>
+                        <div class="h-auto max-w-full">
+                            <img src="{{ URL('images/notification/' . $notification->data['image']) }}" class="rounded-lg">
+                        </div>
                         <!-- You can add additional data here -->
                         @if (!empty($notification->data['additional_data']))
                             <ul class="list-disc pl-6 mt-4">
@@ -154,9 +170,6 @@
                     .catch(error => console.error('Error:', error));
             }
         </script>
-
-
-
         <x-footer />
     </body>
 </x-app-layout>

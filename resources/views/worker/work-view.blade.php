@@ -92,30 +92,35 @@
                     </div>
 
                     <!-- Buttons Section -->
+
                     <div class="flex justify-center mt-4 sm:mt-4 space-x-4 sm:mb-9">
-                        @if ($hiringForm->status === 'Accepted' || $event->status === 'Pending')
-                            @if (\Carbon\Carbon::parse($event->start)->isToday())
-                                <a href="{{ route('startWorking', ['hiringFormId' => $hiringForm->id, 'eventId' => $event->id]) }}"
-                                    class="bg-blue-500 text-white px-4 py-2 rounded">
-                                    Start Working
-                                </a>
-                            @else
-                                <span class="text-red-600 bg-gray-200 p-4 rounded-lg mb-4">You can only start working on
-                                    the
-                                    day of the work.</span>
+                        @if (Auth::user()->role === 'worker')
+                            @if ($hiringForm->status === 'Accepted' || $event->status === 'Pending')
+                                @if (\Carbon\Carbon::parse($event->start)->isToday())
+                                    <a href="{{ route('startWorking', ['hiringFormId' => $hiringForm->id, 'eventId' => $event->id]) }}"
+                                        class="bg-blue-500 text-white px-4 py-2 rounded">
+                                        Start Working
+                                    </a>
+                                @else
+                                    <span class="text-red-600 bg-gray-200 p-4 rounded-lg mb-4">You can only start
+                                        working on
+                                        the
+                                        day of the work.</span>
+                                @endif
+                            @elseif ($hiringForm->status === 'Ongoing' && $event->status === 'Ongoing')
+                                <div class="grid grid-rows-1 sm:grid-cols-2 gap-4">
+                                    <button id="helpBtn"
+                                        class="bg-red-500 text-white px-10 py-2 rounded hover:bg-red-900 transition-colors">
+                                        Help
+                                    </button>
+                                    <button id="finishBtn"
+                                        class="bg-blue-500 text-white px-10 py-2 rounded hover:bg-blue-800 transition-colors">
+                                        <i class="ri-check-fill mr-2"></i>Finish
+                                    </button>
+                                </div>
                             @endif
-                        @elseif ($hiringForm->status === 'Ongoing' && $event->status === 'Ongoing')
-                            <div class="grid grid-rows-1 sm:grid-cols-2 gap-4">
-                                <button id="helpBtn"
-                                    class="bg-red-500 text-white px-10 py-2 rounded hover:bg-red-900 transition-colors">
-                                    Help
-                                </button>
-                                <button id="finishBtn"
-                                    class="bg-blue-500 text-white px-10 py-2 rounded hover:bg-blue-800 transition-colors">
-                                    <i class="ri-check-fill mr-2"></i>Finish
-                                </button>
-                            </div>
-                        @elseif ($event->status === 'Done')
+                        @endif
+                        @if ($event->status === 'Done')
                             <div class="flex flex-col justify-center items-center mb-9 p-2 border-t">
                                 <h1 class="text-2xl font-bold mb-4">Documentation</h1>
                                 <div class="grid grid-rows-1 sm:flex justify-center sm:justify-between gap-5">
@@ -134,7 +139,9 @@
                                 </div>
                             </div>
                         @endif
+
                     </div>
+
 
 
                 </div>
@@ -148,14 +155,15 @@
                 <h1 class="text-3xl font-semibold text-blue-700 mb-6">Emergency Assistance</h1>
                 <p class="text-gray-700 mb-8">When in distress or feeling unsafe, click the "Send SOS" button below for
                     immediate assistance. Help is on the way!</p>
-                    <form action="{{ route('tasco.sendSOS') }}" method="POST">
-                        @csrf
-                        <!-- Your form fields and submit button -->
-                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full focus:outline-none focus:shadow-outline-red transition duration-300">
-                            Send SOS
-                        </button>
-                    </form>
-                    
+                <form action="{{ route('tasco.sendSOS') }}" method="POST">
+                    @csrf
+                    <!-- Your form fields and submit button -->
+                    <button type="submit"
+                        class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full focus:outline-none focus:shadow-outline-red transition duration-300">
+                        Send SOS
+                    </button>
+                </form>
+
 
             </div>
         </div>

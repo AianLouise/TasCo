@@ -35,20 +35,22 @@ class RegisteredUserController extends Controller
             'lname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'phone' => ['required', 'string', 'max:20'], // Add phone validation rules
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        
     
         $user = User::create([
             'first_name' => $request->fname,
             'last_name' => $request->lname,
             'name' => $request->fname . ' ' . $request->lname,
             'address' => $request->address,
-            'phone' => '',
+            'phone' => $request->phone, // Add phone number
             'email' => $request->email,
             'messenger_color' => '#2180f3',
             'password' => Hash::make($request->password),
             'role' => 'user',
-        ]);
+        ]);        
         
 
         $user->sendEmailVerificationNotification();

@@ -53,13 +53,11 @@ class JobSeekerApplicationRejected extends Notification
     {
         return [
             'read_at' => null, // Initialize as unread
-            'subject' => 'Job Seeker Application Status Update',
+            'subject' => 'Important Update: Your Job Seeker Application',
             'greeting' => 'Hello!',
-            'message' => 'We regret to inform you that your Job Seeker application has been rejected. We appreciate your interest and thank you for considering our platform.',
+            'message' => 'We regret to inform you that your Job Seeker application has been rejected. We appreciate your interest and thank you for considering our platform. Please check the provided requirements and consider reapplying.',
             'closing' => 'If you have any questions or would like feedback, feel free to reach out. Thank you.',
-            'additional_data' => [
-                // Add any other data you want to include here
-            ],
+            'image' => 'JobSeekerApplicationRejected.jpg',
         ];
         
         
