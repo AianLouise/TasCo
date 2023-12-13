@@ -18,17 +18,17 @@ return new class extends Migration
             $table->foreign('employer_id')->references('id')->on('users')->nullOnDelete();
             $table->foreign('worker_id')->references('id')->on('users')->nullOnDelete();
             $table->string('projectTitle')->nullable();
-            $table->text('projectDescription')->nullable();
+            $table->string('projectDescription')->nullable();
             $table->date('startDate')->nullable();
             $table->date('endDate')->nullable();
-            $table->text('scopeOfWork')->nullable();
+            $table->string('scopeOfWork')->nullable();
             
             // Add Payment Terms Columns
             $table->decimal('totalPayment', 10, 2)->nullable();
             $table->enum('paymentFrequency', ['hourly', 'perDay'])->default('hourly');
             $table->enum('paymentMethod', ['bankTransfer', 'cash'])->default('cash');
         
-            $table->text('status')->default('Pending');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
         
