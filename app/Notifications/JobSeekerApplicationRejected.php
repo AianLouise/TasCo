@@ -26,7 +26,7 @@ class JobSeekerApplicationRejected extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail' , 'database'];
+        return ['database'];
     }
 
     /**
@@ -52,7 +52,14 @@ class JobSeekerApplicationRejected extends Notification
     public function toArray(object $notifiable): array
     {
         return [
+            'subject' => 'Job Seeker Application Rejection',
+            'greeting' => 'Hello!',
             'message' => 'Your Job Seeker application has been rejected.',
+            'closing' => 'Thank you for considering our platform.',
+            'additional_data' => [
+                // Add any other data you want to include here
+            ],
         ];
+        
     }
 }
