@@ -6,6 +6,12 @@
                 <i class="ri-message-3-line text-2xl"></i>
             </a>
         </div>
+
+        <div class="mr-6">
+            <a href="{{ route('app.notifications') }}" target="_new">
+                <i class="ri-notification-3-line text-2xl"></i>
+            </a>
+        </div>
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">
                 <button

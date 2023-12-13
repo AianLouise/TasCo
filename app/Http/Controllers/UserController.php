@@ -264,4 +264,14 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Password updated successfully.');
     }
+
+    public function Notification(Request $request)
+    {
+        $user = Auth::user();
+        $pageTitle = 'Notification';
+
+        $notifications = $request->user()->notifications;
+
+        return view("tasco.notification", compact('user', 'pageTitle', 'notifications', 'user'));
+    }
 }
