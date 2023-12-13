@@ -37,7 +37,7 @@ class WorkerHiringController extends Controller
             'endDate' => 'required|date|after:startDate',
             'scopeOfWork' => 'required|string',
             'totalPayment' => 'required|numeric',
-            'paymentFrequency' => 'required|in:hourly,perMilestone',
+            'paymentFrequency' => 'required|in:hourly,perDay',
             'paymentMethod' => 'required|in:bankTransfer,cash',
         ]);
 
@@ -76,13 +76,9 @@ class WorkerHiringController extends Controller
             // Create multiple events based on the days between start and end dates
             for ($i = 0; $i <= $daysDifference; $i++) {
                 $eventDate = $startDate->copy()->addDays($i);
-
-                Employment::create([
-                    'hiring_form_id' => $hiringForm->id,
-                    // Other columns in the employment table
-                ]);
-
-                Event::create([
+            
+                // Create the event for the current day
+                $event = Event::create([
                     'hiring_form_id' => $hiringForm->id,
                     'title' => $hiringForm->projectTitle,
                     'start' => $eventDate,
@@ -91,7 +87,14 @@ class WorkerHiringController extends Controller
                     'worker_id' => $hiringForm->worker_id,
                     'user_id' => Auth::user()->id,
                 ]);
-            }
+            
+                // Create the employment with the associated event_id (ID of the Event)
+                Employment::create([
+                    'hiring_form_id' => $hiringForm->id,
+                    'event_id' => $event->id,
+                    // Other columns in the employment table
+                ]);
+            }            
 
             return redirect()->back()->with('success', 'Status updated successfully');
         }
@@ -115,10 +118,10 @@ class WorkerHiringController extends Controller
     }
 
 
-    public function WorkView($eventId)
+    public function WorkView($event_id)
     {
         // Find the event by ID
-        $event = Event::find($eventId);
+        $event = Event::find($event_id);
 
         // Check if the event record exists before trying to access its attributes
         if ($event) {
@@ -201,6 +204,7 @@ class WorkerHiringController extends Controller
                         'image3' => $path3,
                         // Repeat the process for Image 2 and Image 3
                     ]);
+                    
 
                     // Update the status of the specific event to 'Done'
                     $event->update(['status' => 'Done']);

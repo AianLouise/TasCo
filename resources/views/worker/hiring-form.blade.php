@@ -2,7 +2,9 @@
     <title>{{ isset($pageTitle) ? $pageTitle : 'Tasco' }}</title>
     <main class="bg-gray-100 min-h-screen flex items-center justify-center">
         <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-center rounded-lg mt-10">
-            <form method="POST" action="{{ route('submit.hiring.form', ['worker' => $user->id]) }}">
+            <form method="POST" action="{{ route('submit.hiring.form', ['worker' => $user->id]) }}"
+                onsubmit="return validateDates()">
+
                 @csrf
                 <!-- Form heading -->
                 <h1 class="text-lg font-semibold mb-1">Job Hiring Form</h1>
@@ -176,9 +178,9 @@
 
             if (startDate === '' || endDate === '') {
                 alert('Start Date and End Date are required.');
+                return false; // prevent form submission
             } else {
-                // Proceed with form submission
-                document.querySelector('form').submit();
+                return true; // allow form submission
             }
         }
     </script>

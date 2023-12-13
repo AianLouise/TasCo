@@ -25,8 +25,8 @@ return new class extends Migration
             
             // Add Payment Terms Columns
             $table->decimal('totalPayment', 10, 2)->nullable();
-            $table->enum('paymentFrequency', ['hourly', 'perMilestone'])->default('hourly');
-            $table->enum('paymentMethod', ['bankTransfer', 'cash'])->default('bankTransfer');
+            $table->enum('paymentFrequency', ['hourly', 'perDay'])->default('hourly');
+            $table->enum('paymentMethod', ['bankTransfer', 'cash'])->default('cash');
         
             $table->text('status')->default('Pending');
             $table->timestamps();

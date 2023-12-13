@@ -134,7 +134,7 @@ Route::middleware(['auth', 'role:worker'])->group(function () {
     Route::get('/work/{HiringForm_id}', [WorkerHiringController::class, 'WorkView'])->name('work.view');
     Route::get('/start-working/{hiringFormId}/{eventId}', [WorkerHiringController::class, 'startWorking'])->name('startWorking');
     Route::post('/upload-documentation/{id}/{eventId}', [WorkerHiringController::class, 'uploadDocumentation'])
-    ->name('uploadDocumentation');
+        ->name('uploadDocumentation');
 
 
 
