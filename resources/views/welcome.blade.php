@@ -14,7 +14,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
     @vite(['resources/css/style2.css', 'resources/js/app.js'])
-    <link rel="stylesheet" href="{{ mix('css/style2.css') }}">
+    {{-- <link rel="stylesheet" href="{{ mix('css/style2.css') }}"> --}}
 
     <style>
         /*
