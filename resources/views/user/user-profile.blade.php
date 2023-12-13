@@ -13,10 +13,10 @@
                 @if (Auth::user()->avatar == 'avatar.png')
                     <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=7F9CF5&background=EBF4FF"
                         alt=""
-                        class="w-56 h-56 hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
+                        class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
                 @else
                     <img src="{{ asset('storage/users-avatar/' . basename(Auth::user()->avatar)) }}" alt=""
-                        class="w-56 h-56 hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
+                        class="w-56 h-auto hover:w-72 transition-all rounded-full shadow-xl avatarimg mx-auto mb-4">
                 @endif
 
                 <div class=" sm:-mr-24 hidden sm:block">

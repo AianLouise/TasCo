@@ -29,19 +29,19 @@ class UserController extends Controller
     {
         // Get the authenticated user
         $employer = auth()->user();
-
+    
         // Retrieve hiring forms where the employer_id matches the authenticated user's ID
         $hiringForms = HiringForm::where('employer_id', $employer->id)->get();
-
+    
         // Retrieve events associated with the hiring forms, including the employer relationship
         $events = Event::with('employer')->whereIn('hiring_form_id', $hiringForms->pluck('id'))->get();
-
+    
         $workerUsers = User::where('role', 'worker')->get();
         $categories = Category::all();
         $pageTitle = 'Dashboard';
-
+    
         return view("user.user-dashboard", compact('hiringForms', 'workerUsers', 'categories', 'pageTitle', 'events'));
-    }
+    }    
 
     public function Sort(Request $request)
     {

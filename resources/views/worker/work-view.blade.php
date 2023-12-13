@@ -116,17 +116,21 @@
                                 </button>
                             </div>
                         @elseif ($event->status === 'Done')
-                        <div class="flex flex-col justify-center items-center mb-9 p-2 border-t">
-                            <h1 class="text-2xl font-bold mb-4">Documentation</h1>
-                            <div class="grid grid-rows-1 sm:flex justify-center sm:justify-between gap-5">
-                                <div class="w-full sm:w-1/3">
-                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image1)) }}" alt="Image" class="border shadow-xl rounded-xl">
-                                </div>
-                                <div class="w-full sm:w-1/3 flex flex-col items-center">
-                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image2)) }}" alt="Image" class="border shadow-xl rounded-xl">
-                                </div>
-                                <div class="w-full sm:w-1/3">
-                                    <img src="{{ asset('storage/documentation/' . basename($event->employment->image3)) }}" alt="Image" class="border shadow-xl rounded-xl">
+                            <div class="flex flex-col justify-center items-center mb-9 p-2 border-t">
+                                <h1 class="text-2xl font-bold mb-4">Documentation</h1>
+                                <div class="grid grid-rows-1 sm:flex justify-center sm:justify-between gap-5">
+                                    <div class="w-full sm:w-1/3">
+                                        <img src="{{ asset('storage/documentation/' . basename($event->employment->image1)) }}"
+                                            alt="Image" class="border shadow-xl rounded-xl">
+                                    </div>
+                                    <div class="w-full sm:w-1/3 flex flex-col items-center">
+                                        <img src="{{ asset('storage/documentation/' . basename($event->employment->image2)) }}"
+                                            alt="Image" class="border shadow-xl rounded-xl">
+                                    </div>
+                                    <div class="w-full sm:w-1/3">
+                                        <img src="{{ asset('storage/documentation/' . basename($event->employment->image3)) }}"
+                                            alt="Image" class="border shadow-xl rounded-xl">
+                                    </div>
                                 </div>
                             </div>
                         @endif

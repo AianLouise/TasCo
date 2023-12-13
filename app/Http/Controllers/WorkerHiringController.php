@@ -177,9 +177,9 @@ class WorkerHiringController extends Controller
         // Validate the form data, including the job description and images
         $request->validate([
             // 'jobDescription' => 'required|string|max:255',
-            'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg,JPG|max:5048',
+            'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg,JPG|max:5048',
+            'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg,JPG|max:5048',
         ]);
 
         // Handle Image 1
