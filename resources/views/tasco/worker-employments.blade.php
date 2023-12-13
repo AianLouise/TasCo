@@ -15,7 +15,7 @@
                     <table class="w-full">
                         <thead>
                             <!-- Table Header -->
-                            <tr class="border-b">
+                            <tr class="">
                                 <th scope="col"
                                     class="px-4 md:px-10 py-3 text-left text-xs font-medium2 text-gray-800 uppercase tracking-wider ml-5">
                                     Title
@@ -33,7 +33,7 @@
 
                         <tbody class="bg-gray-50">
                             <!-- Add an empty row with borders -->
-                            <tr class="border-b border-t border-gray-300"></tr>
+                            <tr class=""></tr>
 
                             @foreach ($hiringForms as $form)
                                 @if ($form->status === 'Completed')

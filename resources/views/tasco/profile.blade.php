@@ -8,10 +8,10 @@
     </style>
 
     <main class="bg-gray-200 min-h-screen flex items-center justify-center">
-        {{-- @php
+        @php
             $userId = request()->route('worker');
             $user = \App\Models\User::find($userId);
-        @endphp --}}
+        @endphp
         <div class="bg-white shadow-md p-8 max-w-2xl w-full sm:w-1/2 text-right rounded-lg mt-36 sm:mt-20">
             <!-- Added rounded-lg class -->
             <!-- Modified: Increased max width to max-w-2xl -->
@@ -37,16 +37,23 @@
                                 $previousApplicationExists = $previousApplication !== null;
                             @endphp
 
-                            @if ($previousApplication->status === 'Completed')
-                                <a href="{{ route('worker.hire', ['worker' => $worker->id]) }}"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded w-36">
-                                    Hire Again
-                                </a>
-                            @elseif ($previousApplicationExists && $previousApplication->status === 'Pending')
-                                <span
-                                    class="inline-block text-center bg-blue-400 text-white font-bold py-2 px-4 rounded">
-                                    Application Sent
-                                </span>
+                            @if ($previousApplicationExists)
+                                @if ($previousApplication->status === 'Completed')
+                                    <a href="{{ route('worker.hire', ['worker' => $worker->id]) }}"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded w-36">
+                                        Hire Again
+                                    </a>
+                                @elseif ($previousApplication->status === 'Pending')
+                                    <span
+                                        class="inline-block text-center bg-blue-400 text-white font-bold py-2 px-4 rounded">
+                                        Application Sent
+                                    </span>
+                                @else
+                                    <a href="{{ route('worker.hire', ['worker' => $worker->id]) }}"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded w-36">
+                                        Hire
+                                    </a>
+                                @endif
                             @else
                                 <a href="{{ route('worker.hire', ['worker' => $worker->id]) }}"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded w-36">
@@ -55,9 +62,11 @@
                             @endif
                         @else
                             <button
-                                class="button open-button bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-8 rounded w-36 transition-colors">Hire</button>
-
+                                class="button open-button bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-8 rounded w-36 transition-colors">
+                                Hire
+                            </button>
                         @endif
+
 
 
                         <a href="{{ route('user.chatify', ['user_id' => $worker->id]) }}" target="_new"
