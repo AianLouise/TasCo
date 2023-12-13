@@ -229,7 +229,7 @@
                                         Reject
                                     </a>
                                 </div> --}}
-                            @elseif($hiringForm->status === 'Finished' || $hiringForm->status === 'Completed(Pending)')
+                            @elseif($hiringForm->status === 'Finished' || $hiringForm->status === 'Completed(Pending)' || $hiringForm->status === 'Completed')
                                 <div class="flex flex-col justify-center">
                                     <div class="flex flex-col justify-center">
                                         @foreach ($hiringForm->employments as $index => $employment)

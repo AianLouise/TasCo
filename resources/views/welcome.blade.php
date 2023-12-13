@@ -237,7 +237,7 @@
                                         class="absolute text-white end-2.5 bottom-2.5 bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
                                         <i class="ri-search-line text-white mr-1"></i>Search
                                     </button> --}}
-                                    <a href="{{ route('login') }}"
+                                    <a href="{{ route('register') }}"
                                         class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-2 bg-blue-500">
                                         Get Started
                                     </a>
