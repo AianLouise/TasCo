@@ -41,7 +41,7 @@
                                 <path d="M0 0h24v24H0z" fill="none" stroke="none" />
                                 <path d="M7 4v16h10" />
                             </svg>
-                        </i>
+                        </i> 
 
                     </div>
                     <x-input-error :messages="$errors->get('lname')" class="mt-2" />
