@@ -212,17 +212,17 @@
         <div class="relative overflow-hidden min-h-screen bg-blue-50">
             <div class="max-w-6xl mx-auto">
                 <div class="relative pb-8">
-                    <div class="px-4 mx-auto mt-10 max-w-7xl">
-                        <div class="mx-auto mb-8 text-center max-w-md lg:mt-11 lg:mx-0 lg:text-left sm:mt-56">
+                    <div class="px-4 mx-auto mt-40 max-w-7xl">
+                        <div class="mx-auto mb-8 text-center max-w-md  lg:mx-0 lg:text-left">
                             <!-- Adjusted margin-top here -->
-                            <h1 class="mt-0 md:mt-56 sm:mt-44 text-5xl max-sm:leading-[50px] font-bold text-left">
+                            <h1 class=" text-6xl lg:text-7xl font-bold text-left sm:mt-44">
                                 <span class="FindLocal xl:whitespace-nowrap relative z-10 pr-10">Find Local
                                     Services</span>
                                 <br />
                                 with <span class="AppName inline-block sm:mt-3 z-10"></span>
                             </h1>
                             <p
-                                class="mt-6 tracking-wide text-gray-600 dark:text-gray-400 sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5">
+                                class="mt-6 tracking-wide text-gray-600 dark:text-gray-400 sm:text-md sm:max-w-xl md:mt-8 sm:mt-4 sm:mx-auto">
                                 TasCo is your all-in-one destination for the services you require within your community.
                             </p>
 
@@ -248,7 +248,7 @@
                 </div>
 
 
-                <div class="hidden sm:flex mt-44 md:justify-end md:w-1/2 lg:absolute lg:inset-y-0 lg:right-0 lg:px-32">
+                <div class="hidden sm:flex mt-32 md:justify-end md:w-1/2 lg:absolute lg:inset-y-0 lg:right-0 lg:px-32">
                     <img src={{ URL('images/hero.png') }} alt="" class="object-cover sm:h-72 md:h-96 ">
                 </div>
             </div>
