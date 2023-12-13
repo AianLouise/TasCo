@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
 
     <!-- Start: Header Navigation-->
-    <div class="shadow-lg">
+    <div class="shadow-lg bg-white">
         <div class="max-w-6xl px-4 mx-auto" x-data="{ open: false }">
             <nav class="flex items-center justify-between py-4">
                 <div class="flex">
