@@ -240,7 +240,10 @@
                                         <i class="ri-search-line text-white mr-1"></i>Search
                                     </button> --}}
                                     <a href="{{ route('register') }}"
-                                        class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-2 bg-blue-500">
+                                        class="flex flex-row items-center justify-center font-medium gap-x-2 rounded-lg text-white px-10 py-2 bg-blue-500
+                                        hover:bg-blue-700 hover:px-14 transition-all
+                                        
+                                        ">
                                         Get Started
                                     </a>
                                 </div>
@@ -251,7 +254,9 @@
 
 
                 <div class="hidden sm:flex mt-32 md:justify-end md:w-1/2 lg:absolute lg:inset-y-0 lg:right-0 lg:px-32">
-                    <img src={{ URL('images/hero.png') }} alt="" class="object-cover sm:h-72 md:h-96 ">
+                    <img src={{ URL('images/hero.png') }} alt="" class="object-cover sm:h-72 md:h-96 md:mr-52 
+                        hover:mt-4 transition-all
+                    ">
                 </div>
             </div>
         </div>
