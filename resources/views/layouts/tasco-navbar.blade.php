@@ -100,8 +100,16 @@
                 <ul class="px-4 mt-10">
                     <li class="pb-3 flex items-center">
                         <i class="ri-user-fill text-blue-400 text-lg mr-2"></i>
-                        <a href="{{ route('user.profile') }}"
-                            class="text-sm text-black hover:text-blue-400">Profile</a>
+                        @if (Auth::user()->role == 'user' && Auth::user()->is_verified == 0)
+                            <a href="{{ route('user.profile') }}"
+                                class="text-sm text-black hover:text-blue-400">Profile</a>
+                        @elseif (Auth::user()->role == 'user' && Auth::user()->is_verified == 1)
+                            <a href="{{ route('user.profile') }}"
+                                class="text-sm text-black hover:text-blue-400">Profile</a>
+                        @elseif (Auth::user()->role == 'worker' && Auth::user()->is_verified == 1)
+                            <a href="{{ route('worker.profile') }}"
+                                class="text-sm text-black hover:text-blue-400">Profile</a>
+                        @endif
                     </li>
                     <li class="pb-3 flex items-center">
                         <i class="ri-settings-fill text-blue-400 text-lg mr-2"></i>
