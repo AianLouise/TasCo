@@ -155,25 +155,57 @@
                 <h1 class="text-3xl font-semibold text-blue-700 mb-6">Emergency Assistance</h1>
                 <p class="text-gray-700 mb-8">When in distress or feeling unsafe, click the "Send SOS" button below for
                     immediate assistance. Help is on the way!</p>
-                <form action="{{ route('tasco.sendSOS') }}" method="POST">
+                <form id="sosForm" action="{{ route('tasco.sendSOS') }}" method="POST">
                     @csrf
                     <!-- Your form fields and submit button -->
-                    <button type="submit"
-                        class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full focus:outline-none focus:shadow-outline-red transition duration-300">
+                    <input type="text" name="details" id="details" placeholder="Enter details" required>
+                    <button type="button"
+                        class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full focus:outline-none focus:shadow-outline-red transition duration-300"
+                        onclick="sendSOS()">
                         Send SOS
                     </button>
                 </form>
-
-
             </div>
         </div>
 
         <script>
-            // You can remove the JavaScript code related to the button click event since it's no longer needed.
+            function sendSOS() {
+                // Check if the Geolocation API is supported
+                if ("geolocation" in navigator) {
+                    navigator.geolocation.getCurrentPosition(
+                        function(position) {
+                            // Get the user's coordinates
+                            const latitude = position.coords.latitude;
+                            const longitude = position.coords.longitude;
+
+                            // Add hidden input fields to the form with the coordinates
+                            const latitudeInput = document.createElement("input");
+                            latitudeInput.type = "hidden";
+                            latitudeInput.name = "latitude";
+                            latitudeInput.value = latitude;
+                            document.getElementById("sosForm").appendChild(latitudeInput);
+
+                            const longitudeInput = document.createElement("input");
+                            longitudeInput.type = "hidden";
+                            longitudeInput.name = "longitude";
+                            longitudeInput.value = longitude;
+                            document.getElementById("sosForm").appendChild(longitudeInput);
+
+                            // Submit the form
+                            document.getElementById("sosForm").submit();
+                        },
+                        function(error) {
+                            // Handle geolocation error
+                            console.error("Error getting geolocation:", error.message);
+                            alert("Error getting your location. Please try again.");
+                        }
+                    );
+                } else {
+                    // Geolocation is not supported
+                    alert("Geolocation is not supported by your browser.");
+                }
+            }
         </script>
-
-
-
 
 
         <div id="uploadDocumentationPage" class="hidden flex items-center justify-center h-screen p-10 bg-blue-50">

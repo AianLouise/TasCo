@@ -10,7 +10,7 @@ class SosAlert extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'location', 'time', 'status'];
+    protected $fillable = ['user_id', 'location', 'time', 'status', 'details' , 'latitude', 'longitude'];
 
     public function user()
     {

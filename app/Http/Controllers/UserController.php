@@ -8,11 +8,13 @@ use App\Models\Category;
 use App\Models\SosAlert;
 use App\Models\HiringForm;
 use Illuminate\Http\Request;
+use App\Mail\NewSOSAlertMail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\CustomerServiceMessage;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\HiringFormCompletedPending;
@@ -314,19 +316,36 @@ class UserController extends Controller
 
         return redirect()->back()->with('error', 'Hiring form not found');
     }
-
+    
     public function sendSOS(Request $request)
     {
-        // Validate and store the SOS alert in the database
-        $sosAlert = new SosAlert([
-            'user_id' => auth()->id(), // Adjust this based on your authentication logic
-            'location' => 'location',
-            'details' => 'details',
-            // Add any other fields as needed
-        ]);
-
-        $sosAlert->save();
-
-        return redirect()->back()->with('success', 'SOS alert stored successfully');
+        try {
+            // Validate the request data
+            $request->validate([
+                'latitude' => 'required',
+                'longitude' => 'required',
+                'details' => 'required|string',
+            ]);
+    
+            // Store the SOS alert in the database
+            $sosAlert = SosAlert::create([
+                'user_id' => auth()->id(),
+                'latitude' => $request->input('latitude'),
+                'longitude' => $request->input('longitude'),
+                'details' => $request->input('details'),
+                'status' => 'emergency',
+            ]);
+    
+            return redirect()->back()->with('success', 'SOS alert stored successfully');
+        } catch (\Exception $e) {
+            // Log the error
+            \Log::error('Error storing SOS alert: ' . $e->getMessage());
+    
+            // Handle the error gracefully
+            return redirect()->back()->with('error', 'An error occurred while storing the SOS alert. Please try again.');
+        }
     }
+    
+    
+
 }

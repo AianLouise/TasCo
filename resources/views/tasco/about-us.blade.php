@@ -168,6 +168,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="w-full px-4 md:w-1/2 xl:w-1/4">
                         <div class="mx-auto mb-10 w-full max-w-[300px]"> <!-- Adjust max-width as needed -->
                             <div class="relative overflow-hidden rounded-lg">

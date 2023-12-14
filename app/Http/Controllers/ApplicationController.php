@@ -12,9 +12,9 @@ class ApplicationController extends Controller
     {
         // Validate the form data (you can add more validation rules)
         $request->validate([
-            'validId' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'barangayClearance' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'latestPicture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'validId' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'barangayClearance' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'latestPicture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
         ]);
 
         // Save the files and associate them with the user
@@ -50,9 +50,9 @@ class ApplicationController extends Controller
         $validatedData = $request->validate([
             'resume' => 'required|mimes:pdf,jpeg,png,jpg,gif,svg|max:2048',
             'validId' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'barangayClearance' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'policeClearance' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'latestPicture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'barangayClearance' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'policeClearance' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'latestPicture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
             'selectedCategoryId' => 'required|integer', // Add validation for category ID
         ]);
 
